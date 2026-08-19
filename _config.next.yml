@@ -53,8 +53,9 @@ local_search:
 math:
   every_page: false
   mathjax:
-    enable: false
+    enable: true
     tags: none
+    display_overflow: scroll
   katex:
     enable: false
     copy_tex: false

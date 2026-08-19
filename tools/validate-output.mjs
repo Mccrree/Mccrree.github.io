@@ -94,8 +94,13 @@ for (const dashboard of ['index.html', 'deep-learning/index.html']) {
 const progress = JSON.parse(await fs.readFile(path.join(ROOT_DIR, '.generated', 'learning.json'), 'utf8'));
 for (const chapter of progress.chapters.filter((item) => item.completed && item.hasMath)) {
   const target = `${chapter.path.replace(/^\//, '')}index.html`;
-  if (!/<mjx-container\b/i.test(htmlByFile.get(target) ?? '')) {
-    errors.push(`${target}: source contains math but no rendered MathJax output was found.`);
+  const html = htmlByFile.get(target) ?? '';
+  if (!/\\(?:\(|\[)/.test(html)) {
+    errors.push(`${target}: source contains math but no Pandoc math delimiters were found.`);
+  }
+  if (!/js\/third-party\/math\/mathjax\.js/i.test(html)
+      || !/data-name=["']enableMath["'][^>]*>true<\/script>/i.test(html)) {
+    errors.push(`${target}: source contains math but the on-demand MathJax loader is not enabled.`);
   }
 }
 

@@ -49,14 +49,6 @@ pandoc:
     - '--to=html5'
     - '--mathjax'
 
-mathjax:
-  tags: none
-  single_dollars: true
-  cjk_width: 0.9
-  normal_width: 0.6
-  append_css: true
-  every_page: false
-
 search:
   path: search.xml
   field: post
