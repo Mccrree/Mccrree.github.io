@@ -18,6 +18,9 @@ hexo.extend.tag.register('learning_dashboard', function learningDashboardTag() {
     throw new Error('Learning progress data is missing. Run npm run prepare first.');
   }
   const progress = JSON.parse(fs.readFileSync(progressPath, 'utf8'));
+  const description = progress.description
+    ? `<p class="learning-dashboard__description">${escapeHtml(progress.description)}</p>`
+    : '';
   const chapterItems = progress.chapters.map((chapter) => {
     const number = escapeHtml(chapter.numberLabel);
     const title = escapeHtml(chapter.title);
@@ -32,7 +35,7 @@ hexo.extend.tag.register('learning_dashboard', function learningDashboardTag() {
   <header class="learning-dashboard__header">
     <p class="learning-dashboard__eyebrow">Personal Knowledge Notes</p>
     <h1 id="learning-dashboard-title">${escapeHtml(progress.title)}</h1>
-    <p class="learning-dashboard__description">${escapeHtml(progress.description)}</p>
+    ${description}
   </header>
   <section class="learning-progress" aria-labelledby="learning-progress-title">
     <div class="learning-progress__summary">

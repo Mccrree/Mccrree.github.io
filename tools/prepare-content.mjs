@@ -51,7 +51,6 @@ for (const chapter of completed) {
 
 const progress = {
   title: 'Understanding Deep Learning',
-  description: '这是我学习并理解 Deep Learning 的个人知识记录。',
   completed: completed.length,
   total: report.chapters.length,
   percentage: Math.round((completed.length / report.chapters.length) * 100),
