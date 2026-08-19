@@ -1,0 +1,77 @@
+name: Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.18.0
+          cache: npm
+
+      - name: Install Pandoc
+        env:
+          PANDOC_VERSION: 3.9.0.2
+          PANDOC_SHA256: a69abfababda8a56969a254b09f9553a7be89ddec00d4e0fe9fd585d71a67508
+        run: |
+          curl --fail --location --retry 3 \
+            "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-linux-amd64.tar.gz" \
+            --output "${RUNNER_TEMP}/pandoc.tar.gz"
+          echo "${PANDOC_SHA256}  ${RUNNER_TEMP}/pandoc.tar.gz" | sha256sum --check
+          mkdir -p "${RUNNER_TEMP}/pandoc"
+          tar --extract --gzip --file "${RUNNER_TEMP}/pandoc.tar.gz" \
+            --directory "${RUNNER_TEMP}/pandoc" --strip-components=1
+          echo "${RUNNER_TEMP}/pandoc/bin" >> "${GITHUB_PATH}"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test and build
+        run: npm run verify
+
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v6
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: public
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

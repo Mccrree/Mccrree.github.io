@@ -1,0 +1,34 @@
+{
+  "name": "mccrree-deep-learning-notes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Markdown-first learning site for Understanding Deep Learning.",
+  "packageManager": "npm@11.16.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "hexo": {
+    "version": "8.1.2"
+  },
+  "scripts": {
+    "check": "node tools/validate-content.mjs",
+    "prepare": "node tools/prepare-content.mjs",
+    "clean": "hexo clean",
+    "build": "hexo clean && node tools/prepare-content.mjs && hexo generate --bail && node tools/validate-output.mjs",
+    "server": "node tools/prepare-content.mjs && hexo server",
+    "test": "node --test",
+    "verify": "npm test && npm run build"
+  },
+  "dependencies": {
+    "hexo": "8.1.2",
+    "hexo-filter-mathjax": "0.11.1",
+    "hexo-generator-archive": "2.0.0",
+    "hexo-generator-searchdb": "1.5.0",
+    "hexo-generator-tag": "2.0.0",
+    "hexo-renderer-pandoc": "0.5.0",
+    "hexo-renderer-stylus": "3.0.1",
+    "hexo-server": "3.0.0",
+    "hexo-theme-next": "8.29.0",
+    "markdown-it": "15.0.0"
+  }
+}

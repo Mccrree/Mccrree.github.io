@@ -1,0 +1,28 @@
+{% if page.chapter_number %}
+<section class="chapter-reference" aria-labelledby="chapter-reference-title">
+  <h2 id="chapter-reference-title">References</h2>
+  <p>Simon J.D. Prince. <cite>Understanding Deep Learning</cite>. Chapter {{ page.chapter_number }}: {{ page.chapter_title }}.</p>
+  <p class="chapter-reference__note">该页面为个人学习笔记、理解、示例与总结。</p>
+</section>
+
+<nav class="chapter-navigation" aria-label="Chapter navigation">
+  <div class="chapter-navigation__previous">
+    {% if page.prev_chapter_path %}
+      <span>Previous Chapter</span>
+      <a href="{{ url_for(page.prev_chapter_path) }}">{{ page.prev_chapter_number }} {{ page.prev_chapter_title }}</a>
+    {% else %}
+      <span>Previous Chapter</span>
+      <strong aria-disabled="true">—</strong>
+    {% endif %}
+  </div>
+  <div class="chapter-navigation__next">
+    {% if page.next_chapter_path %}
+      <span>Next Chapter</span>
+      <a href="{{ url_for(page.next_chapter_path) }}">{{ page.next_chapter_number }} {{ page.next_chapter_title }}</a>
+    {% else %}
+      <span>Next Chapter</span>
+      <strong aria-disabled="true">—</strong>
+    {% endif %}
+  </div>
+</nav>
+{% endif %}

@@ -1,0 +1,67 @@
+title: Understanding Deep Learning
+subtitle: 个人深度学习知识记录
+description: 这是我学习并理解 Deep Learning 的个人知识记录。
+keywords:
+  - Deep Learning
+  - Understanding Deep Learning
+  - 学习笔记
+author: Mccrree
+language: zh-CN
+timezone: Australia/Sydney
+
+url: https://mccrree.github.io
+root: /
+permalink: deep-learning/:title/
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+
+source_dir: .generated/source
+public_dir: public
+archive_dir: archives
+tag_dir: tags
+skip_render:
+
+theme: next
+default_layout: post
+post_asset_folder: true
+render_drafts: false
+future: false
+
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+
+highlight:
+  enable: false
+
+prismjs:
+  enable: true
+  preprocess: true
+  line_number: true
+  tab_replace: '  '
+
+pandoc:
+  pandocPath: pandoc
+  timeout: 10000
+  args:
+    - '--from=markdown+tex_math_dollars+fenced_code_attributes'
+    - '--to=html5'
+    - '--mathjax'
+
+mathjax:
+  tags: none
+  single_dollars: true
+  cjk_width: 0.9
+  normal_width: 0.6
+  append_css: true
+  every_page: false
+
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
+meta_generator: true

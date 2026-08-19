@@ -1,0 +1,23 @@
+[
+  { "number": 1, "title": "Introduction", "slug": "introduction" },
+  { "number": 2, "title": "Supervised Learning", "slug": "supervised-learning" },
+  { "number": 3, "title": "Shallow Neural Networks", "slug": "shallow-neural-networks" },
+  { "number": 4, "title": "Deep Neural Networks", "slug": "deep-neural-networks" },
+  { "number": 5, "title": "Loss Functions", "slug": "loss-functions" },
+  { "number": 6, "title": "Fitting Models", "slug": "fitting-models" },
+  { "number": 7, "title": "Gradients and Initialization", "slug": "gradients-and-initialization" },
+  { "number": 8, "title": "Measuring Performance", "slug": "measuring-performance" },
+  { "number": 9, "title": "Regularization", "slug": "regularization" },
+  { "number": 10, "title": "Convolutional Networks", "slug": "convolutional-networks" },
+  { "number": 11, "title": "Residual Networks", "slug": "residual-networks" },
+  { "number": 12, "title": "Transformers", "slug": "transformers" },
+  { "number": 13, "title": "Graph Neural Networks", "slug": "graph-neural-networks" },
+  { "number": 14, "title": "Unsupervised Learning", "slug": "unsupervised-learning" },
+  { "number": 15, "title": "Generative Adversarial Networks", "slug": "generative-adversarial-networks" },
+  { "number": 16, "title": "Normalizing Flows", "slug": "normalizing-flows" },
+  { "number": 17, "title": "Variational Autoencoders", "slug": "variational-autoencoders" },
+  { "number": 18, "title": "Diffusion Models", "slug": "diffusion-models" },
+  { "number": 19, "title": "Reinforcement Learning", "slug": "reinforcement-learning" },
+  { "number": 20, "title": "Why Does Deep Learning Work?", "slug": "why-does-deep-learning-work" },
+  { "number": 21, "title": "Deep Learning and Ethics", "slug": "deep-learning-and-ethics" }
+]

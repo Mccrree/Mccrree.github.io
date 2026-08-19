@@ -1,0 +1,74 @@
+scheme: Muse
+darkmode: false
+
+menu:
+  Home: / || fa fa-home
+  Deep Learning: /deep-learning/ || fa fa-book
+  Archives: /archives/ || fa fa-archive
+  Tags: /tags/ || fa fa-tags
+  About: /about/ || fa fa-user
+  GitHub: https://github.com/Mccrree/Mccrree.github.io || fab fa-github
+
+menu_settings:
+  icons: true
+  badges: false
+
+sidebar:
+  position: left
+  display: post
+
+toc:
+  enable: true
+  number: false
+  wrap: true
+  expand_all: false
+  max_depth: 3
+
+post_meta:
+  item_text: false
+  created_at: true
+  updated_at:
+    enable: true
+    another_day: true
+  categories: false
+
+post_navigation: false
+comments: false
+motion:
+  enable: false
+
+codeblock:
+  copy_button:
+    enable: true
+    show_result: true
+    style: flat
+  language: true
+
+local_search:
+  enable: true
+  top_n_per_article: 3
+  unescape: false
+  preload: false
+
+math:
+  every_page: false
+  mathjax:
+    enable: false
+    tags: none
+  katex:
+    enable: false
+    copy_tex: false
+
+vendors:
+  internal: local
+  plugins: cdnjs
+
+back2top:
+  enable: true
+  sidebar: false
+  scrollpercent: false
+
+custom_file_path:
+  postBodyStart: site/templates/chapter-before.njk
+  postBodyEnd: site/templates/chapter-after.njk
+  style: site/styles/custom.styl

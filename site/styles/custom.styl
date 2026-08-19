@@ -1,0 +1,161 @@
+.post-body
+  font-size: 1.05em
+  line-height: 1.9
+
+  img
+    height: auto
+    max-width: 100%
+
+  pre, .highlight
+    overflow-x: auto
+
+  mjx-container[display='true']
+    display: block
+    max-width: 100%
+    overflow-x: auto
+    overflow-y: hidden
+    padding: .35em 0
+
+.learning-dashboard
+  margin: 0 auto
+  max-width: 46rem
+
+  h1
+    font-size: 2em
+    margin: .35em 0 .45em
+
+  h2
+    border-bottom: 0
+    font-size: 1.25em
+    margin: 0
+
+body:has(.learning-dashboard)
+  .sidebar-toggle, .sidebar-dimmer
+    display: none
+
+.learning-dashboard__header
+  border-bottom: 1px solid $gainsboro
+  margin-bottom: 2.5em
+  padding-bottom: 2em
+
+.learning-dashboard__eyebrow
+  color: $grey-dark
+  font-size: .75em
+  letter-spacing: .12em
+  margin: 0
+  text-transform: uppercase
+
+.learning-dashboard__description
+  color: $grey-dim
+  margin-bottom: 0
+
+.learning-progress
+  margin-bottom: 2.75em
+
+.learning-progress__summary
+  align-items: baseline
+  display: flex
+  justify-content: space-between
+  margin-bottom: .8em
+
+  span
+    color: $grey-dim
+    font-size: .9em
+
+.learning-progress__track
+  background: $gainsboro
+  height: 4px
+  overflow: hidden
+  width: 100%
+
+  span
+    background: $black-deep
+    display: block
+    height: 100%
+    transition: width .2s ease
+
+.learning-path
+  ol
+    list-style: none
+    margin: 1.1em 0 0
+    padding: 0
+
+.learning-path__item
+  align-items: baseline
+  border-bottom: 1px solid $gainsboro
+  display: grid
+  gap: .85em
+  grid-template-columns: 2.2em 1fr 1.2em
+  padding: .72em 0
+
+  a
+    border-bottom: 0
+
+.learning-path__number
+  color: $grey
+  font-family: $font-family-monospace
+  font-size: .9em
+
+.learning-path__status
+  text-align: right
+
+.learning-path__item.is-pending
+  color: $grey
+
+.chapter-kicker
+  color: $grey
+  font-size: .8em
+  letter-spacing: .12em
+  margin: -1em 0 2.25em
+  text-transform: uppercase
+
+.chapter-reference
+  border-top: 1px solid $gainsboro
+  margin-top: 4em
+  padding-top: 1.5em
+
+  h2
+    border-bottom: 0
+    font-size: 1.25em
+
+.chapter-reference__note
+  color: $grey-dim
+  font-size: .9em
+
+.chapter-navigation
+  border-top: 1px solid $gainsboro
+  display: grid
+  gap: 2em
+  grid-template-columns: 1fr 1fr
+  margin-top: 2.5em
+  padding-top: 1.5em
+
+  span
+    color: $grey
+    display: block
+    font-size: .75em
+    letter-spacing: .08em
+    margin-bottom: .35em
+    text-transform: uppercase
+
+  a
+    border-bottom: 0
+
+.chapter-navigation__next
+  text-align: right
+
+@media (max-width: 767px)
+  .post-body
+    font-size: 1em
+    line-height: 1.8
+
+  .learning-progress__summary
+    align-items: flex-start
+    flex-direction: column
+    gap: .35em
+
+  .chapter-navigation
+    grid-template-columns: 1fr
+
+  .chapter-navigation__next
+    text-align: left
