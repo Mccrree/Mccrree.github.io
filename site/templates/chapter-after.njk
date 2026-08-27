@@ -1,26 +1,25 @@
-{% if page.chapter_number %}
+{% if page.unit_number %}
+{% if page.reference_author and page.reference_title %}
 <section class="chapter-reference" aria-labelledby="chapter-reference-title">
   <h2 id="chapter-reference-title">References</h2>
-  <p>Simon J.D. Prince. <cite>Understanding Deep Learning</cite>. Chapter {{ page.chapter_number }}: {{ page.chapter_title }}.</p>
-  <p class="chapter-reference__note">该页面为个人学习笔记、理解、示例与总结。</p>
+  <p>{{ page.reference_author }}. <cite>{{ page.reference_title }}</cite>. {{ page.unit_label }} {{ page.unit_number }}: {{ page.unit_title }}.</p>
 </section>
+{% endif %}
 
-<nav class="chapter-navigation" aria-label="Chapter navigation">
+<nav class="chapter-navigation" aria-label="{{ page.unit_label }} navigation">
   <div class="chapter-navigation__previous">
-    {% if page.prev_chapter_path %}
-      <span>Previous Chapter</span>
-      <a href="{{ url_for(page.prev_chapter_path) }}">{{ page.prev_chapter_number }} {{ page.prev_chapter_title }}</a>
+    <span>Previous {{ page.unit_label }}</span>
+    {% if page.prev_unit_path %}
+      <a href="{{ url_for(page.prev_unit_path) }}">{{ page.prev_unit_number }} {{ page.prev_unit_title }}</a>
     {% else %}
-      <span>Previous Chapter</span>
       <strong aria-disabled="true">—</strong>
     {% endif %}
   </div>
   <div class="chapter-navigation__next">
-    {% if page.next_chapter_path %}
-      <span>Next Chapter</span>
-      <a href="{{ url_for(page.next_chapter_path) }}">{{ page.next_chapter_number }} {{ page.next_chapter_title }}</a>
+    <span>Next {{ page.unit_label }}</span>
+    {% if page.next_unit_path %}
+      <a href="{{ url_for(page.next_unit_path) }}">{{ page.next_unit_number }} {{ page.next_unit_title }}</a>
     {% else %}
-      <span>Next Chapter</span>
       <strong aria-disabled="true">—</strong>
     {% endif %}
   </div>

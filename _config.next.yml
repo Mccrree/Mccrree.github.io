@@ -4,6 +4,7 @@ darkmode: false
 menu:
   Home: / || fa fa-home
   Deep Learning: /deep-learning/ || fa fa-book
+  COMP2022: /comp2022/ || fa fa-graduation-cap
   Archives: /archives/ || fa fa-archive
   Tags: /tags/ || fa fa-tags
   About: /about/ || fa fa-user

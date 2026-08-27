@@ -4,4 +4,4 @@ title: About
 comments: false
 ---
 
-当前学习资料为 Simon J.D. Prince 的 *Understanding Deep Learning*。网站中的 Chapter 页面记录个人学习笔记、理解、示例与总结。
+这个网站用于长期整理课程与书籍的学习笔记。目前包括 Simon J.D. Prince 的 *Understanding Deep Learning*，以及 University of Sydney 的 COMP2022 — *Models of Computation*。

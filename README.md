@@ -1,35 +1,54 @@
-# Understanding Deep Learning Notes
+# Mccrree's Learning Notes
 
-这是一个用于长期记录《Understanding Deep Learning》学习过程的个人知识网站。
+这是一个用于长期记录课程与书籍学习过程的个人知识网站，使用 Hexo、NexT Muse、Markdown、MathJax 和 GitHub Pages。
 
-网站使用 Hexo、NexT Muse、Markdown、MathJax 和 GitHub Pages。Chapter Markdown 是学习正文的唯一 Source of Truth；构建脚本只验证、解析和渲染内容，不会回写或润色正文。
+`content/` 中的 Markdown 是学习正文唯一的 Source of Truth。构建脚本只负责验证、添加站点 metadata 和渲染，不会修改或润色正文。课程、章节与周次的顺序由 `data/` 中的 manifest 控制。
 
-## 添加一个 Chapter
+## 项目结构
 
-1. 在 `content/chapters/` 中新增规定文件名的 Markdown，例如 `03-shallow-neural-networks.md`。
-2. 第一个非空内容必须是与 Chapter Manifest 一致的 H1：
+```text
+data/
+  courses.json       # Course / Collection 总表
+  chapters.json      # Understanding Deep Learning 的 21 Chapters
+  comp2022.json      # COMP2022 的 12 Weeks
+content/
+  chapters/          # Deep Learning 正文与图片目录
+  comp2022/          # COMP2022 正文与图片目录
+site/                # 页面、模板和少量 NexT Muse 样式
+tools/               # 内容准备、校验与构建输出检查
+tests/               # 内容流水线测试
+```
+
+不要手写 Hexo front matter。标题、URL、日期、Course、Tags、MathJax、Previous / Next 和 Learning Progress 都由构建流程生成。
+
+## Adding Deep Learning chapter
+
+1. 在 `data/chapters.json` 找到对应 Chapter 的文件名规则，例如 Chapter 4 是 `04-deep-neural-networks.md`。
+2. 在 `content/chapters/` 新建该 Markdown，并让第一个非空内容成为与 manifest title 完全一致的 H1：
 
    ```markdown
-   # Shallow Neural Networks
+   # Deep Neural Networks
 
-   ## 什么是浅层神经网络
+   ## Notes
 
    正文
    ```
 
-3. 如需图片，创建同名目录：
+3. 如需图片，建立同名资源目录 `content/chapters/04-deep-neural-networks/`，并在 Markdown 中使用相对于该目录的路径，例如 `![Diagram](network.svg)`。
+4. 运行 `npm run check`，然后提交并推送。
 
-   ```text
-   content/chapters/03-shallow-neural-networks/
-   ```
+原有 Deep Learning URL 继续使用 `/deep-learning/NN-slug/`。
 
-   然后在 Markdown 中使用简单相对路径：
+## Adding a COMP2022 week
 
-   ```markdown
-   ![示意图](network.svg)
-   ```
+以后完成 Week 4 时，最短流程是：
 
-不需要手写 Hexo Front Matter。标题、URL、日期、标签、数学开关、Previous / Next、Reference 和 Learning Progress 都由构建流程生成。
+1. 根据 `data/comp2022.json` 新建 `content/comp2022/04-automata-i.md`。
+2. 写正文，并以 manifest 中对应的 title 作为唯一 H1：`# Automata`。
+3. 运行 `npm run check`。
+4. `git push`；GitHub Actions 会自动构建并部署。
+
+若需图片，使用同名目录 `content/comp2022/04-automata-i/`。COMP2022 URL 为 `/comp2022/NN-slug/`，Week 顺序始终由 manifest 控制。尚未创建 Markdown 的 planned Week 会显示为未完成，不会被当作校验错误。
 
 ## 本地命令
 
@@ -42,14 +61,14 @@ npm run server
 npm run build
 ```
 
-- `npm run check`：验证 Markdown、文件名、标题、图片和内部链接。
+- `npm run check`：验证 Course manifest、编号、slug、文件名、H1、图片、内部链接和 URL collision。
 - `npm run server`：准备临时内容并启动本地预览。
-- `npm run build`：完整验证并生成 `public/`。
+- `npm run build`：重新验证并生成 `public/`，随后检查最终页面、资源、链接和 MathJax。
 
 `.generated/`、`public/` 和 `node_modules/` 都是自动产物，不应手动维护或提交。
 
 ## 自动部署
 
-推送到 `main` 后，GitHub Actions 会自动安装依赖、验证内容、构建网站并部署到：
+推送到 `main` 后，现有 GitHub Actions 会自动安装依赖、运行测试与校验、构建网站，并部署到：
 
 <https://mccrree.github.io/>

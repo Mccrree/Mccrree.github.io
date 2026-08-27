@@ -1,0 +1,14 @@
+[
+  { "number": 1, "title": "Reasoning about Python & Tiny Python", "slug": "reasoning-about-python-and-tiny-python" },
+  { "number": 2, "title": "Regular Expressions", "slug": "regular-expressions" },
+  { "number": 3, "title": "Automata & Deterministic Finite Automata", "slug": "automata-and-dfa" },
+  { "number": 4, "title": "Automata", "slug": "automata-i" },
+  { "number": 5, "title": "Automata", "slug": "automata-ii" },
+  { "number": 6, "title": "Context-Free Grammars", "slug": "context-free-grammars-i" },
+  { "number": 7, "title": "Context-Free Grammars", "slug": "context-free-grammars-ii" },
+  { "number": 8, "title": "Context-Free Grammars", "slug": "context-free-grammars-iii" },
+  { "number": 9, "title": "Turing Machines", "slug": "turing-machines-i" },
+  { "number": 10, "title": "Turing Machines", "slug": "turing-machines-ii" },
+  { "number": 11, "title": "Turing Machines", "slug": "turing-machines-iii" },
+  { "number": 12, "title": "Turing Machines", "slug": "turing-machines-iv" }
+]

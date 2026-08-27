@@ -16,7 +16,7 @@
     overflow-y: hidden
     padding: .35em 0
 
-.learning-dashboard
+.learning-dashboard, .learning-home
   margin: 0 auto
   max-width: 46rem
 
@@ -29,9 +29,45 @@
     font-size: 1.25em
     margin: 0
 
-body:has(.learning-dashboard)
+body:has(.learning-dashboard), body:has(.learning-home)
   .sidebar-toggle, .sidebar-dimmer
     display: none
+
+.learning-collections
+  display: grid
+  gap: 1.25em
+
+.learning-collection-card
+  border: 1px solid $gainsboro
+  display: grid
+  gap: 1.5em
+  grid-template-columns: 1fr 11em
+  padding: 1.5em
+
+  h2
+    margin: .2em 0 .4em
+
+    a
+      border-bottom: 0
+
+  p
+    color: $grey-dim
+    margin: 0
+
+.learning-collection-card__kind
+  font-size: .72em
+  letter-spacing: .1em
+  text-transform: uppercase
+
+.learning-collection-card__progress
+  align-self: center
+  color: $grey-dim
+  font-size: .9em
+
+  > span
+    display: block
+    margin-bottom: .75em
+    text-align: right
 
 .learning-dashboard__header
   border-bottom: 1px solid $gainsboro
@@ -85,7 +121,7 @@ body:has(.learning-dashboard)
   border-bottom: 1px solid $gainsboro
   display: grid
   gap: .85em
-  grid-template-columns: 2.2em 1fr 1.2em
+  grid-template-columns: minmax(2.2em, auto) 1fr 1.2em
   padding: .72em 0
 
   a
@@ -95,6 +131,7 @@ body:has(.learning-dashboard)
   color: $grey
   font-family: $font-family-monospace
   font-size: .9em
+  white-space: nowrap
 
 .learning-path__status
   text-align: right
@@ -153,6 +190,12 @@ body:has(.learning-dashboard)
     align-items: flex-start
     flex-direction: column
     gap: .35em
+
+  .learning-collection-card
+    grid-template-columns: 1fr
+
+  .learning-collection-card__progress > span
+    text-align: left
 
   .chapter-navigation
     grid-template-columns: 1fr

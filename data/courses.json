@@ -1,0 +1,52 @@
+{
+  "site": {
+    "title": "Mccrree's Learning Notes",
+    "subtitle": "Personal Knowledge Notes"
+  },
+  "collections": [
+    {
+      "id": "deep-learning",
+      "type": "book",
+      "title": "Understanding Deep Learning",
+      "subtitle": "Simon J.D. Prince",
+      "route": "/deep-learning/",
+      "contentDirectory": "content/chapters",
+      "manifest": "data/chapters.json",
+      "generatedDirectory": "",
+      "expectedUnits": 21,
+      "unit": {
+        "singular": "Chapter",
+        "plural": "Chapters",
+        "showLabelInPath": false
+      },
+      "tags": [
+        "Understanding Deep Learning"
+      ],
+      "reference": {
+        "author": "Simon J.D. Prince",
+        "title": "Understanding Deep Learning"
+      }
+    },
+    {
+      "id": "comp2022",
+      "type": "course",
+      "code": "COMP2022",
+      "title": "COMP2022",
+      "subtitle": "Models of Computation",
+      "route": "/comp2022/",
+      "contentDirectory": "content/comp2022",
+      "manifest": "data/comp2022.json",
+      "generatedDirectory": "comp2022",
+      "expectedUnits": 12,
+      "unit": {
+        "singular": "Week",
+        "plural": "Weeks",
+        "showLabelInPath": true
+      },
+      "tags": [
+        "COMP2022",
+        "Models of Computation"
+      ]
+    }
+  ]
+}

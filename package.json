@@ -1,8 +1,8 @@
 {
-  "name": "mccrree-deep-learning-notes",
+  "name": "mccrree-learning-notes",
   "version": "1.0.0",
   "private": true,
-  "description": "A Markdown-first learning site for Understanding Deep Learning.",
+  "description": "A Markdown-first site for long-term course and book learning notes.",
   "packageManager": "npm@11.16.0",
   "engines": {
     "node": ">=24 <25"
