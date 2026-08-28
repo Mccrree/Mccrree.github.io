@@ -1,14 +1,74 @@
 [
-  { "number": 1, "title": "Reasoning about Python & Tiny Python", "slug": "reasoning-about-python-and-tiny-python" },
-  { "number": 2, "title": "Regular Expressions", "slug": "regular-expressions" },
-  { "number": 3, "title": "Automata & Deterministic Finite Automata", "slug": "automata-and-dfa" },
-  { "number": 4, "title": "Automata", "slug": "automata-i" },
-  { "number": 5, "title": "Automata", "slug": "automata-ii" },
-  { "number": 6, "title": "Context-Free Grammars", "slug": "context-free-grammars-i" },
-  { "number": 7, "title": "Context-Free Grammars", "slug": "context-free-grammars-ii" },
-  { "number": 8, "title": "Context-Free Grammars", "slug": "context-free-grammars-iii" },
-  { "number": 9, "title": "Turing Machines", "slug": "turing-machines-i" },
-  { "number": 10, "title": "Turing Machines", "slug": "turing-machines-ii" },
-  { "number": 11, "title": "Turing Machines", "slug": "turing-machines-iii" },
-  { "number": 12, "title": "Turing Machines", "slug": "turing-machines-iv" }
+  {
+    "number": 1,
+    "title": "Reasoning about Python & Tiny Python",
+    "slug": "reasoning-about-python-and-tiny-python",
+    "tutorial": { "title": "Tutorial 01 — Reasoning about Python & Tiny Python" }
+  },
+  {
+    "number": 2,
+    "title": "Regular Expressions",
+    "slug": "regular-expressions",
+    "tutorial": { "title": "Tutorial 02 — Regular Expressions" }
+  },
+  {
+    "number": 3,
+    "title": "Automata & Deterministic Finite Automata",
+    "slug": "automata-and-dfa",
+    "tutorial": { "title": "Tutorial 03 — Automata & Deterministic Finite Automata" }
+  },
+  {
+    "number": 4,
+    "title": "Automata",
+    "slug": "automata-i",
+    "tutorial": { "title": "Tutorial 04 — Automata" }
+  },
+  {
+    "number": 5,
+    "title": "Automata",
+    "slug": "automata-ii",
+    "tutorial": { "title": "Tutorial 05 — Automata" }
+  },
+  {
+    "number": 6,
+    "title": "Context-Free Grammars",
+    "slug": "context-free-grammars-i",
+    "tutorial": { "title": "Tutorial 06 — Context-Free Grammars" }
+  },
+  {
+    "number": 7,
+    "title": "Context-Free Grammars",
+    "slug": "context-free-grammars-ii",
+    "tutorial": { "title": "Tutorial 07 — Context-Free Grammars" }
+  },
+  {
+    "number": 8,
+    "title": "Context-Free Grammars",
+    "slug": "context-free-grammars-iii",
+    "tutorial": { "title": "Tutorial 08 — Context-Free Grammars" }
+  },
+  {
+    "number": 9,
+    "title": "Turing Machines",
+    "slug": "turing-machines-i",
+    "tutorial": { "title": "Tutorial 09 — Turing Machines" }
+  },
+  {
+    "number": 10,
+    "title": "Turing Machines",
+    "slug": "turing-machines-ii",
+    "tutorial": { "title": "Tutorial 10 — Turing Machines" }
+  },
+  {
+    "number": 11,
+    "title": "Turing Machines",
+    "slug": "turing-machines-iii",
+    "tutorial": { "title": "Tutorial 11 — Turing Machines" }
+  },
+  {
+    "number": 12,
+    "title": "Turing Machines",
+    "slug": "turing-machines-iv",
+    "tutorial": { "title": "Tutorial 12 — Turing Machines" }
+  }
 ]

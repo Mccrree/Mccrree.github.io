@@ -20,17 +20,48 @@ function readLearningData() {
   return JSON.parse(fs.readFileSync(progressPath, 'utf8'));
 }
 
+function progressItems(collection) {
+  const items = [{
+    completed: collection.completed,
+    total: collection.total,
+    percentage: collection.percentage,
+    singular: collection.unit.singular,
+    plural: collection.unit.plural
+  }];
+  if (collection.tutorialProgress) items.push(collection.tutorialProgress);
+  return items;
+}
+
+function renderProgressTrack(progress) {
+  const plural = escapeHtml(progress.plural);
+  return `<div class="learning-progress__track" role="progressbar" aria-valuemin="0" aria-valuemax="${progress.total}" aria-valuenow="${progress.completed}" aria-label="${progress.completed} of ${progress.total} ${plural.toLowerCase()} complete">
+      <span style="width: ${progress.percentage}%"></span>
+    </div>`;
+}
+
 function renderProgress(collection) {
-  const plural = escapeHtml(collection.unit.plural);
+  const items = progressItems(collection).map((progress) => `
+    <div class="learning-progress__item">
+      <div class="learning-progress__summary">
+        <strong>${escapeHtml(progress.plural)}</strong>
+        <span>${progress.completed} / ${progress.total} ${escapeHtml(progress.plural)}</span>
+      </div>
+      ${renderProgressTrack(progress)}
+    </div>`).join('');
   return `<section class="learning-progress" aria-labelledby="learning-progress-title">
-    <div class="learning-progress__summary">
-      <h2 id="learning-progress-title">Learning Progress</h2>
-      <span>${collection.completed} / ${collection.total} ${plural}</span>
-    </div>
-    <div class="learning-progress__track" role="progressbar" aria-valuemin="0" aria-valuemax="${collection.total}" aria-valuenow="${collection.completed}" aria-label="${collection.completed} of ${collection.total} ${plural.toLowerCase()} complete">
-      <span style="width: ${collection.percentage}%"></span>
+    <h2 id="learning-progress-title">Learning Progress</h2>
+    <div class="learning-progress__items">${items}
     </div>
   </section>`;
+}
+
+function renderTutorial(tutorial) {
+  if (!tutorial) return '';
+  const title = escapeHtml(tutorial.title);
+  if (tutorial.completed) {
+    return `<div class="learning-path__tutorial is-complete"><span class="learning-path__branch" aria-hidden="true">↳</span><a href="${escapeHtml(tutorial.path)}">${title}</a><span class="learning-path__status" aria-label="Complete">✓</span></div>`;
+  }
+  return `<div class="learning-path__tutorial is-pending"><span class="learning-path__branch" aria-hidden="true">↳</span><span class="learning-path__title">${title}</span><span class="learning-path__status" aria-label="Pending">○</span></div>`;
 }
 
 function renderCollection(collection) {
@@ -40,11 +71,10 @@ function renderCollection(collection) {
     const label = collection.unit.showLabelInPath
       ? `${escapeHtml(collection.unit.singular)} ${number}`
       : number;
-    if (unit.completed) {
-      const href = escapeHtml(unit.path);
-      return `<li class="learning-path__item is-complete"><span class="learning-path__number">${label}</span><a href="${href}">${title}</a><span class="learning-path__status" aria-label="Complete">✓</span></li>`;
-    }
-    return `<li class="learning-path__item is-pending"><span class="learning-path__number">${label}</span><span class="learning-path__title">${title}</span><span class="learning-path__status" aria-label="Pending">○</span></li>`;
+    const primary = unit.completed
+      ? `<div class="learning-path__item is-complete"><span class="learning-path__number">${label}</span><a href="${escapeHtml(unit.path)}">${title}</a><span class="learning-path__status" aria-label="Complete">✓</span></div>`
+      : `<div class="learning-path__item is-pending"><span class="learning-path__number">${label}</span><span class="learning-path__title">${title}</span><span class="learning-path__status" aria-label="Pending">○</span></div>`;
+    return `<li class="learning-path__group">${primary}${renderTutorial(unit.tutorial)}</li>`;
   }).join('');
 
   return `<section class="learning-dashboard" aria-labelledby="learning-dashboard-title">
@@ -63,20 +93,22 @@ function renderCollection(collection) {
 
 hexo.extend.tag.register('learning_home', function learningHomeTag() {
   const learning = readLearningData();
-  const cards = learning.collections.map((collection) => `
-    <article class="learning-collection-card">
+  const cards = learning.collections.map((collection) => {
+    const progress = progressItems(collection).map((item) => `
+        <div class="learning-collection-card__progress-item">
+          <span>${item.completed} / ${item.total} ${escapeHtml(item.plural)}</span>
+          ${renderProgressTrack(item)}
+        </div>`).join('');
+    return `<article class="learning-collection-card">
       <div class="learning-collection-card__body">
         <p class="learning-collection-card__kind">${escapeHtml(collection.type === 'course' ? 'Course' : 'Book')}</p>
         <h2><a href="${escapeHtml(collection.path)}">${escapeHtml(collection.title)}</a></h2>
         <p>${escapeHtml(collection.subtitle)}</p>
       </div>
-      <div class="learning-collection-card__progress">
-        <span>${collection.completed} / ${collection.total} ${escapeHtml(collection.unit.plural)}</span>
-        <div class="learning-progress__track" role="progressbar" aria-valuemin="0" aria-valuemax="${collection.total}" aria-valuenow="${collection.completed}" aria-label="${collection.completed} of ${collection.total} ${escapeHtml(collection.unit.plural.toLowerCase())} complete">
-          <span style="width: ${collection.percentage}%"></span>
-        </div>
+      <div class="learning-collection-card__progress">${progress}
       </div>
-    </article>`).join('');
+    </article>`;
+  }).join('');
 
   return `<section class="learning-home" aria-labelledby="learning-home-title">
   <header class="learning-dashboard__header">

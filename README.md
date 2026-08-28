@@ -2,7 +2,7 @@
 
 这是一个用于长期记录课程与书籍学习过程的个人知识网站，使用 Hexo、NexT Muse、Markdown、MathJax 和 GitHub Pages。
 
-`content/` 中的 Markdown 是学习正文唯一的 Source of Truth。构建脚本只负责验证、添加站点 metadata 和渲染，不会修改或润色正文。课程、章节与周次的顺序由 `data/` 中的 manifest 控制。
+`content/` 中的 Markdown 是学习正文唯一的 Source of Truth。构建脚本只负责验证、添加站点 metadata 和渲染，不会修改或润色正文。课程、章节、周次与 Tutorial 的顺序由 `data/` 中的 manifest 控制。
 
 ## 项目结构
 
@@ -10,7 +10,7 @@
 data/
   courses.json       # Course / Collection 总表
   chapters.json      # Understanding Deep Learning 的 21 Chapters
-  comp2022.json      # COMP2022 的 12 Weeks
+  comp2022.json      # COMP2022 的 12 Weeks 及其 Tutorials
 content/
   chapters/          # Deep Learning 正文与图片目录
   comp2022/          # COMP2022 正文与图片目录
@@ -49,6 +49,19 @@ tests/               # 内容流水线测试
 4. `git push`；GitHub Actions 会自动构建并部署。
 
 若需图片，使用同名目录 `content/comp2022/04-automata-i/`。COMP2022 URL 为 `/comp2022/NN-slug/`，Week 顺序始终由 manifest 控制。尚未创建 Markdown 的 planned Week 会显示为未完成，不会被当作校验错误。
+
+## Adding a COMP2022 tutorial
+
+Tutorial 是对应 Week 的可选子文章。Week 4 的最短流程是：
+
+1. 新建 `content/comp2022/04-automata-i-tutorial.md`。
+2. 使用 `data/comp2022.json` 中的 Tutorial title 作为唯一 H1：`# Tutorial 04 — Automata`。
+3. 写练习题与解题过程，然后运行 `npm run check`。
+4. 提交并推送；GitHub Actions 会自动部署。
+
+Tutorial 4 的 URL 是 `/comp2022/04-automata-i/tutorial/`。若需图片，使用资源目录 `content/comp2022/04-automata-i-tutorial/`。缺少 planned Tutorial Markdown 不算错误，也不会生成空白文章。
+
+Week 与 Tutorial 分别统计进度。Week 的 Previous / Next 只在 Weeks 之间移动；Tutorial 的 Previous / Next 只在 Tutorials 之间移动。Tutorial 页面会链接回对应 Week，已有 Tutorial 的 Week 页面也会显示练习入口。
 
 ## 本地命令
 

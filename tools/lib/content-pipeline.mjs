@@ -36,6 +36,18 @@ export function unitUrl(collection, unit) {
   return `${collection.route}${unitStem(unit)}/`;
 }
 
+export function tutorialStem(unit) {
+  return `${unitStem(unit)}-tutorial`;
+}
+
+export function tutorialFileName(unit) {
+  return `${tutorialStem(unit)}.md`;
+}
+
+export function tutorialUrl(collection, unit) {
+  return `${unitUrl(collection, unit)}tutorial/`;
+}
+
 // Kept as public aliases for scripts or tests that used the original chapter helpers.
 export const chapterStem = unitStem;
 export const chapterFileName = unitFileName;
@@ -127,6 +139,7 @@ async function inspectUnit(rootDir, collection, definition) {
   const assetDir = path.join(rootDir, ...collection.contentDirectory.split('/'), stem);
   const result = {
     ...definition,
+    articleType: 'unit',
     collectionId: collection.id,
     numberLabel: formatChapterNumber(definition.number),
     stem,
@@ -284,6 +297,27 @@ async function inspectUnit(rootDir, collection, definition) {
   return result;
 }
 
+function hasTutorialDefinition(unit) {
+  return unit?.tutorial && typeof unit.tutorial === 'object' && typeof unit.tutorial.title === 'string';
+}
+
+async function inspectTutorial(rootDir, collection, unit) {
+  const definition = {
+    number: unit.number,
+    title: unit.tutorial.title,
+    slug: `${unit.slug}-tutorial`
+  };
+  const result = await inspectUnit(rootDir, collection, definition);
+  return {
+    ...result,
+    articleType: 'tutorial',
+    url: tutorialUrl(collection, unit),
+    parentUnitNumber: formatChapterNumber(unit.number),
+    parentUnitTitle: unit.title,
+    parentUnitPath: unitUrl(collection, unit)
+  };
+}
+
 function validateCoursesConfig(config, configFile) {
   const diagnostics = [];
   if (!config || typeof config !== 'object' || !Array.isArray(config.collections) || config.collections.length === 0) {
@@ -376,6 +410,13 @@ function validateManifest(manifest, collection) {
       diagnostics.push(diagnostic('error', manifestFile, `Slug is duplicated: ${unit.slug}`));
     }
     slugs.add(unit.slug);
+    if (unit.tutorial !== undefined) {
+      if (!unit.tutorial || typeof unit.tutorial !== 'object' || Array.isArray(unit.tutorial)) {
+        diagnostics.push(diagnostic('error', manifestFile, `Unit ${index + 1} tutorial metadata must be an object.`));
+      } else if (typeof unit.tutorial.title !== 'string' || !unit.tutorial.title.trim()) {
+        diagnostics.push(diagnostic('error', manifestFile, `Unit ${index + 1} tutorial is missing a title.`));
+      }
+    }
   }
   return diagnostics;
 }
@@ -440,9 +481,27 @@ async function inspectCollection(rootDir, collection) {
   }
 
   const diagnostics = validateManifest(manifest, collection);
+  if (!Array.isArray(manifest)) {
+    return {
+      collection: {
+        ...collection,
+        units: [],
+        tutorials: [],
+        completed: 0,
+        total: collection.expectedUnits ?? 0,
+        percentage: 0,
+        tutorialProgress: null
+      },
+      diagnostics
+    };
+  }
   const contentDirectory = path.join(rootDir, ...collection.contentDirectory.split('/'));
   const expectedFiles = new Set(manifest.map(unitFileName));
   const expectedDirectories = new Set(manifest.map(unitStem));
+  for (const unit of manifest.filter(hasTutorialDefinition)) {
+    expectedFiles.add(tutorialFileName(unit));
+    expectedDirectories.add(tutorialStem(unit));
+  }
   if (existsSync(contentDirectory)) {
     for (const entry of await fs.readdir(contentDirectory, { withFileTypes: true })) {
       if (entry.name.startsWith('.')) continue;
@@ -455,16 +514,36 @@ async function inspectCollection(rootDir, collection) {
     }
   }
 
-  const units = await Promise.all(manifest.map((unit) => inspectUnit(rootDir, collection, unit)));
-  diagnostics.push(...units.flatMap((unit) => [...unit.errors, ...unit.warnings]));
+  const primaryUnits = await Promise.all(manifest.map((unit) => inspectUnit(rootDir, collection, unit)));
+  const tutorials = await Promise.all(
+    manifest.filter(hasTutorialDefinition).map((unit) => inspectTutorial(rootDir, collection, unit))
+  );
+  const tutorialsByNumber = new Map(tutorials.map((tutorial) => [tutorial.number, tutorial]));
+  const units = primaryUnits.map((unit) => ({
+    ...unit,
+    tutorial: tutorialsByNumber.get(unit.number) ?? null
+  }));
+  diagnostics.push(
+    ...units.flatMap((unit) => [...unit.errors, ...unit.warnings]),
+    ...tutorials.flatMap((tutorial) => [...tutorial.errors, ...tutorial.warnings])
+  );
   const completed = units.filter((unit) => unit.exists && unit.valid).length;
+  const completedTutorials = tutorials.filter((tutorial) => tutorial.exists && tutorial.valid).length;
   return {
     collection: {
       ...collection,
       units,
+      tutorials,
       completed,
       total: units.length,
-      percentage: units.length === 0 ? 0 : Math.round((completed / units.length) * 100)
+      percentage: units.length === 0 ? 0 : Math.round((completed / units.length) * 100),
+      tutorialProgress: tutorials.length === 0 ? null : {
+        completed: completedTutorials,
+        total: tutorials.length,
+        percentage: Math.round((completedTutorials / tutorials.length) * 100),
+        singular: 'Tutorial',
+        plural: 'Tutorials'
+      }
     },
     diagnostics
   };
@@ -487,7 +566,8 @@ export async function validateProject({ rootDir = ROOT_DIR } = {}) {
   }
 
   const diagnostics = validateCoursesConfig(config, configFile);
-  const usableCollections = config.collections.filter((collection) => (
+  const configuredCollections = Array.isArray(config.collections) ? config.collections : [];
+  const usableCollections = configuredCollections.filter((collection) => (
     collection
     && typeof collection.id === 'string'
     && typeof collection.route === 'string'
@@ -497,7 +577,10 @@ export async function validateProject({ rootDir = ROOT_DIR } = {}) {
   const inspected = await Promise.all(usableCollections.map((collection) => inspectCollection(rootDir, collection)));
   const collections = inspected.map((item) => item.collection);
   diagnostics.push(...inspected.flatMap((item) => item.diagnostics));
-  const articles = collections.flatMap((collection) => collection.units);
+  const articles = collections.flatMap((collection) => [
+    ...collection.units,
+    ...(collection.tutorials ?? [])
+  ]);
   diagnostics.push(...validateRoutes(collections, articles));
 
   const errors = diagnostics.filter((item) => item.level === 'error');
@@ -520,6 +603,9 @@ export function printReport(report) {
   }
   for (const collection of report.collections) {
     console.log(`Content check: ${collection.completed}/${collection.total} ${collection.unit.plural} valid — ${collection.title}.`);
+    if (collection.tutorialProgress) {
+      console.log(`Content check: ${collection.tutorialProgress.completed}/${collection.tutorialProgress.total} Tutorials valid — ${collection.title}.`);
+    }
   }
   console.log(`Content check: ${report.errors.length} error(s), ${report.warnings.length} warning(s).`);
 }
@@ -556,7 +642,10 @@ function execFileStatFallback(rootDir, relativeFile) {
   }
 }
 
-export function generatedFrontMatter(collection, unit, dates, previous, next) {
+export function generatedFrontMatter(collection, unit, dates, previous, next, related = {}) {
+  const isTutorial = unit.articleType === 'tutorial';
+  const unitLabel = isTutorial ? 'Tutorial' : collection.unit.singular;
+  const tags = isTutorial ? [...collection.tags, 'Tutorial'] : collection.tags;
   const values = [
     '---',
     'layout: post',
@@ -566,29 +655,43 @@ export function generatedFrontMatter(collection, unit, dates, previous, next) {
     `permalink: ${JSON.stringify(unit.url.slice(1))}`,
     `course: ${JSON.stringify(collection.code ?? collection.title)}`,
     'tags:',
-    ...collection.tags.map((tag) => `  - ${JSON.stringify(tag)}`),
+    ...tags.map((tag) => `  - ${JSON.stringify(tag)}`),
     'comments: false',
     'mathjax: true',
     'toc: true',
     'disableNunjucks: true',
     `collection_id: ${JSON.stringify(collection.id)}`,
     `collection_path: ${JSON.stringify(collection.route)}`,
-    `unit_label: ${JSON.stringify(collection.unit.singular)}`,
+    `content_type: ${JSON.stringify(isTutorial ? 'tutorial' : 'notes')}`,
+    `unit_label: ${JSON.stringify(unitLabel)}`,
     `unit_number: ${JSON.stringify(unit.numberLabel)}`,
     `unit_title: ${JSON.stringify(unit.title)}`,
     `unit_path: ${JSON.stringify(unit.url)}`
   ];
-  if (collection.reference) {
+  if (collection.reference && !isTutorial) {
     values.push(
       `reference_author: ${JSON.stringify(collection.reference.author)}`,
       `reference_title: ${JSON.stringify(collection.reference.title)}`
     );
   }
-  if (collection.id === 'deep-learning') {
+  if (collection.id === 'deep-learning' && !isTutorial) {
     values.push(
       `chapter_number: ${JSON.stringify(unit.numberLabel)}`,
       `chapter_title: ${JSON.stringify(unit.title)}`,
       `chapter_path: ${JSON.stringify(unit.url)}`
+    );
+  }
+  if (isTutorial && related.parent) {
+    values.push(
+      `parent_unit_number: ${JSON.stringify(related.parent.numberLabel)}`,
+      `parent_unit_title: ${JSON.stringify(related.parent.title)}`,
+      `parent_unit_path: ${JSON.stringify(related.parent.url)}`
+    );
+  }
+  if (!isTutorial && related.tutorial) {
+    values.push(
+      `tutorial_title: ${JSON.stringify(related.tutorial.title)}`,
+      `tutorial_path: ${JSON.stringify(related.tutorial.url)}`
     );
   }
   if (previous) {

@@ -75,7 +75,7 @@ test('an H1 that disagrees with its manifest is a build error', async (context) 
   assert.match(report.errors.map((item) => item.message).join('\n'), /H1 must be/);
 });
 
-test('all 12 planned COMP2022 weeks may exist without empty Markdown files', async (context) => {
+test('all planned COMP2022 weeks and tutorials may exist without empty Markdown files', async (context) => {
   const rootDir = await createFixture();
   context.after(() => fs.rm(rootDir, { recursive: true, force: true }));
 
@@ -85,6 +85,9 @@ test('all 12 planned COMP2022 weeks may exist without empty Markdown files', asy
   assert.equal(course.total, 12);
   assert.equal(course.completed, 0);
   assert.equal(course.units.every((unit) => !unit.exists), true);
+  assert.equal(course.tutorialProgress.total, 12);
+  assert.equal(course.tutorialProgress.completed, 0);
+  assert.equal(course.units.every((unit) => unit.tutorial && !unit.tutorial.exists), true);
 });
 
 test('a valid COMP2022 week gets a course-scoped stable URL', async (context) => {
@@ -130,6 +133,54 @@ test('generated COMP2022 metadata includes course tags and course-scoped navigat
   assert.doesNotMatch(frontMatter, /\/deep-learning\//);
 });
 
+test('a COMP2022 tutorial uses a nested URL, tutorial tags, and its parent Week', async (context) => {
+  const rootDir = await createFixture();
+  context.after(() => fs.rm(rootDir, { recursive: true, force: true }));
+  await fs.writeFile(
+    path.join(rootDir, 'content', 'comp2022', '01-reasoning-about-python-and-tiny-python.md'),
+    '# Reasoning about Python & Tiny Python\n',
+    'utf8'
+  );
+  await fs.writeFile(
+    path.join(rootDir, 'content', 'comp2022', '01-reasoning-about-python-and-tiny-python-tutorial.md'),
+    '# Tutorial 01 — Reasoning about Python & Tiny Python\n\n## Exercises\n',
+    'utf8'
+  );
+
+  const report = await validateProject({ rootDir });
+  const course = collection(report, 'comp2022');
+  const tutorial = course.units[0].tutorial;
+  assert.equal(report.errors.length, 0);
+  assert.equal(course.completed, 1);
+  assert.equal(course.tutorialProgress.completed, 1);
+  assert.equal(tutorial.url, '/comp2022/01-reasoning-about-python-and-tiny-python/tutorial/');
+  const frontMatter = generatedFrontMatter(
+    course,
+    tutorial,
+    { published: '2026-01-01T00:00:00Z', updated: '2026-01-01T00:00:00Z' },
+    null,
+    null,
+    { parent: course.units[0] }
+  );
+  assert.match(frontMatter, /content_type: "tutorial"/);
+  assert.match(frontMatter, /- "Tutorial"/);
+  assert.match(frontMatter, /parent_unit_path: "\/comp2022\/01-reasoning-about-python-and-tiny-python\/"/);
+  assert.doesNotMatch(frontMatter, /chapter_number/);
+});
+
+test('a tutorial H1 that disagrees with its manifest is a build error', async (context) => {
+  const rootDir = await createFixture();
+  context.after(() => fs.rm(rootDir, { recursive: true, force: true }));
+  await fs.writeFile(
+    path.join(rootDir, 'content', 'comp2022', '02-regular-expressions-tutorial.md'),
+    '# Different Tutorial Title\n',
+    'utf8'
+  );
+
+  const report = await validateProject({ rootDir });
+  assert.match(report.errors.map((item) => item.message).join('\n'), /H1 must be “Tutorial 02 — Regular Expressions”/);
+});
+
 test('duplicate week numbers and slugs are manifest errors', async (context) => {
   const rootDir = await createFixture();
   context.after(() => fs.rm(rootDir, { recursive: true, force: true }));
@@ -143,6 +194,15 @@ test('duplicate week numbers and slugs are manifest errors', async (context) => 
   const messages = report.errors.map((item) => item.message).join('\n');
   assert.match(messages, /Unit number is duplicated/);
   assert.match(messages, /Slug is duplicated/);
+});
+
+test('an invalid Tutorial manifest shape is reported without crashing validation', async (context) => {
+  const rootDir = await createFixture();
+  context.after(() => fs.rm(rootDir, { recursive: true, force: true }));
+  await fs.writeFile(path.join(rootDir, 'data', 'comp2022.json'), '{"weeks": []}\n', 'utf8');
+
+  const report = await validateProject({ rootDir });
+  assert.match(report.errors.map((item) => item.message).join('\n'), /manifest must be an array/);
 });
 
 test('a Markdown filename not declared by its course manifest is an error', async (context) => {

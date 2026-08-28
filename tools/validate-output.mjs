@@ -114,6 +114,9 @@ if (!deepLearning || deepLearning.total !== 21) {
 if (!comp2022 || comp2022.total !== 12) {
   errors.push('Learning data: expected a 12-Week COMP2022 collection.');
 }
+if (!comp2022?.tutorialProgress || comp2022.tutorialProgress.total !== 12) {
+  errors.push('Learning data: expected 12 planned COMP2022 Tutorials.');
+}
 
 for (const collection of learning.collections) {
   const actualCompleted = collection.units.filter((unit) => unit.completed).length;
@@ -125,6 +128,18 @@ for (const collection of learning.collections) {
     new RegExp(`${collection.completed}\\s*\\/\\s*${collection.total}\\s+${escapeRegExp(collection.unit.plural)}`, 'i'),
     `missing independent progress for ${collection.id}.`
   );
+  if (collection.tutorialProgress) {
+    const actualTutorials = collection.units.filter((unit) => unit.tutorial?.completed).length;
+    if (collection.tutorialProgress.completed !== actualTutorials
+        || collection.tutorialProgress.total !== collection.units.filter((unit) => unit.tutorial).length) {
+      errors.push(`Learning data: inconsistent Tutorial progress for ${collection.id}.`);
+    }
+    assertContains(
+      'index.html',
+      new RegExp(`${collection.tutorialProgress.completed}\\s*\\/\\s*${collection.tutorialProgress.total}\\s+Tutorials`, 'i'),
+      `missing independent Tutorial progress for ${collection.id}.`
+    );
+  }
 }
 
 const compHtml = htmlByFile.get('comp2022/index.html') ?? '';
@@ -138,13 +153,35 @@ for (const week of comp2022?.units ?? []) {
   if (week.completed && !linked) errors.push(`comp2022/index.html: completed Week ${week.numberLabel} is not linked.`);
   if (!week.completed && linked) errors.push(`comp2022/index.html: planned Week ${week.numberLabel} links to a missing article.`);
 }
-const generatedCompArticles = [...relativeFiles].filter((file) => /^comp2022\/\d{2}-.+\/index\.html$/.test(file));
+const tutorialRows = [...compHtml.matchAll(/class=["'][^"']*learning-path__tutorial[^"']*["']/gi)].length;
+const pendingTutorials = [...compHtml.matchAll(/class=["'][^"']*learning-path__tutorial[^"']*is-pending[^"']*["']/gi)].length;
+const expectedTutorials = comp2022?.tutorialProgress?.total ?? 0;
+const expectedPendingTutorials = expectedTutorials - (comp2022?.tutorialProgress?.completed ?? 0);
+if (tutorialRows !== expectedTutorials) {
+  errors.push(`comp2022/index.html: expected ${expectedTutorials} Tutorial rows, found ${tutorialRows}.`);
+}
+if (pendingTutorials !== expectedPendingTutorials) {
+  errors.push(`comp2022/index.html: expected ${expectedPendingTutorials} pending Tutorials, found ${pendingTutorials}.`);
+}
+for (const week of comp2022?.units ?? []) {
+  const tutorial = week.tutorial;
+  if (!tutorial) continue;
+  const linked = new RegExp(`<a\\s+href=["']${escapeRegExp(tutorial.path)}["']`, 'i').test(compHtml);
+  if (tutorial.completed && !linked) errors.push(`comp2022/index.html: completed Tutorial ${tutorial.numberLabel} is not linked.`);
+  if (!tutorial.completed && linked) errors.push(`comp2022/index.html: planned Tutorial ${tutorial.numberLabel} links to a missing article.`);
+}
+const generatedCompArticles = [...relativeFiles].filter((file) => /^comp2022\/\d{2}-[^/]+\/index\.html$/.test(file));
 if (generatedCompArticles.length !== (comp2022?.completed ?? 0)) {
   errors.push(`COMP2022 output: expected ${comp2022?.completed ?? 0} article(s), found ${generatedCompArticles.length}.`);
 }
+const generatedTutorialArticles = [...relativeFiles].filter((file) => /^comp2022\/\d{2}-[^/]+\/tutorial\/index\.html$/.test(file));
+if (generatedTutorialArticles.length !== (comp2022?.tutorialProgress?.completed ?? 0)) {
+  errors.push(`COMP2022 output: expected ${comp2022?.tutorialProgress?.completed ?? 0} Tutorial article(s), found ${generatedTutorialArticles.length}.`);
+}
 
 for (const collection of learning.collections) {
-  for (const unit of collection.units.filter((item) => item.completed && item.hasMath)) {
+  const articles = collection.units.flatMap((unit) => [unit, ...(unit.tutorial ? [unit.tutorial] : [])]);
+  for (const unit of articles.filter((item) => item.completed && item.hasMath)) {
     const target = `${unit.path.replace(/^\//, '')}index.html`;
     const html = htmlByFile.get(target) ?? '';
     if (!/\\(?:\(|\[)/.test(html)) {

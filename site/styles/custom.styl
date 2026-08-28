@@ -64,6 +64,10 @@ body:has(.learning-dashboard), body:has(.learning-home)
   color: $grey-dim
   font-size: .9em
 
+.learning-collection-card__progress-item
+  & + &
+    margin-top: 1em
+
   > span
     display: block
     margin-bottom: .75em
@@ -87,6 +91,13 @@ body:has(.learning-dashboard), body:has(.learning-home)
 
 .learning-progress
   margin-bottom: 2.75em
+
+  > h2
+    margin-bottom: 1em
+
+.learning-progress__items
+  display: grid
+  gap: 1.15em
 
 .learning-progress__summary
   align-items: baseline
@@ -116,9 +127,11 @@ body:has(.learning-dashboard), body:has(.learning-home)
     margin: 1.1em 0 0
     padding: 0
 
+.learning-path__group
+  border-bottom: 1px solid $gainsboro
+
 .learning-path__item
   align-items: baseline
-  border-bottom: 1px solid $gainsboro
   display: grid
   gap: .85em
   grid-template-columns: minmax(2.2em, auto) 1fr 1.2em
@@ -126,6 +139,21 @@ body:has(.learning-dashboard), body:has(.learning-home)
 
   a
     border-bottom: 0
+
+.learning-path__tutorial
+  align-items: baseline
+  display: grid
+  font-size: .9em
+  gap: .85em
+  grid-template-columns: minmax(2.2em, auto) 1fr 1.2em
+  padding: 0 0 .75em 1.25em
+
+  a
+    border-bottom: 0
+
+.learning-path__branch
+  color: $grey
+  font-family: $font-family-monospace
 
 .learning-path__number
   color: $grey
@@ -136,7 +164,7 @@ body:has(.learning-dashboard), body:has(.learning-home)
 .learning-path__status
   text-align: right
 
-.learning-path__item.is-pending
+.learning-path__item.is-pending, .learning-path__tutorial.is-pending
   color: $grey
 
 .chapter-kicker
@@ -158,6 +186,22 @@ body:has(.learning-dashboard), body:has(.learning-home)
 .chapter-reference__note
   color: $grey-dim
   font-size: .9em
+
+.learning-related
+  border-top: 1px solid $gainsboro
+  margin-top: 2.5em
+  padding-top: 1.5em
+
+  span
+    color: $grey
+    display: block
+    font-size: .75em
+    letter-spacing: .08em
+    margin-bottom: .35em
+    text-transform: uppercase
+
+  a
+    border-bottom: 0
 
 .chapter-navigation
   border-top: 1px solid $gainsboro
@@ -194,7 +238,7 @@ body:has(.learning-dashboard), body:has(.learning-home)
   .learning-collection-card
     grid-template-columns: 1fr
 
-  .learning-collection-card__progress > span
+  .learning-collection-card__progress-item > span
     text-align: left
 
   .chapter-navigation

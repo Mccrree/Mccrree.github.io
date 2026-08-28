@@ -6,6 +6,20 @@
 </section>
 {% endif %}
 
+{% if page.tutorial_path %}
+<section class="learning-related" aria-label="Tutorial exercises">
+  <span>Tutorial Exercises</span>
+  <a href="{{ url_for(page.tutorial_path) }}">{{ page.tutorial_title }}</a>
+</section>
+{% endif %}
+
+{% if page.parent_unit_path %}
+<section class="learning-related" aria-label="Parent week">
+  <span>Parent Week</span>
+  <a href="{{ url_for(page.parent_unit_path) }}">← Week {{ page.parent_unit_number }} · {{ page.parent_unit_title }}</a>
+</section>
+{% endif %}
+
 <nav class="chapter-navigation" aria-label="{{ page.unit_label }} navigation">
   <div class="chapter-navigation__previous">
     <span>Previous {{ page.unit_label }}</span>
