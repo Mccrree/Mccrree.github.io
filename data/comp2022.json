@@ -31,9 +31,9 @@
   },
   {
     "number": 6,
-    "title": "Context-Free Grammars",
+    "title": "Non-Regular Languages & Context-Free Grammars",
     "slug": "context-free-grammars-i",
-    "tutorial": { "title": "Tutorial 06 — Context-Free Grammars" }
+    "tutorial": { "title": "Tutorial 06 — Non-Regular Languages & Context-Free Grammars" }
   },
   {
     "number": 7,
