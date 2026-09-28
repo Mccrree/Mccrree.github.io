@@ -1,0 +1,57 @@
+[
+  {
+    "number": 1,
+    "title": "Introduction to Vision and Language",
+    "slug": "introduction-to-vision-and-language"
+  },
+  {
+    "number": 2,
+    "title": "Vision Language Model Applications",
+    "slug": "vision-language-model-applications"
+  },
+  {
+    "number": 3,
+    "title": "Vision Language Model Training",
+    "slug": "vision-language-model-training"
+  },
+  {
+    "number": 4,
+    "title": "Training Data and Preprocessing for VLMs",
+    "slug": "training-data-and-preprocessing-for-vlms"
+  },
+  {
+    "number": 5,
+    "title": "Post-Training Vision Language Models",
+    "slug": "post-training-vision-language-models"
+  },
+  {
+    "number": 6,
+    "title": "Core Architectures of Vision Language Models",
+    "slug": "core-architectures-of-vision-language-models"
+  },
+  {
+    "number": 7,
+    "title": "Deploying Models for Inference at Scale",
+    "slug": "deploying-models-for-inference-at-scale"
+  },
+  {
+    "number": 8,
+    "title": "Document AI",
+    "slug": "document-ai"
+  },
+  {
+    "number": 9,
+    "title": "Video-Language Models",
+    "slug": "video-language-models"
+  },
+  {
+    "number": 10,
+    "title": "Any-to-Any Models",
+    "slug": "any-to-any-models"
+  },
+  {
+    "number": 11,
+    "title": "Advanced Topics and Cutting-Edge Research",
+    "slug": "advanced-topics-and-cutting-edge-research"
+  }
+]

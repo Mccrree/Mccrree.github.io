@@ -10,9 +10,11 @@
 data/
   courses.json       # Course / Collection 总表
   chapters.json      # Understanding Deep Learning 的 21 Chapters
+  vlm.json           # Vision Language Models 的 11 Chapters
   comp2022.json      # COMP2022 的 12 Weeks 及其 Tutorials
 content/
   chapters/          # Deep Learning 正文与图片目录
+  vlm/               # Vision Language Models 正文与图片目录
   comp2022/          # COMP2022 正文与图片目录
 site/                # 页面、模板和少量 NexT Muse 样式
 tools/               # 内容准备、校验与构建输出检查
@@ -38,6 +40,24 @@ tests/               # 内容流水线测试
 4. 运行 `npm run check`，然后提交并推送。
 
 原有 Deep Learning URL 继续使用 `/deep-learning/NN-slug/`。
+
+## Adding a Vision Language Models chapter
+
+1. 在 `data/vlm.json` 找到对应 Chapter 的文件名规则，例如 Chapter 1 是 `01-introduction-to-vision-and-language.md`。
+2. 在 `content/vlm/` 新建该 Markdown，并让第一个非空内容成为与 manifest title 完全一致的 H1：
+
+   ```markdown
+   # Introduction to Vision and Language
+
+   ## Notes
+
+   正文
+   ```
+
+3. 如需图片，建立同名资源目录 `content/vlm/01-introduction-to-vision-and-language/`，并在 Markdown 中使用相对于该目录的路径。
+4. 运行 `npm run check`，然后提交并推送。
+
+Vision Language Models URL 使用 `/vlm/NN-slug/`。尚未创建 Markdown 的 planned Chapter 会显示为未完成，不会生成空白文章，也不会被当作校验错误。
 
 ## Adding a COMP2022 week
 

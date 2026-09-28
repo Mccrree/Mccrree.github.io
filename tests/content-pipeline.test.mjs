@@ -15,7 +15,7 @@ async function createFixture() {
   await fs.mkdir(path.join(rootDir, 'data'), { recursive: true });
   await fs.mkdir(path.join(rootDir, 'content', 'chapters'), { recursive: true });
   await fs.mkdir(path.join(rootDir, 'content', 'comp2022'), { recursive: true });
-  for (const file of ['courses.json', 'chapters.json', 'comp2022.json']) {
+  for (const file of ['courses.json', 'chapters.json', 'vlm.json', 'comp2022.json']) {
     await fs.copyFile(path.join(ROOT_DIR, 'data', file), path.join(rootDir, 'data', file));
   }
   return rootDir;
@@ -88,6 +88,19 @@ test('all planned COMP2022 weeks and tutorials may exist without empty Markdown 
   assert.equal(course.tutorialProgress.total, 12);
   assert.equal(course.tutorialProgress.completed, 0);
   assert.equal(course.units.every((unit) => unit.tutorial && !unit.tutorial.exists), true);
+});
+
+test('all planned VLM chapters may exist without empty Markdown files', async (context) => {
+  const rootDir = await createFixture();
+  context.after(() => fs.rm(rootDir, { recursive: true, force: true }));
+
+  const report = await validateProject({ rootDir });
+  const vlm = collection(report, 'vlm');
+  assert.equal(report.errors.length, 0);
+  assert.equal(vlm.total, 11);
+  assert.equal(vlm.completed, 0);
+  assert.equal(vlm.units.every((unit) => !unit.exists), true);
+  assert.equal(vlm.units[0].url, '/vlm/01-introduction-to-vision-and-language/');
 });
 
 test('a valid COMP2022 week gets a course-scoped stable URL', async (context) => {

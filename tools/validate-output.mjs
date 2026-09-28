@@ -86,6 +86,7 @@ for (const [relative, html] of htmlByFile) {
 for (const expected of [
   'index.html',
   'deep-learning/index.html',
+  'vlm/index.html',
   'comp2022/index.html',
   'archives/index.html',
   'tags/index.html',
@@ -98,18 +99,26 @@ for (const expected of [
 assertContains('index.html', /<section class=["']learning-home["']/i, 'missing learning homepage.');
 assertContains('index.html', /Mccrree(?:&#39;|&apos;|')s Learning Notes/i, 'missing site title.');
 assertContains('index.html', /href=["']\/deep-learning\/["']/i, 'missing Deep Learning collection link.');
+assertContains('index.html', /href=["']\/vlm\/["']/i, 'missing Vision Language Models collection link.');
 assertContains('index.html', /href=["']\/comp2022\/["']/i, 'missing COMP2022 collection link.');
 assertContains('deep-learning/index.html', /<section class=["']learning-dashboard["']/i, 'missing Deep Learning dashboard.');
+assertContains('vlm/index.html', /<section class=["']learning-dashboard["']/i, 'missing Vision Language Models dashboard.');
 assertContains('comp2022/index.html', /<section class=["']learning-dashboard["']/i, 'missing COMP2022 dashboard.');
 assertContains('deep-learning/index.html', /href=["']\/deep-learning\/03-shallow-neural-networks\/["']/i, 'missing original Chapter 3 URL.');
 assertContains('comp2022/index.html', /COMP2022/i, 'missing course code.');
 assertContains('comp2022/index.html', /Models of Computation/i, 'missing course title.');
+assertContains('vlm/index.html', /Vision Language Models/i, 'missing VLM book title.');
+assertContains('vlm/index.html', /Building VLMs with Hugging Face/i, 'missing VLM book subtitle.');
 
 const learning = JSON.parse(await fs.readFile(path.join(ROOT_DIR, '.generated', 'learning.json'), 'utf8'));
 const deepLearning = learning.collections.find((item) => item.id === 'deep-learning');
+const vlm = learning.collections.find((item) => item.id === 'vlm');
 const comp2022 = learning.collections.find((item) => item.id === 'comp2022');
 if (!deepLearning || deepLearning.total !== 21) {
   errors.push('Learning data: expected a 21-Chapter Deep Learning collection.');
+}
+if (!vlm || vlm.total !== 11) {
+  errors.push('Learning data: expected an 11-Chapter Vision Language Models collection.');
 }
 if (!comp2022 || comp2022.total !== 12) {
   errors.push('Learning data: expected a 12-Week COMP2022 collection.');
@@ -140,6 +149,22 @@ for (const collection of learning.collections) {
       `missing independent Tutorial progress for ${collection.id}.`
     );
   }
+}
+
+const vlmHtml = htmlByFile.get('vlm/index.html') ?? '';
+const pendingVlmChapters = [...vlmHtml.matchAll(/class=["'][^"']*learning-path__item[^"']*is-pending[^"']*["']/gi)].length;
+const expectedPendingVlmChapters = vlm ? vlm.total - vlm.completed : 0;
+if (pendingVlmChapters !== expectedPendingVlmChapters) {
+  errors.push(`vlm/index.html: expected ${expectedPendingVlmChapters} pending chapters, found ${pendingVlmChapters}.`);
+}
+for (const chapter of vlm?.units ?? []) {
+  const linked = new RegExp(`<a\\s+href=["']${escapeRegExp(chapter.path)}["']`, 'i').test(vlmHtml);
+  if (chapter.completed && !linked) errors.push(`vlm/index.html: completed Chapter ${chapter.numberLabel} is not linked.`);
+  if (!chapter.completed && linked) errors.push(`vlm/index.html: planned Chapter ${chapter.numberLabel} links to a missing article.`);
+}
+const generatedVlmArticles = [...relativeFiles].filter((file) => /^vlm\/\d{2}-[^/]+\/index\.html$/.test(file));
+if (generatedVlmArticles.length !== (vlm?.completed ?? 0)) {
+  errors.push(`VLM output: expected ${vlm?.completed ?? 0} article(s), found ${generatedVlmArticles.length}.`);
 }
 
 const compHtml = htmlByFile.get('comp2022/index.html') ?? '';

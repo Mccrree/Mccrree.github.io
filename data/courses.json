@@ -28,6 +28,30 @@
       }
     },
     {
+      "id": "vlm",
+      "type": "book",
+      "title": "Vision Language Models",
+      "subtitle": "Building VLMs with Hugging Face",
+      "route": "/vlm/",
+      "contentDirectory": "content/vlm",
+      "manifest": "data/vlm.json",
+      "generatedDirectory": "vlm",
+      "expectedUnits": 11,
+      "unit": {
+        "singular": "Chapter",
+        "plural": "Chapters",
+        "showLabelInPath": false
+      },
+      "tags": [
+        "Vision Language Models",
+        "Hugging Face"
+      ],
+      "reference": {
+        "author": "Merve Noyan, Miquel Farré, Andrés Marafioti, and Orr Zohar",
+        "title": "Vision Language Models: Building VLMs with Hugging Face"
+      }
+    },
+    {
       "id": "comp2022",
       "type": "course",
       "code": "COMP2022",
