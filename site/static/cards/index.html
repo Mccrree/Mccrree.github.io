@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>深度学习面试卡</title>
+<title>面试卡片</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600&family=JetBrains+Mono:wght@400;600&display=swap">
 <style>
-/* Layout: one-screen study tool. Header with progress, a stack of index cards, three big thumb buttons at the bottom. */
+/* Layout: library (book → chapter list) and a one-screen study view with a card stack and thumb buttons. */
 :root {
   --bg: #E6EBEE;
   --card: #FFFFFF;
@@ -16,6 +16,7 @@
   --muted: #5A6974;
   --line: #D2DAE0;
   --accent: #1E6A86;
+  --iv: #8A5A12;
   --know: #2B8655;
   --again: #C9434F;
   --code-bg: #EFF3F5;
@@ -25,53 +26,74 @@
   --f-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root {
     --bg: #10161B; --card: #1A232A; --ink: #E5EBEF; --muted: #92A2AD; --line: #2B3740;
-    --accent: #62B4D1; --know: #4CC08A; --again: #EE6B78; --code-bg: #222D35;
+    --accent: #62B4D1; --iv: #E0A85A; --know: #4CC08A; --again: #EE6B78; --code-bg: #222D35;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
     color-scheme: dark;
   }
 }
-:root[data-theme="dark"] {
-  --bg: #10161B; --card: #1A232A; --ink: #E5EBEF; --muted: #92A2AD; --line: #2B3740;
-  --accent: #62B4D1; --know: #4CC08A; --again: #EE6B78; --code-bg: #222D35;
-  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
-  color-scheme: dark;
-}
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; }
-body { margin: 0; }
-[hidden] { display: none !important; }
-.chapter a { color: inherit; text-decoration: none; }
 body {
-  background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.6;
-  -webkit-tap-highlight-color: transparent; overflow: hidden;
+  margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.6;
+  -webkit-tap-highlight-color: transparent;
 }
-.app {
-  height: 100%; max-width: 560px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;
+[hidden] { display: none !important; }
+button { font: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap {
+  max-width: 560px; margin: 0 auto;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 14px 12px; box-sizing: border-box;
 }
-header { display: flex; flex-direction: column; gap: 8px; }
-.top { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.chapter { font-weight: 700; font-size: 16px; }
-.chapter small { font-weight: 400; color: var(--muted); font-size: 13px; margin-left: 6px; }
-.sync { font-family: var(--f-mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+/* Library */
+.lib { padding-block: calc(18px + env(safe-area-inset-top, 0px)) 32px; display: flex; flex-direction: column; gap: 18px; }
+.lib-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.lib-top h1 { font-family: var(--f-q); font-size: 26px; margin: 0; }
+.lib-top a { color: var(--muted); font-size: 13px; text-decoration: none; }
+.lib-note { color: var(--muted); font-size: 13px; margin: -10px 0 0; }
+.review {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%;
+  padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--again); background: var(--card);
+  color: var(--again); cursor: pointer; text-align: left; font-weight: 500;
+}
+.book { display: flex; flex-direction: column; gap: 10px; }
+.book h2 { font-family: var(--f-q); font-size: 19px; margin: 0; }
+.book .bsub { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); margin-top: -8px; }
+.ch {
+  display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; width: 100%;
+  padding: 14px 16px; border-radius: 14px; border: 1px solid var(--line); background: var(--card);
+  box-shadow: var(--shadow); cursor: pointer; text-align: left; color: var(--ink);
+}
+.ch .t { font-weight: 600; font-size: 16px; min-width: 0; }
+.ch .t small { color: var(--muted); font-weight: 400; font-family: var(--f-mono); font-size: 12px; margin-right: 6px; }
+.ch .go { color: var(--muted); font-size: 18px; }
+.ch .m { grid-column: 1 / -1; display: flex; gap: 10px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.ch .bar { grid-column: 1 / -1; }
+.pill { padding: 0 7px; border-radius: 6px; border: 1px solid var(--line); }
+.pill.bk { color: var(--accent); border-color: var(--accent); }
+.pill.iv { color: var(--iv); border-color: var(--iv); }
 .bar { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; display: flex; }
 .bar i { display: block; height: 100%; transition: width .3s; }
 .bar .k { background: var(--know); }
 .bar .a { background: var(--again); }
-.stats { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
-.counts { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Study */
+.study { height: 100%; display: flex; flex-direction: column; gap: 10px; padding-block: calc(12px + env(safe-area-inset-top, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)); }
+.st-top { display: flex; align-items: center; gap: 10px; }
+.back { border: none; background: none; color: var(--ink); font-size: 20px; padding: 2px 6px 2px 0; cursor: pointer; line-height: 1; }
+.st-title { min-width: 0; flex: 1; }
+.st-title .bk { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.st-title .chn { font-weight: 700; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.filters { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.seg button { border: none; background: transparent; color: var(--muted); padding: 4px 11px; font-size: 13px; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.counts { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .counts b { color: var(--ink); font-weight: 600; }
-.chips { display: flex; gap: 6px; }
-.chip {
-  font: inherit; font-size: 13px; padding: 3px 11px; border-radius: 999px; border: 1px solid var(--line);
-  background: transparent; color: var(--muted); cursor: pointer;
-}
-.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-.chip:focus-visible, .btn:focus-visible, .reveal:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .stage { position: relative; flex: 1; min-height: 0; }
 .card {
@@ -81,14 +103,10 @@ header { display: flex; flex-direction: column; gap: 8px; }
 }
 .card.under { transform: translateY(10px) scale(.955); opacity: .7; pointer-events: none; }
 .card.fly { transition: transform .28s ease-in, opacity .28s ease-in; }
-.card.back { transition: transform .22s cubic-bezier(.3,1.4,.6,1); }
-.meta {
-  display: flex; justify-content: space-between; align-items: center; gap: 8px;
-  padding: 14px 18px 0; font-family: var(--f-mono); font-size: 12px; color: var(--muted);
-}
-.tag { padding: 1px 8px; border-radius: 6px; border: 1px solid var(--line); font-family: var(--f-body); }
-.tag.iv { color: var(--accent); border-color: var(--accent); }
-.status-dot { display: inline-flex; align-items: center; gap: 5px; }
+.card.back-anim { transition: transform .22s cubic-bezier(.3,1.4,.6,1); }
+.meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 14px 18px 0; font-size: 12px; color: var(--muted); }
+.meta .l { display: flex; gap: 6px; align-items: center; min-width: 0; flex-wrap: wrap; }
+.status-dot { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 .status-dot::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
 .status-dot.know::before { background: var(--know); }
 .status-dot.again::before { background: var(--again); }
@@ -96,7 +114,7 @@ header { display: flex; flex-direction: column; gap: 8px; }
 .q { font-family: var(--f-q); font-size: 21px; line-height: 1.5; font-weight: 600; text-wrap: balance; margin: 6px 0 0; }
 .sub { color: var(--muted); font-size: 14px; margin: 10px 0 0; }
 .reveal {
-  margin-top: 22px; width: 100%; font: inherit; font-size: 14px; padding: 12px; border-radius: 12px;
+  margin-top: 22px; width: 100%; font-size: 14px; padding: 12px; border-radius: 12px;
   border: 1.5px dashed var(--line); background: transparent; color: var(--muted); cursor: pointer;
 }
 .ans { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); user-select: text; -webkit-user-select: text; }
@@ -112,18 +130,16 @@ header { display: flex; flex-direction: column; gap: 8px; }
 }
 .stamp.k { left: 18px; color: var(--know); }
 .stamp.a { right: 18px; color: var(--again); transform: rotate(8deg); }
-.hint { text-align: center; font-size: 12px; color: var(--muted); }
-
+.hint { text-align: center; font-size: 12px; color: var(--muted); min-height: 1.2em; }
 .controls { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
 .btn {
-  font: inherit; font-size: 15px; font-weight: 500; padding: 13px 0; border-radius: 14px; cursor: pointer;
+  font-size: 15px; font-weight: 500; padding: 13px 0; border-radius: 14px; cursor: pointer;
   border: 1.5px solid var(--line); background: var(--card); color: var(--ink);
   display: flex; align-items: center; justify-content: center; gap: 6px;
 }
 .btn.again { color: var(--again); border-color: var(--again); }
 .btn.know { color: var(--know); border-color: var(--know); }
 .btn:disabled { opacity: .4; cursor: default; }
-
 .done {
   position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 14px; text-align: center; background: var(--card); border-radius: 18px; border: 1px solid var(--line); padding: 24px;
@@ -133,32 +149,47 @@ header { display: flex; flex-direction: column; gap: 8px; }
 .done .row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
 .done .btn { padding: 11px 18px; }
 @media (prefers-reduced-motion: reduce) {
-  .card.fly, .card.back, .bar i { transition: none; }
+  .card.fly, .card.back-anim, .bar i { transition: none; }
 }
 </style>
+<script src="decks.js"></script>
 </head>
 <body>
 
-<div class="app">
-  <header>
-    <div class="top">
-      <div class="chapter" id="chapter"><a href="/" aria-label="回到笔记站">←</a> 第 4 章 · 深度神经网络<small>《理解深度学习》</small></div>
-      <div class="sync" id="sync">载入中</div>
-    </div>
-    <div class="bar" aria-hidden="true"><i class="k" id="barK"></i><i class="a" id="barA"></i></div>
-    <div class="stats">
-      <div class="counts" id="counts"></div>
-      <div class="chips" role="group" aria-label="筛选">
-        <button class="chip" id="f-all" data-f="all" aria-pressed="true">全部</button>
-        <button class="chip" id="f-again" data-f="again" aria-pressed="false">不会</button>
-        <button class="chip" id="f-new" data-f="new" aria-pressed="false">未测</button>
-      </div>
-    </div>
-  </header>
+<div class="wrap lib" id="lib">
+  <div class="lib-top">
+    <h1>面试卡片</h1>
+    <a href="/">← 笔记站</a>
+  </div>
+  <p class="lib-note">按书和章节分组。每章分「书本知识」和「面经」两类，进度存在本设备。</p>
+  <div id="reviewSlot"></div>
+  <div id="books"></div>
+</div>
 
+<div class="wrap study" id="study" hidden>
+  <div class="st-top">
+    <button class="back" id="backBtn" aria-label="返回目录">←</button>
+    <div class="st-title">
+      <div class="bk" id="stBook"></div>
+      <div class="chn" id="stChapter"></div>
+    </div>
+  </div>
+  <div class="bar" aria-hidden="true"><i class="k" id="barK"></i><i class="a" id="barA"></i></div>
+  <div class="filters">
+    <div class="seg" role="group" aria-label="题型">
+      <button id="k-all" data-kind="all" aria-pressed="true">全部</button>
+      <button id="k-book" data-kind="book" aria-pressed="false">书本知识</button>
+      <button id="k-iv" data-kind="iv" aria-pressed="false">面经</button>
+    </div>
+    <div class="seg" role="group" aria-label="状态">
+      <button id="s-all" data-status="all" aria-pressed="true">全部</button>
+      <button id="s-again" data-status="again" aria-pressed="false">不会</button>
+      <button id="s-new" data-status="new" aria-pressed="false">未测</button>
+    </div>
+  </div>
+  <div class="counts" id="counts"></div>
   <div class="stage" id="stage"></div>
-
-  <div class="hint" id="hint">点卡片看答案 · 右滑 会 · 左滑 不会</div>
+  <div class="hint" id="hint"></div>
   <div class="controls">
     <button class="btn again" id="bAgain">✕ 不会</button>
     <button class="btn" id="bFlip">看答案</button>
@@ -167,152 +198,90 @@ header { display: flex; flex-direction: column; gap: 8px; }
 </div>
 
 <script>
-const CARDS = [
-  { id: "c4-01", no: "4.1", src: "书 4.2",
-    q: "去掉激活函数，多层网络会变成什么？为什么？",
-    a: `<ul>
-      <li>会<b>退化成一个线性模型</b>，等价于一层线性变换。</li>
-      <li>线性套线性还是线性：W₂(W₁x + b₁) + b₂ = (W₂W₁)x + (W₂b₁ + b₂)，叠多少层都等于一层。</li>
-      <li>表达能力来自<b>激活函数的非线性</b>。ReLU 网络是「分段线性」函数，每个 ReLU 在一个位置把函数折一下。</li></ul>` },
-  { id: "c4-02", no: "4.2", src: "书 4.2",
-    q: "两个浅层网络首尾组合 vs 一个两隐藏层的深层网络，谁的表达能力更强？",
-    a: `<ul>
-      <li>组合网络展开后就是两隐藏层网络的<b>一个特例</b>。</li>
-      <li>组合网络里第二层的 9 个权重受限于两个向量的外积（秩为 1）；普通深层网络里这 9 个权重<b>可以任意取值</b>。</li>
-      <li>所以<b>深层网络能表示的函数族更大</b>，包含了组合网络。</li></ul>` },
-  { id: "c4-03", no: "4.3", src: "书 4.1",
-    q: "用「折叠」解释：为什么深层网络能产生更多线性区域？",
-    a: `<ul>
-      <li>第一层把输入空间<b>折叠</b>到自己身上：斜率正负交替时，多个不同的 x 被映射到同一个 y。</li>
-      <li>第二层在折叠后的空间上施加函数，展开后这个函数在每一折上<b>被复制一遍</b>（还会翻转、缩放）。</li>
-      <li>例子：3 个区域 × 3 个区域 = <b>9 个区域</b>；同样 6 个隐藏单元的浅层网络最多只有 7 个。</li>
-      <li>另一个视角：每层 ReLU 把函数在多处剪到 0，制造新的拐点。</li></ul>` },
-  { id: "c4-04", no: "4.4", src: "书 4.3.1",
-    q: "宽度、深度、容量、超参数分别是什么？超参数和参数有什么区别？",
-    a: `<ul>
-      <li><b>宽度</b>：每层隐藏单元数　<b>深度</b>：隐藏层数　<b>容量</b>：隐藏单元总数</li>
-      <li><b>超参数</b>：训练前定好的，比如层数 K、每层宽度 Dₖ、学习率</li>
-      <li><b>参数</b>：训练学出来的，即权重 Ω 和偏置 β</li>
-      <li>一组超参数定义一个<b>函数族</b>，一组具体参数确定族里的<b>某一个函数</b>。</li></ul>` },
-  { id: "c4-05", no: "4.5", src: "习题 4.4",
-    q: "输入 5 维，隐藏层 20、10、7，输出 4 维。每个 Ω 和 β 的形状？总参数量？",
-    a: `<ul>
-      <li>规则：Ωₖ 的形状 = <b>下一层维度 × 这一层维度</b>，βₖ 的长度 = 下一层维度</li>
-      <li>Ω₀ 20×5，Ω₁ 10×20，Ω₂ 7×10，Ω₃ 4×7</li>
-      <li>β₀ 20，β₁ 10，β₂ 7，β₃ 4</li>
-      <li>权重 100 + 200 + 70 + 28 = 398，偏置 41，<b>总共 439</b></li></ul>` },
-  { id: "c4-06", no: "4.6", src: "书 4.5.2",
-    q: "1 维输入、1 维输出时，浅层和深层网络最多各能有多少个线性区域？",
-    a: `<ul>
-      <li><b>浅层</b>：D 个隐藏单元 → 最多 <b>D + 1</b> 个区域，参数 3D + 1 个</li>
-      <li><b>深层</b>：K 层、每层 D 个 → 最多 <b>(D + 1)ᴷ</b> 个区域，参数 3D + 1 + (K−1)D(D+1) 个</li>
-      <li>区域数随深度<b>指数</b>增长，参数只<b>线性</b>增长。例子：K=5、D=10，471 个参数，161,051 个区域。</li></ul>` },
-  { id: "c4-07", no: "4.7", src: "书 4.5.3",
-    q: "什么是深度效率？线性区域多一定是好事吗？",
-    a: `<ul>
-      <li><b>深度效率</b>：有些函数，浅层网络要<b>指数级更多</b>的隐藏单元，才能达到深层网络的逼近效果。</li>
-      <li><b>区域多不一定好</b>：区域是「折叠复制」出来的，彼此有复杂的<b>依赖和对称</b>，不能各自独立调整。</li>
-      <li>只有真实问题本身有这种对称或组合结构时，区域多才是优势。书里说这一点<b>目前还不清楚</b>。</li></ul>` },
-  { id: "c4-08", no: "4.8", src: "书 4.5.4",
-    q: "为什么全连接网络不适合处理图像？",
-    a: `<ol>
-      <li><b>参数太多</b>：一张图约 10⁶ 个像素，全连接参数量爆炸。</li>
-      <li><b>没有共享</b>：同一物体在不同位置应该用同样方式识别，没必要每个位置单独学。</li></ol>
-      <p style="margin-top:8px">解决：先<b>并行处理局部区域</b>，再逐层整合更大范围（<b>从局部到全局</b>），也就是 CNN（第 10 章）。</p>` },
-  { id: "c4-09", no: "4.9", src: "习题 4.6",
-    q: "1 维输入输出、K = 10 层、每层 D = 10。加一层 vs 每层加 1 个单元，哪个权重涨得多？",
-    a: `<ul>
-      <li>现在：1×10 + 9×100 + 10×1 = <b>920</b></li>
-      <li><b>加一层</b>：多一个 10×10 矩阵，<b>+100</b></li>
-      <li><b>每层加宽到 11</b>：11 + 9×121 + 11 = 1111，<b>+191</b></li>
-      <li>加宽涨得多：层间矩阵是 D²，加宽让<b>每一个</b>矩阵都变大；加一层只多一个矩阵。</li></ul>` },
-  { id: "c4-10", no: "4.10", src: "书 4.6",
-    q: "深层网络相比浅层网络，本章得出了哪 5 个结论？",
-    a: `<ol>
-      <li>容量足够时，<b>两者都能逼近任意连续函数</b>（通用逼近定理）</li>
-      <li>深层网络<b>每个参数产生更多线性区域</b></li>
-      <li>有些函数用深层网络逼近<b>更高效</b>（深度效率）</li>
-      <li>图像等<b>大型结构化输入</b>更适合多阶段处理</li>
-      <li>实践中<b>深层效果最好</b>：中等深度更好训练、泛化更好，但原因还没完全搞清楚</li></ol>` },
-  { id: "c4-11", no: "4.11", src: "面试", iv: true,
-    q: "为什么需要非线性激活？ReLU、sigmoid、tanh 各有什么优缺点？",
-    sub: "追问：ReLU 有什么问题？怎么解决？",
-    a: `<ul>
-      <li><b>为什么需要</b>：没有非线性，多层等于一层。</li>
-      <li><b>sigmoid</b>：输出 (0,1)；导数最大 0.25，层多了<b>梯度消失</b>；不以 0 为中心；指数运算慢。现在主要用在二分类输出层。</li>
-      <li><b>tanh</b>：输出 (−1,1)，<b>以 0 为中心</b>，但两端仍饱和，也会梯度消失。</li>
-      <li><b>ReLU</b>：max(0,x)。正区间梯度恒为 1，<b>不会梯度消失</b>，计算快，输出稀疏。</li>
-      <li><b>Dead ReLU</b>：输入一直为负 → 梯度一直为 0 → 神经元永远不更新。诱因：学习率太大、初始化不好。</li>
-      <li><b>缓解</b>：Leaky ReLU（负区间小斜率，如 0.01x）、调小学习率、He 初始化。</li>
-      <li>追问「0 点不可导」：实现里取 0 当梯度（次梯度）。</li></ul>` },
-  { id: "c4-12", no: "4.12", src: "面试", iv: true,
-    q: "神经网络是不是越深越好？",
-    sub: "追问：更深的网络训练误差反而更高，是过拟合吗？",
-    a: `<ul>
-      <li><b>不是</b>。中等深度比浅层好训练，再继续加深训练又变难。</li>
-      <li><b>梯度消失 / 爆炸</b>：反向传播是链式连乘，乘多了趋于 0 或爆炸。</li>
-      <li><b>退化问题</b>：更深的网络连<b>训练误差</b>都更高，所以<b>不是过拟合</b>，是优化困难。</li>
-      <li><b>解决</b>：残差连接（ResNet，第 11 章）、BatchNorm、Xavier / He 初始化、梯度裁剪。</li>
-      <li>工程上：参数越多越容易过拟合，<b>推理延迟</b>也越高。</li></ul>` },
-  { id: "c4-13", no: "4.13", src: "推荐岗面试", iv: true,
-    q: "推荐模型里的 MLP 为什么通常只有 2–4 层，不像 CV 模型那么深？",
-    a: `<ul>
-      <li><b>参数大头在 Embedding 表</b>：输入是海量稀疏 ID 特征，容量主要在 embedding 上，MLP 只占一小部分。</li>
-      <li><b>加深收益递减</b>：数据噪声大，有用的交叉多是低阶的，加深提升小，还更容易过拟合。</li>
-      <li><b>线上延迟</b>：精排要在几十毫秒内给几百个候选打分，层数直接影响延迟和成本。</li>
-      <li><b>MLP 学交叉效率低</b>：连点积都很难学好（Rendle 等人 2020 年对比过 NCF 和 MF），所以业界用 FM、DCN 做<b>显式交叉</b>，而不是堆深度。</li></ul>` },
-  { id: "c4-14", no: "4.14", src: "面经手撕", iv: true,
-    q: "手写一个三层 MLP（PyTorch）：输入 64，隐藏 128、64，输出点击概率。参数量是多少？",
-    sub: "先在纸上写，再翻答案对照。",
-    a: `<pre><code>class MLP(nn.Module):
-    def __init__(self):
-        super().__init__()
-        self.net = nn.Sequential(
-            nn.Linear(64, 128), nn.ReLU(),
-            nn.Linear(128, 64), nn.ReLU(),
-            nn.Linear(64, 1),
-        )
-    def forward(self, x):
-        return self.net(x)  # 输出 logit
-
-model = MLP()
-loss_fn = nn.BCEWithLogitsLoss()
-opt = torch.optim.Adam(model.parameters(), lr=1e-3)
-for x, y in loader:
-    loss = loss_fn(model(x).squeeze(-1), y.float())
-    opt.zero_grad()
-    loss.backward()
-    opt.step()</code></pre>
-      <ul>
-      <li>参数量：8320 + 8256 + 65 = <b>16,641</b></li>
-      <li>追问：为什么用 <code>BCEWithLogitsLoss</code>？sigmoid 和 log 合在一起<b>数值更稳定</b>，避免 log(0)。</li>
-      <li>顺序记牢：前向 → loss → <code>zero_grad</code> → <code>backward</code> → <code>step</code></li></ul>` },
-  { id: "c4-15", no: "4.15", src: "书 4.7 笔记", iv: true,
-    q: "「深度学习」这个词 1986 年就有了，为什么到 2012 年才爆发？",
-    a: `<p>之前<b>训练不起来</b>。2012 年 AlexNet 在图像分类上大幅领先，背后 4 个因素同时到位：</p>
-      <ol><li><b>更大的数据集</b></li><li><b>更强的算力</b>（GPU）</li><li><b>ReLU 激活函数</b></li><li><b>随机梯度下降（SGD）</b></li></ol>` },
-];
-
+const DECKS = window.DECKS || [];
 const LS_KEY = "dl-cards-progress-v1";
+const KIND_LABEL = { book: "书本知识", iv: "面经" };
+
+// Flatten decks into one card list with book/chapter info attached.
+const ALL = [];
+const CHAPTERS = {};
+for (const book of DECKS) {
+  for (const ch of book.chapters) {
+    const key = `${book.id}-${ch.no}`;
+    CHAPTERS[key] = { key, book, ch };
+    for (const c of ch.cards) ALL.push({ ...c, deck: key, book, ch });
+  }
+}
+const BY_ID = Object.fromEntries(ALL.map(c => [c.id, c]));
+
 let progress = {};
 try { progress = JSON.parse(localStorage.getItem(LS_KEY) || "{}") || {}; } catch (e) { progress = {}; }
 
-let filter = "all";
+let deck = null;          // chapter key, or "review" for all 不会 cards
+let kind = "all";
+let status = "all";
 let queue = [];
 let requeued = new Set();
 let revealed = false;
 let busy = false;
-let db = null;
-const writeChains = {};
 
 const $ = (id) => document.getElementById(id);
-const stage = $("stage");
+const statusOf = (id) => progress[id]?.status;
+
+function tally(cards) {
+  let k = 0, a = 0;
+  for (const c of cards) { const s = statusOf(c.id); if (s === "know") k++; else if (s === "again") a++; }
+  return { k, a, n: cards.length };
+}
+function barHTML(t) {
+  const n = t.n || 1;
+  return `<div class="bar" aria-hidden="true"><i class="k" style="width:${t.k / n * 100}%"></i><i class="a" style="width:${t.a / n * 100}%"></i></div>`;
+}
+
+/* ---------- Library ---------- */
+function renderLibrary() {
+  const againCards = ALL.filter(c => statusOf(c.id) === "again");
+  $("reviewSlot").innerHTML = againCards.length
+    ? `<button class="review" id="reviewBtn"><span>刷所有「不会」的卡</span><span>${againCards.length} 张 →</span></button>`
+    : "";
+  const rb = $("reviewBtn");
+  if (rb) rb.addEventListener("click", () => { location.hash = "review"; });
+
+  $("books").innerHTML = DECKS.map(book => `
+    <section class="book">
+      <h2>${book.title}</h2>
+      <div class="bsub">${book.sub}</div>
+      ${book.chapters.map(ch => {
+        const cards = ch.cards;
+        const t = tally(cards);
+        const nb = cards.filter(c => c.kind === "book").length;
+        const ni = cards.filter(c => c.kind === "iv").length;
+        return `<button class="ch" data-deck="${book.id}-${ch.no}">
+          <span class="t"><small>第 ${ch.no} 章</small>${ch.title}</span>
+          <span class="go">›</span>
+          <span class="m"><span class="pill bk">书本知识 ${nb}</span><span class="pill iv">面经 ${ni}</span>
+            <span>会 ${t.k} · 不会 ${t.a} · 未测 ${t.n - t.k - t.a}</span></span>
+          ${barHTML(t)}
+        </button>`;
+      }).join("")}
+    </section>`).join("");
+  for (const b of document.querySelectorAll(".ch")) {
+    b.addEventListener("click", () => { location.hash = b.dataset.deck; });
+  }
+}
+
+/* ---------- Study ---------- */
+function pool() {
+  if (deck === "review") return ALL.filter(c => statusOf(c.id) === "again");
+  return CHAPTERS[deck] ? CHAPTERS[deck].ch.cards.map(c => BY_ID[c.id]) : [];
+}
 
 function buildQueue() {
-  queue = CARDS.filter(c => {
-    const s = progress[c.id]?.status;
-    if (filter === "again") return s === "again";
-    if (filter === "new") return !s;
+  queue = pool().filter(c => {
+    if (kind !== "all" && c.kind !== kind) return false;
+    const s = statusOf(c.id);
+    if (status === "again") return s === "again";
+    if (status === "new") return !s;
     return true;
   }).map(c => c.id);
   requeued = new Set();
@@ -320,23 +289,20 @@ function buildQueue() {
 }
 
 function renderStats() {
-  let k = 0, a = 0;
-  for (const c of CARDS) {
-    const s = progress[c.id]?.status;
-    if (s === "know") k++; else if (s === "again") a++;
-  }
-  const n = CARDS.length;
-  $("counts").innerHTML = `会 <b>${k}</b> · 不会 <b>${a}</b> · 未测 <b>${n - k - a}</b>`;
-  $("barK").style.width = (k / n * 100) + "%";
-  $("barA").style.width = (a / n * 100) + "%";
+  const t = tally(pool());
+  $("counts").innerHTML = `会 <b>${t.k}</b> · 不会 <b>${t.a}</b> · 未测 <b>${t.n - t.k - t.a}</b>`;
+  const n = t.n || 1;
+  $("barK").style.width = (t.k / n * 100) + "%";
+  $("barA").style.width = (t.a / n * 100) + "%";
 }
 
 function cardHTML(c, isTop) {
-  const s = progress[c.id]?.status;
+  const s = statusOf(c.id);
   const sLabel = s === "know" ? "会" : s === "again" ? "不会" : "未测";
+  const where = deck === "review" ? `<span>${c.book.title} · 第 ${c.ch.no} 章</span>` : "";
   return `
     <div class="meta">
-      <span>${c.no}　<span class="tag${c.iv ? " iv" : ""}">${c.src}</span></span>
+      <span class="l">${where}<span class="pill ${c.kind === "iv" ? "iv" : "bk"}">${KIND_LABEL[c.kind]}</span><span>${c.ref}</span></span>
       <span class="status-dot ${s || ""}">${sLabel}</span>
     </div>
     <div class="body">
@@ -347,42 +313,45 @@ function cardHTML(c, isTop) {
     ${isTop ? `<div class="stamp k">会</div><div class="stamp a">不会</div>` : ""}`;
 }
 
-function render() {
+function renderStudy() {
+  const stage = $("stage");
   stage.innerHTML = "";
   const left = queue.length;
   $("bAgain").disabled = $("bKnow").disabled = $("bFlip").disabled = left === 0;
   $("bFlip").textContent = revealed ? "收起答案" : "看答案";
   if (left === 0) {
-    const empty = filter === "again" ? "现在没有「不会」的卡片。" : filter === "new" ? "所有卡片都测过了。" : "";
-    const hasAgain = CARDS.some(c => progress[c.id]?.status === "again");
+    const filtered = kind !== "all" || status !== "all";
+    const hasAgain = deck !== "review" && pool().some(c => statusOf(c.id) === "again");
     const d = document.createElement("div");
     d.className = "done";
-    d.innerHTML = `<h2>${empty ? "这里空了" : "这一轮刷完了"}</h2>
-      <p>${empty || "「不会」的卡片明天再刷一遍，记得更牢。"}</p>
+    d.innerHTML = `<h2>${filtered || deck === "review" ? "这里空了" : "这一轮刷完了"}</h2>
+      <p>${deck === "review" ? "「不会」的卡都刷完了。" : filtered ? "当前筛选下没有卡片。" : "「不会」的卡片明天再刷一遍，记得更牢。"}</p>
       <div class="row">
         ${hasAgain ? `<button class="btn again" data-go="again">只刷不会的</button>` : ""}
-        <button class="btn" data-go="all">全部重来</button>
+        ${deck === "review" ? "" : `<button class="btn" data-go="all">全部重来</button>`}
+        <button class="btn" data-go="home">回目录</button>
       </div>`;
     d.addEventListener("click", (e) => {
       const go = e.target.closest("[data-go]")?.dataset.go;
-      if (go) setFilter(go);
+      if (go === "home") location.hash = "";
+      else if (go === "again") { kind = "all"; setStatus("again"); }
+      else if (go === "all") { kind = "all"; setStatus("all"); }
     });
     stage.appendChild(d);
     $("hint").textContent = "";
     return;
   }
   $("hint").textContent = `剩 ${left} 张 · 点卡片看答案 · 右滑 会 · 左滑 不会`;
-  const byId = Object.fromEntries(CARDS.map(c => [c.id, c]));
   if (left > 1) {
     const u = document.createElement("div");
     u.className = "card under";
-    u.innerHTML = cardHTML(byId[queue[1]], false);
+    u.innerHTML = cardHTML(BY_ID[queue[1]], false);
     stage.appendChild(u);
   }
   const t = document.createElement("div");
   t.className = "card";
   t.id = "topCard";
-  t.innerHTML = cardHTML(byId[queue[0]], true);
+  t.innerHTML = cardHTML(BY_ID[queue[0]], true);
   stage.appendChild(t);
   attachSwipe(t);
   const rb = $("revealBtn");
@@ -392,38 +361,32 @@ function render() {
 function toggleReveal() {
   if (!queue.length || busy) return;
   revealed = !revealed;
-  render();
+  renderStudy();
 }
 
-function save(id, status) {
-  progress[id] = { status, last: new Date().toISOString() };
+function save(id, s) {
+  progress[id] = { status: s, last: new Date().toISOString() };
   try { localStorage.setItem(LS_KEY, JSON.stringify(progress)); } catch (e) {}
-  if (!db) return;
-  const card = CARDS.find(c => c.id === id);
-  const body = { status, no: card.no, last: progress[id].last };
-  writeChains[id] = (writeChains[id] || Promise.resolve())
-    .then(() => db.collection("progress").doc(id).set(body))
-    .catch(() => { $("sync").textContent = "同步失败，已存本机"; });
 }
 
-function decide(status) {
+function decide(s) {
   if (!queue.length || busy) return;
   const t = $("topCard");
   const id = queue[0];
   busy = true;
-  save(id, status);
-  const dir = status === "know" ? 1 : -1;
-  t.querySelector(status === "know" ? ".stamp.k" : ".stamp.a").style.opacity = 1;
+  save(id, s);
+  const dir = s === "know" ? 1 : -1;
+  t.querySelector(s === "know" ? ".stamp.k" : ".stamp.a").style.opacity = 1;
   t.classList.add("fly");
   t.style.transform = `translateX(${dir * 130}%) rotate(${dir * 18}deg)`;
   t.style.opacity = 0;
   setTimeout(() => {
     queue.shift();
-    if (status === "again" && !requeued.has(id)) { requeued.add(id); queue.push(id); }
+    if (s === "again" && !requeued.has(id)) { requeued.add(id); queue.push(id); }
     revealed = false;
     busy = false;
     renderStats();
-    render();
+    renderStudy();
   }, 260);
 }
 
@@ -433,7 +396,7 @@ function attachSwipe(el) {
   el.addEventListener("pointerdown", (e) => {
     if (busy || e.button > 0) return;
     sx = e.clientX; sy = e.clientY; dx = 0; dragging = false; decided = false; pid = e.pointerId; t0 = Date.now();
-    el.classList.remove("back");
+    el.classList.remove("back-anim");
   });
   el.addEventListener("pointermove", (e) => {
     if (e.pointerId !== pid || busy) return;
@@ -456,7 +419,7 @@ function attachSwipe(el) {
     pid = null;
     if (dragging) {
       if (Math.abs(dx) > 90) { decide(dx > 0 ? "know" : "again"); return; }
-      el.classList.add("back");
+      el.classList.add("back-anim");
       el.style.transform = "";
       sk.style.opacity = sa.style.opacity = 0;
     } else if (!decided && e.type === "pointerup" && Date.now() - t0 < 350 && !revealed) {
@@ -467,50 +430,59 @@ function attachSwipe(el) {
   el.addEventListener("pointercancel", end);
 }
 
-function setFilter(f) {
-  filter = f;
-  for (const b of document.querySelectorAll(".chip")) b.setAttribute("aria-pressed", String(b.dataset.f === f));
-  buildQueue();
-  render();
+function syncSegs() {
+  for (const b of document.querySelectorAll("[data-kind]")) b.setAttribute("aria-pressed", String(b.dataset.kind === kind));
+  for (const b of document.querySelectorAll("[data-status]")) b.setAttribute("aria-pressed", String(b.dataset.status === status));
 }
+function setKind(k) { kind = k; syncSegs(); buildQueue(); renderStudy(); }
+function setStatus(s) { status = s; syncSegs(); buildQueue(); renderStudy(); }
 
-for (const b of document.querySelectorAll(".chip")) b.addEventListener("click", () => setFilter(b.dataset.f));
+for (const b of document.querySelectorAll("[data-kind]")) b.addEventListener("click", () => setKind(b.dataset.kind));
+for (const b of document.querySelectorAll("[data-status]")) b.addEventListener("click", () => setStatus(b.dataset.status));
 $("bAgain").addEventListener("click", () => decide("again"));
 $("bKnow").addEventListener("click", () => decide("know"));
 $("bFlip").addEventListener("click", toggleReveal);
+$("backBtn").addEventListener("click", () => { location.hash = ""; });
 document.addEventListener("keydown", (e) => {
-  if (e.target.closest("input, textarea")) return;
+  if ($("study").hidden) return;
   if (e.key === "ArrowRight") decide("know");
   else if (e.key === "ArrowLeft") decide("again");
-  else if (e.key === " " || e.key === "Enter") { if (!e.target.closest("button")) { e.preventDefault(); toggleReveal(); } }
+  else if (e.key === "Escape") location.hash = "";
+  else if ((e.key === " " || e.key === "Enter") && !e.target.closest("button")) { e.preventDefault(); toggleReveal(); }
 });
 
-buildQueue();
-renderStats();
-render();
-
-(async () => {
-  const use = window.claude && window.claude.use;
-  db = use ? await window.claude.use("db").catch(() => null) : null;
-  if (!db) { $("sync").textContent = "进度存在本设备"; return; }
-  let gotServer = false;
-  const timer = setTimeout(() => { if (!gotServer) $("sync").textContent = "暂时连不上，已存本机"; }, 10000);
-  db.collection("progress").onSnapshot((snap) => {
-    const remote = {};
-    for (const d of snap.docs) {
-      const v = d.data();
-      if (v && (v.status === "know" || v.status === "again")) remote[d.id] = { status: v.status, last: v.last };
+/* ---------- Routing: #<book>-<chapter> or #review ---------- */
+function route() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (h === "review" || CHAPTERS[h]) {
+    deck = h;
+    kind = "all";
+    status = "all";
+    if (h === "review") {
+      $("stBook").textContent = "全部书";
+      $("stChapter").textContent = "所有「不会」的卡";
+    } else {
+      const { book, ch } = CHAPTERS[h];
+      $("stBook").textContent = book.title;
+      $("stChapter").textContent = `第 ${ch.no} 章 · ${ch.title}`;
     }
-    for (const [id, v] of Object.entries(remote)) {
-      const mine = progress[id];
-      if (!mine || (v.last || "") >= (mine.last || "")) progress[id] = v;
-    }
-    try { localStorage.setItem(LS_KEY, JSON.stringify(progress)); } catch (e) {}
-    if (!snap.metadata.fromCache) { gotServer = true; clearTimeout(timer); $("sync").textContent = "已同步"; }
+    document.body.style.overflow = "hidden";
+    $("lib").hidden = true;
+    $("study").hidden = false;
+    syncSegs();
+    buildQueue();
     renderStats();
-    if (!busy && !revealed) render();
-  }, () => { clearTimeout(timer); $("sync").textContent = "同步失败，已存本机"; });
-})();
+    renderStudy();
+  } else {
+    deck = null;
+    document.body.style.overflow = "";
+    $("study").hidden = true;
+    $("lib").hidden = false;
+    renderLibrary();
+  }
+}
+window.addEventListener("hashchange", route);
+route();
 </script>
 </body>
 </html>
