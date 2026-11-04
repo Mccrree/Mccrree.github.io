@@ -156,6 +156,9 @@ No learning notes have been published yet.
 const aboutSource = await fs.readFile(path.join(ROOT_DIR, 'site', 'pages', 'about.md'), 'utf8');
 await writeText('about/index.md', aboutSource);
 
+// Standalone pages (e.g. flashcards) are copied verbatim; _config.yml skip_render keeps Hexo from wrapping them.
+await fs.cp(path.join(ROOT_DIR, 'site', 'static'), sourceDir, { recursive: true });
+
 const summary = report.collections
   .flatMap((collection) => [
     `${collection.completed}/${collection.total} ${collection.unit.plural}`,

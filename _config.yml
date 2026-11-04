@@ -25,6 +25,7 @@ public_dir: public
 archive_dir: archives
 tag_dir: tags
 skip_render:
+  - cards/**
 
 theme: next
 default_layout: post
