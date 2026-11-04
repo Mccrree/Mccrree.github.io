@@ -6,6 +6,7 @@ menu:
   Deep Learning: /deep-learning/ || fa fa-book
   Vision Language Models: /vlm/ || fa fa-eye
   COMP2022: /comp2022/ || fa fa-graduation-cap
+  Flashcards: /cards/ || fa fa-layer-group
   Archives: /archives/ || fa fa-archive
   Tags: /tags/ || fa fa-tags
   About: /about/ || fa fa-user

@@ -91,6 +91,7 @@ for (const expected of [
   'archives/index.html',
   'tags/index.html',
   'about/index.html',
+  'cards/index.html',
   'search.xml'
 ]) {
   if (!relativeFiles.has(expected)) errors.push(`Missing required output: ${expected}`);
