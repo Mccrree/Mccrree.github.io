@@ -304,7 +304,7 @@ function cardHTML(c, isTop) {
   const where = deck === "review" ? `<span>${c.book.title} · 第 ${c.ch.no} 章</span>` : "";
   return `
     <div class="meta">
-      <span class="l">${where}<span class="pill ${c.kind === "iv" ? "iv" : "bk"}">${KIND_LABEL[c.kind]}</span><span>${c.ref}</span>${c.src ? `<a class="src" href="${c.src}" target="_blank" rel="noopener">原帖 ↗</a>` : ""}</span>
+      <span class="l">${where}<span class="pill ${c.kind === "iv" ? "iv" : "bk"}">${KIND_LABEL[c.kind]}</span><span>${c.ref}</span>${c.src ? `<a class="src" href=${JSON.stringify(c.src)} target="_blank" rel="noopener">原帖 ↗</a>` : ""}</span>
       <span class="status-dot ${s || ""}">${sLabel}</span>
     </div>
     <div class="body">
