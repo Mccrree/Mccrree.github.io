@@ -106,6 +106,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 .card.back-anim { transition: transform .22s cubic-bezier(.3,1.4,.6,1); }
 .meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 14px 18px 0; font-size: 12px; color: var(--muted); }
 .meta .l { display: flex; gap: 6px; align-items: center; min-width: 0; flex-wrap: wrap; }
+.meta .src { color: var(--iv); text-decoration: none; white-space: nowrap; }
+.meta .src:hover { text-decoration: underline; }
 .status-dot { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 .status-dot::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--line); }
 .status-dot.know::before { background: var(--know); }
@@ -302,7 +304,7 @@ function cardHTML(c, isTop) {
   const where = deck === "review" ? `<span>${c.book.title} · 第 ${c.ch.no} 章</span>` : "";
   return `
     <div class="meta">
-      <span class="l">${where}<span class="pill ${c.kind === "iv" ? "iv" : "bk"}">${KIND_LABEL[c.kind]}</span><span>${c.ref}</span></span>
+      <span class="l">${where}<span class="pill ${c.kind === "iv" ? "iv" : "bk"}">${KIND_LABEL[c.kind]}</span><span>${c.ref}</span>${c.src ? `<a class="src" href=${JSON.stringify(c.src)} target="_blank" rel="noopener">原帖 ↗</a>` : ""}</span>
       <span class="status-dot ${s || ""}">${sLabel}</span>
     </div>
     <div class="body">
