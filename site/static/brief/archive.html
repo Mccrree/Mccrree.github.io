@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>拾讯 · 往期</title>
+<style>
+/* 单栏阅读版式：顶部要点，往下按来源分区，每条是链接 + 中文介绍 + 小字数据 */
+:root{--bg:#F5F6F4;--panel:#FFFFFF;--fg:#1C2321;--muted:#5D6762;--line:#DDE2DE;--accent:#1F6F5C;--accent-soft:#E3EFEA;
+--sans:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;--mono:ui-monospace,"Cascadia Mono",Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121614;--panel:#1A1F1D;--fg:#E4E9E6;--muted:#9AA5A0;--line:#2C3431;--accent:#5CC7A8;--accent-soft:#1E2E28;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121614;--panel:#1A1F1D;--fg:#E4E9E6;--muted:#9AA5A0;--line:#2C3431;--accent:#5CC7A8;--accent-soft:#1E2E28;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.65 var(--sans)}
+.wrap{max-width:760px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+.date{color:var(--muted);font-size:13px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+h1{margin:4px 0 0;font-size:clamp(22px,4.5vw,30px);line-height:1.35;font-weight:650;text-wrap:balance}
+.top{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:grid;gap:16px}
+.top h2{margin:0;font-size:13px;color:var(--accent);letter-spacing:.06em}
+.top ul{margin:0;padding-left:1.1em;display:grid;gap:8px}
+a{color:inherit;text-decoration-color:var(--line);text-underline-offset:3px}
+a:hover,a:focus-visible{text-decoration-color:var(--accent);color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+section{display:grid;gap:10px}
+section>header{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;border-bottom:1px solid var(--line);padding-bottom:6px}
+section h2{margin:0;font-size:18px;font-weight:650}
+section>header span{color:var(--muted);font-size:13px}
+ol,.picks{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:n}
+ol>li{counter-increment:n;display:grid;grid-template-columns:2.2em 1fr;column-gap:4px}
+ol>li::before{content:counter(n);color:var(--muted);font:12px/1.9 var(--mono);font-variant-numeric:tabular-nums;grid-row:span 3}
+li{min-width:0}
+.t{font-weight:560;overflow-wrap:anywhere}
+.zh,.sum{margin:2px 0 0;color:var(--fg)}
+.sum{color:var(--muted);font-size:14px}
+.m{margin:2px 0 0;color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+.picks li{background:var(--accent-soft);border-radius:10px;padding:12px 14px}
+.note{margin:0;color:var(--muted);font-size:14px}
+footer{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:12px}
+nav.site{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted)}
+.intro{margin:8px 0 0;color:var(--muted)}
+@media (max-width:480px){.top{padding:16px}ol>li{grid-template-columns:1.8em 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site"><a href="index.html">最新日报</a><a href="archive.html">往期日报与周报</a></nav>
+<div><div class="date">拾讯日报 · 周报</div><h1>往期</h1></div>
+<section id="weekly"><header><h2>周报</h2><span>每周五 9:00，总结前 7 天</span></header><p class="note">还没有。</p></section>
+<section id="daily"><header><h2>日报</h2><span>每天 9:00</span></header><ol><li><a class="t" href="daily/2026-11-11.html">2026-11-11 日报</a></li></ol></section>
+</div>
+</body>
+</html>
