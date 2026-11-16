@@ -1,0 +1,1192 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>拾讯 · 多模态岗位</title>
+<style>
+/* 单栏阅读版式：顶部要点，往下按来源分区，每条是链接 + 中文介绍 + 小字数据 */
+:root{--bg:#F5F6F4;--panel:#FFFFFF;--fg:#1C2321;--muted:#5D6762;--line:#DDE2DE;--accent:#1F6F5C;--accent-soft:#E3EFEA;
+--sans:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;--mono:ui-monospace,"Cascadia Mono",Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121614;--panel:#1A1F1D;--fg:#E4E9E6;--muted:#9AA5A0;--line:#2C3431;--accent:#5CC7A8;--accent-soft:#1E2E28;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121614;--panel:#1A1F1D;--fg:#E4E9E6;--muted:#9AA5A0;--line:#2C3431;--accent:#5CC7A8;--accent-soft:#1E2E28;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.65 var(--sans)}
+.wrap{max-width:760px;margin:0 auto;padding-block:32px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+.date{color:var(--muted);font-size:13px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+h1{margin:4px 0 0;font-size:clamp(22px,4.5vw,30px);line-height:1.35;font-weight:650;text-wrap:balance}
+.top{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:grid;gap:16px}
+.top h2{margin:0;font-size:13px;color:var(--accent);letter-spacing:.06em}
+.top ul{margin:0;padding-left:1.1em;display:grid;gap:8px}
+a{color:inherit;text-decoration-color:var(--line);text-underline-offset:3px}
+a:hover,a:focus-visible{text-decoration-color:var(--accent);color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+section{display:grid;gap:10px}
+section>header{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;border-bottom:1px solid var(--line);padding-bottom:6px}
+section h2{margin:0;font-size:18px;font-weight:650}
+section>header span{color:var(--muted);font-size:13px}
+ol,.picks{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:n}
+ol>li{counter-increment:n;display:grid;grid-template-columns:2.2em 1fr;column-gap:4px}
+ol>li::before{content:counter(n);color:var(--muted);font:12px/1.9 var(--mono);font-variant-numeric:tabular-nums;grid-row:span 3}
+li{min-width:0}
+.t{font-weight:560;overflow-wrap:anywhere}
+.zh,.sum{margin:2px 0 0;color:var(--fg)}
+.sum{color:var(--muted);font-size:14px}
+.m{margin:2px 0 0;color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+.picks li{background:var(--accent-soft);border-radius:10px;padding:12px 14px}
+.note{margin:0;color:var(--muted);font-size:14px}
+details.seen>summary{color:var(--muted);font-size:13px;cursor:pointer;padding:4px 0;width:fit-content}
+details.seen>summary:hover,details.seen>summary:focus-visible{color:var(--accent)}
+details.seen>ol{margin-top:12px;padding-left:12px;border-left:2px solid var(--line)}
+section h3{margin:8px 0 0;font-size:14px;font-weight:650;color:var(--accent);letter-spacing:.04em;display:flex;align-items:baseline;gap:8px}
+section h3 span{color:var(--muted);font-size:12px;font-weight:400;letter-spacing:0;font-variant-numeric:tabular-nums}
+.boards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.board{display:grid;gap:2px;align-content:start;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;text-decoration:none}
+.board b{font-size:16px;font-weight:650}
+.board span{color:var(--muted);font-size:13px}
+.board .new,.new{color:var(--accent);font-weight:600}
+.board:hover,.board:focus-visible{border-color:var(--accent);color:inherit}
+.board:hover b,.board:focus-visible b{color:var(--accent)}
+footer{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:12px}
+nav.site{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted)}
+.intro{margin:8px 0 0;color:var(--muted)}
+@media (max-width:480px){.top{padding:16px}ol>li{grid-template-columns:1.8em 1fr}}
+</style>
+<style>
+/* 板块页：顶部板块切换，下面按公司分组；每个岗位是一张可展开的卡片 */
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:14px;text-decoration:none;background:var(--panel)}
+.tabs a span{color:var(--muted);font-size:12px;margin-left:4px;font-variant-numeric:tabular-nums}
+.tabs a[aria-current]{background:var(--accent);border-color:var(--accent);color:var(--panel);font-weight:600}
+.tabs a[aria-current] span{color:inherit;opacity:.85}
+.chips{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px}
+.chips a span{color:var(--muted);font-size:12px;margin-left:3px;font-variant-numeric:tabular-nums}
+.jobs{display:grid;gap:8px}
+details.job{background:var(--panel);border:1px solid var(--line);border-radius:10px;min-width:0}
+details.job>summary{padding:10px 14px;cursor:pointer;display:grid;gap:2px;list-style:none}
+details.job>summary::-webkit-details-marker{display:none}
+details.job>summary .t::before{content:"▸";color:var(--muted);margin-right:6px}
+details.job[open]>summary .t::before{content:"▾"}
+details.job>summary:hover .t,details.job>summary:focus-visible .t{color:var(--accent)}
+.jd{display:grid;gap:8px;padding:12px 14px 14px;border-top:1px solid var(--line)}
+.jd h3{margin:0;font-size:13px;color:var(--accent);letter-spacing:.04em;display:block}
+.jd p{margin:0;white-space:pre-line;font-size:14.5px;overflow-wrap:anywhere}
+.jd a{font-size:14px;color:var(--accent);width:fit-content}
+.new{color:var(--accent);font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="site"><a href="../index.html">最新日报</a><a href="../archive.html">往期日报与周报</a></nav>
+<div><div class="date">校招官网在招岗位 · 2026-11-16 读取</div><h1>多模态</h1><p class="intro">130 个岗位，15 家公司。点公司名跳到那一家，点岗位名展开职责和要求。</p></div>
+<nav class="tabs" aria-label="板块"><a href="sgt.html">搜广推<span>78</span></a><a href="llmrec.html">大模型 × 推荐<span>43</span></a><a href="llm.html">大模型与 Agent<span>254</span></a><a href="mm.html" aria-current="page">多模态<span>130</span></a><a href="strategy.html">策略与数据<span>53</span></a></nav>
+<div class="chips"><a href="#c1">快手<span>40</span></a><a href="#c2">小红书<span>26</span></a><a href="#c3">腾讯<span>16</span></a><a href="#c4">商汤<span>13</span></a><a href="#c5">OPPO<span>8</span></a><a href="#c6">美团<span>7</span></a><a href="#c7">百度<span>4</span></a><a href="#c8">B 站<span>3</span></a><a href="#c9">蔚来<span>3</span></a><a href="#c10">米哈游<span>2</span></a><a href="#c11">小米<span>2</span></a><a href="#c12">小鹏<span>2</span></a><a href="#c13">科大讯飞<span>2</span></a><a href="#c14">京东<span>1</span></a><a href="#c15">360<span>1</span></a></div>
+<section id="c1"><header><h2>快手</h2><span>40 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">【快Star实习】多模态大模型强化学习算法工程师-Keye</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>团队介绍：快手多模态大模型（Keye）团队，作为行业内少有的「基座研发 + 业务落地」双轮驱动的团队，致力于打通从Data到Product的最后一公里。1、深耕基座：攻坚多模态基座核心架构，探索Scaling Law的极致边界。2、数据为王：构建工业级数据清洗与自动化评测体系，用高质量数据重塑智能。3、进化智能：突破强化学习与推理增强技术，让模型更聪明、更可控。4、全域落地：赋能快手全生态，让AI在电商、商业化、推荐等众多真实场景中创造价值。
+1、负责大模型的强化学习算法研究与开发，优化模型训练效果、稳定性和效率；
+2、深入研究强化学习领域的前沿技术，结合公司业务场景，探索新的算法优化方向，保持公司在该领域的技术领先性；
+3、探索强化学习阶段的多目标强化学习、奖励模型设计等技术方向，提升模型在复杂任务中的表现；
+4、撰写技术报告和论文，分享研究成果，推动团队技术水平提升。</p><h3>任职要求</h3><p>1、计算机科学、机器学习、人工智能等相关专业硕士及以上学历；
+2、具备扎实的机器学习基础，熟练使用至少一种深度学习框架（如 PyTorch、TensorFlow 等）；
+3、有强化学习相关项目经验，在顶级学术会议发表过研究成果、主导或参与过 AI 相关开源/闭源项目者优先；
+4、具备卓越的实验分析与问题解决能力，有创新思维，能够良好沟通，与团队成员高效协作。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11933">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star实习】多模态大模型算法工程师-Keye</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>团队介绍：快手多模态大模型（Keye）团队，作为行业内少有的「基座研发 + 业务落地」双轮驱动的团队，致力于打通从Data到Product的最后一公里。1、深耕基座：攻坚多模态基座核心架构，探索Scaling Law的极致边界。2、数据为王：构建工业级数据清洗与自动化评测体系，用高质量数据重塑智能。3、进化智能：突破强化学习与推理增强技术，让模型更聪明、更可控。4、全域落地：赋能快手全生态，让AI在电商、商业化、推荐等众多真实场景中创造价值。
+1、依托快手视频社区平台，构建最具影响力的多模态基座模型和开源生态；
+2、参与多模态大模型架构探索，包括但不限于万亿级参数多模态MoE模型的训练、多模态信息编码方案设计、探索更高效的图文/视频/音频等编码方式、多模态表征学习和语义对齐策略的探索、超长上下文模型开发等；
+3、参与高质量训练数据构建，包括从但不限于大规模混合模态预训练数据构建（探索多模态Scaling）、高质量多模态语义对齐数据合成、探索模型自我迭代提升路径、感知能力专家模型研发（包括OCR、Caption、Grounding等）；
+4、协助研发理解与生成统一大模型的基础架构，涵盖多模态输入和输出在内的建模，实现模型在理解与生成任务上的协同优化效果。</p><h3>任职要求</h3><p>1、计算机科学与技术、人工智能等相关专业的硕士或博士；
+2、计算机多模态/NLP/CV相关工作经验，有较强的coding能力；
+3、热衷于通用大模型及新兴技术领域，具备独立开发尖端模型的能力，且拥有在NLP、CV、ML顶尖会议或期刊上发表研究成果的经历者将获得优先考虑；
+4、有良好的数学和编程基础，熟悉至少一种深度学习框架（如 TensorFlow、PyTorch）；
+5、具备良好的沟通能力和团队合作精神。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11932">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star实习】多模态大模型算法工程师-特效方向</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>团队介绍：快手特效团队负责快手生产和直播等核心业务的特效技术能力研发，致力于通过多模态大模型与新技术结合，提升用户“美”和“有意思”的创作体验。
+1、负责特效方向多模态大模型的研发、调优和应用，包括但不限于文本/图像/视频理解和生成；
+2、将大模型能力在公司核心业务场景中应用落地，如智能化特效、AIGC创意生成等。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机和人工智能等相关专业；
+2、有扎实的计算机基础知识和编程功底，具备较强的编码能力，熟练使用 Python编程语言；
+3、熟悉计算机视觉、多模态大模型领域的主流算法，包括但不限于DiT、GAN、VLM等；
+4、善于利用各类技术解决复杂的实际问题，有良好的沟通表达能力；
+5、在CVPR、ICCV、ECCV、TPAMI等视觉/机器学习会议或期刊发表过论文优先。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11750">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】多模态生成算法工程师</span><span class="m">深圳 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责研发业界领先的多模态理解与生成统一架构，从事基础模型预训练、监督微调、架构优化等，重点探索感知（理解）与生成能力的协同演进与边界突破；
+2、研究高效建模多模态数据（图像、文本、视频等）的新范式，提升模型的信息表征、理解与联合生成能力；
+3、探索并研发更高效的视觉编码器，构建更强大的多模态模型基础；
+4、发表高水平学术论文和开源项目，提升团队在学术界、工业界的技术影响力。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、人工智能、数学等相关专业；
+2、具备扎实的计算机视觉、深度学习和多模态学习基础，熟悉Diffusion、Flow matching、DiT、VLM等相关技术；
+3、自我驱动力强，具有优秀的分析和解决问题的能力。
+加分项：
+1、有相关研究或者项目经验；
+2、有相关方向高水平期刊或会议论文发表经历；
+3、做过有影响力的开源项目或产品。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11354">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】多模态内容理解算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、对图像、视频、文本等进行深入的语义理解，支持短视频、直播、搜索、推荐、商业化等业务需求；
+2、推进视觉相关基础技术研发，如大规模分类、检测、分割、序列识别、人脸、自监督学习、内容生成、模型压缩和优化等。</p><h3>任职要求</h3><p>1、硕士及以上学历，对视觉前沿技术有浓厚兴趣，时刻跟进学术界最新进展，有自己独立的想法和判断，能够快速复现学术界最新成果；
+2、编程基础扎实，熟练掌握C++/Python，熟悉Pytorch、TensorFlow等训练框架；
+3、对常见的模型结构、建模方法、Loss设计、优化策略、训练过程中的重要tricks等有深入了解和丰富经验；
+4、工作认真努力，有很好的沟通能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11352">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】多模态模型优化算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、diffusion步数压缩：探索diffusion模型的one-step / few-steps的无损蒸馏算法，跟进学术界最前沿的few-steps diffusion算法，包括但不限于consistency modeling、shortcut、score distillation等方案，打造实时化的极致高效可灵/可图大模型；
+2、高效attention设计：探索新一代注意力实现机制，包括但不限于sparse/quant-attention、linear-attention、mamba等，打破attention计算平方复杂度限制，解决长序列视频/图像引起的推理挑战，推进可灵/可图大模型的长序列场景下的推理极限；
+3、强化反馈优化：应用DPO/GRPO/PPO等强化学习的手段调优模型效果，在模型压缩的前置条件下探索强化学习与压缩算法的化学反应，推动可灵/可图大模型的效果-效率帕雷托前沿新SOTA。</p><h3>任职要求</h3><p>1、硕士及以上学历，数学、计算机、自动化、电子等专业优先；
+2、熟练掌握diffusion原理，具备公式推理和证明的能力，有过相关的研究经历和实践经验者优化；
+3、熟悉transformer结构及其变种，熟悉attention的设计和多种变种实现，掌握triton；
+4、熟练掌握线性线数、概率论、信息论、凸优化等基础知识；了解矩阵论、随机过程等；
+5、有较强的自驱力和学习力，对生成式模型有强烈的兴趣。
+加分项：
+1、有NIPS/ICLR/ICML/CVPR等顶会发表经历者优先；
+2、有强化学习的实践经历优化。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11351">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】多模态大模型算法工程师-AIGC</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、了解多模态内容生成相关算法，如DiffusionModels 、GAN、VAE、AutoregressiveModels等，包括但不限文本/图像/视频生成，解决生成质量、多样性、可控性、采样效率、可编辑等问题；
+2、了解端到端多模态生成式大模型的框架设计、训练与调优，构建基于生成模型的AI系统，推动多模态AIGC在快手各业务场景的产品化落地。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、数学或统计学相关专业；
+2、对基于图像、视频、语音、文本等模态内容的各类算法有一定的理解，并在如下一个或多个相关方向有相关研究经历：GAN 、扩散模型、图像生成、多模态等；
+3、具备扎实的编程功底，熟悉Pytorch等主流深度学习框架，熟练使用C ++/ Python等至少一种编程语言，熟悉Linux开发环境；
+4、对学术前沿有浓厚兴趣，时刻跟进技术前沿，并善于利用各类技术解决复杂的实际问题，有良好的沟通表达能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11349">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】多模态大模型算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、打造最适合短视频、直播、搜索推荐、电商、创作者玩法的多模态大模型，为快手的各项业务提供基座模型技术支持。多模态技术是通向AGI的重要方法和里程碑，期待和更多对多模态技术感兴趣的同学一起打造真正带来价值的模型算法技术；
+2、深度探索多模态大模型的多阶段预训练、监督微调和RLHF等技术，打造业界第一梯队的多模态大模型，赶超GPT-4o、Gemini Pro等闭源模型的实际使用效果；
+3、图片、语音、音频和视频多种模态信号的高效处理方式探索，提供对各类信号最精准的理解能力；
+4、混合专家、蒸馏剪枝等兼顾模型性能和效果的技术探索。</p><h3>任职要求</h3><p>1、硕士及以上学历，有较强的代码动手开发能力，对多模态大模型基座能力提升有较高的热情；
+2、熟悉计算机视觉相关的算法和技术，有自然语言处理和大模型训练经验；
+3、良好的沟通协作能力，能够与团队紧密合作，共同推进项目进展。
+加分项：
+1、在ACM/ICPC、Top Coder、Kaggle等比赛中取得过良好成绩是加分项；
+2、在大模型领域，发表过相关论文是加分项；
+3、多模态大模型的项目经历和实习经历是加分项。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11348">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】多模态大模型数据处理算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、数据特征算法方案制定与效果优化：针对不同模态、多种类目的数据，设计自动化筛选方案；对多模态数据涉及的前沿特征算法（如物体跟踪、ID 重识别、音频分离）进行场景化效果优化。与算法工程师协作，制定数据调整与扩展策略，提升模型在真实场景中的生成能力；
+2、数据 pipeline 建设：负责多模态大模型训练数据的构建与管理，参与数据筛选、标注及质量评估工作。分析和挖掘现有数据资源，设计有效的数据分布策略，支持模型持续迭代；
+3、数据分布分析：对模型训练数据分布进行详细分析，识别数据偏差、不均衡及潜在问题。提供可视化报告及改进建议，确保训练数据覆盖目标场景并满足多样性需求，最终通过数据驱动方法优化视频生成大模型效果。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、统计学、数学或相关专业，具备丰富的机器学习、大模型训练及数据处理项目经验，拥有扎实的数据分析与建模基础；
+2、熟练使用Python、SQL等分析工具，掌握常用数据分析与可视化工具（如Pandas、Tableau、Matplotlib等）；
+3、具备良好的沟通能力和团队合作精神，能够独立完成分析并提出可落地的优化建议。
+加分项：
+对视频生成、计算机视觉或多模态生成技术有深入理解；对生成式AI领域有浓厚兴趣，关注行业动态并能提出创新性建议。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11347">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star实习】多模态大模型数据处理算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、数据特征算法方案制定与效果优化：针对不同模态、多种类目的数据，设计自动化筛选方案；对多模态数据涉及的前沿特征算法（如物体跟踪、ID 重识别、音频分离）进行场景化效果优化。与算法工程师协作，制定数据调整与扩展策略，提升模型在真实场景中的生成能力；
+2、数据 pipeline 建设：负责多模态大模型训练数据的构建与管理，参与数据筛选、标注及质量评估工作。分析和挖掘现有数据资源，设计有效的数据分布策略，支持模型持续迭代；
+3、数据分布分析：对模型训练数据分布进行详细分析，识别数据偏差、不均衡及潜在问题。提供可视化报告及改进建议，确保训练数据覆盖目标场景并满足多样性需求，最终通过数据驱动方法优化视频生成大模型效果。</p><h3>任职要求</h3><p>1、计算机、统计学、数学或相关专业硕士及以上学历，具备丰富的机器学习、大模型训练及数据处理项目经验，拥有扎实的数据分析与建模基础；
+2、熟练使用 Python、SQL 等分析工具，掌握常用数据分析与可视化工具（如 Pandas、Tableau、Matplotlib 等）；
+3、具备良好的沟通能力和团队合作精神，能够独立完成分析并提出可落地的优化建议；
+加分项：对视频生成、计算机视觉或多模态生成技术有深入理解；对生成式 AI 领域有浓厚兴趣，关注行业动态并能提出创新性建议。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11231">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star实习】多模态大模型算法工程师-AIGC</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、了解多模态内容生成相关算法，如Diffusion Models 、 GAN 、 VAE 、 Autoregressive Models等，包括但不限文本/图像/视频生成，解决生成质量、多样性、可控性、采样效率、可编辑等问题；
+2、了解端到端多模态生成式大模型的框架设计、训练与调优，构建基于生成模型的AI系统，推动多模态AIGC在快手各业务场景的产品化落地。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、数学或统计学相关专业；
+2、对基于图像、视频、语音、文本等模态内容的各类算法有一定的理解，并在如下一个或多个相关方向有相关研究经历： GAN 、扩散模型、图像生成、多模态等；
+3、具备扎实的编程功底，熟悉 Pytorch 等主流深度学习框架，熟练使用 C ++/ Python 等至少一种编程语言，熟悉 Linux 开发环境；
+4、对学术前沿有浓厚兴趣，时刻跟进技术前沿，并善于利用各类技术解决复杂的实际问题，有良好的沟通表达能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11226">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star实习】多模态生成算法工程师</span><span class="m">深圳、北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责研发业界领先的多模态理解与生成统一架构，从事基础模型预训练、监督微调、架构优化等，重点探索感知（理解）与生成能力的协同演进与边界突破；
+2、研究高效建模多模态数据（图像、文本、视频等）的新范式，提升模型的信息表征、理解与联合生成能力；
+3、探索并研发更高效的视觉编码器，构建更强大的多模态模型基础；
+4、发表高水平学术论文和开源项目，提升团队在学术界、工业界的技术影响力。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、人工智能、数学等相关专业；
+2、具备扎实的计算机视觉、深度学习和多模态学习基础，熟悉 Diffusion、Flow matching、DiT、VLM等相关技术；
+3、自我驱动力强，具有优秀的分析和解决问题的能力。
+加分项：
+1、有相关研究或者项目经验；
+2、有相关方向高水平期刊或会议论文发表经历；
+3、做过有影响力的开源项目或产品。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11212">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star实习】多模态大模型算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、打造最适合短视频、直播、搜索推荐、电商、创作者玩法的多模态大模型，为快手的各项业务提供基座模型技术支持。多模态技术是通向AGI的重要方法和里程碑，期待和更多对多模态技术感兴趣的同学一起打造真正带来价值的模型算法技术；
+2、深度探索多模态大模型的多阶段预训练、监督微调和RLHF等技术，打造业界第一梯队的多模态大模型，赶超GPT-4o、Gemini Pro等闭源模型的实际使用效果；
+3、图片、语音、音频和视频多种模态信号的高效处理方式探索，提供对各类信号最精准的理解能力；
+4、混合专家、蒸馏剪枝等兼顾模型性能和效果的技术探索。</p><h3>任职要求</h3><p>1、硕士及以上学历，有较强的代码动手开发能力，对多模态大模型基座能力提升有较高的热情；
+2、熟悉计算机视觉相关的算法和技术，有自然语言处理和大模型训练经验；
+3、良好的沟通协作能力，能够与团队紧密合作，共同推进项目进展；
+加分项：
+1、在ACM/ICPC、Top Coder、Kaggle等比赛中取得过良好成绩是加分项；
+2、在大模型领域，发表过相关论文是加分项；
+3、多模态大模型的项目经历和实习经历是加分项。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11188">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star实习】多模态模型优化算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、diffusion步数压缩: 探索 diffusion 模型的 one-step / few-steps 的无损蒸馏算法, 跟进学术界最前沿的 few-steps diffusion 算法, 包括但不限于 consistency modeling, shortcut, score distillation等方案, 打造实时化的极致高效可灵/可图 大模型；
+2、高效attention设计: 探索新一代注意力实现机制, 包括但不限于: sparse/quant-attention, linear-attention, mamba等, 打破 attention 计算平方复杂度限制, 解决 长序列视频/图像 引起的推理挑战, 推进 可灵/可图 大模型的长序列场景下的推理极限；
+3、强化反馈优化: 应用 DPO/GRPO/PPO 等强化学习的手段调优模型效果, 在模型压缩的前置条件下探索强化学习与压缩算法的化学反应, 推动 可灵/可图 大模型的效果-效率帕雷托前沿新SOTA。</p><h3>任职要求</h3><p>1、 硕士及以上学历，数学、计算机、自动化、电子等专业优先；
+2、 熟练掌握diffusion原理, 具备公式推理和证明的能力, 有过相关的研究经历和实践经验者优化；
+3、 熟悉transformer结构及其变种, 熟悉attention的设计和多种变种实现, 掌握triton；
+4、数理要求: 熟练掌握 线性线数, 概率论, 信息论, 凸优化等基础知识; 了解矩阵论, 随机过程等；
+5、有较强的自驱力和学习力，对生成式模型有强烈的兴趣。
+加分项：
+1、有 NIPS/ICLR/ICML/CVPR 等顶会发表经历者优先；
+2、有强化学习的实践经历优化。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11167">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】多模态评测算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>加入我们多模态评测算法研发团队，负责多模态理解任务的benchmark设计、落地以及学术化转化工作，聚焦多模态理解、视频生成、理解生成一体化等核心技术方向，通过构建科学、全面的评测体系，推动团队技术研发的高效迭代与创新突破，助力公司在多模态技术领域保持领先地位。
+1、Benchmark设计与开发：深入研究多模态理解、视频生成、理解生成一体化等技术方向的前沿动态与行业需求，设计并开发具有针对性、科学性的benchmark评测体系，涵盖数据采集、指标定义、评测方法制定等全流程，确保评测体系能够准确反映模型的性能与潜力；
+2、评测落地与执行：负责benchmark评测体系的落地实施，搭建稳定、高效的评测环境，完成对多模态模型的自动化评测任务，及时处理评测过程中出现的问题，保证评测结果的准确性、可靠性与公正性；
+3、数据分析与优化：对评测结果进行深入分析，挖掘模型存在的问题与不足，为模型的优化与改进提供数据支持与决策依据，结合评测数据，撰写详细的评测报告，为研发团队提供有价值的参考建议；
+4、学术化转化与研究：跟踪多模态技术领域的学术研究动态，将benchmark评测成果进行学术化转化，参与学术论文的撰写与发表，提升公司在行业内的学术影响力，同时，积极开展前沿技术研究，探索新的评测方法与技术思路，为团队的技术创新注入新的活力；
+5、团队协作与沟通：与算法研发、工程实现等多个团队保持密切沟通与协作，及时了解团队的技术需求与研发进展，确保评测工作与整体研发节奏保持一致，参与团队内部的技术交流与分享活动，共同提升团队的技术水平与创新能力。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机技术、人工智能、机器学习、数据科学等相关专业优先；
+2、具备扎实的机器学习 / 深度学习基础，对生成模型或多模态模型有一定理解；
+3、对视频生成、AIGC、多模态理解与评测方向有浓厚兴趣；
+4、具备优秀的代码基础，熟练掌握至少一门编程语言：Python（优先）、C/C++、Java；
+5、了解常见 AI 模型与算法基本原理，例如：Transformer、CLIP / CNN、GAN / VAE、Diffusion Models / DiT等；
+6、熟悉机器学习模型评估方法与指标与模型评测与实验设计方法；
+7、具备良好的数据分析能力与数据化思维，能够基于实验结果进行系统分析并输出结论；
+8、有以下经验之一者优先：
+LLM / VLM 相关研究或工程经验；
+自动评测 / LLM-as-a-Judge 相关实践；
+Benchmark 构建或评测体系设计经验；
+加分项：
+1、参与AIGC、大模型相关的项目研发测试经验优先，有竞品大模型评测经验优先（如通义、即梦、混元等）；
+2、有顶会论文、国家或国际奖项、专利获得者、算法竞赛获奖者优先考虑；
+3、有训练或微调常见CV、NLP、LLM、MLLM模型经验优先；
+4、有扎实的美术素养、设计经验、视频创作影视导演编导、或者有互联网公司相关经验者优先。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12444">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】多模态大模型训练算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与多模态大语言模型基础设施的核心开发工作，涵盖模型训练等关键环节的架构优化与性能提升，探索和实践训练性能提升和训练范式迭代等方面的核心技术；
+2、协助进行大模型训练集群的管理与调优，解决分布式训练过程中出现的资源调度、通信效率等问题，提升训练吞吐量与稳定性；
+3、跟进大模型Infra领域的前沿技术动态，将新技术、新方法融入到现有系统中，推动技术栈的持续演进；
+4、与算法团队紧密协作，将算法研究成果高效落地，为大模型的迭代升级提供坚实的基础设施支撑。</p><h3>任职要求</h3><p>1、硕士及以上学历在读，计算机科学与技术、软件工程、电子工程等相关专业优先；
+2、具备扎实的编程基础，有良好的代码规范与调试能力，能够使用Codex等代码工具提升开发效率；
+3、自驱力强，对大模型Infra领域充满热情，能够主动学习并解决复杂技术问题；
+4、拥有编程竞赛背景者优先，如在ACM-ICPC、CCPC等竞赛中获得奖项，具备较强的算法思维与问题解决能力；
+5、有大模型Infra开发相关经验者优先，熟悉分布式训练框架（如PyTorch Distributed、TensorFlow Distributed等）；
+6、具备良好的沟通协作能力，能够在跨团队合作中高效推进工作。
+你将获得：
+1、深度参与大模型核心基础设施建设的机会，接触行业前沿技术，快速提升技术能力；
+2、与资深算法专家合作，探索前沿算法和模型技术，助力个人职业成长；
+3、灵活的工作时间与轻松的工作氛围，丰富的团队建设活动与学习交流机会；
+4、具有竞争力的实习薪资与丰厚的实习福利。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12355">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态内容理解算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、对图像、视频、文本等进行深入的语义理解，支持短视频、直播、搜索、推荐、商业化等业务需求；
+2、推进视觉相关基础技术研发，如大规模分类、检测、分割、序列识别、人脸、自监督学习、内容生成、模型压缩和优化等。</p><h3>任职要求</h3><p>1、硕士及以上学历，对视觉前沿技术有浓厚兴趣，时刻跟进学术界最新进展，有自己独立的想法和判断，能够快速复现学术界最新成果；
+2、编程基础扎实，熟练掌握C++/Python，熟悉Pytorch、TensorFlow等训练框架；
+3、对常见的模型结构、建模方法、Loss设计、优化策略、训练过程中的重要tricks等有深入了解和丰富经验；
+4、工作认真努力，有很好的沟通能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13121">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】音视频多模态算法策略研究员</span><span class="m">上海、北京、杭州、深圳 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与快手全链路清晰度、美学等维度的质量评估算法研发、标准优化、监控体系搭建等，打造超越人眼的质量评估体系，支持算法在下游业务的应用；
+2、参与多模态内容理解算法的研发，包括但不限于分类、检测、OCR、Caption、Grounding等，挖掘视频内容与用户体验关联性；
+3、参与快手作品的画质增强，基于传统图像处理、生成式模型等技术手段实现超分、去模糊、去噪、去artifacts、色彩增强、移动端后处理等任务，提升用户体验。</p><h3>任职要求</h3><p>1、计算机、统计学、数学或相关专业硕士及以上学历，具备丰富的机器学习、计算机视觉等项目经验，拥有扎实的数据分析与建模基础；
+2、在以下至少一个方向有深厚的项目经验和技术洞察力：视频质量评价、多模态内容理解、视频增强或修复、扩散模型等；
+3、熟悉LLM、MLLM、Diffusion等基本原理、大模型微调/RL等技术，熟悉C/C++、Python、Java等至少一门主流编程语言；
+4、在顶级计算机学术会议或期刊上发表过论文者优先。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12760">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态大模型算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、打造最适合短视频、直播、搜索推荐、电商、创作者玩法的多模态大模型，为快手的各项业务提供基座模型技术支持。多模态技术是通向AGI的重要方法和里程碑，期待和更多对多模态技术感兴趣的同学一起打造真正带来价值的模型算法技术；
+2、深度探索多模态大模型的多阶段预训练、监督微调和RLHF等技术，打造业界第一梯队的多模态大模型；
+3、图片、语音、音频和视频多种模态信号的高效处理方式探索，提供对各类信号最精准的理解能力；
+4、混合专家、蒸馏剪枝等兼顾模型性能和效果的技术探索。</p><h3>任职要求</h3><p>1、硕士及以上学历，有较强的代码动手开发能力，对多模态大模型基座能力提升有较高的热情；
+2、熟悉计算机视觉相关的算法和技术，有自然语言处理和大模型训练经验；
+3、良好的沟通协作能力，能够与团队紧密合作，共同推进项目进展；
+加分项：
+1、在ACM/ICPC、Top Coder、Kaggle等比赛中取得过良好成绩是加分项；
+2、在大模型领域，发表过相关论文是加分项；
+3、多模态大模型的项目经历和实习经历是加分项。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12693">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态内容理解算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、对图像、视频、文本等进行深入的语义理解，支持短视频、直播、风控、搜索、推荐、商业化等业务需求；
+2、推进视觉相关基础技术研发，如大规模分类、检测、分割、序列识别、人脸、自监督学习、内容生成、模型压缩和优化等。</p><h3>任职要求</h3><p>1、硕士及以上学历，对视觉前沿技术有浓厚兴趣，时刻跟进学术界最新进展，有自己独立的想法和判断，能够快速复现学术界最新成果；
+2、编程基础扎实，熟练掌握C++/Python，熟悉Pytorch、TensorFlow等训练框架；
+3、对常见的模型结构、建模方法、Loss设计、优化策略、训练过程中的重要tricks等有深入了解和丰富经验；
+4、工作认真努力，有很好的沟通能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12697">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">特效多模态理解算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责生产和直播场景下的多模态大模型理解与应用探索，包括不限于推动大模型能力在特效视频理解、智能美化及智能创作等业务场景的落地；
+2、负责模型方案设计、训练数据生产、评测体系建设及实验验证分析；
+3、跟踪计算机视觉与多模态理解领域前沿技术，推动算法能力产品化落地，或产出高质量论文、专利及业务成果。</p><h3>任职要求</h3><p>1、人工智能、计算机、模式识别、自动化、数学、统计学等相关专业，硕士及以上学历；
+2、熟悉计算机视觉与深度学习基础，掌握Transformer、CLIP、CNN、VLM等相关技术原理；
+3、熟悉图像/视频理解任务，具备等至少一个方向的项目或研究经验；
+4、熟练掌握常用的深度学习模型结构及训练方法，熟练使用Claude Code/Codex等AI工具；
+5、具备良好的学习能力、沟通能力与团队协作意识。
+加分项：
+1、有多模态大模型、视觉语言模型微调或大规模图文/视频数据处理经验优先；
+2、有移动端模型轻量化经验优先；
+3、在 CVPR、ICCV、ECCV、AAAI、ACM MM、TPAMI 等会议或期刊发表论文，或有高质量开源项目贡献优先。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13995">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态大模型算法工程师-Keye</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【团队介绍】：快手多模态大模型（Keye）团队，作为行业内少有的「基座研发 + 业务落地」双轮驱动的团队，致力于打通从Data到Product的最后一公里。1、深耕基座：攻坚多模态基座核心架构，探索Scaling Law的极致边界。2、数据为王：构建工业级数据清洗与自动化评测体系，用高质量数据重塑智能。3、进化智能：突破强化学习与推理增强技术，让模型更聪明、更可控。4、全域落地：赋能快手全生态，让AI在电商、商业化、推荐等众多真实场景中创造价值。
+1、依托快手视频社区平台，构建最具影响力的多模态基座模型和开源生态；
+2、参与多模态大模型架构探索，包括但不限于万亿级参数多模态MoE模型的训练、多模态信息编码方案设计、探索更高效的图文/视频/音频等编码方式、多模态表征学习和语义对齐策略的探索、超长上下文模型开发等；
+3、聚焦多模态大模型的架构范式革新，突破当前&quot;语言模型+视觉适配器&quot;拼接式设计的能力天花板，从模型骨干、注意力机制与训练体系的底层重构出发，构建原生支持图像、视频、文本统一表征的新一代多模态架构；
+4、参与高质量训练数据构建，包括从但不限于大规模混合模态预训练数据构建（探索多模态Scaling）、高质量多模态语义对齐数据合成、探索模型自我迭代提升路径、感知能力专家模型研发；
+5、参与图像与视频场景的联合建模与因果视觉表征学习，探索支撑多模态大模型视频理解能力的底层视觉基础设施建设；
+6、参与视觉智能体的场景落地与底层能力建设，探索以视觉感知驱动的自主决策与任务执行范式，涵盖 GUI 操控、视频理解与个人助手等核心应用方向。</p><h3>任职要求</h3><p>1、计算机科学与技术、人工智能等相关专业的硕士或博士；
+2、计算机多模态/NLP/CV相关工作经验，有较强的coding能力；
+3、热衷于通用大模型及新兴技术领域，具备独立开发尖端模型的能力，且拥有在NLP、CV、ML顶尖会议或期刊上发表研究成果的经历者将获得优先考虑；
+4、有良好的数学和编程基础，熟悉至少一种深度学习框架（如 TensorFlow、PyTorch）；
+5、具备良好的沟通能力和团队合作精神。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12836">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态理解算法工程师-【可灵AI】</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、承担视频Caption和参考生成的Instruction职责，特别是在多分镜、高动态、长视频等场景提供精准、全面的描述，最大化弥合文本模态和视频模态之间的差异；
+2、承担Agentic PE的职责，对用户指令进行精准、有效、丰富的改写，从15秒片段效果和分钟级成片两个角度实现最佳的PE，控制视频生成模型产出最符合用户需求的视频内容；
+3、承担Reward model的职责，能够客观、稳定地评价模型画面、运动、合理性等方面的表现，辅助视频模型训练监控、模型版本选择；
+4、承担理解基模后训练的职责，充分利用可灵数据训练最适合团队的多模态理解基座模型，支撑可灵全链路的数据算法、理解算法任务。</p><h3>任职要求</h3><p>1、有音视频理解、多模态Caption、理解生成一体化、理解/生成Benchmark等方向的经验，有大厂实习、顶会论文优先；
+2、有自主开发能力且能用好Agent进行日常工作辅助开发，有多模态理解模型训练经验优先；
+3、重视多模态理解能力在实际工业场景的价值，痴迷业务价值而不是绝对榜单分数；
+4、有理解、生成模型能力水位的客观判断能力，有实际动手验证的能力，对自身能力保持清晰认知；
+5、有良好的协作与沟通能力，能积极与团队进行沟通，能准确、清晰表达自己的需求。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13009">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态理解算法研究员-【可灵AI】</span><span class="m">深圳、北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>深度优化多模态大模型的Caption、表征、改写能力，打造业界第一梯队的多模态大模型，在AIGC技术指标上超过GPT-4o、Gemini Pro等闭源模型，落地于快手各业务线。</p><h3>任职要求</h3><p>1、硕士及以上学历，有LLM和VLM大模型训练经验；有较强的代码动手开发能力，对多模态大模型基座能力提升有较高的热情；
+2、良好的沟通协作能力，能够与团队紧密合作，共同推进项目进展。
+加分项：
+1、在ACM/ICPC、Top Coder、Kaggle等比赛中取得过良好成绩是加分项；
+2、在大模型领域，发表过相关论文是加分项；
+3、多模态大模型的项目经历和实习经历是加分项。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12894">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态理解与生成算法研究员-【可灵AI】</span><span class="m">深圳、上海、北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、探索下一代多模态基础模型，推动理解、推理、规划和生成能力在统一模型中融合；
+2、研究多模态理解与生成一体化架构，构建能够统一处理文本、图像、视频、音频等模态的基础模型；
+3、探索模型从静态感知走向长时序建模、因果推理、世界状态表示和复杂多模态上下文理解的关键技术。</p><h3>任职要求</h3><p>1、有多模态理解、多模态生成、视频生成或大模型相关 hands-on 经验；
+2、对理解生成一体化有技术判断；有大模型训练、调参、debug 经验；
+3、好奇心强，思路灵活，做事靠谱细致，有责任心，愿意挑战前沿开放问题；
+4、熟练使用 AI coding/agent 工具，能够提升研发和实验效率。
+加分项：
+1、有大规模多模态预训练、统一多模态架构经验；研究或实践过多模态统一模型等相关方向；
+2、有顶会论文、开源项目、产品落地或大规模模型训练经验；
+3、在ACM-ICPC、NOI / IOI 等竞赛中取得优秀成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12764">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态大模型数据策略算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 主导可灵生成式大模型的训练数据管线建设，涵盖寻源、采集、处理、实验与分析等环节，为基础模型提供多种模态( 视频/图片/文本) 的 稳定且高质量训练数据；
+2. 涵盖模型训练的各个阶段( 预训练/后训练/RL 等)，针对模型的效果短板，探索基于MLLM的数据合成与增强技术，设计高效生成策略以补充数据缺口，并定义高价值与高质量数据标准，
+3. 建立Data-Model的自动化评估体系，并结合模型评测与数据分析反馈，反向迭代生产线与数据生成策略；
+4. 设计数据链路策略，建设端到端的数据质量、多样性体系及数据标签，与模型算法、数据产品高效协同，探索模型训练数据的最优配比。
+5. 搭建并优化大模型训练的数据工程基建，基于Harness 研发模式，快速开发自动化框架与工具链，并运用数据挖掘、统计分析、大模型工具等方法，提升数据策略的迭代与分析效率。</p><h3>任职要求</h3><p>1. 计算机、人工智能、统计学、数学或相关专业硕士及以上学历，具备机器学习、模型训练及数据处理项目经验，拥有扎实的数据分析与建模基础；
+2. 具备AI数据开发经验，掌握大模型预训练基本原理，熟悉至少一类核心模态（视频/图片/文本）的数据特性；具备扎实的编程基本功，精通python并至少掌握一种工程类编程语言( C++/Java/Go )。
+3. 在数据策略或工程领域，需精通以下任意方向的专业能力：数据策略：深入理解主流大模型架构及训练机制，熟悉各类数据评估算法与数据增强机制；数据工程：熟悉Ray/ Spark / Flink 等分布式计算框架，熟悉vLLM等推理加速框架者优先
+4. 具备数据质量指标设计能力，能够熟练使用机器学习算法优化数据筛选与评估效率，沟通高效，良好的合作精神。
+5. 加分项：对视频生成、计算机视觉或多模态生成技术有深入理解；在大模型相关领域（ACL、EMNLP、NeurIPS等）发表过高水平论文，或在GitHub开源项目（特别涉及合成数据、数据处理）有活跃贡献者优先。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13012">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态大模型数据策略算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 主导生成式大模型的训练数据管线建设，涵盖寻源、采集、处理、实验与分析等环节，为基础模型提供多种模态( 视频/图片/文本) 的稳定且高质量训练数据；
+2. 涵盖模型训练的各个阶段( 预训练/后训练/RL等)，针对模型的效果短板，探索基于MLLM的数据合成与增强技术，设计高效生成策略以补充数据缺口，并定义高价值与高质量数据标准；
+3. 建立Data-Model的自动化评估体系，并结合模型评测与数据分析反馈，反向迭代生产线与数据生成策略；
+4. 设计数据链路策略，建设端到端的数据质量、多样性体系及数据标签，与模型算法、数据产品高效协同，探索模型训练数据的最优配比；
+5. 搭建并优化大模型训练的数据工程基建，基于Harness研发模式，快速开发自动化框架与工具链，并运用数据挖掘、统计分析、大模型工具等方法，提升数据策略的迭代与分析效率。</p><h3>任职要求</h3><p>1. 计算机、人工智能、统计学、数学或相关专业硕士及以上学历，具备机器学习、模型训练及数据处理项目经验，拥有扎实的数据分析与建模基础；
+2. 具备AI数据开发经验，掌握大模型预训练基本原理，熟悉至少一类核心模态（视频/图片/文本）的数据特性；具备扎实的编程基本功，精通python并至少掌握一种工程类编程语言( C++/Java/Go )；
+3. 在数据策略或工程领域，需精通以下任意方向的专业能力：数据策略——深入理解主流大模型架构及训练机制，熟悉各类数据评估算法与数据增强机制；数据工程——熟悉Ray/ Spark / Flink 等分布式计算框架，熟悉vLLM等推理加速框架者优先；
+4. 具备数据质量指标设计能力，能够熟练使用机器学习算法优化数据筛选与评估效率，沟通高效，有良好的合作精神；
+5. 加分项：对视频生成、计算机视觉或多模态生成技术有深入理解；在大模型相关领域（ACL、EMNLP、NeurIPS等）发表过高水平论文，或在GitHub开源项目（特别涉及合成数据、数据处理）有活跃贡献者优先。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13373">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态生成算法研究员-【可灵AI】</span><span class="m">深圳、上海、北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责多模态生成大模型相关算法研究与落地，包括文本、图像、视频、音频、动作、镜头、ID 等多条件驱动的视频生成；
+2、参与模型架构设计、预训练、后训练和实际业务效果提升；
+3、重点解决高质量视频生成中的人物一致性、动作合理性、长时序稳定性、可控生成和低成本高品质生成等问题。</p><h3>任职要求</h3><p>1、熟悉 Flow Matching / DiT / MLLM 等相关技术，有生成模型项目经验；
+2、具备较强代码能力和实验能力，有大模型训练、调参、debug 经验；
+4、对数据、模型结构、loss、训练稳定性和生成效果有较好的判断力；
+5、好奇心强，思路灵活，技术追求高，做事靠谱、细致、有责任心，能够持续跟进前沿技术并落地验证；
+6、熟练使用 AI coding/agent 工具，能够提升研发和实验效率。
+加分项：
+1、有顶会论文、开源项目、产品落地或大规模模型训练经验；
+2、在ACM-ICPC、NOI / IOI 等竞赛中取得优秀成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12762">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态大模型算法工程师</span><span class="m">北京 · 10-09 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、打造最适合短视频、直播、搜索推荐、电商、创作者玩法的多模态大模型，为快手的各项业务提供基座模型技术支持。多模态技术是通向AGI的重要方法和里程碑，期待和更多对多模态技术感兴趣的同学一起打造真正带来价值的模型算法技术；
+2、深度探索多模态大模型的多阶段预训练、监督微调和RLHF等技术，打造业界第一梯队的多模态大模型；
+3、图片、语音、音频和视频多种模态信号的高效处理方式探索，提供对各类信号最精准的理解能力；
+4、混合专家、蒸馏剪枝等兼顾模型性能和效果的技术探索。</p><h3>任职要求</h3><p>1、硕士及以上学历，有较强的代码动手开发能力，对多模态大模型基座能力提升有较高的热情；
+2、熟悉计算机视觉相关的算法和技术，有自然语言处理和大模型训练经验；
+3、良好的沟通协作能力，能够与团队紧密合作，共同推进项目进展。
+加分项：
+1、在ACM/ICPC、Top Coder、Kaggle等比赛中取得过良好成绩是加分项；
+2、在大模型领域，发表过相关论文是加分项；
+3、多模态大模型的项目经历和实习经历是加分项。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13026">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态理解算法研究员</span><span class="m">深圳、北京 · 10-09 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、承担视频Caption和参考生成的Instruction职责，特别是在多分镜、高动态、长视频等场景提供精准、全面的描述，最大化弥合文本模态和视频模态之间的差异；
+2、承担Agentic PE的职责，对用户指令进行精准、有效、丰富的改写，从15秒片段效果和分钟级成片两个角度实现最佳的PE，控制视频生成模型产出最符合用户需求的视频内容；
+3、承担Reward model的职责，能够客观、稳定地评价模型画面、运动、合理性等方面的表现，辅助视频模型训练监控、模型版本选择；
+4、承担理解基模后训练的职责，充分利用可灵数据训练最适合团队的多模态理解基座模型，支撑可灵全链路的数据算法、理解算法任务。</p><h3>任职要求</h3><p>1、有音视频理解、多模态Caption、理解生成一体化、理解/生成Benchmark等方向的经验，有大厂实习、顶会论文优先；
+2、有自主开发能力且能用好Agent进行日常工作辅助开发，有多模态理解模型训练经验优先；
+3、重视多模态理解能力在实际工业场景的价值，痴迷业务价值而不是绝对榜单分数；
+4、有理解、生成模型能力水位的客观判断能力，有实际动手验证的能力，对自身能力保持清晰认知；
+5、有良好的协作与沟通能力，能积极与团队进行沟通，能准确、清晰表达自己的需求。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13406">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态大模型算法工程师-Keye-【可灵AI专项】</span><span class="m">北京 · 09-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>团队介绍：Keye多模态大模型团队，作为「基座研发 + 产品赋能」双轮驱动的团队，致力于打通从Data到Product的最后一公里，打造最强的多模态理解底座。
+1、深耕基座：攻坚多模态基座核心架构，探索Scaling Law的极致边界；
+2、数据为王：构建工业级数据清洗与自动化评测体系，用高质量数据重塑智能；
+3、进化智能：突破强化学习与推理增强技术，让模型更聪明、更可控。
+依托可灵生态，与团队一同打造最具行业竞争力的多模态基座模型。我们的研发体系覆盖大模型全链路，候选人的工作方向涵盖但不限于以下三大核心领域——你可以结合自身的学术背景与技术兴趣自由选择，我们也非常鼓励跨界探索与能力延展：
+方向一：多模态基座与预训练算法方向
+聚焦架构范式革新，突破当前&quot;语言模型+视觉适配器&quot;拼接式设计的能力天花板，构建原生支持图/文/音/视频统一表征的新一代多模态架构；
+参与万亿级参数多模态MoE模型的训练探索与稀疏注意力机制优化，设计更高效的跨模态语义对齐策略与超长上下文（Ultra-long Context）模型；
+参与图像与视频场景的联合建模与因果视觉表征学习，探索并在超大规模集群训练中验证多模态Scaling Laws。
+方向二：多模态后训练与智能体（Agent）演进方向
+参与前沿模型后训练方法（如RLHF、PPO、OPD等对齐技术）的研究与工程实践，持续提升模型在复杂任务中的推理、理解与泛化能力；
+探索多模态智能体在复杂场景中的能力落地，涵盖工具调用（Tool-use）、代码执行、信息检索、长程规划与闭环决策；
+参与视觉智能体的底层能力建设，探索以视觉感知驱动的自主决策与任务执行范式（涵盖GUI操控、视频理解与个人助手等），并参与构建自动化迭代体系。
+方向三：多模态数据治理与飞轮建设方向
+参与大规模混合模态数据的深度治理，负责高精度OCR、高质量Caption生成及语义对齐数据合成，从根本上解决数据噪声与模态错位难题；
+围绕智能Agent的推理规划与多轮交互，拆解真实场景需求，构建高质量的推理、决策与指令交互数据集；
+参与商业化数据Pipeline与“用户交互-数据飞轮”闭环建设，通过高质量训练数据构建（Data-centric AI），实现完全数据驱动的模型自适应演进。</p><h3>任职要求</h3><p>1、计算机科学与技术、人工智能、自动化、数学等相关专业的应届硕士或博士；
+2、具备扎实的计算机多模态/NLP/CV理论基础，有良好的数学底子，精通Python编程，具备极强的独立开发与调试能力；
+3、熟悉至少一种主流深度学习或分布式训练框架（如 PyTorch、Megatron-LM、DeepSpeed 等）；
+4、热衷于通用大模型（AGI）及新兴技术领域，深度认同数据与算法双轮驱动的价值，具备良好的沟通协作能力与极客精神。
+加分项：
+1、在 NeurIPS、ICLR、ICML、CVPR、ACL 等人工智能顶级会议或期刊上作为核心作者发表过高质量研究论文；
+2、在 NOI、ACM-ICPC 等国内外知名算法竞赛中取得优异成绩；
+3、有深度参与知名开源大模型项目经历，或在多模态、RLHF、Agent等前沿方向有扎实的实战经验。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13006">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态推理模型算法工程师</span><span class="m">北京 · 08-25 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责研发业界领先的多模态推理模型，重点研究多模态理解与生成的统一推理架构，探索并推动多模态综合推理能力的边界突破；
+2、探索创新性机制设计，包括但不限于强化学习的奖励机制、长期记忆机制与高效的在线/持续学习范式；
+3、研究如何在统一的状态空间中有效整合、抽象与利用不同模态（图像、视频、语言、等）信息，完成复杂推理任务；
+4、发表高水平学术论文和开源项目，提升团队在学术界、工业界的技术影响力。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、人工智能、数学等相关专业；
+2、具备扎实的机器学习、强化学习和多模态学习基础，熟悉 DiT、Flow matching、DPO/PPO/GRPO等相关技术；
+3、强烈的自驱力、探索精神和批判性思维，具备系统性解决复杂工程与科学问题的能力。
+加分项：
+1、有相关研究或者项目经验；
+2、有相关方向高水平期刊或会议论文发表经历；
+3、做过有影响力的开源项目或产品。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9637">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态生成算法工程师</span><span class="m">深圳、北京 · 08-25 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责研发业界领先的多模态理解与生成统一架构，从事基础模型预训练、监督微调、架构优化等，重点探索感知（理解）与生成能力的协同演进与边界突破；
+2、研究高效建模多模态数据（图像、文本、视频等）的新范式，提升模型的信息表征、理解与联合生成能力；
+3、探索并研发更高效的视觉编码器，构建更强大的多模态模型基础；
+4、发表高水平学术论文和开源项目，提升团队在学术界、工业界的技术影响力。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、人工智能、数学等相关专业；
+2、具备扎实的计算机视觉、深度学习和多模态学习基础，熟悉 Diffusion、Flow matching、DiT、VLM等相关技术；
+3、自我驱动力强，具有优秀的分析和解决问题的能力。
+加分项：
+1、有相关研究或者项目经验；
+2、有相关方向高水平期刊或会议论文发表经历；
+3、做过有影响力的开源项目或产品。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9636">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态大模型算法工程师-AIGC</span><span class="m">北京 · 08-25 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、了解多模态内容生成相关算法，如Diffusion Models 、 GAN 、 VAE 、 Autoregressive Models等，包括但不限文本/图像/视频生成，解决生成质量、多样性、可控性、采样效率、可编辑等问题；
+2、了解端到端多模态生成式大模型的框架设计、训练与调优，构建基于生成模型的AI系统，推动多模态AIGC在快手各业务场景的产品化落地。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、数学或统计学相关专业；
+2、对基于图像、视频、语音、文本等模态内容的各类算法有一定的理解，并在如下一个或多个相关方向有相关研究经历： GAN 、扩散模型、图像生成、多模态等；
+3、具备扎实的编程功底，熟悉 Pytorch 等主流深度学习框架，熟练使用 C ++/ Python 等至少一种编程语言，熟悉 Linux 开发环境；
+4、对学术前沿有浓厚兴趣，时刻跟进技术前沿，并善于利用各类技术解决复杂的实际问题，有良好的沟通表达能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9500">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态内容理解算法工程师</span><span class="m">北京 · 08-12 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、对图像、视频、文本等进行深入的语义理解，支持短视频、直播、搜索、推荐、商业化等业务需求；
+2、推进视觉相关基础技术研发，如大规模分类、检测、分割、序列识别、人脸、自监督学习、内容生成、模型压缩和优化等。</p><h3>任职要求</h3><p>1、硕士及以上学历，对视觉前沿技术有浓厚兴趣，时刻跟进学术界最新进展，有自己独立的想法和判断，能够快速复现学术界最新成果；
+2、编程基础扎实，熟练掌握C++/Python，熟悉Pytorch、TensorFlow等训练框架；
+3、对常见的模型结构、建模方法、Loss设计、优化策略、训练过程中的重要tricks等有深入了解和丰富经验；
+4、工作认真努力，有很好的沟通能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9983">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态大模型算法工程师</span><span class="m">北京 · 03-18 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、打造最适合短视频、直播、搜索推荐、电商、创作者玩法的多模态大模型，为快手的各项业务提供基座模型技术支持。多模态技术是通向AGI的重要方法和里程碑，期待和更多对多模态技术感兴趣的同学一起打造真正带来价值的模型算法技术；
+2、深度探索多模态大模型的多阶段预训练、监督微调和RLHF等技术，打造业界第一梯队的多模态大模型，赶超GPT-4o、Gemini Pro等闭源模型的实际使用效果；
+3、图片、语音、音频和视频多种模态信号的高效处理方式探索，提供对各类信号最精准的理解能力；
+4、混合专家、蒸馏剪枝等兼顾模型性能和效果的技术探索。</p><h3>任职要求</h3><p>1、硕士及以上学历，有较强的代码动手开发能力，对多模态大模型基座能力提升有较高的热情；
+2、熟悉计算机视觉相关的算法和技术，有自然语言处理和大模型训练经验；
+3、良好的沟通协作能力，能够与团队紧密合作，共同推进项目进展；
+加分项：
+1、在ACM/ICPC、Top Coder、Kaggle等比赛中取得过良好成绩是加分项；
+2、在大模型领域，发表过相关论文是加分项；
+3、多模态大模型的项目经历和实习经历是加分项。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9484">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态模型优化算法工程师</span><span class="m">上海、北京 · 03-16 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、diffusion步数压缩：探索diffusion模型的one-step / few-steps的无损蒸馏算法，跟进学术界最前沿的few-steps diffusion算法，包括但不限于consistency modeling、shortcut、score distillation等方案，打造实时化的极致高效可灵/可图大模型；
+2、高效attention设计：探索新一代注意力实现机制，包括但不限于sparse/quant-attention、linear-attention、mamba等，打破attention计算平方复杂度限制，解决长序列视频/图像引起的推理挑战，推进可灵/可图大模型的长序列场景下的推理极限；
+3、强化反馈优化：应用DPO/GRPO/PPO等强化学习的手段调优模型效果，在模型压缩的前置条件下探索强化学习与压缩算法的化学反应，推动可灵/可图大模型的效果-效率帕雷托前沿新SOTA。</p><h3>任职要求</h3><p>1、硕士及以上学历，数学、计算机、自动化、电子等专业优先；
+2、熟练掌握diffusion原理，具备公式推理和证明的能力，有过相关的研究经历和实践经验者优化；
+3、熟悉transformer结构及其变种，熟悉attention的设计和多种变种实现，掌握triton；
+4、熟练掌握线性线数、概率论、信息论、凸优化等基础知识；了解矩阵论、随机过程等；
+5、有较强的自驱力和学习力，对生成式模型有强烈的兴趣。
+加分项：
+1、有NIPS/ICLR/ICML/CVPR等顶会发表经历者优先；
+2、有强化学习的实践经历优化。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=10044">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态模型优化算法工程师</span><span class="m">上海、北京 · 03-16 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、diffusion步数压缩: 探索 diffusion 模型的 one-step / few-steps 的无损蒸馏算法, 跟进学术界最前沿的 few-steps diffusion 算法, 包括但不限于 consistency modeling, shortcut, score distillation等方案, 打造实时化的极致高效可灵/可图 大模型；
+2、高效attention设计: 探索新一代注意力实现机制, 包括但不限于: sparse/quant-attention, linear-attention, mamba等, 打破 attention 计算平方复杂度限制, 解决 长序列视频/图像 引起的推理挑战, 推进 可灵/可图 大模型的长序列场景下的推理极限；
+3、强化反馈优化: 应用 DPO/GRPO/PPO 等强化学习的手段调优模型效果, 在模型压缩的前置条件下探索强化学习与压缩算法的化学反应, 推动 可灵/可图 大模型的效果-效率帕雷托前沿新SOTA。</p><h3>任职要求</h3><p>1、 硕士及以上学历，数学、计算机、自动化、电子等专业优先；
+2、 熟练掌握diffusion原理, 具备公式推理和证明的能力, 有过相关的研究经历和实践经验者优化；
+3、 熟悉transformer结构及其变种, 熟悉attention的设计和多种变种实现, 掌握triton；
+4、数理要求: 熟练掌握 线性线数, 概率论, 信息论, 凸优化等基础知识; 了解矩阵论, 随机过程等；
+5、有较强的自驱力和学习力，对生成式模型有强烈的兴趣。
+加分项：
+1、有 NIPS/ICLR/ICML/CVPR 等顶会发表经历者优先；
+2、有强化学习的实践经历优化。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9647">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】多模态内容理解算法工程师</span><span class="m">北京 · 03-12 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、对图像、视频、文本等进行深入的语义理解，支持短视频、直播、风控、搜索、推荐、商业化等业务需求；
+2、推进视觉相关基础技术研发，如大规模分类、检测、分割、序列识别、人脸、自监督学习、内容生成、模型压缩和优化等。</p><h3>任职要求</h3><p>1、硕士及以上学历，对视觉前沿技术有浓厚兴趣，时刻跟进学术界最新进展，有自己独立的想法和判断，能够快速复现学术界最新成果；
+2、编程基础扎实，熟练掌握C++/Python，熟悉Pytorch、TensorFlow等训练框架；
+3、对常见的模型结构、建模方法、Loss设计、优化策略、训练过程中的重要tricks等有深入了解和丰富经验；
+4、工作认真努力，有很好的沟通能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9476">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态大模型算法工程师</span><span class="m">北京 · 03-12 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、打造最适合短视频、直播、搜索推荐、电商、创作者玩法的多模态大模型，为快手的各项业务提供基座模型技术支持。多模态技术是通向AGI的重要方法和里程碑，期待和更多对多模态技术感兴趣的同学一起打造真正带来价值的模型算法技术；
+2、深度探索多模态大模型的多阶段预训练、监督微调和RLHF等技术，打造业界第一梯队的多模态大模型，赶超GPT-4o、Gemini Pro等闭源模型的实际使用效果；
+3、图片、语音、音频和视频多种模态信号的高效处理方式探索，提供对各类信号最精准的理解能力；
+4、混合专家、蒸馏剪枝等兼顾模型性能和效果的技术探索。</p><h3>任职要求</h3><p>1、硕士及以上学历，有较强的代码动手开发能力，对多模态大模型基座能力提升有较高的热情；
+2、熟悉计算机视觉相关的算法和技术，有自然语言处理和大模型训练经验；
+3、良好的沟通协作能力，能够与团队紧密合作，共同推进项目进展。
+加分项：
+1、在ACM/ICPC、Top Coder、Kaggle等比赛中取得过良好成绩是加分项；
+2、在大模型领域，发表过相关论文是加分项；
+3、多模态大模型的项目经历和实习经历是加分项。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9981">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c2"><header><h2>小红书</h2><span>26 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">【REDstar】NLP/多模态算法工程师-交易/商业化治理</span><span class="m">北京市，上海市，杭州市 · 11-16 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责CV、NLP、多模态相关算法研发，面向包括但不限于多模态分类、图像分类、文本分类、目标检测、图像分割、内容质量评价等，在小红书商业/交易治理体系中落地风险防控能力；
+2、负责包括但不限于预训练、SFT、RL、多模态表征、Agent搭建、AutoPE、RAG等，持续优化并时刻保持技术先进性，将业界SOTA模型落地并改进以获取审核业务线上收益；
+3、负责算法和系统迭代与进化，能够深入小红书业务场景，结合实际需求进行技术落地和创新。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、电子信息、自动控制、软件工程、数学等相关专业；
+2、优秀的问题解决能力，对新技术保持好奇，敢于挑战高难度，善于提出解决方案并快速验证；
+3、熟练掌握TensorFlow、PyTorch、Caffe、MXNet等深度学习框架中至少一种；
+4、具备优秀的编程能力和经验，熟悉Python、C/C++、Java等编程语言，具有扎实的数据结构和算法功底；
+5、具备优秀的研究和创新能力，在CVPR、ICCV、ECCV、NIPS、ICLR、ICML、AAAI、KDD、SIGGRAPH等会议上发表过论文者优先，参加过ACM竞赛者优先。</p><a href="https://job.xiaohongshu.com/campus/position#20870">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】NLP/多模态算法工程师-交易/商业化治理</span><span class="m">北京市，上海市，杭州市 · 11-16 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责CV、NLP、多模态相关算法研发，面向包括但不限于多模态分类、图像分类、文本分类、目标检测、图像分割、内容质量评价等，在小红书商业/交易治理体系中落地风险防控能力；
+2、负责包括但不限于预训练、SFT、RL、多模态表征、Agent搭建、AutoPE、RAG等，持续优化并时刻保持技术先进性，将业界SOTA模型落地并改进以获取审核业务线上收益；
+3、负责算法和系统迭代与进化，能够深入小红书业务场景，结合实际需求进行技术落地和创新。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、电子信息、自动控制、软件工程、数学等相关专业；
+2、优秀的问题解决能力，对新技术保持好奇，敢于挑战高难度，善于提出解决方案并快速验证；
+3、熟练掌握TensorFlow、PyTorch、Caffe、MXNet等深度学习框架中至少一种；
+4、具备优秀的编程能力和经验，熟悉Python、C/C++、Java等编程语言，具有扎实的数据结构和算法功底；
+5、具备优秀的研究和创新能力，在CVPR、ICCV、ECCV、NIPS、ICLR、ICML、AAAI、KDD、SIGGRAPH等会议上发表过论文者优先，参加过ACM竞赛者优先。</p><a href="https://job.xiaohongshu.com/campus/position#20999">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】多模态基础模型算法工程师</span><span class="m">北京市，上海市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>构建多模态大模型“感知-推理-交互”的全链路能力，定义小红书下一代多模态智能基座。你将主导多模态大模型从持续预训练（CPT）、中期训练（Mid-training）、监督微调（SFT）、强化学习（RL）到在线策略蒸馏（OPD / MOPD）的全流程训练与架构演进，并赋能点点、搜索、广告、推荐、电商、智能创作等业务场景。
+1、CPT &amp; Mid-training：负责 VLM 的持续预训练与中期训练，注入垂域知识、缓解灾难性遗忘，通过原生分辨率、长上下文扩展与数据配比（Data Mixing）夯实模型基础能力；
+2、SFT &amp; Alignment：负责 VLM 的 SFT 与高质量多模态指令数据构建，治理模型幻觉，提升指令遵循鲁棒性；
+3、Reasoning &amp; RL：主导 VLM 的强化学习流程，并构建多模态 Reward Model，探索 Long-thought 推理范式，提升复杂视觉、数学、逻辑及长视频序列下的深度推理能力；
+4、OPD &amp; MOPD：在 RL 之后引入在线策略蒸馏，与多专家在线策略蒸馏，将多个专家模型能力高效融合蒸馏至统一基座，兼顾多任务能力与推理效率；
+5、超长视频理解：研发高效的长视频编码、视觉 Token 压缩与时空注意力机制，优化多帧推理效率，挖掘视频与直播流的时序及交互语义；
+6、多模态 Agent：研发具备视觉反馈与自我修正能力的智能体，构建 VLM 工具调用与任务规划、执行、验证闭环。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、人工智能、数学等相关专业；
+2、深入理解 Transformer 架构与大模型训练全流程（CPT / Mid-train / SFT / RL / OPD），熟悉主流 VLM 架构（如 LLaVA、Qwen-VL、InternVL 等）；
+3、在大规模预训练、CPT、Mid-training、SFT、RL、在线策略蒸馏（OPD / MOPD）、MLLM 推理优化、视觉对齐或视频理解等方向有深入研究或落地经验；
+4、精通 PyTorch，熟悉 Megatron-LM、DeepSpeed 等分布式训练框架，具备百亿/千亿级参数模型的大规模训练经验，熟悉 veRL、OpenRLHF 者优先；
+5、对多模态数据的构建、清洗及 Data Mixing 策略有独特见解，理解各训练阶段的数据需求差异；
+6、熟悉主流多模态评测集，能构建垂直领域 Benchmark，并以评测结果反向驱动数据与算法迭代。
+【加分项】：
+1、在 CVPR、ICCV、ECCV、NeurIPS、ICML、ICLR、ACL 等顶会发表过高影响力论文，或在知名开源多模态项目中有核心贡献。</p><a href="https://job.xiaohongshu.com/campus/position#20887">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】视觉与多模态算法工程师</span><span class="m">北京市，上海市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>创作发布算法方向：
+1、负责图像编辑、视频剪辑、文案创作等内容创作相关算法的研发与优化，并在社区发布、商业化&amp;电商创作等场景落地；
+2、跟进多模态大模型内容生产、Agent等相关技术的最新发展趋势，保持技术先进性，持续探索Agent在内容创作方面的潜力。
+AIGC生成方向：
+1、负责多模态生成/GAN/Diffusion等图像&amp;视频生成相关算法研发与优化， 跟进该领域的前沿技术研究；
+2、参与技术规划制定， 跟进图像&amp;视频生成技术最新发展趋势，打造业内领先的多模态内容生成能力；
+3、推动技术在图像&amp;视频编辑/素材生成/辅助设计/特效等领域的应用。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业优先；
+2、熟练掌握TensorFlow/PyTorch/Caffe/ MXNet等深度学习框架中的至少一种；
+3、具备优秀的编程能力和经验，熟悉Python、C/C++、Java等编程语言，对数据结构和算法设计有较为深刻的理解；
+4、优秀的分析和解决问题能力，对新技术充满好奇，敢于挑战高难度，善于提出解决方案并快速验证；
+5、了解Diffusion、LLM、VLM、Agent等前沿技术；
+6、关注多模态与文本生成领域的业界最新动态，如Qwen、Gemini、Claude、chatGPT等；
+7、具备优秀的研究和创新能力，在NIPS/AAAI/ICML/ICLR/CVPR/TPAMI/ACL/EMNLP/ECCV/ICCV/SIGGRAPH等会议/期刊上发表过论文者或参加过ACM竞赛者优先。</p><a href="https://job.xiaohongshu.com/campus/position#20878">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】电商算法工程师-内容理解方向</span><span class="m">北京市，上海市，杭州市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与小红书大商业内容理解体系构建，包括电商、广告、直播和笔记多模态信息结构化算法建设和应用；
+2、参与小红书商业知识图谱体系建设，以LLM为核心能力建设品牌、商品类目、属性、SPU、比价体系；
+3、参与供应链上下游平台算法建设，基于小红书社区数据挖掘商机、供给源、流程趋势，并落地到B端系统工具；
+4、基于交易&amp;广告业务，进行模型和算法创新，与各部门（包括并不限于产品，业务中台等）的同事一起深入交流合作，打造业界领先的内容理解算法。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、自动化、统计、数学等相关专业；
+2、电商和内容平台相关算法经验者优先，工业场景MLLM相关算法经验者优先；
+3、出色的机器学习、CV、NLP和数据挖掘基础，熟练使用Python/Java中的一门或多门语言；能够使用SQL进行数据分析；
+4、具备优秀的研究和创新能力，在CVPR/ACL/NIPS/ICML/KDD等会议上发表过论文者优先；参加过ACM竞赛者优先。</p><a href="https://job.xiaohongshu.com/campus/position#20885">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】多模态基础模型算法工程师</span><span class="m">北京市，上海市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>构建多模态大模型“感知-推理-交互”的全链路能力，定义小红书下一代多模态智能基座。你将主导多模态大模型从持续预训练（CPT）、中期训练（Mid-training）、监督微调（SFT）、强化学习（RL）到在线策略蒸馏（OPD / MOPD）的全流程训练与架构演进，并赋能点点、搜索、广告、推荐、电商、智能创作等业务场景。
+1、CPT &amp; Mid-training：负责 VLM 的持续预训练与中期训练，注入垂域知识、缓解灾难性遗忘，通过原生分辨率、长上下文扩展与数据配比（Data Mixing）夯实模型基础能力；
+2、SFT &amp; Alignment：负责 VLM 的 SFT 与高质量多模态指令数据构建，治理模型幻觉，提升指令遵循鲁棒性；
+3、Reasoning &amp; RL：主导 VLM 的强化学习流程，并构建多模态 Reward Model，探索 Long-thought 推理范式，提升复杂视觉、数学、逻辑及长视频序列下的深度推理能力；
+4、OPD &amp; MOPD：在 RL 之后引入在线策略蒸馏，与多专家在线策略蒸馏，将多个专家模型能力高效融合蒸馏至统一基座，兼顾多任务能力与推理效率；
+5、超长视频理解：研发高效的长视频编码、视觉 Token 压缩与时空注意力机制，优化多帧推理效率，挖掘视频与直播流的时序及交互语义；
+6、多模态 Agent：研发具备视觉反馈与自我修正能力的智能体，构建 VLM 工具调用与任务规划、执行、验证闭环。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、人工智能、数学等相关专业；
+2、深入理解 Transformer 架构与大模型训练全流程（CPT / Mid-train / SFT / RL / OPD），熟悉主流 VLM 架构（如 LLaVA、Qwen-VL、InternVL 等）；
+3、在大规模预训练、CPT、Mid-training、SFT、RL、在线策略蒸馏（OPD / MOPD）、MLLM 推理优化、视觉对齐或视频理解等方向有深入研究或落地经验；
+4、精通 PyTorch，熟悉 Megatron-LM、DeepSpeed 等分布式训练框架，具备百亿/千亿级参数模型的大规模训练经验，熟悉 veRL、OpenRLHF 者优先；
+5、对多模态数据的构建、清洗及 Data Mixing 策略有独特见解，理解各训练阶段的数据需求差异；
+6、熟悉主流多模态评测集，能构建垂直领域 Benchmark，并以评测结果反向驱动数据与算法迭代。
+【加分项】：
+1、在 CVPR、ICCV、ECCV、NeurIPS、ICML、ICLR、ACL 等顶会发表过高影响力论文，或在知名开源多模态项目中有核心贡献。</p><a href="https://job.xiaohongshu.com/campus/position#21008">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】视觉与多模态算法工程师</span><span class="m">北京市，上海市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>创作发布算法方向：
+1、负责图像编辑、视频剪辑、文案创作等内容创作相关算法的研发与优化，并在社区发布、商业化&amp;电商创作等场景落地；
+2、跟进多模态大模型内容生产、Agent等相关技术的最新发展趋势，保持技术先进性，持续探索Agent在内容创作方面的潜力。
+AIGC生成方向：
+1、负责多模态生成/GAN/Diffusion等图像&amp;视频生成相关算法研发与优化， 跟进该领域的前沿技术研究；
+2、参与技术规划制定， 跟进图像&amp;视频生成技术最新发展趋势，打造业内领先的多模态内容生成能力；
+3、推动技术在图像&amp;视频编辑/素材生成/辅助设计/特效等领域的应用。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业优先；
+2、熟练掌握TensorFlow/PyTorch/Caffe/ MXNet等深度学习框架中的至少一种；
+3、具备优秀的编程能力和经验，熟悉Python、C/C++、Java等编程语言，对数据结构和算法设计有较为深刻的理解；
+4、优秀的分析和解决问题能力，对新技术充满好奇，敢于挑战高难度，善于提出解决方案并快速验证；
+5、了解Diffusion、LLM、VLM、Agent等前沿技术；
+6、关注多模态与文本生成领域的业界最新动态，如Qwen、Gemini、Claude、chatGPT等；
+7、具备优秀的研究和创新能力，在NIPS/AAAI/ICML/ICLR/CVPR/TPAMI/ACL/EMNLP/ECCV/ICCV/SIGGRAPH等会议/期刊上发表过论文者或参加过ACM竞赛者优先。</p><a href="https://job.xiaohongshu.com/campus/position#21269">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】NLP/多模态内容理解算法工程师-社区治理</span><span class="m">北京市，上海市，杭州市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责优化小红书的生态算法，利用多模态内容理解、CV以及NLP相关能力，解决笔记、账号、交易、直播等多体裁的生态风险，融合笔记/视频/评论/账号等多维度特征，建设并优化生态领域的大模型；
+2、负责包括但不限于大规模预训练模型、数据挖掘，内容理解特征体系，持续优化并时刻保持技术先进性，将业界SOTA模型落地并改进以获取生态业务线上收益；
+3、紧密关注相关领域业界的最新进展，通过LLM/MLLM建模达成生态业务的机审能力，提高机审风险覆盖度和风险召回能力；
+4、建立并优化生态场景下的内容理解特征体系，完善相关技术基建，并实现对外服务能力。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业优先；
+2、熟悉 Python，具有较强的代码开发和实现能力，熟练掌握Pytorch、TensorFlow等至少1种主流深度学习框架，能熟练使用 Linux；
+3、在多模态大模型领域的国际顶级会议中以第一作者发表过高水平论文、有多模态大模型训练调优、Agent、RAG、PE等经历者优先；
+4、具备良好的学术视野和开拓精神，勇于钻研新技术，能主动思考、主动作为、主动反馈；有很强的好奇心与执行力。</p><a href="https://job.xiaohongshu.com/campus/position#20882">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】电商算法工程师-内容理解方向</span><span class="m">北京市，上海市，杭州市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与小红书大商业内容理解体系构建，包括电商、广告、直播和笔记多模态信息结构化算法建设和应用；
+2、参与小红书商业知识图谱体系建设，以LLM为核心能力建设品牌、商品类目、属性、SPU、比价体系；
+3、参与供应链上下游平台算法建设，基于小红书社区数据挖掘商机、供给源、流程趋势，并落地到B端系统工具；
+4、基于交易&amp;广告业务，进行模型和算法创新，与各部门（包括并不限于产品，业务中台等）的同事一起深入交流合作，打造业界领先的内容理解算法。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、自动化、统计、数学等相关专业；
+2、电商和内容平台相关算法经验者优先，工业场景MLLM相关算法经验者优先；
+3、出色的机器学习、CV、NLP和数据挖掘基础，熟练使用Python/Java中的一门或多门语言；能够使用SQL进行数据分析；
+4、具备优秀的研究和创新能力，在CVPR/ACL/NIPS/ICML/KDD等会议上发表过论文者优先；参加过ACM竞赛者优先。</p><a href="https://job.xiaohongshu.com/campus/position#21003">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】NLP/多模态内容理解算法工程师-社区治理</span><span class="m">北京市，上海市，杭州市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责优化小红书的生态算法，利用多模态内容理解、CV以及NLP相关能力，解决笔记、账号、交易、直播等多体裁的生态风险，融合笔记/视频/评论/账号等多维度特征，建设并优化生态领域的大模型；
+2、负责包括但不限于大规模预训练模型、数据挖掘，内容理解特征体系，持续优化并时刻保持技术先进性，将业界SOTA模型落地并改进以获取生态业务线上收益；
+3、紧密关注相关领域业界的最新进展，通过LLM/MLLM建模达成生态业务的机审能力，提高机审风险覆盖度和风险召回能力；
+4、建立并优化生态场景下的内容理解特征体系，完善相关技术基建，并实现对外服务能力。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业优先；
+2、熟悉 Python，具有较强的代码开发和实现能力，熟练掌握Pytorch、TensorFlow等至少1种主流深度学习框架，能熟练使用 Linux；
+3、在多模态大模型领域的国际顶级会议中以第一作者发表过高水平论文、有多模态大模型训练调优、Agent、RAG、PE等经历者优先；
+4、具备良好的学术视野和开拓精神，勇于钻研新技术，能主动思考、主动作为、主动反馈；有很强的好奇心与执行力。</p><a href="https://job.xiaohongshu.com/campus/position#21293">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】流式视频理解算法工程师</span><span class="m">北京市，上海市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>我们正在探索流式视频大模型方向，致力于让模型从“看完再回答”进化为“边看边理解、实时响应”。你将参与构建面向真实世界的实时视觉理解系统，覆盖视频流理解、长时记忆建模、主动式交互等前沿课题，推动模型能力从离线走向在线。
+流式理解核心研究：
+1、跟踪流式视频理解领域最新进展，输出技术洞察，探索适合业务场景的创新方案；
+2、设计高效的流式推理架构，包括记忆压缩模块、时序建模与位置编码方案；
+3、构建流式视频训练数据集与训练框架，探索离线到在线的课程学习范式；
+视频内容理解落地：
+4、研发视频内容理解模型：画质和美学可归因评价、高光识别、场景分类、精彩度评分、人物/物体语义理解；
+5、实现智能切片能力：从直播流/点播视频中自动定位高光片段，支持实时和离线两种模式；
+6、将内容理解能力接入产品链路，包括直播封面、运营挖掘工具、创作者笔记诊断报告等；
+评测与工程：
+7、构建流式视频评测体系，与人工标注对比，持续提升模型精度；
+8、优化端到端推理延迟、显存占用和吞吐量，满足实时性要求。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、电子工程、自动化等相关专业；
+2、扎实的深度学习基础，熟悉 Transformer 架构、注意力机制、位置编码等核心技术；
+3、熟练掌握 PyTorch，具备独立复现/改进论文的能力；
+4、良好的代码工程能力，有大规模分布式训练经验优先。
+专业方向（满足其中一项即可）：
+1、有视频理解相关研究或工程经验（VideoLLM、MLLM、Video QA、时序建模等），能独立跟进前沿工作；
+2、有长上下文/高效推理相关经验（KV Cache 优化、序列并行、量化、蒸馏等）；
+3、有在线视频理解或流式系统相关经验，了解实时推理系统架构设计。
+【加分项】：
+1、在 CVPR、ICCV、NeurIPS、ICLR、ECCV、AAAI 等顶会发表过相关论文，有一作或重要贡献者优先；
+2、有直播/视频平台内容理解落地经验（高光识别、精华切片、封面生成等具体场景）；
+3、了解视频编解码基础（I/P/B 帧、码率、分辨率），能理解多媒体系统上下文；
+4、熟悉 RL/RLHF 在多模态模型上的应用。</p><a href="https://job.xiaohongshu.com/campus/position#21818">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】大模型算法工程师-内容理解方向</span><span class="m">北京市，上海市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>深耕用户与内容理解，推动 VLM 在社区发布、推荐、商业化、增长等核心业务场景的深度应用，解决实际业务难题。
+1、负责VLM 相关算法的研发和落地，重点包括内容多模态理解、用户兴趣建模、生成式建模等任务；
+2、对技术问题进行深入分析、算法设计、研发及推动上线，持续提升业务效果。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业；
+2、熟悉内容理解相关算法，了解内容理解在推荐系统中的落地链路；有相关项目/实习/科研经验，有增长场景实践经验者优先；
+3、具备强烈的业务 sense，善于将业务问题转化为算法建模问题，自驱力强，能在快速变化的技术环境中持续学习和迭代；
+4、对大模型技术有深入理解，熟悉 Pre-train、SFT、RLHF 等训练范式，能快速将前沿 LLM/VLM 技术落地到实际业务问题；
+5、有较强的研究能力，在 SIGIR、RecSys、KDD、WWW、NeurIPS、ICML、ICLR、CVPR 等顶会发表过推荐或内容理解相关论文者优先。</p><a href="https://job.xiaohongshu.com/campus/position#21815">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】Dots-视觉语言大模型算法工程师</span><span class="m">北京市，上海市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>参与视觉语言大模型的研发工作，主要负责：
+1、VIT Pretrain：提升模型感知能力，包括但不限于 Vision Encoder Pretrain 算法架构 / 多种感知能力数据构建；
+2、VLM Pretrain：提升 vlm pretrain 的通用能力，探索各种不同训练阶段设计 / 不同通用数据的组织形式；
+3、VLM Post train：提升 vlm 通用能力，包括但不限于合成数据 / RL 等方法；
+4、生成理解统一：探索生成理解统一架构，同时提升理解和生成能力。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业方向优先；
+2、熟练掌握代码的阅读和编写技术能力，善于利用AI编程，在python和pytorch技术栈上有深入实践；
+3、在视觉领域有深入的实践和理解，有一定深度的专业认知和见解；
+4、具备良好的科学研发习惯、问题定义能力和对细节的敏锐度。</p><a href="https://job.xiaohongshu.com/campus/position#16671">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】流式视频理解算法工程师</span><span class="m">北京市，上海市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>我们正在探索流式视频大模型方向，致力于让模型从“看完再回答”进化为“边看边理解、实时响应”。你将参与构建面向真实世界的实时视觉理解系统，覆盖视频流理解、长时记忆建模、主动式交互等前沿课题，推动模型能力从离线走向在线。
+流式理解核心研究：
+1、跟踪流式视频理解领域最新进展，输出技术洞察，探索适合业务场景的创新方案；
+2、设计高效的流式推理架构，包括记忆压缩模块、时序建模与位置编码方案；
+3、构建流式视频训练数据集与训练框架，探索离线到在线的课程学习范式；
+视频内容理解落地：
+4、研发视频内容理解模型：画质和美学可归因评价、高光识别、场景分类、精彩度评分、人物/物体语义理解；
+5、实现智能切片能力：从直播流/点播视频中自动定位高光片段，支持实时和离线两种模式；
+6、将内容理解能力接入产品链路，包括直播封面、运营挖掘工具、创作者笔记诊断报告等；
+评测与工程：
+7、构建流式视频评测体系，与人工标注对比，持续提升模型精度；
+8、优化端到端推理延迟、显存占用和吞吐量，满足实时性要求。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、电子工程、自动化等相关专业；
+2、扎实的深度学习基础，熟悉 Transformer 架构、注意力机制、位置编码等核心技术；
+3、熟练掌握 PyTorch，具备独立复现/改进论文的能力；
+4、良好的代码工程能力，有大规模分布式训练经验优先。
+专业方向（满足其中一项即可）：
+1、有视频理解相关研究或工程经验（VideoLLM、MLLM、Video QA、时序建模等），能独立跟进前沿工作；
+2、有长上下文/高效推理相关经验（KV Cache 优化、序列并行、量化、蒸馏等）；
+3、有在线视频理解或流式系统相关经验，了解实时推理系统架构设计。
+【加分项】：
+1、在 CVPR、ICCV、NeurIPS、ICLR、ECCV、AAAI 等顶会发表过相关论文，有一作或重要贡献者优先；
+2、有直播/视频平台内容理解落地经验（高光识别、精华切片、封面生成等具体场景）；
+3、了解视频编解码基础（I/P/B 帧、码率、分辨率），能理解多媒体系统上下文；
+4、熟悉 RL/RLHF 在多模态模型上的应用。</p><a href="https://job.xiaohongshu.com/campus/position#22010">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】大模型算法工程师-内容理解方向</span><span class="m">北京市，上海市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>深耕用户与内容理解，推动 VLM 在社区发布、推荐、商业化、增长等核心业务场景的深度应用，解决实际业务难题。
+1、负责VLM 相关算法的研发和落地，重点包括内容多模态理解、用户兴趣建模、生成式建模等任务；
+2、对技术问题进行深入分析、算法设计、研发及推动上线，持续提升业务效果。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业；
+2、熟悉内容理解相关算法，了解内容理解在推荐系统中的落地链路；有相关项目/实习/科研经验，有增长场景实践经验者优先；
+3、具备强烈的业务 sense，善于将业务问题转化为算法建模问题，自驱力强，能在快速变化的技术环境中持续学习和迭代；
+4、对大模型技术有深入理解，熟悉 Pre-train、SFT、RLHF 等训练范式，能快速将前沿 LLM/VLM 技术落地到实际业务问题；
+5、有较强的研究能力，在 SIGIR、RecSys、KDD、WWW、NeurIPS、ICML、ICLR、CVPR 等顶会发表过推荐或内容理解相关论文者优先。</p><a href="https://job.xiaohongshu.com/campus/position#21011">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】Dots-视觉语言大模型算法工程师</span><span class="m">北京市，上海市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>参与视觉语言大模型的研发工作，主要负责：
+1、VIT Pretrain：提升模型感知能力，包括但不限于 Vision Encoder Pretrain 算法架构 / 多种感知能力数据构建；
+2、VLM Pretrain：提升 vlm pretrain 的通用能力，探索各种不同训练阶段设计 / 不同通用数据的组织形式；
+3、VLM Post train：提升 vlm 通用能力，包括但不限于合成数据 / RL 等方法；
+4、生成理解统一：探索生成理解统一架构，同时提升理解和生成能力。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业方向优先；
+2、熟练掌握代码的阅读和编写技术能力，善于利用AI编程，在python和pytorch技术栈上有深入实践；
+3、在视觉领域有深入的实践和理解，有一定深度的专业认知和见解；
+4、具备良好的科学研发习惯、问题定义能力和对细节的敏锐度。</p><a href="https://job.xiaohongshu.com/campus/position#22068">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】多模态数据库研发</span><span class="m">北京市，上海市，杭州市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与公司分布式数据库产品研发工作，支撑社交、推荐、搜索、电商、广告等核心业务场景；
+2、负责产品能力建设，针对业务发展需要推进系统演进，提供高可用、高可靠、高性价比的存储产品；
+3、学习和吸纳业界优秀技术和理论成果，积极探索和拓展新的产品能力，持续提升产品的技术和服务水平。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业，有大规模分布式存储系统或分布式数据库系统研发经验，具备扎实的存储研发功底；
+2、精通C/C++/Golang一门或多门， 熟悉算法、数据结构、操作系统、存储系统知识；
+3、有分布式存储底座、对象存储、块存储、文件存储、日志存储等研发经验的优先；
+4、具备优秀的自驱力和全局观，对技术有强烈的好奇心和热情，具备良好的分析和解决问题能力。</p><a href="https://job.xiaohongshu.com/campus/position#22037">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">NLP/多模态/大模型 实习生- Agentic审核方向</span><span class="m">杭州市 · 11-13 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1.、负责Agentic系统的构建与迭代，探索Agent的 Recursive Self-improvement 机制，持续提升系统在复杂风险场景中的自主优化能力。
+2、负责CV 、NLP、多模态、大模型的相关算法研发，面向包括但不限于多模态分类、图像分类、文本分类等；
+3、面向基于内容理解技术的安全、生态审核场景，包括单不限于笔记审核、评论审核、私信聊天审核、弹幕审核、账号审核等；</p><h3>任职要求</h3><p>1、计算机、电子信息、自动控制、软件工程、数学等相关专业，硕士及以上学历；
+2、熟悉大模型或多模态大模型，熟悉 Agent 相关技术；
+3、具备优秀的问题解决能力，对新技术保持好奇，敢于挑战高难度，善于提出解决方案并快速验证；
+4、熟练掌握 PyTorch、TensorFlow 等深度学习框架中至少一种，熟悉Agent 开发框架；
+5、具备优秀的编程能力和经验，熟悉 Python、C/C++、Java 等编程语言，具有扎实的数据结构和算法功底；
+6、具备优秀的研究和创新能力，在 CVPR、ICCV、ECCV、NIPS、ICLR、ICML、AAAI、KDD、SIGGRAPH 等会议上发表过论文者优先，参加过 ACM 竞赛者优先；</p><a href="https://job.xiaohongshu.com/campus/position#22601">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">NLP/多模态/大模型 实习生</span><span class="m">上海市 · 11-13 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责CV 、NLP、多模态、大模型的相关算法研发，面向包括但不限于多模态分类、图像分类、文本分类等；
+2、负责算法和系统迭代与进化，能够深入小红书业务场景，结合实际需求进行技术落地和创新；
+3、面向基于内容理解技术的生态审核场景，包括单不限于笔记审核、评论审核、私信聊天审核、弹幕审核、账号审核等；</p><h3>任职要求</h3><p>1、计算机、电子信息、自动控制、软件工程、数学等相关专业，硕士及以上学历；
+2、熟悉大模型或多模态大模型；熟悉视频分类或文本分类；
+3、具备优秀的问题解决能力，对新技术保持好奇，敢于挑战高难度，善于提出解决方案并快速验证；
+4、熟练掌握TensorFlow、PyTorch、Caffe、MXNet等深度学习框架中至少一种；
+5、具备优秀的编程能力和经验，熟悉Python、C/C++、Java等编程语言，具有扎实的数据结构和算法功底；
+6、具备优秀的研究和创新能力，在CVPR、ICCV、ECCV、NIPS、ICLR、ICML、AAAI、KDD、SIGGRAPH等会议上发表过论文者优先，参加过ACM竞赛者优先；</p><a href="https://job.xiaohongshu.com/campus/position#21537">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">流式视频理解算法实习生-多媒体技术</span><span class="m">上海市 · 11-12 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>我们正在探索流式视频大模型方向，致力于让模型从“看完再回答”进化为“边看边理解、实时响应”。你将参与构建面向真实世界的实时视觉理解系统，覆盖视频流理解、长时记忆建模、主动式交互等前沿课题，推动模型能力从离线走向在线。
+流式理解核心研究：
+1、跟踪流式视频理解领域最新进展，输出技术洞察，探索适合业务场景的创新方案；
+2、设计高效的流式推理架构，包括记忆压缩模块、时序建模与位置编码方案；
+3、构建流式视频训练数据集与训练框架，探索离线到在线的课程学习范式；
+视频内容理解落地：
+4、研发视频内容理解模型：高光识别、场景分类、精彩度评分、人物/物体语义理解；
+5、实现智能切片能力：从直播流/点播视频中自动定位高光片段，支持实时和离线两种模式；
+6、将内容理解能力接入产品链路，包括直播封面、运营挖掘工具、创作者笔记诊断报告等；
+评测与工程：
+7、构建流式视频评测体系，与人工标注对比，持续提升模型精度；
+8、优化端到端推理延迟、显存占用和吞吐量，满足实时性要求。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、电子工程、自动化等相关专业；
+2、扎实的深度学习基础，熟悉 Transformer 架构、注意力机制、位置编码等核心技术；
+3、熟练掌握 PyTorch，具备独立复现/改进论文的能力；
+4、良好的代码工程能力，有大规模分布式训练经验优先。
+专业方向（满足其中一项即可）：
+1、有视频理解相关研究或工程经验（VideoLLM、MLLM、Video QA、时序建模等），能独立跟进前沿工作；
+2、有长上下文/高效推理相关经验（KV Cache 优化、序列并行、量化、蒸馏等）；
+3、有在线视频理解或流式系统相关经验，了解实时推理系统架构设计。
+【加分项】：
+1、在 CVPR、ICCV、NeurIPS、ICLR、ECCV、AAAI 等顶会发表过相关论文，有一作或重要贡献者优先；
+2、有直播/视频平台内容理解落地经验（高光识别、精华切片、封面生成等具体场景）；
+3、了解视频编解码基础（I/P/B 帧、码率、分辨率），能理解多媒体系统上下文；
+4、熟悉 RL/RLHF 在多模态模型上的应用。</p><a href="https://job.xiaohongshu.com/campus/position#22942">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【Ace顶尖实习生】多模态大模型驱动的端工程架构设计、改造的研究</span><span class="m">北京市，上海市，杭州市 · 11-11 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>深入研究和应用AI大模型技术，对工程架构做全面设计，推动架构智能化升级，确保系统具备高扩展性、高稳定性和高性能，以适应不断变化的业务需求和数据量的增长。</p><h3>任职要求</h3><p>1、不限年级，本科及以上在读，人工智能/计算机/软件工程等相关专业优先；
+2、具备优秀的代码能力、数据结构和基础算法功底，熟练掌握C/C++、Python等一个或多个编程语言；
+3、熟悉大模型相关的算法和技术，有自然语言处理、大模型训练、强化学习算法经验者优先；
+4、在软件工程或者人工智能领域有出色的科研经历，在NeurlPS/ICRL/ICML/ISSTA/ACL/EMNLP等国际顶级期刊会议上发表论文者优先；
+5、良好的沟通协作能力，责任心强，积极主动，能和团队一起探索新技术，推进技术进步。</p><a href="https://job.xiaohongshu.com/campus/position#19940">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【Ace顶尖实习生】面向多业务场景的“理解-生成-决策”多模态统一大模型基座与智能体应用研究</span><span class="m">北京市，上海市，杭州市 · 11-11 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>本课题旨在探索构建一套“理解-生成-决策”三位一体的多模态统一大模型基座及智能体应用。
+在底层基座构建上，重点构建理解与生成统一的图文交错混合模型：输入端实现多体裁内容（笔记、直播、商品等）的统一融合理解，输出端兼顾高质量表征提取、文本与图像生成。通过底层世界知识共享，消除多领域知识间的壁垒，并利用理解任务促进生成能力的提升。同时探索基于Multi-Head与MoE的轻量化微调及融合推理技术，在保证多场景下的效果前提下，压低训练和推理成本，实现降本增效。
+在上层应用落地上，面向内容发布场景打造多模态创作Agent能力，通过基座模型的Agentic能力提升（意图识别、规划与工具调用），将分散的图像处理与创作工具统一封装，用户仅需以多模态方式自然表达需求，Agent即可自动完成任务拆解与执行，大幅降低使用门槛，全面重塑内容创作体系。</p><h3>任职要求</h3><p>1、不限年级，本科及以上在读，计算机/人工智能/软件工程等相关专业优先；
+2、优秀的代码能力、数据结构和基础算法功底，熟悉Python等至少一门编程语言；
+3、熟悉大模型领域尤其是强化学习相关研究工作和算法，有大模型强化学习的研发基础；
+4、在ICML/CVPR/NeurIPS/ACL等顶级期刊会议上发表论文者优先；
+5、良好的沟通协作能力，责任心强，积极主动，能和团队一起探索新技术，推进技术进步。</p><a href="https://job.xiaohongshu.com/campus/position#19808">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">Dots-【Ace顶尖实习生】探索多模态大模型的通用能力增强和跨模态能力迁移</span><span class="m">北京市，上海市，杭州市 · 11-11 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>本课题的研究目标是：
+1、研究如何充分用好文本、图片、视频等各个模态的有效信息，进行高效的多模态数据表征和联合建模，能够更加高效的从各个模态中学习有效信息；
+2、探索多模数据如何才能更高效的学习，多模数据如何对文本智能能力有提升，探索理解和生成的联合建模如何进一步提高多模态模型的能力上限。</p><h3>任职要求</h3><p>1、不限年级，本科及以上在读，计算机/人工智能/软件工程等相关专业优先；
+2、优秀的代码能力、数据结构和基础算法功底，熟练掌握至少一门编程语言，包括但不限于Python等；
+3、有LLM/MLLM等多模态理解技术背景，或大规模模型训练实际项目经验者优先；
+4、在TPAMI/CVPR/NeurIPS/ICCV/ICML/ICLR等顶级期刊会议上发表相关论文者优先；
+5、良好的沟通协作能力，责任心强，积极主动，能和团队一起探索新技术，推进技术进步。</p><a href="https://job.xiaohongshu.com/campus/position#15673">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态基础模型实习生</span><span class="m">北京市，上海市 · 11-11 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【岗位定位】
+本岗位致力于构建大模型的“感官”核心，定义小红书下一代多模态智能基座。小红书拥有业界最独特的图文与短视频 UGC 数据生态，是多模态模型落地最肥沃的土壤。你将负责 VLM 的 Post-training（SFT/RL） 与 架构演进，让模型不仅能“看见”，更能“洞察”与“推理”，深度赋能搜索、广告、推荐、电商、智能创作等全链路业务场景。
+【工作职责】
+1. 核心模型研发：参与大规模视觉语言模型（VLM/MLLM）的预训练、微调和强化学习，优化模型在多模态理解、推理等任务上的表现；
+2. 数据闭环构建：探索高质量多模态数据的自动化清洗、标注与构造方案，从源头提升模型性能；
+3. 前沿技术探索：研究 Scaling Law、长文本/长视频理解、多模态 Agent 等前沿方向，保持团队技术领先性；
+4. 业务落地支撑：将 VLM 基础能力转化并赋能于小红书复杂的社区场景，解决实际的图文/视频理解难题。</p><h3>任职要求</h3><p>1. 专业背景：计算机、自动化、数学等相关专业在读，对多模态方向有浓厚兴趣；
+2. 技术功底：编程基础扎实，精通 Python，熟练掌握 PyTorch 框架，有分布式训练（DeepSpeed/Megatron-LM）经验者大加分；
+3. 算法理解：熟悉主流 VLM 架构（如 LLaVA, Qwen-VL, InternVL 等）及训练策略，对 Transformer 机制有深度理解；
+4. 加分项：在 CVPR、ICCV、NeurIPS、ICLR 等顶会发表过论文者优先；有大规模数据清洗或基础模型训练经验者优先；
+5. 实习要求：能长期实习，至少 4个月 以上，每周出勤 4天 及以上，Base 北京。</p><a href="https://job.xiaohongshu.com/campus/position#20341">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【27/28届实习】多模态/NLP 算法工程师-交易算法</span><span class="m">北京市，上海市 · 09-18 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与小红书社区内容理解体系构建，负责直播和笔记多模态信息结构化算法建设和应用；
+2、参与小红书电商多模态识别和知识图谱体系建设，负责面向业务的商品类目、属性、SPU体系建设；
+3、参与商家商品侧基础识别模型建设，包括多模态分类、标签挖掘等识别算法，并配合业务应用落地到平台管理系统；
+4、参与供应链上下游平台算法建设，基于小红书社区数据挖掘商机、供给源、流程趋势，并落地到B端系统工具；
+5、负责相关算法和系统的持续迭代和进化； 同时能够深入小红书丰富的业务场景，结合实际需求进行技术落地和创新；</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业优先；
+2、在机器学习，数据挖掘，统计学理论，最优化理论等领域有着深厚积累；
+3、有搜索、推荐、广告、NLP、图像识别等相关背景优先，熟悉机器学习，NLP、数据挖掘、知识工程的经典算法，并能在业务中灵活解决实际问题，有过大规模搜索/推荐/广告系统算法研发实习经历者优先；
+4、熟悉机器学习和数据挖掘领域前沿技术，在国际顶级会议（Recsys、KDD、NIPS、ICML、ACL）以第一作者发表过高水平论文者优先；
+5、有机器学习、数据挖掘等相关项目实际经验者，或者知名数据挖掘比赛（例如KDD Cup等）中取得领先名次者优先。</p><a href="https://job.xiaohongshu.com/campus/position#14163">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">Dots-多模态算法实习生</span><span class="m">上海市 · 09-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>本课题的研究目标是：
+1、研究如何充分用好文本、图片、视频等各个模态的有效信息，进行高效的多模态数据表征和联合建模，能够更加高效的从各个模态中学习有效信息；
+2、探索多模数据如何才能更高效的学习，多模数据如何对文本智能能力有提升，探索理解和生成的联合建模如何进一步提高多模态模型的能力上限。</p><h3>任职要求</h3><p>1、不限年级，本科及以上在读，计算机/人工智能/软件工程等相关专业优先；
+2、优秀的代码能力、数据结构和基础算法功底，熟练掌握至少一门编程语言，包括但不限于Python等；
+3、有LLM/MLLM等多模态理解技术背景，或大规模模型训练实际项目经验者优先；
+4、在TPAMI/CVPR/NeurIPS/ICCV/ICML/ICLR等顶级期刊会议上发表相关论文者优先；
+5、良好的沟通协作能力，责任心强，积极主动，能和团队一起探索新技术，推进技术进步。</p><a href="https://job.xiaohongshu.com/campus/position#22153">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c3"><header><h2>腾讯</h2><span>16 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">算法-多模态方向（应届毕业生）</span><span class="m">深圳总部 北京 上海 广州</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：CDG CSIG IEG PCG TEG WXG</p><a href="https://join.qq.com/post.html#1282707403120699393">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-多模态方向（应届实习）</span><span class="m">深圳总部 北京 上海 广州 成都</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：CDG CSIG IEG PCG WXG</p><a href="https://join.qq.com/post.html#1199423750186201088">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">混元基座模型-多模态理解预训练结构与算法研究（青云计划-应届生）</span><span class="m">北京</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：TEG</p><a href="https://join.qq.com/post.html#1277774706287944715">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">混元多模态-3D场景生成算法研究（青云计划-应届生）</span><span class="m">深圳总部</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：TEG</p><a href="https://join.qq.com/post.html#1277774706287944727">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">腾讯营销—商业化场景中多模态生成算法研究（青云计划-应届生）</span><span class="m">深圳总部</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：CDG</p><a href="https://join.qq.com/post.html#1279258992518210560">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态生成大模型关键算法研究（青云计划-应届生）</span><span class="m">深圳总部 北京 上海 杭州</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：IEG</p><a href="https://join.qq.com/post.html#1279259062240125956">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">面向多模态生成的理解算法研究（青云计划-应届生）</span><span class="m">深圳总部 北京 上海 杭州</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：IEG</p><a href="https://join.qq.com/post.html#1279259062240125957">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">腾讯云音视频多模态理解、生成、编辑算法（青云计划-应届生）</span><span class="m">深圳总部 北京 上海</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：CSIG</p><a href="https://join.qq.com/post.html#1292597531922250756">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-多模态方向（青云计划-实习生）</span><span class="m">北京</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：TEG</p><a href="https://join.qq.com/post.html#1208929078888320000">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">混元-多模态理解与生成模型压缩算法(蒸馏、量化、投机采样、稀疏化)研究（青云计划-实习生）</span><span class="m">北京 上海</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：TEG</p><a href="https://join.qq.com/post.html#1235017891590830080">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">腾讯营销—商业化场景中多模态生成算法研究（青云计划-实习生）</span><span class="m">深圳总部</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：CDG</p><a href="https://join.qq.com/post.html#1279259000613217282">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">混元基座模型——多模态理解预训练结构与算法研究（青云计划-实习生）</span><span class="m">深圳总部 北京 上海</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：TEG</p><a href="https://join.qq.com/post.html#1287771593065775104">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">腾讯游戏-面向多模态生成的理解算法研究（青云计划-实习生）</span><span class="m">深圳总部 北京 上海 杭州</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：IEG</p><a href="https://join.qq.com/post.html#1292597525697903616">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">腾讯游戏-多模态生成大模型关键算法研究（青云计划-实习生）</span><span class="m">深圳总部 北京 上海 杭州</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：IEG</p><a href="https://join.qq.com/post.html#1292597534933761025">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-多模态方向（日常实习）</span><span class="m">深圳总部 北京 上海</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：CSIG IEG PCG TEG</p><a href="https://join.qq.com/post.html#1210646470286783493">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">混元多模态-多模态强化学习研究（青云计划-应届生）</span><span class="m">北京</span></summary><div class="jd"><h3>岗位职责</h3><p>事业群：TEG</p><a href="https://join.qq.com/post.html#1274481034578500617">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c4"><header><h2>商汤</h2><span>13 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">下一代多模态大模型架构研究实习生｜Loop Transformer 方向</span><span class="m">北京、上海 · 09-28 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>参与下一代多模态大模型架构研究，重点探索 Loop Transformer 等新型计算架构，并在 图像生成、视频生成及统一多模态模型 上进行大规模验证。
+你将围绕循环计算、参数共享、有效计算深度、动态计算量分配和 Scaling 等核心问题开展研究，探索如何在可控参数规模下提升模型的计算能力、生成质量和扩展效率。
+研究对象包括独立的 Image Generation、Video Generation 模型，以及支持理解、生成和编辑等能力的 Unified Multimodal Model。
+工作职责
+1、参与 Loop Transformer 核心架构研究，探索参数共享、循环计算、状态迭代和动态深度等模型设计。
+2、研究 参数规模、模型深度、Loop 次数与计算量 之间的关系，探索区别于传统参数 Scaling 的新型 Compute Scaling 路径。
+3、研究 Loop Transformer 的训练与优化机制，分析不同循环阶段的 Representation、Activation 和 Gradient 演化，解决训练稳定性和能力退化等问题。
+4、将新型架构应用于 图像生成和视频生成模型，结合 Diffusion Transformer、Flow Matching、Autoregressive Generation 等范式进行验证。
+5、探索 Loop Transformer 在 统一多模态模型 中的应用，研究不同模态和任务之间的参数共享、计算共享与统一 Backbone 设计。
+6、开展系统性的 Architecture Ablation 和 Scaling Experiment，研究模型深度、宽度、Loop 设计、Token 数量和计算预算等因素对模型能力的影响。
+7、跟踪并推进 Loop Transformer、生成模型架构和多模态基础模型方向的前沿研究，完成算法设计、实验验证、效果分析和大规模训练迭代。</p><h3>任职要求</h3><p>1、计算机、人工智能、数学、电子信息等相关专业在读硕士、博士或优秀本科生。
+2、熟悉 Python 和 PyTorch，具备扎实的模型实现、训练调试和实验分析能力。
+3、对 Transformer 架构 有深入理解，熟悉 Attention、FFN、Normalization、Residual Connection 等核心组件。
+4、熟悉至少一种现代生成模型范式，包括 Diffusion Transformer、Flow Matching 或 Autoregressive Generation，对图像生成、视频生成或多模态模型有实际理解。
+5、具备模型架构、图像生成、视频生成或多模态模型相关研究项目经验，或至少有 1 篇 CVPR、ICCV、ECCV、NeurIPS、ICML、ICLR 等顶会论文。
+加分项
+有 Loop Transformer、Recurrent Transformer、Parameter Sharing、Iterative Computation 等相关研究经验。
+有大规模 图像生成、视频生成或多模态模型 训练经验。
+有 Transformer Architecture、Scaling Law、Training Dynamics 或模型内部机制分析相关研究经验。
+熟悉 Megatron-LM、DeepSpeed、FSDP、Transformer Engine 等大规模训练框架及并行训练技术。
+在生成模型、计算机视觉、多模态学习或模型架构方向有高质量论文或有影响力的开源项目。</p><a href="https://hr-jobs.sensetime.com/edu/position/7690393673875343652/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态大模型研发实习生</span><span class="m">上海 · 09-24 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 面向图纸理解、CAD/BIM 建模及软件操作等场景，参与大模型与 Agent 应用原型的开发和实验。
+2. 基于现有模型 API、工具及 Agent 框架，实现工具调用、多步骤任务执行和结果保存等功能。
+3. 编写自动化运行脚本，开展批量任务测试，采集执行日志、工具调用记录及结果文件，为数据建设提供支持。
+4. 参与任务评测与失败案例分析，检查模型输出和工具执行结果，协助改进提示词、工具接口及执行流程。
+5. 根据研发需求，对接相关软件接口和运行环境，维护代码、实验记录及使用文档</p><h3>任职要求</h3><p>1. 计算机、软件工程、人工智能等相关专业本科或硕士在读。
+2. 熟悉 Python，具备良好的编程与调试能力，能够调用 API、阅读代码并定位常见运行问题。
+3. 理解大模型及 Agent 的基本机制，了解工具调用和多步骤任务执行，有相关课程项目、个人项目或开发实践。
+4. 熟悉 Git 和基本的 Linux 操作，能够阅读英文技术文档及开源项目说明。
+5. 具备主动学习和问题排查能力，能够根据明确目标完成开发与实验任务。
+加分项
+- 使用或扩展过 Agent 框架，有自动化任务执行经验。
+- 有执行轨迹采集、批量评测或结果自动验证经验。
+- 有 CAD/BIM 软件接口、GUI 自动化或其他专业软件集成经验。
+- 对任务环境、状态管理及 Harness 有基本了解。</p><a href="https://hr-jobs.sensetime.com/edu/position/7689000412510341417/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">训练推理优化实习生，多模态</span><span class="m">北京 · 09-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. AIGC研究与工程探索
+· 深度参与商汤开源lightx2v引擎（https://github.com/ModelTC/LightX2V/）的社区核心模块开发与调优。
+· 跟踪视频/图像生成及LLM推理的前沿技术趋势，将学术界最新成果转化为引擎的实际性能增益。
+· 协助头部客户快速完成业务落地，形成规模化应用效应。
+2. 模型性能剖析与国产化深耕
+· 熟练分析训练推理过程中的性能瓶颈。
+· 基于国产算力（沐曦、寒武纪等）生态，开展算子级深度优化与工具链整合，解决精度对齐、算子性能不足等国产化迁移痛点，为客户提供平滑迁移的端到端保障。</p><h3>任职要求</h3><p>1. 计算机、人工智能、数学等相关专业在读硕士、博士。
+2. 熟练掌握 C++ 和 Python 语言。
+3. 有扎实的计算机基础知识，熟练掌握常见的数据结构和算法。
+4. 具备 AI 辅助编程实践经验，能够熟练使用 Codex、Claude Code、Cursor等 IDE 编程助手，并能够将其应用于实际研发场景提升开发效率。
+加分项
+1. 对AI大模型相关核心技术原理有认知，熟悉sglang、vllm等大模型框架，有训推性能优化经验。
+2. 熟悉视频和图像生成（x2v），熟练运用Stable Diffusion、ComfyUI、Midjourney等工具链，掌握lightx2v等推理框架。
+3. 熟悉国产算力（沐曦、寒武纪等）生态与软件栈，具备算子适配、性能调优及精度对齐的实操经验。
+4. 有高性能网络 (rdma/ib/roce) 相关的经验。</p><a href="https://hr-jobs.sensetime.com/edu/position/7685594038246377734/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态大模型实习生-深圳</span><span class="m">深圳 · 08-05 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>职位描述
+* 参与大模型应用落地，理解业务侧算法需求，用多模态大语言模型将其实现并持续优化性能指标；
+* 提升多模态大模型在现实世界复杂任务的效果，追求通用可规模化的方法，优化领域包括但不限于视觉推理、多模态Agent、专业领域数据合成等方向；
+* 设计与优化智能体的workflow。</p><h3>任职要求</h3><p>任职要求
+* 计算机、电子工程、统计学等专业的本科及以上学位在读学生；
+* 扎实的专业基础和项目经历，优秀的问题分析和解决能力，熟悉CV、AIGC、NLP、RL等技术领域，在CVPR、ECCV、ICCV、NeurIPS、ICLR等顶级会议上发表论文者优先；
+* 优秀的沟通能力和团队合作意识。</p><a href="https://hr-jobs.sensetime.com/edu/position/7670437248752601386/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">训练推理优化实习生，多模态</span><span class="m">北京 · 08-04 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. AIGC研究与工程探索
+· 深度参与商汤开源lightx2v引擎（https://github.com/ModelTC/LightX2V/）的社区核心模块开发与调优。
+· 跟踪视频/图像生成及LLM推理的前沿技术趋势，将学术界最新成果转化为引擎的实际性能增益。
+· 协助头部客户快速完成业务落地，形成规模化应用效应。
+2. 模型性能剖析与国产化深耕
+· 熟练分析训练推理过程中的性能瓶颈。
+· 基于国产算力（沐曦、寒武纪等）生态，开展算子级深度优化与工具链整合，解决精度对齐、算子性能不足等国产化迁移痛点，为客户提供平滑迁移的端到端保障。</p><h3>任职要求</h3><p>1. 计算机、人工智能、数学等相关专业在读硕士、博士。
+2. 熟练掌握 C++ 和 Python 语言。
+3. 有扎实的计算机基础知识，熟练掌握常见的数据结构和算法。
+4. 具备 AI 辅助编程实践经验，能够熟练使用 Codex、Claude Code、Cursor等 IDE 编程助手，并能够将其应用于实际研发场景提升开发效率。
+加分项
+1. 对AI大模型相关核心技术原理有认知，熟悉sglang、vllm等大模型框架，有训推性能优化经验。
+2. 熟悉视频和图像生成（x2v），熟练运用Stable Diffusion、ComfyUI、Midjourney等工具链，掌握lightx2v等推理框架。
+3. 熟悉国产算力（沐曦、寒武纪等）生态与软件栈，具备算子适配、性能调优及精度对齐的实操经验。
+4. 有高性能网络 (rdma/ib/roce) 相关的经验。</p><a href="https://hr-jobs.sensetime.com/edu/position/7670103435232921899/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态大模型见习算法研究员</span><span class="m">北京、深圳、上海 · 07-24 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>工作职责
+多模态大模型研究： 跟进多模态大模型领域前沿，开展图像、文本、视频等多模态内容理解、推理与生成相关算法研究。
+模型训练与优化： 参与多模态大模型的预训练、后训练、评估及优化，研究数据构建、指令微调、偏好对齐等关键技术，持续提升模型的理解、推理和泛化能力。
+创新方向探索： 探索多模态统一建模、视觉推理、视频理解与生成等前沿方向，发现并解决单一模态模型难以处理的复杂问题。
+研究成果沉淀： 参与前沿论文复现、技术方案验证及实验分析，推动研究成果形成论文、专利或可落地的技术能力。</p><h3>任职要求</h3><p>任职要求
+扎实的专业基础： 计算机科学、人工智能、电子工程、自动化等相关专业在读本科高年级学生、硕士或博士生，对机器学习、深度学习及多模态学习有较深入的理解。
+良好的算法与工程能力： 熟悉 Transformer、视觉语言模型等核心模型，熟练使用 Python 及 PyTorch 等深度学习框架，具备模型训练、调试和实验分析能力。
+强烈的研究兴趣： 对多模态大模型前沿技术具有浓厚兴趣，能够主动阅读论文、复现方法，并独立分析和解决研究问题。
+优秀的自驱与协作能力： 具备较强的学习能力、自驱力和执行力，拥有良好的沟通能力及团队协作精神。
+AI 工具使用能力： 熟悉常见 AI 编程工具，如 Claude Code、Cursor、GitHub Copilot 等，能够将其有效融入代码编写、调试和研究工作流。
+加分项
+在多模态理解、视觉语言模型、视频理解或生成等方向有相关研究经历。
+在相关领域会议或期刊发表过论文，或有高质量开源项目、竞赛成果。
+具备大模型预训练、后训练、数据构建或分布式训练经验。</p><a href="https://hr-jobs.sensetime.com/edu/position/7665921129345042726/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">大模型算法实习生(多模态基模型）</span><span class="m">北京、深圳、上海 · 07-10 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责研发多模态基础模型，可处理图像，文本，语音等多模态数据，负责网络结构框架的整体设计和优化。
+2、负责探索多模态领域内的最新研究成果和技术进展，熟悉BLIP, LLaVA, mini-GPT4等多模态模型。
+3、 构建和维护多模态数据集，负责多模态大模型的业务落地和推广</p><h3>任职要求</h3><p>1、计算机科学、人工智能、机器学习或相关领域，硕士及以上学历。
+2、熟悉Python/C++编程，掌握PyTorch等框架。
+3、熟悉多模态数据的处理和表示方法，如图像与文本、语音等数据模态的融合。
+4、熟悉多模态模型的训练，熟悉经典模型结构如blip2
+额外加分项，满足一项或多项
+有较强的研究能力，于CCF B类以上会议或期刊发表过论文。
+有较强的竞赛成绩，获得过ACM，NOI，NOIP或其他商业代码竞赛的任意奖项。
+有较强的学术比赛经验或者在知名数据集的Leaderboard上排名靠前。
+有较强的代码能力，有高质量的中大型项目或个人开源项目的经验。
+有较强的钻研精神，对部分语言、系统、算法有深刻的探索和理解。
+学习成绩优秀，有较高的GPA。
+有自我驱动力，勤奋好学</p><a href="https://hr-jobs.sensetime.com/edu/position/7660849769309161754/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态算法实习研究员（视觉推理方向）</span><span class="m">北京、上海 · 07-10 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、技术研究：参与多模态理解与生成相关技术研究，探索基于图文生成、视频生成等实现视觉推理的新范式，提升模型复杂推理能力；
+2、数据与评测体系构建：参与多模态数据体系建设，包括图文/视频数据的采集、处理与增强管线设计与优化，构建高质量训练与评测数据集；
+3、模型训练与优化：参与多模态大模型的架构设计、模型训练、推理优化及性能调优，持续提升模型能力；
+4、技术沉淀与产出：参与研究报告、技术文档的撰写。</p><h3>任职要求</h3><p>1、计算机科学、人工智能、自动化、数学等相关专业本科及以上学历；
+2、扎实的深度学习、计算机视觉及机器学习基础，熟练掌握 Python，熟悉 PyTorch 等深度学习框架，具备良好的代码实现能力；
+3、熟悉统一多模态模型（如 BAGEL）、多模态大模型（如 InternVL）、图像生成模型（如 FLUX）或视频生成模型（如 Wan），以及视觉推理方向的相关研究（如 Visual CoT），并具备相关研究或项目实践经验；
+4、具有模型预训练、后训练、模型评测或大规模数据处理经验者优先；
+5、具备良好的英文文献阅读能力、科研能力及团队协作能力，每周实习不少于 5 天，实习时长 5 个月及以上。</p><a href="https://hr-jobs.sensetime.com/edu/position/7660821365331855642/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【27届校招】多模态理解生成一体研究员-无限原力</span><span class="m">北京、深圳、上海、新界、新加坡 · 07-07 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、多模态理解与生成算法研究： 紧跟领域前沿，深入研究多模态（图像、文本、视频）的理解与生成统一的核心算法；
+2、 模型设计与优化： 负责多模态理解与生成模型的设计、训练、评估和优化，不断提升模型性能和泛化能力；
+3、创新技术探索： 探索新的预训练和后训练范式，发现和解决大模型靠单一模态难以解决的问题。</p><h3>任职要求</h3><p>1、2027届本科及以上学历，计算机、软件工程、人工智能等相关专业 ；
+2、 熟悉理解生成一体化模型的常用做法和进展，了解Bagel, Tuna, SenseNova-U1等模型，有实际项目经验或顶会论文；
+3、对自回归和扩散模型均有一定了解，熟悉多模态理解模型（如Qwen系列，Intern系列等）或图像生成模型（如FLUX/Qwen-Image/Z-Image等）或视频生成模型（如Wan等）；
+4、熟悉RL的相关知识，有相理解生成的UnifiedRL相关研究或训练经验更佳；
+5、 扎实的编程和数学知识，快速学习的能力。</p><a href="https://hr-jobs.sensetime.com/edu/position/7659701838442957092/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【27届校招】多模态基模型研究员</span><span class="m">北京、深圳、上海、新界 · 07-07 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与商汤新一代通用基模型的研究与研发，覆盖 LLM、VLM、Reasoning、Coding、Long Horizon Agentic 等前沿方向；
+2、参与基模型核心能力建设，包括语言理解与生成、复杂推理、数学与代码、长上下文、工具调用、搜索增强、多轮交互、任务规划与自主执行等；
+3、 参与大规模预训练、后训练与对齐优化，探索 SFT、RLHF/RLAIF、偏好学习、强化学习、Agentic RL、合成数据、自我进化数据闭环等技术路线；
+4、参与一体化多模态能力建设，支持图像、视频、文档、OCR、图表、语音、空间感知等模态与语言核心能力的统一建模和协同增强；
+5、参与高质量数据体系建设，包括预训练数据、指令数据、推理数据、代码数据、Agent 轨迹数据、多模态数据、评测数据的构建、清洗、合成和质量评估；
+6、跟踪国内外头部模型与前沿研究进展，推动关键算法突破，并将研究成果应用于商汤日日新大模型体系、智能体应用和产业场景中。</p><h3>任职要求</h3><p>1、2027届本科及以上学历，计算机、软件工程、人工智能等相关专业；
+2、对通用人工智能和基础模型长期发展有强烈兴趣，具备优秀的学习能力、工程意识、团队协作能力和结果导向；
+3、具备较强的 AI-Native 研发工具链使用和实验能力。具备良好的论文阅读、问题抽象和实验分析能力，能够将前沿研究转化为可验证的算法方案和工程实现；
+4、 具备扎实的机器学习、深度学习、自然语言处理或计算机视觉基础，熟悉 Transformer、MoE、Attention、RL、Diffusion、多模态对齐等基础方法者优先；
+5、熟悉大语言模型或多模态大模型研发流程中的至少一个环节：预训练、后训练、对齐、数据构建、模型评测、推理优化、Agent 框架、工具调用、RAG、长上下文等；
+6、 有以下经验者优先：大模型训练/微调、强化学习、代码生成、数学推理、AI Agent、多智能体协作、搜索增强、模型评测、多模态理解或生成。 在 NeurIPS、ICML、ICLR、ACL、EMNLP、CVPR、ICCV、ECCV、AAAI、KDD、MM 等顶会发表论文，或在高水平竞赛、开源社区、模型榜单中有突出成果者优先。</p><a href="https://hr-jobs.sensetime.com/edu/position/7659704210959517971/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【27届校招】多模态基模型研究员</span><span class="m">北京、深圳、上海 · 07-07 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与商汤新一代通用基模型的研究与研发，覆盖 LLM、VLM、Reasoning、Coding、Long Horizon Agentic 等前沿方向；
+2、参与基模型核心能力建设，包括语言理解与生成、复杂推理、数学与代码、长上下文、工具调用、搜索增强、多轮交互、任务规划与自主执行等；
+3、 参与大规模预训练、后训练与对齐优化，探索 SFT、RLHF/RLAIF、偏好学习、强化学习、Agentic RL、合成数据、自我进化数据闭环等技术路线；
+4、参与一体化多模态能力建设，支持图像、视频、文档、OCR、图表、语音、空间感知等模态与语言核心能力的统一建模和协同增强；
+5、参与高质量数据体系建设，包括预训练数据、指令数据、推理数据、代码数据、Agent 轨迹数据、多模态数据、评测数据的构建、清洗、合成和质量评估；
+6、跟踪国内外头部模型与前沿研究进展，推动关键算法突破，并将研究成果应用于商汤日日新大模型体系、智能体应用和产业场景中。</p><h3>任职要求</h3><p>1、2027届本科及以上学历，计算机、软件工程、人工智能等相关专业；
+2、对通用人工智能和基础模型长期发展有强烈兴趣，具备优秀的学习能力、工程意识、团队协作能力和结果导向；
+3、具备较强的 AI-Native 研发工具链使用和实验能力。具备良好的论文阅读、问题抽象和实验分析能力，能够将前沿研究转化为可验证的算法方案和工程实现；
+4、 具备扎实的机器学习、深度学习、自然语言处理或计算机视觉基础，熟悉 Transformer、MoE、Attention、RL、Diffusion、多模态对齐等基础方法者优先；
+5、熟悉大语言模型或多模态大模型研发流程中的至少一个环节：预训练、后训练、对齐、数据构建、模型评测、推理优化、Agent 框架、工具调用、RAG、长上下文等；
+6、 有以下经验者优先：大模型训练/微调、强化学习、代码生成、数学推理、AI Agent、多智能体协作、搜索增强、模型评测、多模态理解或生成。 在 NeurIPS、ICML、ICLR、ACL、EMNLP、CVPR、ICCV、ECCV、AAAI、KDD、MM 等顶会发表论文，或在高水平竞赛、开源社区、模型榜单中有突出成果者优先。</p><a href="https://hr-jobs.sensetime.com/edu/position/7659697063102269732/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【27届校招】多模态理解生成一体研究员-视频生成与创作研发</span><span class="m">北京、深圳、上海、新界、新加坡 · 07-07 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、多模态理解与生成算法研究： 紧跟领域前沿，深入研究多模态（图像、文本、视频）的理解与生成统一的核心算法；
+2、 模型设计与优化： 负责多模态理解与生成模型的设计、训练、评估和优化，不断提升模型性能和泛化能力；
+3、创新技术探索： 探索新的预训练和后训练范式，发现和解决大模型靠单一模态难以解决的问题。</p><h3>任职要求</h3><p>1、2027届本科及以上学历，计算机、软件工程、人工智能等相关专业 ；
+2、 熟悉理解生成一体化模型的常用做法和进展，了解Bagel, Tuna, SenseNova-U1等模型，有实际项目经验或顶会论文；
+3、对自回归和扩散模型均有一定了解，熟悉多模态理解模型（如Qwen系列，Intern系列等）或图像生成模型（如FLUX/Qwen-Image/Z-Image等）或视频生成模型（如Wan等）；
+4、熟悉RL的相关知识，有相理解生成的UnifiedRL相关研究或训练经验更佳；
+5、 扎实的编程和数学知识，快速学习的能力。</p><a href="https://hr-jobs.sensetime.com/edu/position/7659701667638888755/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【27届校招】多模态理解生成一体研究员-多模态大模型</span><span class="m">北京、深圳、上海、新界 · 07-07 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>我们正在推进 SenseNova-U1 后续系列多模态理解生成统一模型研发，目标是构建具备强理解、强生成、强推理、可交互、可行动能力的新一代统一多模态模型。你将直接参与模型核心能力从 0 到 1 的研究、训练与迭代
+1、参与 SenseNova-U1 （NEO-Unify 结构）后续系列模型的核心算法研发，探索多模态理解与生成统一建模范式；
+2、研究多模态理解生成一体的前沿结构设计，包括统一表征、长上下文统一建模、生成与理解共享等；
+3、探索围绕新一代理解生成一体的创新训练方法，包括多阶段预训练、指令微调、偏好对齐、强化学习、理解生成一体 RL、Agentic RL 等前沿方向；
+4、参与图像、视频、文本、文档、GUI、代码、3D 等多模态任务的统一训练体系建设，提升模型在复杂任务中的感知、推理、规划和生成能力；
+5、参与高质量数据闭环建设，包括数据合成、自动标注、质量筛选、难度分层、偏好数据构造、评测集设计和 badcase 驱动迭代。围绕 AIGC、AI Presentation、智能体、复杂文档理解、视觉推理、图像/视频生成与编辑等场景，推动基模型能力在真实产品和研究场景中持续突破；
+6、跟踪并挑战国际前沿工作，在多模态大模型、统一理解生成、世界模型、VLA、RL for UMM、Agentic Workflow 等方向产出高水平论文、专利、开源或内部关键技术成果。</p><h3>任职要求</h3><p>1、2027届本科及以上学历，计算机、软件工程、人工智能等相关专业 ；
+2、对通用人工智能和基础模型长期发展有强烈兴趣，具备优秀的学习能力、工程意识、团队协作能力和结果导向；
+3、具备较强的 AI-Native 研发工具链使用和实验能力。具备良好的论文阅读、问题抽象和实验分析能力，能够将前沿研究转化为可验证的算法方案和工程实现；
+4、具备扎实的计算机基础、工程实现能力和大模型相关技术基础，熟悉 Transformer、Attention、MoE、RL、长上下文、工具调用、函数调用、RAG、Agent、多智能体协作等基础方法者优先；
+5、熟悉大语言模型或多模态大模型研发流程中的至少一个环节：模型评测、数据构建、后训练、对齐、推理优化、Agent Harness、任务环境构建、工具接入、轨迹采集、自动打分、失败分析与数据闭环等；
+6、有以下经验者优先：Agent 框架研发、代码智能体、浏览器/桌面自动化、工具调用系统、沙箱执行环境、长程任务评测、多智能体协作、Deep Research、AI Coding、RAG+Agent、强化学习环境构建、大模型训练/微调、模型评测或多模态理解与生成。在 NeurIPS、ICML、ICLR、ACL、EMNLP、CVPR、ICCV、ECCV、AAAI、KDD、MM 等顶会发表论文，或在高水平竞赛、开源社区、模型榜单、Agent/代码/评测相关项目中有突出成果者优先。</p><a href="https://hr-jobs.sensetime.com/edu/position/7659702010329418047/detail">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c5"><header><h2>OPPO</h2><span>8 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">高级多模态算法工程师-博士</span><span class="m">北京市,深圳市 · 07-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>方向一：
+1. 负责多模态大模型的基础能力提升，图文多模态模型的下游算法研究，图文多模态技术在AI搜索、图片结构化提取、图片内容理解等应用领域云侧和端侧的研究等
+2. 跟进业界前沿技术，持续提升团队在图文多模态算法方面的技术积累。
+方向二：
+1. 负责多模态大模型压缩算法研发，探索并实现极低bit量化技术和稀疏化技术，保持推理精度的同时减少模型存储和计算资源消耗；多模态大模型编解码加速算法研发，降低端侧模型推理成本；
+2. 参与端侧大模型技术体系建设，探索和实现高效大模型架构，开发和优化内部模型端侧化部署工具链，跟进大模型前沿技术发展趋势，探索相关算法的创新优化，发表高质量研究论文。
+方向三：
+1. 参与AI搜索，小布记忆等业务交付中的算法方案设计，模型训练等，持续提升算法能力，改善产品体验；
+方向四：
+1、 负责参与小布助手统一意图理解与任务编排的算法及数据工程优化
+方向五：
+1. 参与个性化大模型算法设计、实现和优化，提升模型用户特征提取、行为挖掘及精准画像等核心能力；
+2. 协同产品与工程团队，推动个性化大模型在手机业务中的创新应用，持续探索技术突破点并推动团队技术迭代，保持行业领先性。</p><h3>任职要求</h3><p>1. 拥有计算机科学、人工智能、机器学习或相关领域的硕士或博士学位；
+2. 扎实的编程基础，熟练掌握Python、C++等编程语言，有TensorFlow、PyTorch等深度学习框架的使用经验；
+3. 对多模态学习、自然语言处理、计算机视觉等领域有深入理解，有相关项目经验者优先；
+4. 具备良好的数学基础，熟悉概率论、统计学、优化算法等；
+5. 强烈的创新意识和解决问题的能力，能够在快节奏的环境中独立工作。
+加分项：
+1.在手机等业务场景中有算法交付经验
+2.在大模型相关领域有发表过高水平论文或专利；
+3. 对开源社区有贡献，或有参与过大型开源项目的经验。</p><a href="https://careers.oppo.com/university/oppo/campus/post#1751">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">高级多模态算法工程师（理解方向）-博士</span><span class="m">北京市,深圳市 · 07-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 参与多模态视觉理解相关算法的研发与落地，方向涵盖但不限于：美学评价、视频理解、空间感知与计算、开放世界语义分割与识别等
+2. 基于VLM/VLA等前沿技术，优化辅助拍摄、智能管理、智慧创作等业务场景的算法表现力，推动视觉Agent在手机生态中的创新落地
+3. 负责相关任务的训练数据和benchmark构建、模型训练与调优、推理pipeline构建与优化，协助算法部署与效果验证
+4. 跟踪并复现前沿论文，结合业务场景持续提升算法精度与效率。撰写技术文档，产出高质量论文或学术报告</p><h3>任职要求</h3><p>1. 博士及以上学历，计算机、人工智能等相关专业，具备扎实的数学基础与逻辑思维，对AI前沿保持强烈好奇心，具备主动学习与技术钻研精神
+2. 熟悉分类、检测、分割、表征学习等视觉理解基础方法及常用优化技巧，熟练使用常见训练加速与分布式训练手段
+3. 能独立推进项目，具备良好的工程实现能力、团队协作与沟通能力
+4. 具有以下经历者优先：发表过顶会论文，有知名竞赛获奖经历，有高质量开源项目，掌握专业摄影知识</p><a href="https://careers.oppo.com/university/oppo/campus/post#1748">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态算法工程师（理解方向）</span><span class="m">北京市,深圳市 · 07-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 参与多模态视觉理解相关算法的研发与落地，方向涵盖但不限于：美学评价、视频理解、空间感知与计算、开放世界语义分割与识别等
+2. 基于VLM/VLA等前沿技术，优化辅助拍摄、智能管理、智慧创作等业务场景的算法表现力，推动视觉Agent在手机生态中的创新落地
+3. 负责相关任务的训练数据和benchmark构建、模型训练与调优、推理pipeline构建与优化，协助算法部署与效果验证
+4. 跟踪并复现前沿论文，结合业务场景持续提升算法精度与效率。撰写技术文档，产出高质量论文或学术报告</p><h3>任职要求</h3><p>1. 硕士及以上学历，计算机、人工智能等相关专业，具备扎实的数学基础与逻辑思维，对AI前沿保持强烈好奇心，具备主动学习与技术钻研精神
+2. 熟悉分类、检测、分割、表征学习等视觉理解基础方法及常用优化技巧，熟练使用常见训练加速与分布式训练手段
+3. 能独立推进项目，具备良好的工程实现能力、团队协作与沟通能力
+4. 具有以下经历者优先：发表过顶会论文，有知名竞赛获奖经历，有高质量开源项目，掌握专业摄影知识</p><a href="https://careers.oppo.com/university/oppo/campus/post#1817">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态算法工程师</span><span class="m">北京市,深圳市 · 07-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>方向一：
+1. 负责多模态大模型的基础能力提升，图文多模态模型的下游算法研究，图文多模态技术在AI搜索、图片结构化提取、图片内容理解等应用领域云侧和端侧的研究等
+2. 跟进业界前沿技术，持续提升团队在图文多模态算法方面的技术积累。
+方向二：
+1. 负责多模态大模型压缩算法研发，探索并实现极低bit量化技术和稀疏化技术，保持推理精度的同时减少模型存储和计算资源消耗；多模态大模型编解码加速算法研发，降低端侧模型推理成本；
+2. 参与端侧大模型技术体系建设，探索和实现高效大模型架构，开发和优化内部模型端侧化部署工具链，跟进大模型前沿技术发展趋势，探索相关算法的创新优化，发表高质量研究论文。
+方向三：
+1. 参与AI搜索，小布记忆等业务交付中的算法方案设计，模型训练等，持续提升算法能力，改善产品体验；
+方向四：
+1、 负责参与小布助手统一意图理解与任务编排的算法及数据工程优化
+方向五：
+1. 参与个性化大模型算法设计、实现和优化，提升模型用户特征提取、行为挖掘及精准画像等核心能力；
+2. 协同产品与工程团队，推动个性化大模型在手机业务中的创新应用，持续探索技术突破点并推动团队技术迭代，保持行业领先性。</p><h3>任职要求</h3><p>1. 拥有计算机科学、人工智能、机器学习或相关领域的硕士或博士学位；
+2. 扎实的编程基础，熟练掌握Python、C++等编程语言，有TensorFlow、PyTorch等深度学习框架的使用经验；
+3. 对多模态学习、自然语言处理、计算机视觉等领域有深入理解，有相关项目经验者优先；
+4. 具备良好的数学基础，熟悉概率论、统计学、优化算法等；
+5. 强烈的创新意识和解决问题的能力，能够在快节奏的环境中独立工作。
+加分项：
+1.在手机等业务场景中有算法交付经验
+2.在大模型相关领域有发表过高水平论文或专利；
+3. 对开源社区有贡献，或有参与过大型开源项目的经验。</p><a href="https://careers.oppo.com/university/oppo/campus/post#1778">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态算法工程师（视觉理解方向）</span><span class="m">北京市,深圳市 · 04-23 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 构建多模态请求理解与路由决策系统，实现请求类型自动判别：
+- 文本/图文/视频混合输入的意图解析
+- 动态选择最优处理引擎（多模态QA/纯文本模型/工具调用）
+2. 开发跨模态特征对齐模型，建立统一决策空间：
+- 文本-视觉-时序特征的联合表示学习
+- 多模态上下文理解与场景适配
+3. 构建交互质量评估体系：
+- 路由决策的可解释性分析
+- 错误归因与策略迭代优化</p><h3>任职要求</h3><p>1. 核心技术能力：
+- 掌握多模态基础模型（CLIP/BLIP/VideoBERT等）
+- 熟悉决策系统技术栈（强化学习/bandit算法）
+- 理解现代NLP系统架构（RAG/Agent框架）
+- 有跨模态对齐研究经验者优先
+2. 工程能力：
+- 熟练多模态数据处理（文本清洗/图像特征抽取/视频采样）</p><a href="https://careers.oppo.com/university/oppo/campus/post#1688">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">高级AI研究员（AI多模态智能体）-博士</span><span class="m">深圳市 · 03-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>负责GUI Agent相关领域技术预研和业务落地，研发行业先进的智能体基础模型和智能体框架，包括但不限于：
+1. 提升GUI Agent的主动交互、个性化和不确定性感知能力；
+2.基于真实世界任务反馈，构建GUI Agent自演进能力。</p><h3>任职要求</h3><p>1. 计算机科学、人工智能、机器学习或相关技术领域。
+2. 扎实的算法与数据结构基础，熟练掌握Python/Java/C++语言，加分项：ACM/ICPC等编程比赛获奖者。
+3. 熟悉大语言模型、视觉语言模型、AI Agent构建、优化与评估，有落地经验者优先。
+4. 具备良好的科研能力，在人工智能顶会或期刊（NeurIPS/ICML/ICLR/ACL/CVPR/EMNLP等）发表过相关论文者优先。
+5. 具备良好的逻辑思维能力、沟通协作能力、自我学习能力，保持对事物的好奇心。</p><a href="https://careers.oppo.com/university/oppo/campus/post#1676">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">AI研究员（AI多模态智能体）</span><span class="m">深圳市 · 03-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>负责GUI Agent相关领域技术预研和业务落地，研发行业先进的智能体基础模型和智能体框架，包括但不限于： 1. 提升GUI Agent的主动交互、个性化和不确定性感知能力； 2.基于真实世界任务反馈，构建GUI Agent自演进能力</p><h3>任职要求</h3><p>1. 计算机科学、人工智能、机器学习或相关技术领域。
+2. 扎实的算法与数据结构基础，熟练掌握Python/Java/C++语言，加分项：ACM/ICPC等编程比赛获奖者。
+3. 熟悉大语言模型、视觉语言模型、AI Agent构建、优化与评估，有落地经验者优先。
+4. 具备良好的科研能力，在人工智能顶会或期刊（NeurIPS/ICML/ICLR/ACL/CVPR/EMNLP等）发表过相关论文者优先。
+5. 具备良好的逻辑思维能力、沟通协作能力、自我学习能力，保持对事物的好奇心。</p><a href="https://careers.oppo.com/university/oppo/campus/post#1677">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态算法工程师</span><span class="m">北京市,深圳市 · 03-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>方向一：
+1. 负责多模态大模型的基础能力提升，图文多模态模型的下游算法研究，图文多模态技术在AI搜索、图片结构化提取、图片内容理解等应用领域云侧和端侧的研究等
+2. 跟进业界前沿技术，持续提升团队在图文多模态算法方面的技术积累。
+方向二：
+1. 负责多模态大模型压缩算法研发，探索并实现极低bit量化技术和稀疏化技术，保持推理精度的同时减少模型存储和计算资源消耗；多模态大模型编解码加速算法研发，降低端侧模型推理成本；
+2. 参与端侧大模型技术体系建设，探索和实现高效大模型架构，开发和优化内部模型端侧化部署工具链，跟进大模型前沿技术发展趋势，探索相关算法的创新优化，发表高质量研究论文。
+方向三：
+1. 参与AI搜索，小布记忆等业务交付中的算法方案设计，模型训练等，持续提升算法能力，改善产品体验；
+方向四：
+1、 负责参与小布助手统一意图理解与任务编排的算法及数据工程优化
+方向五：
+1. 参与个性化大模型算法设计、实现和优化，提升模型用户特征提取、行为挖掘及精准画像等核心能力；
+2. 协同产品与工程团队，推动个性化大模型在手机业务中的创新应用，持续探索技术突破点并推动团队技术迭代，保持行业领先性。</p><h3>任职要求</h3><p>1. 拥有计算机科学、人工智能、机器学习或相关领域的硕士或博士学位；
+2. 扎实的编程基础，熟练掌握Python、C++等编程语言，有TensorFlow、PyTorch等深度学习框架的使用经验；
+3. 对多模态学习、自然语言处理、计算机视觉等领域有深入理解，有相关项目经验者优先；
+4. 具备良好的数学基础，熟悉概率论、统计学、优化算法等；
+5. 强烈的创新意识和解决问题的能力，能够在快节奏的环境中独立工作。
+加分项：
+1.在手机等业务场景中有算法交付经验
+2.在大模型相关领域有发表过高水平论文或专利；
+3. 对开源社区有贡献，或有参与过大型开源项目的经验。</p><a href="https://careers.oppo.com/university/oppo/campus/post#1683">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c6"><header><h2>美团</h2><span>7 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">多模态生成大模型算法工程师</span><span class="m">北京市、上海市、深圳市 · 08-17 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 负责通用视觉技术能力的构建，如OCR、人脸人体分析、图像视频理解、3D视觉、图形和渲染算法、基础模型、跨模态理解与生成、MLOps等；
+2. 负责视觉技术在美团全场景下的落地，包括但不限于内容审核、视频结构化理解、智能文档分析、身份核验、智能创作、自动驾驶、场景数字化、摄像头视觉感知、视频流分析、IoT视觉等；
+3. 负责前瞻技术的探索及攻坚，如生成式AI、神经网络渲染、点云处理、增强现实等。</p><h3>任职要求</h3><p>1. 本科及以上学历；
+2. 熟练掌握模式识别和图像视频处理领域的基础理论和方法，在一个或多个领域有深入研究；在机器学习和深度学习方面具备扎实的理论基础和工程实现能力，熟悉PyTorch、TensorFlow等主流框架；
+3. 优秀的分析和解决问题的能力、项目推动力和团队协作能力。
+具备以下经验者优先
+1. 在计算机视觉领域内的权威期刊（TPAMI， TIP， IJCV， TMM等）或顶级会议（CVPR，ICCV，ECCV等）发表过文章；
+2. 在计算机视觉的通用或细分领域的权威竞赛中取得成绩；
+3. 对视频内容理解、行人再识别、深度学习模型压缩、弱监督学习、对抗学习等领域之一有过深入研究。
+岗位亮点
+1. 以公司实际业务为依托，有完善的技术转化和落地机制；
+2. 场景全覆盖，视觉技术方向的选择空间大；
+3. 注重技术创新，关注前沿技术；
+4. 定制化的新人培养计划，可走领域专家培养路线，也可走架构师培养路线。</p><a href="https://zhaopin.meituan.com/web/campus#4697302797">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【北斗】多模态数字人算法研究员</span><span class="m">北京市 · 06-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【愿景】
+成为本地生活领域虚拟服务解决方案的头部玩家，打造AI驱动的下一代智能直播基础设施。
+【你将参与】
+1.以人为中心的视频生成研究与应用：负责基于扩散模型/Transformer架构的人物视频生成算法研发，重点攻克人体姿态可控性、外观保真度、时序连贯性等核心难题，目标实现业界领先的生成质量，在数字人直播场景落地应用。
+2.流式视频生成/动作生成技术探索：设计并实现低延迟流式推理框架，探索Token级增量生成、因果注意力机制等前沿方向，构建端到端生成低延迟解决方案，支撑实时交互场景落地。
+3.多模态驱动的动作生成：研究基于文本/音频/姿态等多模态信号控制的人体动作生成算法，涵盖全身动作、手势、表情及唇型驱动，实现高自然度、多样性的动作合成，并完成从研究到相应线上产品的闭环交付。
+4.AI数字人算法落地与优化：主导数字人生成全链路开发和优化，包括模型迭代、训练加速、推理提速，推动数字人生成效果，保障线上服务稳定性。</p><h3>任职要求</h3><p>【任职资格】
+基本要求：
+1.计算机科学、人工智能、电子信息等相关专业硕士及以上学历；
+2.精通至少一种视频生成基座框架（如DiT、UNet-based Diffusion等），熟悉大模型后训练技术（SFT/RLHF等）；
+3.熟悉主流的视频生成加速技术（如模型并行、推理优化、流式生成架构）；
+4.熟悉SMPL/FLAME/ARKIT等人体/人脸表征建模，掌握多模态控制动作生成主流方法；
+5.在CV/ML/MM方向顶级会议或期刊（CVPR、ICCV、ECCV、NeurIPS、ICML、ACM MM、TPAMI等）上发表过论文；
+6.有主导算法创新研究的完整经验（从idea提出到实验验证到论文发表）。
+加分项：
+1.有数字人相关实际项目经验（如唇驱、Talking Head、全身驱动、3D虚拟人等）；
+2.有开源项目或竞赛获奖经历。
+【为什么是我们】
+团队核心成员深耕数字人算法多年，产研落地经验丰富，在数字人/视频生成相关方向上发表顶会论文数十篇。该岗位技术创新与业务价值并重，数据场景丰富、GPU资源充裕，研究成果能快速触达亿级用户。</p><a href="https://zhaopin.meituan.com/web/campus#4529858137">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【北斗】多模态大语言模型算法研究员</span><span class="m">北京市 · 06-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【愿景】
+建成全球持续领先、客户长期信赖的履约技术平台，打造市场首选、社会认可、服务10亿用户的配送品牌。
+【你将参与】
+方向一：多模态Agent技术体系研究与落地
+1.面向真实业务场景，设计并构建多模态Agent技术体系，覆盖图像、视频、文本、语音等多源信息理解，以及任务规划、工具调用、多轮交互、跨模态推理、自我反思与纠错等核心能力。
+2.围绕复杂业务任务，抽象多模态Agent的关键问题与模式，探索视觉感知、复杂推理、工具协同和任务执行的一体化优化方案，提升Agent在真实场景中的准确性、鲁棒性与执行效率。
+方向二：多模态模型训练与后训练优化
+1.负责多模态大模型及Agent模型的训练与优化，包括多模态指令精调、偏好对齐、奖励建模、过程监督等方向，提升模型在视觉理解、视频分析、图文推理、工具调用和复杂任务执行中的能力上限。
+2.参与多模态训练数据与反馈数据建设，包括图文/视频数据清洗、合成数据构建、标注流程设计、偏好数据生产、评测数据沉淀等，支撑模型持续迭代。
+方向三：多模态评测与业务闭环建设
+1.设计覆盖多模态Agent行为、模型感知能力、跨模态推理能力、工具调用能力和业务效果的评测体系，建立自动化诊断与归因链路。
+2.与业务团队深度协作，构建训练—评估—迭代闭环，将多模态Agent能力落地到真实业务流程中，并转化为可量化的线上收益。</p><h3>任职要求</h3><p>【任职资格】
+必备条件：
+1.2027届计算机、人工智能、数学、统计、电子信息、自动化等相关专业，本科及以上学历，博士/硕士优先。
+2.扎实的机器学习与深度学习基础，熟悉Transformer、Vision Transformer、CLIP、VLM、MLLM等主流多模态模型架构，具备独立阅读和复现顶会论文的能力。
+3.熟练掌握Python及PyTorch/JAX等主流深度学习框架，具备清晰的代码工程意识和端到端实验能力。
+4.对多模态大模型训练流程有系统性理解，熟悉视觉编码器、语言模型、跨模态对齐、图文/视频数据构建、多模态指令微调等关键环节。
+5.对多模态Agent构建有深入理解，熟悉任务规划、工具调用、视觉感知、跨模态推理、多轮交互、记忆机制与失败模式分析。
+加分项：
+1.在NeurIPS、ICML、ICLR、CVPR、ICCV、ECCV、ACL、EMNLP等顶会发表过论文，含在投，或有被广泛使用的开源项目。
+2.参与过大规模多模态模型训练，或对分布式训练、推理优化、量化、蒸馏、投机解码、多模态Serving优化等有动手经验。
+3.具有跨学科视野，能够将运筹优化、时空建模、视觉感知、因果推理、强化学习等方法引入多模态Agent与后训练体系。
+【为什么是我们】
+1.真实战场：千万级日订单、百万级骑手，提供业界罕见的Agent大规模真实落地环境，不止是玩具Demo。
+2.资源保障：充足的GPU集群资源，支持千卡规模的后训练实验，让想法落地不被算力卡脖子。
+3.成果导向：团队鼓励发表顶会论文，内部有完善的学术合作通道。
+4.高密度氛围：团队论文产出稳定，曾获美团技术突破奖、啃下硬骨头奖等荣誉，与多所顶尖高校保持长期联合研究。</p><a href="https://zhaopin.meituan.com/web/campus#4530676544">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【北斗】多模态理解后训练与Agent算法研究员</span><span class="m">北京市、上海市、深圳市 · 06-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>我们正在构建具备物理世界感知、理解、仿真能力与支撑数字世界高质量呈现的本地生活视觉技术引擎，让每一次连接更智能，让物理世界的烟火气更美好。
+团队介绍：
+作为美团官方的视觉AI基础模型团队，负责数字世界和物理世界等本地生活全场景多模态技术的前沿探索和应用，在AIGC生成、虚拟人交互、多模态理解等领域持续沉淀行业领先的技术成果。
+研究方向包括但不限于：
+1、基于多模态预训练和后训练相关技术创新，提升多模态大模型在OCR、文档图表解析、Visual Grounding、细粒度感知、视觉问答等核心视觉理解任务上的能力上限；
+2、索多模态强化学习方案创新设计，实现视觉感知、多模态理解等场景下的高性能可信输出和幻觉抑制；
+3、增强模型的视觉推理能力（Visual CoT、PRM等）、工具调用与Agent能力、长上下文视觉理解能力和GUI能力，提升模型在视觉感知、理解、规划决策的长程复杂任务上的综合表现。</p><h3>任职要求</h3><p>1、具备视觉多模态大模型的预训练或后训练研究经历；
+2、熟悉PyTorch，有充分的动手实践经验。
+加分项：
+1、社区影响力：在多模态大模型领域有影响力的开源项目中做出过核心贡献
+2、学术影响力：发表过高水平论文（如ICLR、CVPR、ICCV等），有相关竞赛经历并取得名次
+岗位吸引力：
+1、依托本地生活领域海量的物理世界数字化和线上多模态信息重构任务，提升模型的视觉多模态理解能力上限。
+2、立足美团本地生活应用场景，布局前沿的多模态决策智能路线，驱动长程复杂视觉任务中的表现优化和标杆级视觉Agent应用。</p><a href="https://zhaopin.meituan.com/web/campus#4534914406">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【LongCat大模型人才校招】多模态交互算法研究员</span><span class="m">北京市、上海市 · 06-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>LongCat 是美团基础研发自主研发的大模型，覆盖语言、视觉、语音、具身全栈。LongCat 相继推出 LongCat-Flash、LongCat-Flash-Thinking、LongCat-Flash-Omni 等系列模型，正在构建多模态实时交互大模型。加入团队你将参与如下工作
+1. 多模态实时表征探索，研究视频与语音的视觉表征、Audio 表征以及底层模型结构，构建支撑双工交互的感知底座，攻克实时性与表达力的平衡。
+2.  全模态模型结构与训练策略，探索统一的模型架构与训练范式，使模型能够充分融合视觉、语音、文本的理解与生成能力，逼近全模态统一智能。
+3. 实时交互核心算法，研发面向人机自然对话的打断、判停与时机决策机制，让模型在复杂声学与多说话人场景下做到自然不抢话、不漏话、在恰当时机主动发起交互。
+4. 下一代交互范式探索，研究交互式思考 模型、流式工具调用等前沿能力，定义下一代多模态实时交互大模型的形态边界。
+【为什么是我们】
+1.全栈顶配算力支持，依托美团大规模算力集群，提供千卡至万卡级算力支持，具备成熟的分布式训练与低延迟推理优化栈，保障 世界动作模型与 VLA 大规模训练。
+2.与优秀人才同行，你将与行业顶尖的大模型研究员及机器人领域专家并肩作战，共同攻克具身智能的技术难点。</p><h3>任职要求</h3><p>1.计算机、人工智能等相关专业硕士/博士学位，具备扎实的视觉、语音和深度学习学习理论功底；
+2.在 NeurIPS / ICLR / ACL / CVPR / ICCV / ICASSP / Interspeech 等顶级会议发表过高水平论文者优先；
+3.深入理解VLM，Audio LLM等至少一项前沿技术；
+4.精通 PyTorch，具备大规模分布式训练经验；</p><a href="https://zhaopin.meituan.com/web/campus#4531804534">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【北斗】大模型算法研究员（Agent RL/RAG/多模态技术）</span><span class="m">北京市、上海市 · 06-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>我们正在构建下一代企业级 AI 知识中枢——不是一个实验室里的 Demo，而是一套正在真实运转、服务数万人的智能系统。从支撑百万级文档的智能问答引擎，到覆盖全公司的 AI 办公助手，我们的技术每天都在改变真实用户的工作方式。而现在，我们正在迈向更具野心的目标：构建企业的组织认知系统（Organizational Intelligence）——让 AI 不仅回答问题，更能理解组织如何运转、知识如何流动、决策如何形成。
+通过连接文档、会议、IM、代码、项目与业务流程，我们正在定义企业 AI 的三层核心架构：Memory — 组织记忆：可持续沉淀、持续演化的知识底座；Cognition — 组织认知：理解上下文、识别模式、辅助决策；Agent — 智能行动：自主规划、多步执行、自我进化。
+核心职责：
+1、 多模态 RAG 架构设计面向文本、图像、表格、视频的统一检索增强生成框架，攻克跨模态知识索引与融合的核心挑战，让企业知识库中的每一种信息形态都能被精准理解和召回。
+2、Agent 强化学习与自主规划探索基于 RL 的工具调用与任务规划能力，实现多轮多步骤复杂办公任务的自主执行，构建具备长期记忆与自我进化能力的下一代办公 Agent。
+3、大模型可信度与幻觉抑制研究幻觉检测与抑制技术，构建事实一致性评估体系与证据链追溯机制，确保企业级知识问答输出的每一个字都经得起验证。</p><h3>任职要求</h3><p>【岗位要求】
+1. 2027届硕士及以上学历，计算机、人工智能、数学等相关专业。
+2. 扎实的深度学习理论基础，精通PyTorch等主流框架，具备独立复现和改进前沿模型的能力。
+3. 在NLP/多模态/强化学习至少一个方向有深入研究经验。
+4. 具有出色的分析、解决问题的能力，能深入解决大模型训练和应用存在的问题，有自主探索解决方案的能力者优先；
+【加分项】
+1. 在ACL/ AAAI/ NeurIPS/ ICCV/ SIGIR/ IJCAI等顶会以第一作者发表论文。
+2. 在有影响力的开源项目中做出过核心贡献。
+3.Kaggle / ACM 等竞赛获奖经历。
+在这里，你将有机会参与：
+1、真实场景，真实影响力 — 这里没有束之高阁的论文复现，你写下的每一行代码都可能改变数万人的工作方式
+2、 前沿技术栈，全链路参与 — 从模型研究到系统设计到线上落地，你将完整经历 AI 技术从 idea 到 impact 的全过程
+3、定义级别的工作 — 你参与的不是在现有框架上做优化，而是从零定义企业 AI Operating System 的核心架构
+4、与顶尖人才共事 — 团队成员均在本领域有深度研究和实践，在 AI 前沿方向持续产出
+这里没有停留在实验室里的 Demo，而是真实的用户、真实的数据和真实的业务挑战。你写下的每一行代码，都可能影响数万名员工的工作方式。
+我们相信，未来企业的核心竞争力不只是拥有 AI，而是拥有能够持续学习、持续进化的组织智能（Organizational Intelligence）。
+如果你渴望参与构建企业级 AI 的 Memory、Cognition 与 Agent 三层架构，定义未来企业的智能操作系统——我们在这里等你。</p><a href="https://zhaopin.meituan.com/web/campus#4533253122">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【LongCat大模型人才校招】基座评测与认知分析算法研究员-多模态与前沿交互研究</span><span class="m">北京市、上海市 · 06-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>多模态大模型能力在近年飞速发展，模态的统一、任务的统一、多种模态联合生成和实时交互带来了崭新的应用体验和生产力提升。在这个过程中，我们需要脚踏实地的同时仰望星空，发挥想象力预判新模型能力带来的应用场景革新，研究达到理想态的关键演进路径并进行度量分析，指引长期有潜力的模型迭代方向。方向包括但不限于
+1.多模Agent方向：包括在多模态的工具调用和GUI/CUA，探索结合多模原生能力的OpenClaw展现出的生产力提升潜力，从基座模型能力角度分析其中的关键影响因素并进行自动化度量，指引基座模型的迭代；
+2.多模态统一方向：包括全模态统一模型、音视频联合生成等，思考在模态统一、任务统一和多种模态联合生成过程带来新的能力跃迁并进行度量，分析模态和任务间的相互关联，指引模型架构、训练策略等选型；
+3.多模交互方向：包括通用世界模型、音视频交互等，研究动态多轮交互中的一致性、真实性和长程记忆等关键能力的自动化度量，指引基座模型的迭代；
+【为什么是我们】
+一起建立行业评测标杆，推动行业认知进展，代表工作包括：
+1.UNOBench 行业首个考察全模态协作能力，并得出全模态和单模态能力Compositional Law，指引1+1+1&gt;3的全模态能力发展。
+2.EvalTalker 行业首个多人、多姿态、全景覆盖的数字人评测基准，指引自研Longcat-Avatar模型稳居业界前沿。
+3.UniHetero 行业首个验证生成能促进理解的unified model，以简洁的结构在大规模数据上得到更好的data-scaling。</p><h3>任职要求</h3><p>1. 硕士及以上学历，计算机、数学、统计学或相关专业。
+2. 熟悉Java/Python/C++等编程语言，良好的编码习惯和一定的工程能力 。
+3. 具有深度学习和大模型原理的基础知识，具有多模态大模型、具身智能之一的研究经验。
+4. 良好的沟通能力、团队合作精神以及较强的问题解决能力。 
+5. 对每一行代码负责，对业务方负责，具备工匠精神。</p><a href="https://zhaopin.meituan.com/web/campus#4530490380">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c7"><header><h2>百度</h2><span>4 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">2027AIDU-多模态算法工程师</span><span class="m">北京市,上海市 · 09-24 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 负责多模态大模型的算法研发与迭代，覆盖图文、视频、语音、3D等多模态融合理解与生成；
+2. 研究跨模态对齐、对比学习、扩散模型、视频生成、图像编辑、3D生成、风格迁移等前沿技术；
+3. 参与多模态数据pipeline建设、评测体系设计与业务落地，推动模型在搜索、推荐、AIGC、健康、自动驾驶、网盘文库、视频理解、解题等核心场景中的应用；
+4. 研发方向包括但不限于：视觉感知算法、多模态理解模型、图像/视频生成、模型压缩轻量化、文档多模态等；
+5. 建设多模态数据管线，优化模型训练与推理效率，完成算法模型的训练、优化和部署。</p><h3>任职要求</h3><p>1. 博士优先，计算机、模式识别、人工智能、电子工程、数学等相关专业硕士及以上学历；
+2. 掌握计算机视觉、图像处理、深度学习等基础理论，在多模态模型训练、文档多模态、开放域目标检测、模型压缩小型化等方向有深入研究；
+3. 熟悉扩散模型、多模态大模型（如CLIP、Flamingo、Qwen-VL等），对图像生成、视频生成、3D生成、数字人等方向有浓厚兴趣及项目经验；
+4. 熟练掌握Python及PyTorch/PaddlePaddle/TensorFlow等深度学习框架，有较强论文复现能力；
+5. 有多模态预训练、蒸馏、视频生成、模型轻量化等经验者优先；
+6. 在国际顶会（CVPR、ICCV、ECCV、NeurIPS、ICML、AAAI等）或期刊发表过论文，或有开源项目贡献者优先；
+7. 具备良好的团队合作精神、沟通能力与问题解决能力，热爱技术，追求创新。
+招聘部门：健康事业部、数字人产研和视频Agent组、数字人直播和互动技术组、PSIG策略部、应用模型技术部、自动驾驶技术部</p><a href="https://talent.baidu.com/jobs/list#d29404bd-55de-4cc1-929b-e67d304abc97">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">上海-多模态算法工程师</span><span class="m">上海市 · 07-21 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>-从事多模态大模型（视觉-语言、音频-语言、跨模态生成等）的算法研究与工程实现
+-探索多模态理解与生成能力的提升方法，包括图文对齐、跨模态检索、多模态推理等
+-结合最新多模态大模型进展，推动技术快速迭代
+-设计高质量多模态训练数据方案与评估体系
+-紧跟多模态前沿研究，将论文成果高效转化为工程实践</p><h3>任职要求</h3><p>-本科及以上学历，计算机、人工智能等相关专业优先
+-扎实的深度学习基础，熟悉Transformer、ViT、CLIP等多模态模型结构
+-熟练掌握Python及深度学习框架（PyTorch/PaddlePaddle）
+-有多模态学习、计算机视觉或NLP相关研究/项目经历者优先
+-在顶级学术会议（CVPR、ECCV、ACL等）发表过论文者优先</p><a href="https://talent.baidu.com/jobs/list#2df21b8d-b533-40e4-ad89-6dea847a44c8">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">深圳-多模态算法工程师</span><span class="m">深圳市 · 07-21 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>-从事多模态大模型（视觉-语言、音频-语言、跨模态生成等）的算法研究与工程实现
+-探索多模态理解与生成能力的提升方法，包括图文对齐、跨模态检索、多模态推理等
+-结合最新多模态大模型进展，推动技术快速迭代
+-设计高质量多模态训练数据方案与评估体系
+-紧跟多模态前沿研究，将论文成果高效转化为工程实践</p><h3>任职要求</h3><p>-本科及以上学历，计算机、人工智能等相关专业优先
+-扎实的深度学习基础，熟悉Transformer、ViT、CLIP等多模态模型结构
+-熟练掌握Python及深度学习框架（PyTorch/PaddlePaddle）
+-有多模态学习、计算机视觉或NLP相关研究/项目经历者优先
+-在顶级学术会议（CVPR、ECCV、ACL等）发表过论文者优先</p><a href="https://talent.baidu.com/jobs/list#6c2e943b-ac8e-40b1-aa64-9787335d4b06">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">北京-多模态算法工程师</span><span class="m">北京市 · 07-21 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>-从事多模态大模型（视觉-语言、音频-语言、跨模态生成等）的算法研究与工程实现
+-探索多模态理解与生成能力的提升方法，包括图文对齐、跨模态检索、多模态推理等
+-结合最新多模态大模型进展，推动技术快速迭代
+-设计高质量多模态训练数据方案与评估体系
+-紧跟多模态前沿研究，将论文成果高效转化为工程实践</p><h3>任职要求</h3><p>-本科及以上学历，计算机、人工智能等相关专业优先
+-扎实的深度学习基础，熟悉Transformer、ViT、CLIP等多模态模型结构
+-熟练掌握Python及深度学习框架（PyTorch/PaddlePaddle）
+-有多模态学习、计算机视觉或NLP相关研究/项目经历者优先
+-在顶级学术会议（CVPR、ECCV、ACL等）发表过论文者优先</p><a href="https://talent.baidu.com/jobs/list#b9ad50c9-07c7-4b9c-998d-7049bb706edf">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c8"><header><h2>B 站</h2><span>3 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">多模态理解算法实习生</span><span class="m">上海 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>工作职责:
+你将建设视频和音频理解能力，包括 video caption、tagging、PE 模型训练和推理优化，包括基础模型和框架搭建以及优化，根据不同模型研发周期来持续优化理解模型的精度和效率。你的工作会直接支撑生成大规模数据筛选、自动标注、评测、agent 决策和内容分发。
+工作要求:
+1.2028届本科及以上学历，熟悉 Omni、VLM相关模型的预训练、后训练和推理优化；能处理大规模视频/音频数据；
+2.理解高质量 caption、tag 和结构化视频语义对生成模型的重要性。
+3.独立负责一个理解能力，如视频 caption、tag、检索、音频理解、多模型蒸馏。
+加分项：
+大规模 caption pipeline、active learning、多模型 ensemble、视频检索、推荐系统、内容理解系统经验。</p><a href="https://jobs.bilibili.com/campus/positions/30009">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态VLM数据算法实习生</span><span class="m">上海 · 09-18 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>工作职责:
+1. 构建多模态视频理解模型的数据飞轮，对语音/图片/视频 等原始语料进行结构化分析理解，参与多模态大模型的数据准备、数据清洗、数据实验等工作，构建高质量的多模态数据集。
+2. 针对文生视频，图生视频等不同任务，设计提示词工程，构建高质量多模态数据产出的Pipeline，提升模型对主体、动作、场景、运镜等信息的理解能力。
+3. 配合理解大模型SFT专项进行模型训练、评测结果分析，根据实验结果定位数据中可能存在的问题。
+工作要求:
+1.计算机/软件工程等相关专业本科以上学历；
+2. 沟通主动、细心、负责、稳定性好，能够耐心处理一定量的数据筛选、质检等工作。
+3. 熟悉计算机视觉、多模态领域的相关研究工作和算法，有大模型相关数据处理工作经验者优先
+4. 学习能力强、对于大模型拥有热情；有vllm、多模态数据、算法模块经验者优先
+5. 可以尽快到岗，稳定实习六个月的同学优先。</p><a href="https://jobs.bilibili.com/campus/positions/30608">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">内容理解算法实习生</span><span class="m">上海 · 08-18 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>工作职责:
+1. 大模型监督微调与迭代
+基于业务真实数据与线上反馈，设计、实现 LLM / 多模态模型 SFT 微调方案；面向分类、信息抽取、内容理解、开放式生成等任务，持续提升模型效果与泛化能力。
+2. 强化学习对齐算法落地
+参与强化学习后训练全流程，包括 GRPO、DAPO、GSPO 等算法实践；根据业务场景设计偏好数据、打分器 / 奖励函数，优化采样策略、优势估计、KL 约束，提升模型对齐效果与训练稳定性。
+3. Agent 应用
+搭建Agent能力解决复杂内容理解任务，在内容理解平台上实现工具调用、多轮反思，赋能智能标注等，支持产品/运营完成内容理解效果调研。
+4. 训推工程和部署上线
+基于 LLaMA-Factory、EasyR1、Verl等训练框架完成数据流水线、训练配置、实验管理与复现。
+与数据、产品、工程团队协作，建立“数据—训练—评估—上线—反馈”的闭环体系。
+工作要求:
+1.2027届本科及以上学历，具备扎实的机器学习、深度学习和编程基础。
+2.是 AI 的深度使用者，能够将大模型融入日常学习和研发工作。
+3.能够结合 Prompt、Agent、RAG、代码生成等能力解决实际问题，并验证结果的正确性。
+4.对 AI 前沿技术保持敏感，能够快速理解、动手验证并形成自己的判断。
+5.不满足于复现现有方案，愿意主动发现问题并持续推进。
+6.有推荐、NLP、多模态、大模型、科研竞赛或高质量项目经验者优先。
+7.相比掌握多少技术名词，我们更关注你能否驾驭 AI、保持独立判断，并把技术转化为高价值结果。
+8.熟练使用AI agent能力者优先。</p><a href="https://jobs.bilibili.com/campus/positions/30040">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c9"><header><h2>蔚来</h2><span>3 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">校招-多模态算法工程师</span><span class="m">上海、北京 · 08-12 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1.负责智能座舱多模态大模型方向研发。
+2.对视觉感知、VLM、VLA等模型训练和优化。
+3.模型应用与落地，包括垂域模型的微调与部署，端侧模型小型化等。</p><h3>任职要求</h3><p>1.熟悉多模态领域核心算法，对VLM、VLA、3D、图像生成等有深入了解。
+2.有视觉感知、VLM等算法落地经验。
+3.精通python，熟悉c++。深入掌握pytorch。
+4.有智能座舱相关经验优先。
+5.乐于学习，自驱力强，渴望快速成长；
+6.有相关领域论文、比赛排名是加分项。</p><a href="https://nio.jobs.feishu.cn/campus/position/7673027279397079305/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">校招-多模态应用工程师</span><span class="m">上海、北京 · 08-12 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责智能座舱多模感知视觉AI、端侧AI大模型相关功能的车端部署、升级与优化；
+2、负责多模算法在车载平台的集成部署，工程开发和效率优化；
+3、负责基于Linux/QNX/Android的多模态算法和应用模块的设计与开发；
+4、通过前瞻性技术调研与分析，引入业界优秀的软件架构，设计理念，测试理论及研发工具链</p><h3>任职要求</h3><p>1、计算机科学、信息工程、电子工程、自动化、人工智能等专业，本科及以上学历（硕士优先）；
+2、具有良好的动手能力，熟练使用C++/JAVA进行工程开发，有端上C++开发经验，有良好的编程风格；
+3、熟悉嵌入式Linux/QNX/Android系统开发工具和常用调试方法，有Linux/QNX/Android平台软件开发经验；
+4、了解常见计算机视觉或多模态算法，了解多模态大模型模型结构和推理实现，有端上模型部署经验；
+5、具备良好的逻辑思维能力，业务解读能力，良好的沟通协作能力。</p><a href="https://nio.jobs.feishu.cn/campus/position/7673028704662784275/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">Super Sparks-校招-多模态智能体交互研究员</span><span class="m">上海 · 07-13 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>-探索具身智能前沿技术，制定技术路线，统筹内部研发方向；
+-开发、微调视觉-语言-动作（VLA）大模型（如 RT-2、OpenVLA、Groot、pi0 等），实现环境理解、任务分解与动作生成；
+-设计基于 Transformer、Diffusion Policy 的抓取与运动规划算法，提升操作泛化性；
+-领导或参与核心算法研究，覆盖具身交互、感知、操作、仿真、训练等方向，提升具身能力与可靠性；
+-对特定场景使用仿真数据集或模型数据集强化训练，确保操作成功率；
+-在机器人平台部署 VLA 模型，通过模型量化、推理加速等方式提升整体执行效果；
+-推动相关工具建设，高效训练与验证部署，加快具身智能的产品化落地。</p><h3>任职要求</h3><p>-计算机/机器人/人工智能等相关领域硕士或博士；
+-精通 Python/C++，掌握 PyTorch/TensorFlow 框架；
+-深入理解强化学习基本原理与核心算法（PPO、SAC 等）及常用框架；
+-深入理解大模型（VLM、VLA）开发流程（训练、微调、部署），并有实际项目经历；
+-深入理解机器人学习算法，具备强化学习用于机器人领域的项目经验；
+-在顶会（CoRL、ICRA、IROS、CVPR、ICLR 等）发表具身智能或大模型相关论文优先；
+-具备 OpenVLA、Groot、pi0 等 VLA 模型应用经验优先；
+-具备模型量化（Quantization）、边缘部署经验优先；
+-有持续学习和创新精神，能自主、高效工作。</p><a href="https://nio.jobs.feishu.cn/campus/position/7661852823559424319/detail">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c10"><header><h2>米哈游</h2><span>2 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">基础研究-AIGC算法研发工程师（AIGC Agent / 多模态 / 视觉 / 3D / 动作 / AI工具方向）</span><span class="m">上海</span></summary><div class="jd"><h3>岗位职责</h3><p>全职，面向2027届（2026.9-2027.8之间毕业）</p><a href="https://jobs.mihoyo.com/?job=8924#/campus/position">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">AIGC算法研发实习生（AIGC Agent / 多模态 / 视觉 / 3D / 动作 / AI工具方向）</span><span class="m">上海</span></summary><div class="jd"><h3>岗位职责</h3><p>实习，面向2028届及之后毕业的在校生</p><a href="https://jobs.mihoyo.com/?job=8338#/campus/position">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c11"><header><h2>小米</h2><span>2 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">AI Agent多模态算法工程师</span><span class="m">上海 · 08-07 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>岗位职责
+负责 AI Agent 智能体系统研发，探索并优化多模态大模型（MLLM）在图像质量评价（IQA）业务场景中的高效微调和推理技术，满足多样化业务需求（拍照、视频等），实现模型在AI Agent工作流中的快速适配与高效部署；
+深入研究多模态、大模型等内容理解能力在图像质量、风格、美学评价方面创新型应用，探索下一代图像质量评价（IQA）新范式。
+结合产品需求，参与AI Agent多模态大模型算法的设计、开发、验证、集成、优化和维护，解决算法产品化过程中的各种技术问题，确保算法达到上线要求；
+负责多模态大模型（MLLM）的全流程训练，包括高质量数据的制作与收集、预训练（Pre-Training）、指令微调（SFT）和后训练（Post-Training），在开源及业务数据集上实现SOTA性能；</p><h3>任职要求</h3><p>岗位要求
+硕士及以上学历，计算机、人工智能等相关专业，有 AI Agent或大模型相关项目或实习经验；
+熟悉主流 Agents 框架与范式，熟悉 ReAct、RAG、Function Calling、Planner/Memory 等方法； 熟悉 RAG、Function Calling、代码生成、代码理解等 Agent 核心技术，具备复杂任务规划、检索增强及性能优化经验；
+熟悉大模型训练与推理流程，掌握 PyTorch、Transformers，具备 SFT、LoRA、DPO/RLHF 等训练经验，理解后训练与对齐方法，熟悉 Transformers/vLLM/TGI 等高效推理与服务化；
+具备良好的工程能力和问题分析能力，有 AI Agent、Coding Agent、企业智能体等相关项目经验，或有开源项目、论文成果者优先。
+在多模态或大模型领域主导过有影响力项目或发表过高水平论文者优先；具备图像质量、美学评价研究落地经验者优先。</p><a href="https://xiaomi.jobs.f.mioffice.cn/campus/position/7671129633626540331/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">多模态大模型算法工程师</span><span class="m">北京 · 08-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1.负责多模态大模型训练、对齐相关工作，包括不限于数据迭代、模型训练、模型评估；
+2.结合实际场景，提供全面的技术解决方案，参与PE、推理优化、数据飞轮建设，提升多模态大模型在应用场景的效果；
+3.协助开发和优化多模态AI Agent 的数据采集、分析及数据闭环相关工具，支持标注工具、研发工具、数据分析与可视化系统的设计与实现，提升产研团队的工作效率；
+4.探索高表现力/低延迟的语音、视觉驱动的对话系统；
+5.探索相关领域前沿进展，并结合产品对算法进行优化，使相关产品效果达到业界领先水平；
+6.探索AI能力的极限，并赋能产品以创造价值。</p><h3>任职要求</h3><p>职位要求：
+1.硕士及以上学历，计算机、电子信息、自动化、数学等相关专业，多模态大模型、计算机视觉等相关方向；
+2.具备丰富的多模态理解、计算机视觉、或强化学习算法经验，对多模态大模型、计算机视觉、或强化学习算法有深入理解；
+3.扎实的编程基础，对数据结构、算法设计基础有深度了解，熟练掌握Python/C++等主流语言一种或多种，熟练应用pytorch、megatron、deepspeed、huggingface、transformers等深度学习框架和库；
+4.具备扎实的工程/算法能力，能迅速迁移过往的工程/算法经验，深入理解系统底层原理并进行系统优化，能快速学习新知识；
+5.在CVPR / ICCV / ECCV / NeurIPS / ICLR / ICML等顶会发表过多模态大模型或计算机视觉方向高水平论文，或以主力身份参加相关领域主流算法竞赛且取得优秀成绩者优先；
+6.在ACM/ICPC、CodeForces、IOI/NOI/NOIP/CSP等编程算法竞赛中获得优秀成绩者优先。</p><a href="https://xiaomi.jobs.f.mioffice.cn/campus/position/7670891732025067803/detail">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c12"><header><h2>小鹏</h2><span>2 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">【27届校招】算法工程师（视觉多模态方向）</span><span class="m">北京、上海、广州 · 07-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>岗位职责
+1、负责视觉及多模态算法（图像/文本/视频融合等）的研发、优化与落地，覆盖模型设计、训练、调优、部署全链路，聚焦业务场景中的核心技术难题解决，推动算法从原型到产品的工业化落地。
+2、基于C++完成算法工程化实现，包括算法模块开发、性能优化、单元测试及跨平台适配，保障算法在实际部署场景中的高效、稳定运行，编写规范的技术文档与测试报告。
+3、负责深度学习模型的轻量化优化，熟练运用量化（PTQ/QAT）、剪枝、知识蒸馏、稀疏化等技术，针对不同硬件平台（云端/边缘端）优化模型性能与推理效率，解决模型部署中的精度与速度瓶颈问题。
+4、跟踪视觉与多模态领域前沿技术，开展技术调研与预研，结合业务需求进行技术选型与创新，推动算法性能持续迭代升级，提升产品核心竞争力。
+5、对接产品、工程等跨团队，梳理业务需求，输出算法解决方案，参与算法相关的技术评审、问题排查，保障项目按时交付与落地。</p><h3>任职要求</h3><p>任职要求
+1、本科及以上学历
+2、熟悉计算机视觉核心算法（目标检测、图像分类、分割、图像增强等），精通多模态融合技术（文本-图像/视频-图像匹配、跨模态检索等），有CLIP、LLaVA、InternVL等主流多模态模型实战经验者优先。
+3、具备扎实的C++编程功底，熟悉Linux环境下的算法开发，掌握数据结构、多线程、并行计算等相关知识，有丰富的算法工程化落地经验，能独立完成算法的C++实现与优化。
+4、精通模型量化、剪枝、知识蒸馏等轻量化技术，熟悉至少一种推理引擎（TensorRT、ONNX Runtime、NCNN、TVM等），具备模型在云端/边缘端部署、性能调优的实战经验，能独立解决部署过程中的技术问题。
+5、具备较强的问题分析、攻坚能力与自我驱动能力，逻辑思维清晰，，能快速跟进业界前沿技术并落地应用。
+6、具备良好的团队协作与跨部门沟通能力，责任心强，有规范的代码编写习惯，能承受一定的业务压力，有相关算法竞赛获奖或顶会论文发表者优先。
+7、加分项：有车载芯片、嵌入式SOC平台部署经验，或大模型端侧优化、工业场景多模态落地经验者优先。</p><a href="https://xiaopeng.jobs.feishu.cn/campus/position/7662698677748107571/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【27届校招】基座模型/多模态模型算法工程师</span><span class="m">上海、北京、深圳、中国香港 · 07-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1.熟悉 LLM/VLM 相关技术，有数据合成、后训练、强化学习经验者优先
+2.理解 Agent 架构，善于用 Agent 提升研发和评测效率
+3.擅长构建 harness、评测框架、自动化实验与数据闭环
+4.工程能力强，能快速验证想法并落地到产品或平台中</p><h3>任职要求</h3><p>1. 27届硕士及其以上学历。
+2. 了解大模型基本知识和体系。
+3. 具备较强的代码实现能力。
+4. 有大模型训练经验者优先。
+5. 工作态度认真负责。
+加分：有多模态推理、工具调用、RLHF/RLAIF
+关注前沿模型和 Agent 框架，动手能力强</p><a href="https://xiaopeng.jobs.feishu.cn/campus/position/7658239749740284198/detail">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c13"><header><h2>科大讯飞</h2><span>2 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">AI研究算法工程师-多模态大模型方向（大量HC）</span><span class="m">09-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【投递提示】合肥城市需求量大，投递竞争较小，欢迎投递！
+1、负责计算机视觉（CV）和自然语言处理（NLP）的跨领域研究，独立完成代码实现和实验分析；
+2、研发业界领先的多模态大模型，研究多模态预训练、强化学习后训练等技术，面向教育、医疗、汽车等行业深度应用。</p><h3>任职要求</h3><p>1、具备硕士及以上学位，专业方向在计算机科学、信息技术、电子工程或相关领域；
+2、对前沿算法有深刻的认识和理解，有CV方向算法研究经历；
+3、精通至少一种编程语言，如Python、C++等；
+4、能够独立思考和解决问题，具备较强的分析能力和创新能力；
+5、具备良好的沟通能力和团队协作精神。
+我们还希望你
+1、在人工智能会议（包括但不限于ACL、COLING、IJCAI、AAAI、ICLR、NIPS、CVPR、ICCV、INTERSPEECH、ICASSP）或期刊上发表过文章；
+2、在国内外知名评测任务或比赛中获得过优异成绩；
+3、在智能语音、计算机视觉、自然语言处理等相关方向有较丰富的实际系统研究和开发经验；
+此岗位为科大讯飞集团统一招聘岗位，人员通过简历筛选、初试、复试、终审等环节后录用。</p><a href="https://iflytek.zhiye.com/campus/jobs#190842472">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">AI研究算法工程师-多模态理解方向</span><span class="m">09-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、紧跟多模态业界研究动态，研究高效视觉编码模型结构，探索原生多模理解预训练、后训练方法（SFT、RL）。
+2、构建多模态理解评测体系，全方位评测模型多模态能力边界，为模型训练提供有效指导。
+3、构建人工耦合的多模数据清洗或者合成流程，负责高质量SFT、强化学习多模态理解数据体系构建，通过优质数据持续提升模型能力上限。
+4、针对代码智能体、通用智能体场景所用到的多模态理解能力进行加强，提升底座模型的代码和智能体处理能力。
+5、基于多模模型探索多模态智能体前瞻研究，包括但不限于Computer Use、Browse Use等。</p><h3>任职要求</h3><p>1、有强烈科研热忱与长远科研信念，对通用人工智能充满探索欲，能形成独有的模型行为认知，主动挖掘、攻坚全新研究问题。
+2、具备严谨的科研素养，逻辑思维突出，拥有良好研究审美，深耕深度学习领域并在至少一条细分方向形成体系化、深度独立见解。
+3、专业技术与工程能力过硬，编程功底扎实，熟练运用各类前沿 AI 工具赋能研发，高效推进实验与落地工作。
+4、秉持务实踏实的做事态度，重视数据核心价值，愿意沉下心完善数据与模型相关基础工作，独立快速吃透新兴研究赛道。
+5、具备开放包容的协作意识，认同协同共进的团队文化，沟通顺畅、敢于理性质疑，待人平等，拥有全局大局观。
+6、广泛且深入跟进行业前沿动态，拥有自主思考与笃定的研究思路，主动探索创新解法，持续推进预训练相关基础研究突破。
+此岗位为科大讯飞集团统一招聘岗位，人员通过简历筛选、初试、复试、终审等环节后录用。
+加分项
+1、研究生阶段具备多模态理解、多模生成、多模态编码等任意研究方向研究基础。
+2、以第一作者在CVPR、ICLR、ECCV等AI顶会发表多模大模型等相关论文，若引用达到100以上具备更高优先级。
+3、深度使用Claude Code、Codex等AI编程工具，对多模态大模型能力边界、优化方向有真实实践认知。
+4、参与过算法、代码、奥数类权威竞赛并取得优异名次，具备扎实的算法与代码功底。
+5、在顶尖 AI 公司或实验室的核心团队有过长期实习经历，并有重要研究成果落地到基模大模型。</p><a href="https://iflytek.zhiye.com/campus/jobs#190842473">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c14"><header><h2>京东</h2><span>1 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">技术方向-多模态大模型</span><span class="m">北京市 · 08-04 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1-集训&amp;轮岗：集训&amp;轮岗时间为半年，集训&amp;轮岗期间的工作地包含北京、宿迁等城市。集训期间会经历超100场培训，通过集训将会完成从学生向优秀职场人的转身。轮岗期间会在客服/物流一线深入实践，同时还会在总部核心技术部门进行轮岗学习，通过轮岗学习建立对业务、技术全流程的视角和理解，有利于技术在真实数据和商业环境中的落地；
+2-定岗：公司的定岗导向是“热爱、擅长、坚定”，可自由定岗至各BGBU的算法类岗位，届时将结合个人志向和公司需求确认具体的部门、岗位和工作地。</p><h3>任职要求</h3><p>1-毕业时间：2026年10月1日至2027年9月30日期间毕业，统招本硕学历不限，本硕同级同薪；
+2-专业背景：拥有但不限于计算机、信息工程、人工智能、自动化、软件工程、数学、物理等相关专业学习背景；
+3-专业能力：熟练掌握Python/C++/Java等至少一门编程语言，熟悉分布式计算框架（Flink/Spark）和深度学习框架（PyTorch/TensorFlow）。熟悉图像、视频、语音、音频信号处理、数字人等相关领域的技术知识，有一定实践经验更优；
+4-拥抱AI：对AI新技术保持好奇心，乐于主动学习并快速掌握新的AI知识和功能，积极拥抱新技术，熟练运用AI开发工具及框架提升模型训练、评估与部署效率，有大模型应用或相关AI项目成果者优先；
+5-怀揣技术梦想，对技术狂热，在学术攻坚、工程实践或顶级赛事中有突出成果；发表相关领域顶级学术论文、参与贡献优秀开源项目、高水平竞赛获奖者优先；
+6-符合京东价值观：客户为先、创新、拼搏、担当、感恩、诚信；对京东的商业模式有了解，认同京东价值观与商业价值并愿意为其长期努力。</p><a href="https://campus.jd.com/#/jobs?id=9201">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c15"><header><h2>360</h2><span>1 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">27秋-视觉算法工程师-多模态（北京）-5392</span><span class="m">09-08 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>参与多模态大模型LMM算法的跟踪研究和开发落地，包括 image/video captioning、跨模态图文对齐、开放世界目标检测、文档OCR、多模态RAG、GUI Agent 等方向。</p><h3>任职要求</h3><p>要求硕士在读以上学历，能保证3个月以上，每周不少于4天的实习时间
+能够流利阅读英文文献并做出可分享的论文总结，并利用开源代码进行验证实验
+了解图像自监督学习、跨模态图文对齐、语言模型LLM的基本原理，有相关科研经历的优先
+在CV/ML/AI等方向的顶会有论文发表者优先</p><a href="https://360campus.zhiye.com/campus/jobs#351611229">去官网看这个岗位 →</a></div></details></div></section>
+<footer>来自各公司校招官网的公开职位列表，每天读一次，按岗位名分板块，可能有分错或漏掉的。职责和要求超过 1200 字的只显示前面部分。</footer>
+</div>
+</body>
+</html>
