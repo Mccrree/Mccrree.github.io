@@ -59,6 +59,9 @@ nav.site{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--mut
 .tabs a span{color:var(--muted);font-size:12px;margin-left:4px;font-variant-numeric:tabular-nums}
 .tabs a[aria-current]{background:var(--accent);border-color:var(--accent);color:var(--panel);font-weight:600}
 .tabs a[aria-current] span{color:inherit;opacity:.85}
+.scope{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px;color:var(--muted)}
+.scope button{font:inherit;font-size:13px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--fg);cursor:pointer}
+.scope button:hover,.scope button:focus-visible{border-color:var(--accent);color:var(--accent)}
 .chips{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px}
 .chips a span{color:var(--muted);font-size:12px;margin-left:3px;font-variant-numeric:tabular-nums}
 .jobs{display:grid;gap:8px}
@@ -73,256 +76,65 @@ details.job>summary:hover .t,details.job>summary:focus-visible .t{color:var(--ac
 .jd p{margin:0;white-space:pre-line;font-size:14.5px;overflow-wrap:anywhere}
 .jd a{font-size:14px;color:var(--accent);width:fit-content}
 .new{color:var(--accent);font-weight:600}
+.tag{display:inline-block;padding:0 7px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:12px;margin-right:6px}
+.tag.off{background:transparent;border:1px solid var(--line);color:var(--muted)}
+/* 收紧时：不符合的岗位、没有符合岗位的公司都不显示；.a 是“全部”口径的数字，.f 是收紧口径的数字 */
+/* #jobs 只用来挂开关的类名，不参与排版（display:contents），里面的内容仍按 .wrap 的网格排 */
+#jobs{display:contents}
+.only-fit details.job:not(.fit),.only-fit .nofit,.only-fit .a{display:none}
+#jobs:not(.only-fit) .f{display:none}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap"><div class="only-fit" id="jobs">
 <nav class="site"><a href="../index.html">最新日报</a><a href="../archive.html">往期日报与周报</a></nav>
-<div><div class="date">校招官网在招岗位 · 2026-11-16 读取</div><h1>策略与数据</h1><p class="intro">53 个岗位，10 家公司。点公司名跳到那一家，点岗位名展开职责和要求。</p></div>
-<nav class="tabs" aria-label="板块"><a href="sgt.html">搜广推<span>78</span></a><a href="llmrec.html">大模型 × 推荐<span>43</span></a><a href="llm.html">大模型与 Agent<span>254</span></a><a href="mm.html">多模态<span>130</span></a><a href="strategy.html" aria-current="page">策略与数据<span>53</span></a></nav>
-<div class="chips"><a href="#c1">快手<span>19</span></a><a href="#c2">腾讯<span>10</span></a><a href="#c3">小红书<span>9</span></a><a href="#c4">美团<span>4</span></a><a href="#c5">小米<span>4</span></a><a href="#c6">京东<span>2</span></a><a href="#c7">OPPO<span>2</span></a><a href="#c8">B 站<span>1</span></a><a href="#c9">得物<span>1</span></a><a href="#c10">贝壳<span>1</span></a></div>
-<section id="c1"><header><h2>快手</h2><span>19 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">【留用实习】智能营销算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责设计和优化算法提升快手国际化智能补贴场景的用户体验，驱动快手国际化增长、电商、直播等多条业务线高质量增长；
-2、负责亿级规模的算法模型优化和落地，包括但不限于因果推断、深度学习、迁移学习、强化学习等算法模型；
-3、开发工业级的因果推断算法平台，包括大规模分布式深度学习训练框架，大规模在线运筹分配框架；
-4、探索和研究最前沿的技术，结合实际业务、产出业界领先的技术解决方案；
-5、探索算法在不同产品形态下的落地方案，提升产品的用户体验，驱动业务持续突破。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机相关专业优先；
-2、有扎实的数据结构和算法功底，熟悉业界主流的机器学习算法；
-3、具备较强的编码能力，熟悉Linux开发环境，熟悉至少一门编程语言；
-4、较好的团队合作精神，较强的沟通能力；主动性强，有很强的自我驱动力；
-5、有良好的产品意识、敏锐的数据业务分析能力，对解决挑战性问题充满热情，致力于将事情做到120分。
-加分项：
-1、有统计学、运筹学、因果推断、Uplifting建模等相关经验者优先；
-2、有推荐系统、机器学习、自然语言理解相关领域研究或者实习经验者优先；
-3、在SIGKDD、ICML、RECSYS、NIPS等国际顶级会议上有论文发表者优先；
-4、有ICPC、Topcoder Algorithm或类似算法竞赛经历者优先。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11639">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】增长算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大规模的短视频推荐和补贴裂变等业务的模型策略优化，提升用户消费体验（如时长、点击率、互动）和用户留存率、DAU等核心指标；
-2、参与机器学习，如深度学习、因果推断领域的技术研发工作，包括但不限于DNN模型优化、因果推断模型、迁移学习、元学习、强化学习和图模型等的算法和系统研发等；
-3、参与前沿问题的探索与研究，结合实际应用场景，提供技术优化和落地建议。</p><h3>任职要求</h3><p>1、计算机科学、数学或统计学相关专业硕士及以上学历；
-2、熟悉Linux，Python，C++/Java，具备优秀的编码能力，有扎实的数据结构和算法功底；
-3、熟悉大规模数据挖掘或分布式计算等技术；
-4、有较强的自驱力和学习能力，善于阅读文献，具备优秀的分析和解决问题的能力。
-加分项：
-1、有推荐系统、因果推断、信息检索、NLP、计算广告学等领域研究及实习经验；
-2、在SIGKDD、ICML、NIPS、WSDM、WWW、ACL、RECSYS等相关国际顶会有文献发表；
-3、有ACM / Topcoder Algorithm或类似算法竞赛经历。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11627">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】数据挖掘算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责海量短视频生产链路算法优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，加强特效、美颜等视频生产业务的智能化；
-2、通过异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
-3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产；
-4、挖掘用户特征，用于提升广告与用户匹配的效率、业务反欺诈、渠道反作弊、搜索索引等业务场景。</p><h3>任职要求</h3><p>1、计算机/数学/物理/信息等专业硕士及以上学历；
-2、扎实的统计学功底，擅长数据分析和科学实验方法，对机器学习、深度学习等主流算法理解深刻，且应用熟练；
-3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
-4、熟悉基于Hive、Spark、ElasticSearch、Mongodb等大数据平台的相关开发；
-5、热爱短视频行业，较强的沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
-加分项：
-1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
-2、在Kaggle等数据挖掘/机器学习竞赛获奖；
-3、在ACM等编程竞赛获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11515">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】机器学习算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习相关领域最新进展，包括深度学习、强化学习、迁移学习、元学习等；
-2、将机器学习前沿技术在推荐、广告、游戏、风控、效率工程等业务场景进行应用落地和优化；
-3、开发通用或者定制化并行的机器学习训练/推理平台；
-4、集成和优化目前主流的机器学习框架，比如TensorFlow、PyTorch。</p><h3>任职要求</h3><p>1、硕士及以上学历；
-2、机器学习优化、深度学习背景扎实，有实际应用经验优先；
-3、熟练使用C++/Python等编程语言；
-4、熟悉Linux开发环境和常用开发工具，熟悉Tensorflow/PyTorch/MxNet/XGBoost等机器学习平台及工具。
-加分项：
-1、以一作发表过优秀期刊或学会论文；
-2、获得机器学习竞赛优异成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11418">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】策略算法工程师-音视频</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责音视频点播、直播领域核心策略算法的设计与优化，包括视频转码策略（基于内容感知的自适应视频处理和编码- CAE、档位Ladder设计等）、传输和播放策略（自适应多码率-ABR、缓存策略、后处理等），为用户提供端到端的个性化播放体验，平衡清晰度、流畅度与成本；
-2、挖掘海量线上数据，通过机器学习、因果推断等方法建立主播、视频、用户粒度的画像模型，精细化控制算法策略，推动时长/营收等核心指标提升；
-3、与内外部团队合作，制定面向不同业务（主站/电商/商业化/海外等）的优化策略，主导算法设计、验证、工程落地、AB实验全流程，推动算法上线。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、通信、统计、数学、图像处理、多媒体等相关专业；
-2、具备较强策略抽象、数据分析和设计能力，能系统性地思考，制定解决方案，快速验证和优化上线；
-3、在以下一个或多个算法领域上有深度的理解和实践经验：流媒体、图像压缩、CV/NLP、推荐/搜索/广告、机器学习、控制论；
-4、积极乐观，责任心强，工作认真细致，具备良好的团队合作精神、较强的沟通能力和学习能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11307">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】策略算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责短视频生产/直播/用户增长等业务策略算法建模和优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，推进特效业务智能化；
-2、通过指标数据异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
-3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机/数学/物理/信息等专业；
-2、对机器学习、深度学习等主流算法理解深刻，有应用经验；扎实的统计学功底，擅长数据分析和科学实验方法；
-3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
-4、热爱短视频行业，较强沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
-加分项
-1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
-2、在Kaggle等数据挖掘/机器学习竞赛中获奖；
-3、在ACM等编程竞赛中获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11305">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star实习】增长算法工程师</span><span class="m">北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大规模的短视频推荐和补贴裂变等业务的模型策略优化，提升用户消费体验（如时长、点击率、互动）和用户留存率、DAU等核心指标；
-2、参与机器学习，如深度学习、因果推断领域的技术研发工作，包括但不限于DNN模型优化、因果推断模型、迁移学习、元学习、强化学习和图模型等的算法和系统研发等；
-3、参与前沿问题的探索与研究，结合实际应用场景，提供技术优化和落地建议。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机科学、数学或统计学相关专业；
-2、熟悉Linux、Python、C++/Java，具备优秀的编码能力，有扎实的数据结构和算法功底；
-3、熟悉大规模数据挖掘或分布式计算等技术；
-4、有较强的自驱力和学习能力，善于阅读文献，具备优秀的分析和解决问题的能力。
-加分项：
-1、有推荐系统、因果推断、信息检索、NLP、计算广告学等领域研究及实习经验；
-2、在SIGKDD、ICML、NIPS、WSDM、WWW、ACL、RECSYS等相关国际顶会有文献发表；
-3、有ACM / Topcoder Algorithm 或类似算法竞赛经历。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11168">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】用户画像算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、依托快手海量内容生产、消费、流量数据，基于短视频、直播等业务生态，挖掘用户画像属性，构建公司级用户画像数据体系和平台产品，深度参与创作者、直播、运营、增长等业务策略方案制定及实施，直接为业务提效赋能并达成新的增长点；
-2、基于业务策略服务方案，面向全站用户、内容、社区沉淀数据标签资产至数据中台，为业务运营决策提供基础标签能力支撑，并不断挖掘、萃取数据价值；
-3、基于海量、异构、高维的时空大数据，建设精准的全域空间实体数据体系，搭建全方位的地理位置服务(LBS)；
-4、建设业内一流的设备指纹引擎，整合快手海量多来源数据，建设全站统一的ID-Mapping服务框架。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机科学、数据科学、统计学、金融学相关专业优先，且具备较强的数理统计基础和逻辑思维能力；
-2、熟练掌握回归、分类聚类、关联规则、时序预测、因果分析等相关数据挖掘及统计方法，善于抽象、拆解实际问题，并利用合理数据特征、算法模型实践；
-3、扎实的编程基础，精通Python、C++、Java至少一门编程语言；
-4、熟悉Hadoop生态，至少熟悉HSQL、Spark、Flink等一种数据处理技术，并对数据仓库、特征工程、特征选择有较好的理解；
-5、良好的业务驱动力、业务敏感度，对数据价值挖掘、数据驱动业务感兴趣。
-加分项：
-1、熟悉短视频及直播业务社区，短视频重度用户。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12744">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习相关领域最新进展，包括深度学习、强化学习、迁移学习、元学习等；
-2、将机器学习前沿技术在推荐、广告、游戏、风控、效率工程等业务场景进行应用落地和优化；
-3、开发通用或者定制化并行的机器学习训练/推理平台；
-4、集成和优化目前主流的机器学习框架，比如TensorFlow、PyTorch。</p><h3>任职要求</h3><p>1、硕士及以上学历；
-2、机器学习优化、深度学习背景扎实，有实际应用经验优先；
-3、熟练使用C++/Python等编程语言；
-4、熟悉Linux开发环境和常用开发工具，熟悉Tensorflow/PyTorch/MxNet/XGBoost等机器学习平台及工具。
-加分项：
-1、以一作发表过优秀期刊或学会论文；
-2、获得机器学习竞赛优异成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13065">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】机器学习算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习相关领域最新进展，包括深度学习、强化学习、迁移学习、元学习等；
-2、将机器学习前沿技术在推荐、广告、游戏、风控、效率工程等业务场景进行应用落地和优化；
-3、开发通用或者定制化并行的机器学习训练/推理平台；
-4、集成和优化目前主流的机器学习框架，比如TensorFlow、PyTorch。</p><h3>任职要求</h3><p>1、硕士及以上学历；
-2、机器学习优化、深度学习背景扎实，有实际应用经验优先；
-3、熟练使用C++/Python等编程语言；
-4、熟悉Linux开发环境和常用开发工具，熟悉Tensorflow/PyTorch/MxNet/XGBoost等机器学习平台及工具。
-   
-加分项：
-1、以一作发表过优秀期刊或学会论文；
-2、获得机器学习竞赛优异成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12714">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】增长激励算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责设计和优化激励补贴场景的核心算法，驱动快手系DAU、体验的持续增长；
-2、负责亿级补贴规模的算法模型优化与落地，包括因果推断、深度学习、强化学习、生成式出价等方向的模型研发；
-3、探索和研究最前沿的技术，结合增长业务、产出业界领先的技术解决方案；
-4、探索算法在不同产品形态下的落地方案，提升产品的用户体验，驱动增长业务突破。</p><h3>任职要求</h3><p>1、对技术有热情、勇于突破，认同业务中技术驱动和算法驱动的价值；
-2、计算机、数学、统计学或人工智能等相关专业；
-3、熟悉Linux环境，熟练掌握Java/C++/Python，具备扎实的编码能力、数据结构与算法功底；
-4、熟悉机器学习、深度学习、因果推断或强化学习中的至少一个方向，有实际项目或研究经验；
-5、善于阅读文献、快速学习，具备优秀的分析解决问题能力与沟通协作能力。
-加分项：
-1、有大模型、推荐系统、计算广告、算法博弈论或激励设计相关研究与实践经验；
-2、在SIGKDD、ICML、NeurIPS、WSDM、WWW、ACL、RecSys等国际顶级会议上有论文发表；
-3、有ACM-ICPC、Topcoder Algorithm或类似算法竞赛获奖经历；
-4、有强化学习、生成式模型或因果推断方向的深入研究或开源项目贡献。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12748">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">增长算法工程师</span><span class="m">北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大规模的短视频推荐和补贴裂变等业务的模型策略优化，提升用户消费体验（如时长、点击率、互动）和用户留存率、DAU等核心指标；
-2、参与机器学习，如深度学习、因果推断领域的技术研发工作，包括但不限于DNN模型优化、因果推断模型、迁移学习、元学习、强化学习和图模型等的算法和系统研发等；
-3、参与前沿问题的探索与研究，结合实际应用场景，提供技术优化和落地建议。</p><h3>任职要求</h3><p>1、计算机科学、数学或统计学相关专业硕士及以上学历；
-2、熟悉Linux，Python，C++/Java，具备优秀的编码能力，有扎实的数据结构和算法功底；
-3、熟悉大规模数据挖掘或分布式计算等技术；
-4、有较强的自驱力和学习能力，善于阅读文献，具备优秀的分析和解决问题的能力。
-加分项：
-1、有推荐系统、因果推断、信息检索、NLP、计算广告学等领域研究及实习经验；
-2、在SIGKDD、ICML、NIPS、WSDM、WWW、ACL、RECSYS等相关国际顶会有文献发表；
-3、有ACM / Topcoder Algorithm或类似算法竞赛经历。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13108">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据挖掘算法工程师</span><span class="m">北京 · 10-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责海量短视频生产链路算法优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，加强特效、美颜等视频生产业务的智能化；
-2、通过异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
-3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产；
-4、挖掘用户特征，用于提升广告与用户匹配的效率、业务反欺诈、渠道反作弊、搜索索引等业务场景。</p><h3>任职要求</h3><p>1、计算机/数学/物理/信息等专业硕士及以上学历；
-2、扎实的统计学功底，擅长数据分析和科学实验方法，对机器学习、深度学习等主流算法理解深刻，且应用熟练；
-3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
-4、熟悉基于Hive、Spark、ElasticSearch、Mongodb等大数据平台的相关开发；
-5、热爱短视频行业，较强的沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
-加分项：
-1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
-2、在Kaggle等数据挖掘/机器学习竞赛获奖；
-3、在ACM等编程竞赛获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13100">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">策略算法工程师</span><span class="m">北京 · 09-20 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责短视频生产/直播/用户增长等业务策略算法建模和优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，推进特效业务智能化；
-2、通过指标数据异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
-3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机/数学/物理/信息等专业；
-2、对机器学习、深度学习等主流算法理解深刻，有应用经验；扎实的统计学功底，擅长数据分析和科学实验方法；
-3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
-4、热爱短视频行业，较强沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
-加分项
-1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
-2、在Kaggle等数据挖掘/机器学习竞赛中获奖；
-3、在ACM等编程竞赛中获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13090">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习算法工程师</span><span class="m">北京 · 09-09 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习相关领域最新进展，包括深度学习、强化学习、迁移学习、元学习等；
-2、将机器学习前沿技术在推荐、广告、游戏、风控、效率工程等业务场景进行应用落地和优化；
-3、开发通用或者定制化并行的机器学习训练/推理平台；
-4、集成和优化目前主流的机器学习框架，比如TensorFlow、PyTorch。</p><h3>任职要求</h3><p>1、硕士及以上学历；
-2、机器学习优化、深度学习背景扎实，有实际应用经验优先；
-3、熟练使用C++/Python等编程语言；
-4、熟悉Linux开发环境和常用开发工具，熟悉Tensorflow/PyTorch/MxNet/XGBoost等机器学习平台及工具。
-加分项：
-1、以一作发表过优秀期刊或学会论文；
-2、获得机器学习竞赛优异成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9972">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据挖掘算法工程师</span><span class="m">北京 · 08-25 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责海量短视频生产链路算法优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，加强特效、美颜等视频生产业务的智能化；
-2、通过异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
-3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产；
-4、挖掘用户特征，用于提升广告与用户匹配的效率、业务反欺诈、渠道反作弊、搜索索引等业务场景。</p><h3>任职要求</h3><p>1、计算机/数学/物理/信息等专业硕士及以上学历；
-2、扎实的统计学功底，擅长数据分析和科学实验方法，对机器学习、深度学习等主流算法理解深刻，且应用熟练；
-3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
-4、熟悉基于Hive、Spark、ElasticSearch、Mongodb等大数据平台的相关开发；
-5、热爱短视频行业，较强的沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
-加分项：
-1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
-2、在Kaggle等数据挖掘/机器学习竞赛获奖；
-3、在ACM等编程竞赛获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=10000">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">策略算法工程师</span><span class="m">北京 · 04-09 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责短视频生产/直播/用户增长等业务策略算法建模和优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，推进特效业务智能化；
-2、通过指标数据异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
-3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机/数学/物理/信息等专业；
-2、对机器学习、深度学习等主流算法理解深刻，有应用经验；扎实的统计学功底，擅长数据分析和科学实验方法；
-3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
-4、热爱短视频行业，较强沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
-加分项
-1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
-2、在Kaggle等数据挖掘/机器学习竞赛中获奖；
-3、在ACM等编程竞赛中获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9967">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">增长算法工程师</span><span class="m">北京 · 04-09 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大规模的短视频推荐和补贴裂变等业务的模型策略优化，提升用户消费体验（如时长、点击率、互动）和用户留存率、DAU等核心指标；
-2、参与机器学习，如深度学习、因果推断领域的技术研发工作，包括但不限于DNN模型优化、因果推断模型、迁移学习、元学习、强化学习和图模型等的算法和系统研发等；
-3、参与前沿问题的探索与研究，结合实际应用场景，提供技术优化和落地建议。</p><h3>任职要求</h3><p>1、计算机科学、数学或统计学相关专业硕士及以上学历；
-2、熟悉Linux，Python，C++/Java，具备优秀的编码能力，有扎实的数据结构和算法功底；
-3、熟悉大规模数据挖掘或分布式计算等技术；
-4、有较强的自驱力和学习能力，善于阅读文献，具备优秀的分析和解决问题的能力。
-加分项：
-1、有推荐系统、因果推断、信息检索、NLP、计算广告学等领域研究及实习经验；
-2、在SIGKDD、ICML、NIPS、WSDM、WWW、ACL、RECSYS等相关国际顶会有文献发表；
-3、有ACM / Topcoder Algorithm或类似算法竞赛经历。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9977">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">策略算法工程师-音视频</span><span class="m">北京 · 03-23 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责音视频点播、直播领域核心策略算法的设计与优化，包括视频转码策略（基于内容感知的自适应视频处理和编码- CAE、档位Ladder设计等）、传输和播放策略（自适应多码率-ABR、缓存策略、后处理等），为用户提供端到端的个性化播放体验，平衡清晰度、流畅度与成本；
-2、挖掘海量线上数据，通过机器学习、因果推断等方法建立主播、视频、用户粒度的画像模型，精细化控制算法策略，推动时长/营收等核心指标提升；
-3、与内外部团队合作，制定面向不同业务（主站/电商/商业化/海外等）的优化策略，主导算法设计、验证、工程落地、AB实验全流程，推动算法上线。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、通信、统计、数学、图像处理、多媒体等相关专业；
-2、具备较强策略抽象、数据分析和设计能力，能系统性地思考，制定解决方案，快速验证和优化上线；
-3、在以下一个或多个算法领域上有深度的理解和实践经验：流媒体、图像压缩、CV/NLP、推荐/搜索/广告、机器学习、控制论；
-4、积极乐观，责任心强，工作认真细致，具备良好的团队合作精神、较强的沟通能力和学习能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9968">去官网看这个岗位 →</a></div></details></div></section>
-<section id="c2"><header><h2>腾讯</h2><span>10 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">算法-机器学习方向（应届毕业生）</span><span class="m">深圳总部 北京 上海 广州 成都</span></summary><div class="jd"><p>事业群：CDG CSIG IEG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1282707390126745600">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-数据科学方向（应届毕业生）</span><span class="m">深圳总部 北京 上海 广州 成都</span></summary><div class="jd"><p>事业群：CDG CSIG IEG PCG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1282707405033302017">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">AI安全技术工程师（风控算法）（应届毕业生）</span><span class="m">深圳总部 北京 广州</span></summary><div class="jd"><p>事业群：CDG CSIG IEG PCG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1283126495480718338">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-数据科学方向（应届实习）</span><span class="m">深圳总部 北京 上海 广州 成都</span></summary><div class="jd"><p>事业群：CDG CSIG IEG PCG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1211674464354570240">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-机器学习方向（应届实习）</span><span class="m">深圳总部 北京 上海 广州</span></summary><div class="jd"><p>事业群：CDG CSIG IEG PCG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212183856388912129">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">AI安全技术工程师（风控算法）（应届实习）</span><span class="m">深圳总部 北京 广州</span></summary><div class="jd"><p>事业群：CSIG IEG PCG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212816233335099392">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-机器学习方向（青云计划-实习生）</span><span class="m">深圳总部</span></summary><div class="jd"><p>事业群：TEG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212183855545857025">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-机器学习方向（日常实习）</span><span class="m">深圳总部 北京 上海 广州</span></summary><div class="jd"><p>事业群：IEG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212183855952704516">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-数据科学方向（日常实习）</span><span class="m">深圳总部 广州</span></summary><div class="jd"><p>事业群：CSIG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212183855952704520">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">AI安全技术工程师（风控算法）（日常实习）</span><span class="m">深圳总部 广州</span></summary><div class="jd"><p>事业群：PCG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1233768079818094592">去官网看这个岗位 →</a></div></details></div></section>
-<section id="c3"><header><h2>小红书</h2><span>9 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">【REDstar】增长算法工程师-社区增长</span><span class="m">北京市，上海市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责用户增长场景的推荐算法研发（召回/排序/策略/多模态/LLM），提升推荐系统全链路效率；
-2、负责消息PUSH与触达算法，优化推送时机、频次与内容生成，提升用户拉新与活跃；
-3、负责广告投放算法，面向新用户/流失用户精准触达，包括价值预估、RTA出价、素材优选及 Agent 投放能力建设；
-4、探索因果推断、强化学习等方法在用户增长中的应用，搭建通用因果平台，为PUSH、激励等业务场景赋能；
-5、基于大模型和用户行为挖掘，构建内容池与画像体系，与产品、运营、BI团队协作推动增长目标落地。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业优先；
-2、了解Hadoop/MapReduce/Spark/Hive等常用大数据处理工具优先；
-3、熟练掌握至少一种编程语言：Java/C++/Scala/Python，熟悉Linux系统及常用Shell命令；
-4、有过成功的推荐算法、用户增长、广告投放相关项目经历者优先。</p><a href="https://job.xiaohongshu.com/campus/position#20884">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】增长算法工程师-社区增长</span><span class="m">北京市，上海市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责用户增长场景的推荐算法研发（召回/排序/策略/多模态/LLM），提升推荐系统全链路效率；
-2、负责消息PUSH与触达算法，优化推送时机、频次与内容生成，提升用户拉新与活跃；
-3、负责广告投放算法，面向新用户/流失用户精准触达，包括价值预估、RTA出价、素材优选及 Agent 投放能力建设；
-4、探索因果推断、强化学习等方法在用户增长中的应用，搭建通用因果平台，为PUSH、激励等业务场景赋能；
-5、基于大模型和用户行为挖掘，构建内容池与画像体系，与产品、运营、BI团队协作推动增长目标落地。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业优先；
-2、了解Hadoop/MapReduce/Spark/Hive等常用大数据处理工具优先；
-3、熟练掌握至少一种编程语言：Java/C++/Scala/Python，熟悉Linux系统及常用Shell命令；
-4、有过成功的推荐算法、用户增长、广告投放相关项目经历者优先。</p><a href="https://job.xiaohongshu.com/campus/position#21010">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">风控算法实习生-增长方向</span><span class="m">上海市，杭州市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>团队介绍
-增长风控算法团队负责小红书用户增长链路中的风险治理，包括投放、归因、承接、Push 等场景。我们通过数据分析、策略和模型，识别并拦截作弊流量、无效设备和异常行为，提升用户增长质量。团队也在探索大模型和 Agent 在风控场景中的应用，比如用大模型辅助分析异常行为、总结风险 case、挖掘策略规则，提升风控分析和策略迭代效率。
-岗位职责
-1.参与增长风控相关的数据分析和模型建设，识别投放、归因、DAU、Push 等场景中的异常流量和作弊行为；
-2.结合设备、用户行为、渠道、画像等数据，协助完成特征分析、样本构建、模型训练和效果评估；
-3.探索大模型 / Agent 在风控中的应用，例如异常行为分析、风险 case 总结、策略辅助生成等；
-4.参与风控策略的设计、验证和上线评估，通过 A/B 实验或数据分析评估策略效果；
-5.跟进大模型、机器学习、异常检测等方向的基础方法，并尝试在实际业务中应用。</p><h3>任职要求</h3><p>任职资格
-1.计算机、人工智能、数学、统计学等相关专业在读，能稳定实习者优先；
-2.有一定编程和数据分析基础，熟悉 Python，了解 SQL，有 Spark / Hive 使用经验者优先；
-3.了解机器学习、深度学习、异常检测、图模型、大语言模型、Agent 等方向中的一项或多项；
-4.有大模型相关项目经验优先，比如基于大模型做过垂直场景应用、智能分析工具、文本分析、行为分析等；
-5.对风控、反作弊、用户增长、流量质量治理等方向感兴趣；
-6.有较好的学习能力、沟通能力和责任心，能够主动发现问题并推进解决。</p><a href="https://job.xiaohongshu.com/campus/position#21552">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】内容增长策略算法工程师-内容增长方向</span><span class="m">北京市，上海市，杭州市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与话题创意增长大模型建设，围绕小红书发布场景理解创作趋势，研发高质量话题与创意大模型，提升发布增长内容供给；
-2、参与发布用户内容预估增长模型建设，理解发布用户特征，建模发布意愿与转化效率，实现创意供给与用户的精准匹配；
-3、参与增长 AI 素材识别与筛选机制建设，AI 生成内容判别与质量评估，保障供给内容用户体验。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、自动化、统计、数学等相关专业；
-2、扎实的机器学习基础，掌握大模型/多模态、CV、NLP、推荐或数据挖掘中的一项或多项；具备快速的 coding 能力，熟练使用Python/C++/Java 中的一门或多门语言，能使用 SQL 进行数据分析；
-3、有大模型，agent，内容社区、推荐或搜索相关算法实习经验者优先，有工业场景多模态大模型（MLLM）实践经验者优先；在 CVPR/ICLR/NeurIPS/ICML/KDD 等会议发表论文或获 ACM 等竞赛奖项者优先；
-4、责任心强，积极主动，具备良好的团队协作能力，能与产品、运营等团队高效沟通配合。</p><a href="https://job.xiaohongshu.com/campus/position#20880">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】社区风控算法工程师-社区治理</span><span class="m">北京市，上海市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责小红书社区风控算法的研发与迭代，精准识别个体违规用户、黑产团伙及流量作弊行为，维护社区公平环境；
-2、深入挖掘业务数据，结合领域专家经验与数据洞察，持续优化风险识别与防控策略，提升风险感知与拦截能力；
-3、与社区治理业务团队紧密协作，深入理解业务痛点与诉求，在保障用户体验与业务目标的前提下，设计并实施最优风险管控方案；
-4、持续跟踪黑灰产动态与新型作弊手法，进行深度威胁分析，探索大模型在风控场景的创新应用，构建小红书社区风控/反作弊攻防体系。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、数学、电子信息、统计、大数据、人工智能等相关专业优先；
-2、技术能力：编程基础扎实，熟练掌握 SQL、Python 等编程语言；具备深厚的数据结构与算法功底，精通 Hive/Spark 等大数据处理技术；具有扎实的机器学习/深度学习项目落地经验；具备 NLP/多模态/大模型等相关经验者优先；
-3、综合素质：具备良好的沟通表达能力与技术驱动力，能主动运用技术手段解决复杂业务问题，具有良好的团队协作精神。
-【加分项】：
-具有较强的研究与创新能力，在 CVPR、ICCV、ECCV、NeurIPS、ICML、SIGGRAPH 等国际顶级会议有论文发表者优先；参加过 ACM、Kaggle 等顶级技术竞赛并取得优异成绩者优先。</p><a href="https://job.xiaohongshu.com/campus/position#22070">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】内容增长策略算法工程师-内容增长方向</span><span class="m">北京市，上海市，杭州市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与话题创意增长大模型建设，围绕小红书发布场景理解创作趋势，研发高质量话题与创意大模型，提升发布增长内容供给；
-2、参与发布用户内容预估增长模型建设，理解发布用户特征，建模发布意愿与转化效率，实现创意供给与用户的精准匹配；
-3、参与增长 AI 素材识别与筛选机制建设，AI 生成内容判别与质量评估，保障供给内容用户体验。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、自动化、统计、数学等相关专业；
-2、扎实的机器学习基础，掌握大模型/多模态、CV、NLP、推荐或数据挖掘中的一项或多项；具备快速的 coding 能力，熟练使用Python/C++/Java 中的一门或多门语言，能使用 SQL 进行数据分析；
-3、有大模型，agent，内容社区、推荐或搜索相关算法实习经验者优先，有工业场景多模态大模型（MLLM）实践经验者优先；在 CVPR/ICLR/NeurIPS/ICML/KDD 等会议发表论文或获 ACM 等竞赛奖项者优先；
-4、责任心强，积极主动，具备良好的团队协作能力，能与产品、运营等团队高效沟通配合。</p><a href="https://job.xiaohongshu.com/campus/position#22004">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据科学与分析实习生（算法/用户增长）</span><span class="m">上海市，北京市，深圳市 · 10-30 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 协助分析团队完成数据洞察、分析工作（可能是增长方向，或是通用方向） ；
-2. 根据业务目标，找到潜在机会点或是问题发现，并带领/协助业务&amp;算法团队解决问题。</p><h3>任职要求</h3><p>1. 本科及以上学历，统计学、数学、物理学、计算机、经济学、社会学等相关专业优先；
-2. 逻辑思维强，具备数据敏感度，能从复杂业务问题中拆解结构、提炼规律；
-3. 掌握Claude Code/Codex 等AI工具；
-4. 对小红书多业务领域（如社区内容、商业价值等）多方向感兴趣者，并愿意往多方向学习、探索。
-5. 掌握SQL、Python等编程能力，了解A/B 实验逻辑，机器学习和因果推断者分析方法者优先；
-6. 实习 6 个月及以上者优先。</p><a href="https://job.xiaohongshu.com/campus/position#21649">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">增长算法实习生 — RTA方向</span><span class="m">北京市 · 09-07 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 用户增长投放：负责小红书新用户拉新与流失用户召回的广告投放策略，通过算法驱动实现用户规模的高质量、高效率增长；
-2. 用户价值建模: 应用多目标学习、因果推断(Causal Inference)、大模型等前沿方法，对全网数十亿级用户进行精细化建模，精准评估并预测用户长期价值LTV;
-3. 智能出价策略:基于LTV预估设计并迭代智能出价策略，持续提升投放ROI。</p><h3>任职要求</h3><p>1. 数学、统计、计算机等相关专业优先;具备扎实的机器学习理论基础,能够熟练运用深度学习等主流模型解决实际业务问题;
-2. 工程能力：具备优秀的编码能力,精通 Java / C++ / Scala / Python 中至少一门语言,拥有扎实的数据结构与算法功底;
-3. 领域经验：在用户增长、搜索、推荐、广告等方向有相关实习或项目经验者优先;熟悉竞价广告机制、因果推断或强化学习者更佳;
-4. 软实力：具备良好的团队协作与沟通能力,对业务有较强的好奇心与数据敏感度,学习能力强、能快速适应高速迭代的业务节奏。</p><a href="https://job.xiaohongshu.com/campus/position#21110">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">电商风控算法实习生</span><span class="m">北京市 · 08-04 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责电商平台全链路（用户、交易、支付、营销、商户、物流）的风险防控策略制定与实施，精准识别并打击交易、营销、商户、用户等领域作弊行为，保障平台交易安全、资金安全、生态健康及用户/商户权益
-2、深入分析电商场景多维度数据，参与设计、开发和优化针对交易欺诈、营销作弊、账户盗用、商户违规、黄牛抢购、恶意套利等核心风险的识别、拦截与管控能力
-3、紧密协同电商业务产运团队，建立核心指标，持续监控快速迭代优化策略，提升效果
-4、持续监控电商领域黑灰产动态及新型作弊手法，深度风险分析、提炼攻击模式挖掘与特征，参与构建并持续加固电商风控攻防体系</p><h3>任职要求</h3><p>1、本科及硕士或以上学历（数学、计算机、电子信息、统计、大数据、人工智能等相关专业优先）
-2、数据分析、数据挖掘、风控相关实习经验，具备互联网交易反欺诈、营销反作弊等领域经验者优先，有大模型实战经验优先
-3、精通SQL和数据分析/编程语言（Python等）、熟练掌握大数据处理技术(hive/spark等)，具备扎实的机器学习应用经验
-4、具备良好的沟通能力，能积极主动运用技术能力解决问题，热爱团队协作</p><a href="https://job.xiaohongshu.com/campus/position#21571">去官网看这个岗位 →</a></div></details></div></section>
-<section id="c4"><header><h2>美团</h2><span>4 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">运筹优化算法工程师</span><span class="m">北京市、上海市 · 08-17 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. AI+运筹的智能调度系统：将大模型（LLM）与强化学习（RL）深度融合到实时调度决策中，构建新一代AI驱动的订单分配与路径规划系统，实现千万级订单-百万级骑手的分布式实时全局优化，探索从传统运筹求解到AI端到端决策的范式跃迁。
+<div><div class="date">校招官网在招岗位 · 2026-11-16 读取</div><h1>策略与数据</h1><p class="intro">点公司名跳到那一家，点岗位名展开职责和要求。</p></div>
+<nav class="tabs" aria-label="板块"><a href="sgt.html">搜广推<span><span class="f">28</span><span class="a">101</span></span></a><a href="llmrec.html">大模型 × 推荐<span><span class="f">19</span><span class="a">58</span></span></a><a href="llm.html">大模型与 Agent<span><span class="f">118</span><span class="a">334</span></span></a><a href="mm.html">多模态<span><span class="f">37</span><span class="a">147</span></span></a><a href="strategy.html" aria-current="page">策略与数据<span><span class="f">21</span><span class="a">62</span></span></a></nav>
+<div class="scope"><span><span class="f">只看本科可投的实习：21 个，8 家公司</span><span class="a">全部岗位：62 个，11 家公司</span></span><button type="button" id="scope"><span class="f">显示全部 62 个</span><span class="a">只看本科可投的实习</span></button></div>
+
+<div class="chips"><a href="#c1">腾讯<span><span class="f">7</span><span class="a">10</span></span></a><a href="#c2">美团<span><span class="f">4</span><span class="a">8</span></span></a><a href="#c3">小红书<span><span class="f">3</span><span class="a">9</span></span></a><a href="#c4">百度<span><span class="f">3</span><span class="a">5</span></span></a><a href="#c5">快手<span><span class="f">1</span><span class="a">19</span></span></a><a href="#c6">OPPO<span><span class="f">1</span><span class="a">2</span></span></a><a href="#c7">B 站<span><span class="f">1</span><span class="a">1</span></span></a><a href="#c8">得物<span><span class="f">1</span><span class="a">1</span></span></a><a href="#c9" class="nofit">小米<span><span class="f">0</span><span class="a">4</span></span></a><a href="#c10" class="nofit">京东<span><span class="f">0</span><span class="a">2</span></span></a><a href="#c11" class="nofit">贝壳<span><span class="f">0</span><span class="a">1</span></span></a></div>
+<section id="c1"><header><h2>腾讯</h2><span><span class="f">本科可投的实习 7 个</span><span class="a">10 个岗位，其中本科可投的实习 7 个</span></span></header><div class="jobs"><details class="job fit"><summary><span class="t">算法-数据科学方向（应届实习）</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>深圳总部 北京 上海 广州 成都</span></summary><div class="jd"><p>事业群：CDG CSIG IEG PCG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1211674464354570240">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">算法-机器学习方向（应届实习）</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>深圳总部 北京 上海 广州</span></summary><div class="jd"><p>事业群：CDG CSIG IEG PCG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212183856388912129">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">AI安全技术工程师（风控算法）（应届实习）</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>深圳总部 北京 广州</span></summary><div class="jd"><p>事业群：CSIG IEG PCG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212816233335099392">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">算法-机器学习方向（青云计划-实习生）</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>深圳总部</span></summary><div class="jd"><p>事业群：TEG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212183855545857025">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">算法-机器学习方向（日常实习）</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>深圳总部 北京 上海 广州</span></summary><div class="jd"><p>事业群：IEG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212183855952704516">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">算法-数据科学方向（日常实习）</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>深圳总部 广州</span></summary><div class="jd"><p>事业群：CSIG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1212183855952704520">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">AI安全技术工程师（风控算法）（日常实习）</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>深圳总部 广州</span></summary><div class="jd"><p>事业群：PCG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1233768079818094592">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-机器学习方向（应届毕业生）</span><span class="m"><span class="tag off">校招</span><span class="tag off">学历未写</span>深圳总部 北京 上海 广州 成都</span></summary><div class="jd"><p>事业群：CDG CSIG IEG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1282707390126745600">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法-数据科学方向（应届毕业生）</span><span class="m"><span class="tag off">校招</span><span class="tag off">学历未写</span>深圳总部 北京 上海 广州 成都</span></summary><div class="jd"><p>事业群：CDG CSIG IEG PCG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1282707405033302017">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">AI安全技术工程师（风控算法）（应届毕业生）</span><span class="m"><span class="tag off">校招</span><span class="tag off">学历未写</span>深圳总部 北京 广州</span></summary><div class="jd"><p>事业群：CDG CSIG IEG PCG TEG WXG</p><p class="note">官网的职位列表里没有写职责和要求，要点进官网看。</p><a href="https://join.qq.com/post.html#1283126495480718338">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c2"><header><h2>美团</h2><span><span class="f">本科可投的实习 4 个</span><span class="a">8 个岗位，其中本科可投的实习 4 个</span></span></header><div class="jobs"><details class="job fit"><summary><span class="t">【北斗实习】智能决策算法研究员-定价方向</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>北京市 · 02-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【课题说明】
+在即时配送网络中，骑手定价是平衡运力供给与用户体验的核心动作。传统的定价策略往往难以精确量化价格变动对运力弹性的真实因果效应，且受限于预算约束与复杂的非凸优化目标，难以实现全局最优。本课题聚焦于“因果推断”与“运筹优化”在骑手定价业务中的前沿应用，旨在通过构建高鲁棒性的因果弹性模型，精准衡量定价干预效果，并结合大规模运筹优化技术，在给定预算下生成最优调价方案，最大化用户体验。课题将重点突破观测数据中的隐混淆与溢出效应、携带效应下的推断难题以及非凸场景下的求解效率，并探索LLM在因果建模中的增强作用。
+【建议研究方向】
+1. 复杂环境下的因果效应估计与弹性建模：针对骑手定价场景中存在的隐混淆变量（Hidden Confounders）、溢出效应（Spillover Effects）以及携带效应（Carryover Effects）等挑战，研究基于表示学习、工具变量或双重鲁棒（DR）的因果推断算法。探索无偏RCT数据与大规模观测数据的融合训练机制，解决特定Logit先验依赖问题，提升弹性模型在小样本和复杂混淆环境下的泛化能力与准确性。
+2. LLM增强因果推断（LLM4Causal）： 高价值特征挖掘与标签挖掘（Label Mining） ，针对业务数据中标签稀疏或含噪的问题，利用 LLM 的语义理解能力进行 Label Mining，推断缺失的转化标签或修正错误标签。因果去偏与反事实数据生成，研究利用 LLM 生成反事实样本或辅助识别未观测混淆变量，设计新的因果去偏机制。探索将LLM在因果推理和特征理解上的“大模型”能力，通过模型蒸馏（Model Distillation）技术迁移至轻量级的 Uplift 模型或深度因果网络（如 Dragonnet）中，提升模型能力。
+3. 大规模非凸运筹优化求解：基于因果模型输出的弹性预估，研究在预算约束下的复杂定价组合优化问题。重点攻克非凸优化（Non-convex Optimization）目标函数的求解难题，大规模分组背包等NP-Hard问题的近似算法或高效启发式求解策略，以及基于强化学习的序贯决策问题，确保定价策略在工业级时延要求下的实时产出与效果最优。</p><h3>任职要求</h3><p>海内外高校在校本科生（大三及以上）、硕士生及博士生，且以下条件至少满足一项：
+1.超级学霸：专业成绩排名前1%。
+2.学术达人：在顶级期刊或学术会议上以第一作者身份发表论文（或导师一作，自己为二作）。
+3.竞赛大神：在顶级大赛上获奖。
+4.工程高手：有大厂实验室的实习经验，或有贡献突出的开源项目。</p><a href="https://zhaopin.meituan.com/web/campus#4177297780">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">【北斗实习】智能决策算法研究员-配送时间方向</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>北京市 · 02-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【课题说明】
+外卖配送已经成为极大便利当代人生活的新基建，配送时间是精准匹配用户需求和履约能力的关键系统决策变量。
+传统的时间建模主要依赖“时空特征+深度回归”，虽能拟合历史规律，但在处理复杂因果关系、长尾小样本场景及系统级序贯优化时仍存在瓶颈。本项目旨在利用生成式大模型（LLM）的常识推理、多步规划与强大的表征性质，重构新一代时空决策框架。我们试图打破传统判别式模型的上限，通过“LLM + Decision Science”的深度融合，定义即时配送领域的技术新边界，为客户带来更好的服务体验。
+【建议研究方向】
+1. 知识迁移与新一代时空基础模型：利用 LLM 的预训练知识与元学习（Meta-learning）能力，设计适配时序与图数据的新一代时空表征架构。探索从“任务特定模型”向“时空通用基础模型”的转变，提升系统在复杂多变环境下的泛化精度，重点优化长尾小场景的建模精度
+2. 多商家选择视角的用户需求因果建模：研究如何将LLM的全局规划能力与因果推断（Causal Inference）深度融合。在多商家选择竞争下，利用LLM 辅助识别用户对时间的真实需求，构建反事实推理模型，实现有限资源下的用户需求与履约供给的最优匹配决策。
+3. 基于 LLM-Agent 的系统级序贯规划：将配送时间决策建模为动态流水线中的时延分配（Deadline Assignment）问题。研究如何利用LLM 与强化学习（RL）构建具备自我演进能力的决策 Agent，在海量动态订单流中执行跨时段、跨区域的复杂规划，通过序贯决策寻找系统最佳承载量的最优解。
+我们将提供海量的真实业务场景数据、充足的计算资源、极高的探索自由度和1对1专家指导，目标是产出既有创新深度又能创造业务价值的新一代智能决策技术范式。</p><h3>任职要求</h3><p>海内外高校在校本科生（大三及以上）、硕士生及博士生，且以下条件至少满足一项：
+1.超级学霸：专业成绩排名前1%。
+2.学术达人：在顶级期刊或学术会议上以第一作者身份发表论文（或导师一作，自己为二作）。
+3.竞赛大神：在顶级大赛上获奖。
+4.工程高手：有大厂实验室的实习经验，或有贡献突出的开源项目。</p><a href="https://zhaopin.meituan.com/web/campus#4177318569">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">【北斗实习】智能决策算法研究员-因果推断方向</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>北京市 · 02-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【课题说明】
+以外卖场景下的C端配送费定价为核心决策问题，探索因果推断与前沿人工智能技术融合的下一代决策科学范式。本研究直面高维、动态、充满混杂的商业环境中的根本性挑战：商家间复杂的替代与互补关系、多干预下的交叉混杂效应、以及决策影响的延迟传导与长期因果效应。目标是构建能够表征长程因果、进行反事实推演与前瞻性预估的智能决策系统，实现从“数据相关性分析”到“因果性决策”的根本性跨越，为定价策略提供可解释、可预估的科学依据。
+【建议研究方向】
+1.List-wise替代效应的因果效应建模：传统point-wise的因果模型无法刻画在外卖平台多商家同时曝光、用户主动比价场景下复杂的替代与竞争关系。本研究需攻克两大核心问题：一是曝光集合（Impression Set）层面的因果结构识别，即如何从用户行为序列中识别商家间的替代、互补及溢出效应网络；二是反事实需求转移的量化估计，即当某个商家的价格或补贴发生变化时，如何准确估计其带来的流量、订单在整个局部市场商家列表中的转移分布，而非孤立地看待单个商家的指标变化。目标是构建一个能够理解并量化“商家生态”内动态因果关系的List-wise Causal Model。
+2.延迟与长程因果效应建模：攻克干预动作的延迟效应表征与长程因果传导路径建模难题。建立能够量化短期冲击与长期均衡影响的动态因果模型，并基于对未来市场状态与用户行为的因果性预估，做出真正前瞻性的序列决策。
+3.基于因果模型的强化学习决策：将因果效应预估作为奖励函数或环境模型的核心组成部分，运用强化学习（RL）技术进行序列化决策优化。重点研究如何学习干预的最佳顺序、时机与剂量，提高实时决策结果。
+4.LLM + Causal融合推理：充分利用LLM的序列推理与语义理解能力，实时识别用户行为序列背后的潜在意图与决策逻辑，进行高价值特征挖掘，辅助因果图构建、混淆变量识别、反事实叙事生成，增强uplift模型能力。
+我们将提供美团外卖海量、高维的交易与用户行为数据、真实的A/B实验与线上决策平台、充足的计算资源以及面向重大业务难题的极高研究自由度。目标是能直接驱动核心业务决策系统的突破性成果，同时能在顶级学术会议（如ICML, NeurIPS, KDD）发表paper。</p><h3>任职要求</h3><p>海内外高校在校本科生（大三及以上）、硕士生及博士生，且以下条件至少满足一项：
+1.超级学霸：专业成绩排名前1%。
+2.学术达人：在顶级期刊或学术会议上以第一作者身份发表论文（或导师一作，自己为二作）。
+3.竞赛大神：在顶级大赛上获奖。
+4.工程高手：有大厂实验室的实习经验，或有贡献突出的开源项目。</p><a href="https://zhaopin.meituan.com/web/campus#4177303895">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">【北斗实习】智能决策算法研究员-智能调度方向</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>北京市 · 02-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【课题说明】
+基于承接全球最大规模外卖业务的即时配送系统进行最前沿的端到端调度决策研究，业务影响力与研究深度并重。可以接触最前沿的调度决策体系，服务于百万级骑手、千万级订单，快速拓宽技术、业务视野。团队氛围好、研究实力强，已发表多篇顶会论文，团队工作入选2023年Franz Edelman奖，在行业内具有卓越水平。
+【建议研究方向】
+1.调度大规模实时OR+ML研究：针对调度系统内多样的调度决策行为进行分析，包括但不限于过滤、压单、指派、推荐、改派等，尝试基于深度学习、强化学习等方法对已有的调度决策行为进行端到端建模，提升调度效果。
+2.时空大模型在骑手行为方向研究：基于SOTA的时空大模型研究，探索针对调度系统分城市、分业务、分时段的差异化特点，基于每天百亿量级骑手路径和行为数据，探索统一的模型预测、决策能力，提升调度决策系统在不同场景下的适配能力。
+3. 基于长周期收益的多对一匹配问题研究：基于订单结构挖掘与优质骑手行为学习，实现多对一订单-骑手匹配问题的分布式实时（秒级）求解，同时合理刻画订单匹配长周期收益，实现调度匹配序贯决策时空全局优化，将日益增长的订单密度，在性能约束下极大程度兑现为骑手效率增益。</p><h3>任职要求</h3><p>海内外高校本科（大三及以上）、硕士生及博士生，且以下条件至少满足一项：
+1.超级学霸：专业成绩排名前1%。
+2.学术达人：在顶级期刊或学术会议上以第一作者身份发表多篇论文（或导师一作，自己为二作）。
+3.竞赛大神：在顶级大赛上获奖。
+4.工程高手：有大厂实验室的实习经验，或有贡献突出的开源项目。</p><a href="https://zhaopin.meituan.com/web/campus#4177333359">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">运筹优化算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">学历未写</span>北京市、上海市 · 08-17 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. AI+运筹的智能调度系统：将大模型（LLM）与强化学习（RL）深度融合到实时调度决策中，构建新一代AI驱动的订单分配与路径规划系统，实现千万级订单-百万级骑手的分布式实时全局优化，探索从传统运筹求解到AI端到端决策的范式跃迁。
 2. AI赋能的供需决策与动态定价：利用深度学习进行高精度供需预测，结合因果推断与大规模运筹优化进行运力调控与最优定价的序贯决策，探索用大模型自动生成定价策略、用RL在线优化调价方案，最大化运力供给与用户体验。
 3. 大模型驱动的时空预估：研究LLM与时空数据的深度融合，构建新一代时空基础模型（Foundation Model for Spatio-Temporal），用生成式AI突破传统判别式模型上限，提升配送时间预估（ETA）、路径规划等场景的泛化精度与零样本推理能力。
 4. AI自动化的算法研发范式：探索用大模型实现自动问题建模（Auto-Formulation）、自动算法设计（Algorithm of Thoughts）、端到端学习型优化器（Learning to Optimize），推动运筹优化从人工建模走向AI自主求解的新范式。
@@ -341,7 +153,7 @@ details.job>summary:hover .t,details.job>summary:focus-visible .t{color:var(--ac
 1. 真实场景：千万级日订单、百万级骑手，全球最大规模即时配送决策系统，AI+运筹优化技术落地的理想平台。
 2. AI原生工作方式：团队全面拥抱AI工具，提供充足GPU集群与大模型Token资源，鼓励用AI重构研发流程，让你的每一个idea都能快速验证。
 3. 成果导向：鼓励顶会发论文，团队已获Franz Edelman奖，内部有完善的学术合作通道。
-4. 成长空间：从问题定义到算法设计再到线上验证，全链路参与，快速积累工业级运筹优化实战经验，与顶尖高校保持长期联合研究。</p><a href="https://zhaopin.meituan.com/web/campus#4694982477">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">智能决策算法工程师</span><span class="m">北京市 · 08-17 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>设计适配用户、商家、骑手、平台的4方平台分配机制和算法，提升日均6000万订单的履约体验，优化500万骑手的效率和收入。具体职责如下：
+4. 成长空间：从问题定义到算法设计再到线上验证，全链路参与，快速积累工业级运筹优化实战经验，与顶尖高校保持长期联合研究。</p><a href="https://zhaopin.meituan.com/web/campus#4694982477">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">智能决策算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">学历未写</span>北京市 · 08-17 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>设计适配用户、商家、骑手、平台的4方平台分配机制和算法，提升日均6000万订单的履约体验，优化500万骑手的效率和收入。具体职责如下：
 1. 探索万人万单的超大规模匹配算法：针对调度系统内多样的调度决策行为进行分析，包括但不限于过滤、压单、指派、推荐、改派等，基于模仿学习、强化学习等方法对已有的调度决策行为端到端建模，使用PyTorch/TensorFlow等深度学习框架进行模型训练与迭代，持续提升调度效果；
 2. 设计平台多角色多目标的决策机制：针对调度分单的平台属性，探索场景化的模型预测和多目标决策能力，利用强化学习与多目标优化算法（如帕累托优化）相结合的方法，提升调度决策系统针对不同场景的多目标决策能力；
 3. 构建针对海量骑手和商家行为数据的超大模型：基于海量骑手的接单、路线规划、取餐和交付数据，以及商家不同场景下的出餐行为数据，使用大模型技术构建适配调度的全链路商家、骑手行为预测模型，为调度决策提供精准信息支撑。</p><h3>任职要求</h3><p>1. 优秀的发现问题、调研和创新能力，有决策智能、强化学习、模仿学习等相关方向论文发表候选人优先；
@@ -352,7 +164,7 @@ details.job>summary:hover .t,details.job>summary:focus-visible .t{color:var(--ac
 2. 极富挑战的技术问题：接触最前沿的调度决策体系，基于调度大规模、强不确定性、高实时性要求，进行最前沿的端到端调度决策研究，业务影响力与研究深度并重；
 3. 顶尖的团队水平：团队氛围好、研究实力强，团队工作入选2023年Franz Edelman奖（被广泛誉为工业工程界的&quot;诺贝尔奖&quot;），发表多篇顶会论文，在行业内具有国际领先水平；
 4. 完善的培养机制：会安排高水平的mentor进行指导，注重业务和技术上并重的培养方式，高质量的内外部交流分享机会；
-5. AI前沿的工作环境：团队全面拥抱AI时代工作方式，日常研发中深度使用AI辅助工具（如大模型辅助代码开发、AI辅助实验分析与论文写作），技术与工具始终走在行业前沿。</p><a href="https://zhaopin.meituan.com/web/campus#4697322104">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习/数据挖掘算法工程师</span><span class="m">北京市、上海市 · 08-17 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 在这里，你将通过机器学习、数据挖掘、深度/增强学习前沿技术对海量O2O数据进行洞察和预测，提高线下服务效率，优化线上用户体验，人和服务的高效连接潜力无限，帮助亿万用户吃得更好、生活更好；
+5. AI前沿的工作环境：团队全面拥抱AI时代工作方式，日常研发中深度使用AI辅助工具（如大模型辅助代码开发、AI辅助实验分析与论文写作），技术与工具始终走在行业前沿。</p><a href="https://zhaopin.meituan.com/web/campus#4697322104">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习/数据挖掘算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京市、上海市 · 08-17 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 在这里，你将通过机器学习、数据挖掘、深度/增强学习前沿技术对海量O2O数据进行洞察和预测，提高线下服务效率，优化线上用户体验，人和服务的高效连接潜力无限，帮助亿万用户吃得更好、生活更好；
 2. 在这里，你将从海量浏览和交易数据中不断抽象模式建立模型，一手保障商户在线营销可靠安全，另一手为消费者呈现有效评价提供优质服务，用技术提升消费质量；
 3. 在这里，你可以发挥你的算法天赋，在海量数据的平台上实践各种机器学习和挖掘算法，搜索、推荐、广告、调度、自动车配送、风控、金融、骑行、ERP和智能化交互，为你提供最广阔的施展天地。</p><h3>任职要求</h3><p>1. 本科及以上学历；
 2. 良好的数据结构和算法基础，具有较强的程序开发和分布式系统实现能力；
@@ -363,7 +175,7 @@ details.job>summary:hover .t,details.job>summary:focus-visible .t{color:var(--ac
 1. 具备相关行业互联网公司核心项目实习经验；
 2. 发表过相关技术方向国际顶会或核心期刊一作论文；
 3. 对大型开源软件项目有核心开发贡献；
-4. 熟悉大数据技术（Hadoop、Spark、Flink等）。</p><a href="https://zhaopin.meituan.com/web/campus#4694926747">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【北斗】AI决策算法研究员（外卖/即时零售方向）</span><span class="m">北京市 · 06-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【愿景】
+4. 熟悉大数据技术（Hadoop、Spark、Flink等）。</p><a href="https://zhaopin.meituan.com/web/campus#4694926747">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【北斗】AI决策算法研究员（外卖/即时零售方向）</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京市 · 06-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>【愿景】
 美团配送决策智能中心承接全球最大规模即时配送业务，每天处理千万级订单、调度百万级骑手，团队曾获2023年Franz Edelman奖（工业工程界&quot;诺贝尔奖&quot;），已发表数十篇AI顶会论文。我们正在用AI重新定义即时配送的决策边界。
 【你将参与】
 1.智能调度与端到端决策：基于深度学习、强化学习对调度系统中的过滤、压单、指派、改派等多样决策行为进行端到端建模，探索LLM+RL驱动的新一代调度决策范式，实现多对一订单-骑手匹配的分布式实时全局优化。
@@ -381,7 +193,325 @@ details.job>summary:hover .t,details.job>summary:focus-visible .t{color:var(--ac
 2.资源保障：充足GPU集群，顶尖模型Token供给。
 3.成果导向：鼓励顶会发论文，团队已获Franz Edelman奖。
 4.高密度氛围：博士比例高，与顶尖高校保持长期联合研究。</p><a href="https://zhaopin.meituan.com/web/campus#4530808139">去官网看这个岗位 →</a></div></details></div></section>
-<section id="c5"><header><h2>小米</h2><span>4 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">机器学习算法工程师</span><span class="m">北京 · 08-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 制造要素数据算法开发与优化
+<section id="c3"><header><h2>小红书</h2><span><span class="f">本科可投的实习 3 个</span><span class="a">9 个岗位，其中本科可投的实习 3 个</span></span></header><div class="jobs"><details class="job fit"><summary><span class="t">风控算法实习生-增长方向</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>上海市，杭州市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>团队介绍
+增长风控算法团队负责小红书用户增长链路中的风险治理，包括投放、归因、承接、Push 等场景。我们通过数据分析、策略和模型，识别并拦截作弊流量、无效设备和异常行为，提升用户增长质量。团队也在探索大模型和 Agent 在风控场景中的应用，比如用大模型辅助分析异常行为、总结风险 case、挖掘策略规则，提升风控分析和策略迭代效率。
+岗位职责
+1.参与增长风控相关的数据分析和模型建设，识别投放、归因、DAU、Push 等场景中的异常流量和作弊行为；
+2.结合设备、用户行为、渠道、画像等数据，协助完成特征分析、样本构建、模型训练和效果评估；
+3.探索大模型 / Agent 在风控中的应用，例如异常行为分析、风险 case 总结、策略辅助生成等；
+4.参与风控策略的设计、验证和上线评估，通过 A/B 实验或数据分析评估策略效果；
+5.跟进大模型、机器学习、异常检测等方向的基础方法，并尝试在实际业务中应用。</p><h3>任职要求</h3><p>任职资格
+1.计算机、人工智能、数学、统计学等相关专业在读，能稳定实习者优先；
+2.有一定编程和数据分析基础，熟悉 Python，了解 SQL，有 Spark / Hive 使用经验者优先；
+3.了解机器学习、深度学习、异常检测、图模型、大语言模型、Agent 等方向中的一项或多项；
+4.有大模型相关项目经验优先，比如基于大模型做过垂直场景应用、智能分析工具、文本分析、行为分析等；
+5.对风控、反作弊、用户增长、流量质量治理等方向感兴趣；
+6.有较好的学习能力、沟通能力和责任心，能够主动发现问题并推进解决。</p><a href="https://job.xiaohongshu.com/campus/position#21552">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">数据科学与分析实习生（算法/用户增长）</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>上海市，北京市，深圳市 · 10-30 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 协助分析团队完成数据洞察、分析工作（可能是增长方向，或是通用方向） ；
+2. 根据业务目标，找到潜在机会点或是问题发现，并带领/协助业务&amp;算法团队解决问题。</p><h3>任职要求</h3><p>1. 本科及以上学历，统计学、数学、物理学、计算机、经济学、社会学等相关专业优先；
+2. 逻辑思维强，具备数据敏感度，能从复杂业务问题中拆解结构、提炼规律；
+3. 掌握Claude Code/Codex 等AI工具；
+4. 对小红书多业务领域（如社区内容、商业价值等）多方向感兴趣者，并愿意往多方向学习、探索。
+5. 掌握SQL、Python等编程能力，了解A/B 实验逻辑，机器学习和因果推断者分析方法者优先；
+6. 实习 6 个月及以上者优先。</p><a href="https://job.xiaohongshu.com/campus/position#21649">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">增长算法实习生 — RTA方向</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>北京市 · 09-07 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 用户增长投放：负责小红书新用户拉新与流失用户召回的广告投放策略，通过算法驱动实现用户规模的高质量、高效率增长；
+2. 用户价值建模: 应用多目标学习、因果推断(Causal Inference)、大模型等前沿方法，对全网数十亿级用户进行精细化建模，精准评估并预测用户长期价值LTV;
+3. 智能出价策略:基于LTV预估设计并迭代智能出价策略，持续提升投放ROI。</p><h3>任职要求</h3><p>1. 数学、统计、计算机等相关专业优先;具备扎实的机器学习理论基础,能够熟练运用深度学习等主流模型解决实际业务问题;
+2. 工程能力：具备优秀的编码能力,精通 Java / C++ / Scala / Python 中至少一门语言,拥有扎实的数据结构与算法功底;
+3. 领域经验：在用户增长、搜索、推荐、广告等方向有相关实习或项目经验者优先;熟悉竞价广告机制、因果推断或强化学习者更佳;
+4. 软实力：具备良好的团队协作与沟通能力,对业务有较强的好奇心与数据敏感度,学习能力强、能快速适应高速迭代的业务节奏。</p><a href="https://job.xiaohongshu.com/campus/position#21110">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】增长算法工程师-社区增长</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京市，上海市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责用户增长场景的推荐算法研发（召回/排序/策略/多模态/LLM），提升推荐系统全链路效率；
+2、负责消息PUSH与触达算法，优化推送时机、频次与内容生成，提升用户拉新与活跃；
+3、负责广告投放算法，面向新用户/流失用户精准触达，包括价值预估、RTA出价、素材优选及 Agent 投放能力建设；
+4、探索因果推断、强化学习等方法在用户增长中的应用，搭建通用因果平台，为PUSH、激励等业务场景赋能；
+5、基于大模型和用户行为挖掘，构建内容池与画像体系，与产品、运营、BI团队协作推动增长目标落地。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业优先；
+2、了解Hadoop/MapReduce/Spark/Hive等常用大数据处理工具优先；
+3、熟练掌握至少一种编程语言：Java/C++/Scala/Python，熟悉Linux系统及常用Shell命令；
+4、有过成功的推荐算法、用户增长、广告投放相关项目经历者优先。</p><a href="https://job.xiaohongshu.com/campus/position#20884">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】增长算法工程师-社区增长</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京市，上海市 · 11-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责用户增长场景的推荐算法研发（召回/排序/策略/多模态/LLM），提升推荐系统全链路效率；
+2、负责消息PUSH与触达算法，优化推送时机、频次与内容生成，提升用户拉新与活跃；
+3、负责广告投放算法，面向新用户/流失用户精准触达，包括价值预估、RTA出价、素材优选及 Agent 投放能力建设；
+4、探索因果推断、强化学习等方法在用户增长中的应用，搭建通用因果平台，为PUSH、激励等业务场景赋能；
+5、基于大模型和用户行为挖掘，构建内容池与画像体系，与产品、运营、BI团队协作推动增长目标落地。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机等相关专业优先；
+2、了解Hadoop/MapReduce/Spark/Hive等常用大数据处理工具优先；
+3、熟练掌握至少一种编程语言：Java/C++/Scala/Python，熟悉Linux系统及常用Shell命令；
+4、有过成功的推荐算法、用户增长、广告投放相关项目经历者优先。</p><a href="https://job.xiaohongshu.com/campus/position#21010">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【REDstar】内容增长策略算法工程师-内容增长方向</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京市，上海市，杭州市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与话题创意增长大模型建设，围绕小红书发布场景理解创作趋势，研发高质量话题与创意大模型，提升发布增长内容供给；
+2、参与发布用户内容预估增长模型建设，理解发布用户特征，建模发布意愿与转化效率，实现创意供给与用户的精准匹配；
+3、参与增长 AI 素材识别与筛选机制建设，AI 生成内容判别与质量评估，保障供给内容用户体验。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、自动化、统计、数学等相关专业；
+2、扎实的机器学习基础，掌握大模型/多模态、CV、NLP、推荐或数据挖掘中的一项或多项；具备快速的 coding 能力，熟练使用Python/C++/Java 中的一门或多门语言，能使用 SQL 进行数据分析；
+3、有大模型，agent，内容社区、推荐或搜索相关算法实习经验者优先，有工业场景多模态大模型（MLLM）实践经验者优先；在 CVPR/ICLR/NeurIPS/ICML/KDD 等会议发表论文或获 ACM 等竞赛奖项者优先；
+4、责任心强，积极主动，具备良好的团队协作能力，能与产品、运营等团队高效沟通配合。</p><a href="https://job.xiaohongshu.com/campus/position#20880">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】社区风控算法工程师-社区治理</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京市，上海市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责小红书社区风控算法的研发与迭代，精准识别个体违规用户、黑产团伙及流量作弊行为，维护社区公平环境；
+2、深入挖掘业务数据，结合领域专家经验与数据洞察，持续优化风险识别与防控策略，提升风险感知与拦截能力；
+3、与社区治理业务团队紧密协作，深入理解业务痛点与诉求，在保障用户体验与业务目标的前提下，设计并实施最优风险管控方案；
+4、持续跟踪黑灰产动态与新型作弊手法，进行深度威胁分析，探索大模型在风控场景的创新应用，构建小红书社区风控/反作弊攻防体系。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、数学、电子信息、统计、大数据、人工智能等相关专业优先；
+2、技术能力：编程基础扎实，熟练掌握 SQL、Python 等编程语言；具备深厚的数据结构与算法功底，精通 Hive/Spark 等大数据处理技术；具有扎实的机器学习/深度学习项目落地经验；具备 NLP/多模态/大模型等相关经验者优先；
+3、综合素质：具备良好的沟通表达能力与技术驱动力，能主动运用技术手段解决复杂业务问题，具有良好的团队协作精神。
+【加分项】：
+具有较强的研究与创新能力，在 CVPR、ICCV、ECCV、NeurIPS、ICML、SIGGRAPH 等国际顶级会议有论文发表者优先；参加过 ACM、Kaggle 等顶级技术竞赛并取得优异成绩者优先。</p><a href="https://job.xiaohongshu.com/campus/position#22070">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【2027校招】内容增长策略算法工程师-内容增长方向</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京市，上海市，杭州市 · 11-14 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与话题创意增长大模型建设，围绕小红书发布场景理解创作趋势，研发高质量话题与创意大模型，提升发布增长内容供给；
+2、参与发布用户内容预估增长模型建设，理解发布用户特征，建模发布意愿与转化效率，实现创意供给与用户的精准匹配；
+3、参与增长 AI 素材识别与筛选机制建设，AI 生成内容判别与质量评估，保障供给内容用户体验。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机、自动化、统计、数学等相关专业；
+2、扎实的机器学习基础，掌握大模型/多模态、CV、NLP、推荐或数据挖掘中的一项或多项；具备快速的 coding 能力，熟练使用Python/C++/Java 中的一门或多门语言，能使用 SQL 进行数据分析；
+3、有大模型，agent，内容社区、推荐或搜索相关算法实习经验者优先，有工业场景多模态大模型（MLLM）实践经验者优先；在 CVPR/ICLR/NeurIPS/ICML/KDD 等会议发表论文或获 ACM 等竞赛奖项者优先；
+4、责任心强，积极主动，具备良好的团队协作能力，能与产品、运营等团队高效沟通配合。</p><a href="https://job.xiaohongshu.com/campus/position#22004">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">电商风控算法实习生</span><span class="m"><span class="tag">实习</span><span class="tag off">硕士起</span>北京市 · 08-04 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责电商平台全链路（用户、交易、支付、营销、商户、物流）的风险防控策略制定与实施，精准识别并打击交易、营销、商户、用户等领域作弊行为，保障平台交易安全、资金安全、生态健康及用户/商户权益
+2、深入分析电商场景多维度数据，参与设计、开发和优化针对交易欺诈、营销作弊、账户盗用、商户违规、黄牛抢购、恶意套利等核心风险的识别、拦截与管控能力
+3、紧密协同电商业务产运团队，建立核心指标，持续监控快速迭代优化策略，提升效果
+4、持续监控电商领域黑灰产动态及新型作弊手法，深度风险分析、提炼攻击模式挖掘与特征，参与构建并持续加固电商风控攻防体系</p><h3>任职要求</h3><p>1、本科及硕士或以上学历（数学、计算机、电子信息、统计、大数据、人工智能等相关专业优先）
+2、数据分析、数据挖掘、风控相关实习经验，具备互联网交易反欺诈、营销反作弊等领域经验者优先，有大模型实战经验优先
+3、精通SQL和数据分析/编程语言（Python等）、熟练掌握大数据处理技术(hive/spark等)，具备扎实的机器学习应用经验
+4、具备良好的沟通能力，能积极主动运用技术能力解决问题，热爱团队协作</p><a href="https://job.xiaohongshu.com/campus/position#21571">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c4"><header><h2>百度</h2><span><span class="f">本科可投的实习 3 个</span><span class="a">5 个岗位，其中本科可投的实习 3 个</span></span></header><div class="jobs"><details class="job fit"><summary><span class="t">营销算法实习生</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>北京市 · 11-10 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>-业务Agent算法：参与业务场景分析、任务拆解与抽象建模，与工作流编排能力，集成业务知识、数据服务和算法工具，提升复杂营销任务的自动化执行能力
+-评测体系与归因诊断：参与评测数据集、自动化评测与难例挖掘工具建设，从任务完成质量、执行可靠性及业务适用性等维度评估Agent表现；结合执行轨迹、业务反馈与专家经验，分析任务规划、工具调用和算法策略等环节的问题，提出并验证归因假设，沉淀诊断结论与评测样本
+-评测驱动的自进化：基于评测结果与归因诊断，探索经验提炼与策略迭代机制，优化提示词、技能模块和工作流，构建“发现问题—归因诊断—方案优化—评测验证—经验沉淀”的持续改进流程
+-算法策略与AutoResearch：围绕营销内容场景，参与时间序列预测、推荐排序等模型的搭建与优化；探索利用AI编程智能体开展论文复现、模型改进与自动化实验，支持策略的高效迭代</p><h3>任职要求</h3><p>-本科及以上在校生，计算机、人工智能、数学、统计学等相关专业优先；具备扎实的机器学习、概率统计与运筹优化基础，熟练使用Python，掌握SQL，熟悉PyTorch等常用框架
+-理解大语言模型基本原理，熟悉工具调用、RAG或Agent工作流，具备相关项目或研究实践，能够完成工具开发、调试与实验分析
+-具备技术调研与科研实验能力，能够阅读英文论文、复现方法、提出研究假设，设计对照实验并分析结果
+-主动学习、沟通协作能力良好，愿意深入理解业务；每周到岗不少于4天，连续实习不少于6个月</p><a href="https://talent.baidu.com/jobs/list#f9b60138-f9a0-40c0-b8f2-ec4d8fea55c8">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">风控算法工程师</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>北京市 · 11-04 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>-参与 UGC、AIGC 业务的内容安全与风险治理，挖掘风险样本、异常特征及新型风险模式
+-参与内容安全检测算法与策略的设计、实验和优化，推动算法方案在实际业务场景中的落地，并持续跟踪效果
+-参与大模型、智能体等 AI 技术在内容安全场景中的应用探索，包括风险识别、样本分析、风险归因及自动化分析等
+-调研学术界与业界在内容安全、黑灰产治理等方向的前沿算法与研究实践，并结合业务场景进行实验与验证</p><h3>任职要求</h3><p>-本科及以上在读，计算机、信息安全、人工智能、数学、统计等相关专业优先
+-熟悉 Python 等至少一门编程语言，具备良好的数据处理与分析能力，能够使用 SQL、Spark 等工具进行数据处理
+-掌握常用机器学习、深度学习算法，了解大模型、智能体等相关技术，具备一定的算法实现、实验与分析能力，有内容安全相关实习、项目、竞赛或论文经历者优先
+-对 UGC/AIGC 内容安全、互联网黑灰产等方向有兴趣，具备较强的逻辑分析能力、学习能力和自驱力
+-每周可实习 4 天及以上，连续实习 5 个月及以上</p><a href="https://talent.baidu.com/jobs/list#e1b49a9a-fafe-4916-aaa4-d59fb6307b1c">去官网看这个岗位 →</a></div></details><details class="job fit"><summary><span class="t">安全风控部_风控算法工程师</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>北京市 · 10-10 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>-负责安全风控领域数据挖掘，综合应用机器学习、数据挖掘、NLP、大语言模型等技术解决各类反欺诈风控问题
+-挖掘设备风险特征，构建设备画像标签体系，应用于风控场景和业务场景
+-持续迭代风控反作弊策略模型，负责风控智能体及大模型相关应用的设计与落地，为集团业务保驾护航
+-跟进大模型领域前沿技术，探索其在风控场景中的应用可行性，持续推动风控算法体系建设与技术创新</p><h3>任职要求</h3><p>-具备以下一个或多个领域的理论背景和项目经验：数据挖掘/图挖掘/机器学习/深度学习/自然语言处理/大模型
+-至少精通一门编程语言，熟练使用python/java等语言，熟练使用hive、spark等大数据处理工具
+-较好的业务理解能力和建模能力，能够快速准确的将业务问题转换为机器学习问题
+-良好的逻辑思维能力，对数据敏感，能发现关键问题，解决问题</p><a href="https://talent.baidu.com/jobs/list#30337d58-0054-4775-bdc0-e35d1e4f2d77">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据挖掘与分析工程师</span><span class="m"><span class="tag">实习</span><span class="tag off">硕士起</span>北京市 · 11-11 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>-负责百度搜索业务方向的数据分析工作。宏观上我们会从海量的数据中构建指标分析体系，实现可量化的指引业务高效、健康发展；微观上我们会通过实验、因果推断、精细化运营等数据科学方法挖掘产品、策略痛点，给出优化sense及方法，牵引业务落地带来体验及规模增长
+-以数理统计、因果推断、机器学习为基础，不断挖掘探索影响搜索规模及体验的分析方法论，回答全局视角的关键问题
+-负责搜索实验评估难点问题的分析与解决，并有总结提炼，包括但不限于指标体系牵引优化、实验机制构建
+-运用因果推断、数理统计及精细化运营等方法，与业务侧算法、产品、运营等紧密沟通协同，产出优化及可落地方法，牵引搜索业务发展
+-探索 AI Agent 在数据分析场景的应用，包括 LLM Skills、Agent Harness 等技术的研究与实践，推动智能化分析能力建设</p><h3>任职要求</h3><p>-硕士及以上，计算机、数据科学等相关专业优先
+-实习期至少 6 个月，每周至少 5 天
+-扎实的数据处理、编程能力， SQL、Python均可
+-对大模型及 AI Agent 技术有浓厚兴趣，有 Agent 应用开发、LLM 工具建设或 Skills 开发经验者优先
+-具备良好的逻辑思维、问题分析、沟通表达及报告撰写能力，责任心强，能够适应快节奏工作</p><a href="https://talent.baidu.com/jobs/list#910d4ee8-5766-4102-bbfd-34e0dd4858ec">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据挖掘实习生</span><span class="m"><span class="tag">实习</span><span class="tag off">硕士起</span>北京市 · 07-21 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>-完成数据挖掘需求，如基于已有大数据表和业务需求，设计计算指标，完成计算和数据自我验证
+-支持算法相关工作，如维护和升级基于数据或文本的分类、聚类等基础模型
+-维护数据平台数据更新、数据监控等
+-其他数据团队相关工作</p><h3>任职要求</h3><p>-研究生在读，计算机、数学、数据挖掘、统计学相关专业
+-熟练应用python、mysql; 有C++/JAVA/PHP等任意一种编程语言开发经验
+-至少熟悉一种大数据处理技术，如MapReduce、Hive、Spark，Flink等
+-对数据敏感，能从数据中发现问题、解决问题
+-了解常用机器学习算法及应用场景
+-有良好的逻辑思维能力、沟通协调能力</p><a href="https://talent.baidu.com/jobs/list#94e31a17-9ce0-48cf-9578-57af4694cab2">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c5"><header><h2>快手</h2><span><span class="f">本科可投的实习 1 个</span><span class="a">19 个岗位，其中本科可投的实习 1 个</span></span></header><div class="jobs"><details class="job fit"><summary><span class="t">【留用实习】策略算法工程师</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责短视频生产/直播/用户增长等业务策略算法建模和优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，推进特效业务智能化；
+2、通过指标数据异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
+3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机/数学/物理/信息等专业；
+2、对机器学习、深度学习等主流算法理解深刻，有应用经验；扎实的统计学功底，擅长数据分析和科学实验方法；
+3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
+4、热爱短视频行业，较强沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
+加分项
+1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
+2、在Kaggle等数据挖掘/机器学习竞赛中获奖；
+3、在ACM等编程竞赛中获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11305">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】智能营销算法工程师</span><span class="m"><span class="tag">实习</span><span class="tag off">硕士起</span>北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责设计和优化算法提升快手国际化智能补贴场景的用户体验，驱动快手国际化增长、电商、直播等多条业务线高质量增长；
+2、负责亿级规模的算法模型优化和落地，包括但不限于因果推断、深度学习、迁移学习、强化学习等算法模型；
+3、开发工业级的因果推断算法平台，包括大规模分布式深度学习训练框架，大规模在线运筹分配框架；
+4、探索和研究最前沿的技术，结合实际业务、产出业界领先的技术解决方案；
+5、探索算法在不同产品形态下的落地方案，提升产品的用户体验，驱动业务持续突破。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机相关专业优先；
+2、有扎实的数据结构和算法功底，熟悉业界主流的机器学习算法；
+3、具备较强的编码能力，熟悉Linux开发环境，熟悉至少一门编程语言；
+4、较好的团队合作精神，较强的沟通能力；主动性强，有很强的自我驱动力；
+5、有良好的产品意识、敏锐的数据业务分析能力，对解决挑战性问题充满热情，致力于将事情做到120分。
+加分项：
+1、有统计学、运筹学、因果推断、Uplifting建模等相关经验者优先；
+2、有推荐系统、机器学习、自然语言理解相关领域研究或者实习经验者优先；
+3、在SIGKDD、ICML、RECSYS、NIPS等国际顶级会议上有论文发表者优先；
+4、有ICPC、Topcoder Algorithm或类似算法竞赛经历者优先。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11639">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】增长算法工程师</span><span class="m"><span class="tag">实习</span><span class="tag off">硕士起</span>北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大规模的短视频推荐和补贴裂变等业务的模型策略优化，提升用户消费体验（如时长、点击率、互动）和用户留存率、DAU等核心指标；
+2、参与机器学习，如深度学习、因果推断领域的技术研发工作，包括但不限于DNN模型优化、因果推断模型、迁移学习、元学习、强化学习和图模型等的算法和系统研发等；
+3、参与前沿问题的探索与研究，结合实际应用场景，提供技术优化和落地建议。</p><h3>任职要求</h3><p>1、计算机科学、数学或统计学相关专业硕士及以上学历；
+2、熟悉Linux，Python，C++/Java，具备优秀的编码能力，有扎实的数据结构和算法功底；
+3、熟悉大规模数据挖掘或分布式计算等技术；
+4、有较强的自驱力和学习能力，善于阅读文献，具备优秀的分析和解决问题的能力。
+加分项：
+1、有推荐系统、因果推断、信息检索、NLP、计算广告学等领域研究及实习经验；
+2、在SIGKDD、ICML、NIPS、WSDM、WWW、ACL、RECSYS等相关国际顶会有文献发表；
+3、有ACM / Topcoder Algorithm或类似算法竞赛经历。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11627">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】数据挖掘算法工程师</span><span class="m"><span class="tag">实习</span><span class="tag off">硕士起</span>北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责海量短视频生产链路算法优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，加强特效、美颜等视频生产业务的智能化；
+2、通过异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
+3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产；
+4、挖掘用户特征，用于提升广告与用户匹配的效率、业务反欺诈、渠道反作弊、搜索索引等业务场景。</p><h3>任职要求</h3><p>1、计算机/数学/物理/信息等专业硕士及以上学历；
+2、扎实的统计学功底，擅长数据分析和科学实验方法，对机器学习、深度学习等主流算法理解深刻，且应用熟练；
+3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
+4、熟悉基于Hive、Spark、ElasticSearch、Mongodb等大数据平台的相关开发；
+5、热爱短视频行业，较强的沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
+加分项：
+1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
+2、在Kaggle等数据挖掘/机器学习竞赛获奖；
+3、在ACM等编程竞赛获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11515">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】机器学习算法工程师</span><span class="m"><span class="tag">实习</span><span class="tag off">硕士起</span>北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习相关领域最新进展，包括深度学习、强化学习、迁移学习、元学习等；
+2、将机器学习前沿技术在推荐、广告、游戏、风控、效率工程等业务场景进行应用落地和优化；
+3、开发通用或者定制化并行的机器学习训练/推理平台；
+4、集成和优化目前主流的机器学习框架，比如TensorFlow、PyTorch。</p><h3>任职要求</h3><p>1、硕士及以上学历；
+2、机器学习优化、深度学习背景扎实，有实际应用经验优先；
+3、熟练使用C++/Python等编程语言；
+4、熟悉Linux开发环境和常用开发工具，熟悉Tensorflow/PyTorch/MxNet/XGBoost等机器学习平台及工具。
+加分项：
+1、以一作发表过优秀期刊或学会论文；
+2、获得机器学习竞赛优异成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11418">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【留用实习】策略算法工程师-音视频</span><span class="m"><span class="tag">实习</span><span class="tag off">硕士起</span>北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责音视频点播、直播领域核心策略算法的设计与优化，包括视频转码策略（基于内容感知的自适应视频处理和编码- CAE、档位Ladder设计等）、传输和播放策略（自适应多码率-ABR、缓存策略、后处理等），为用户提供端到端的个性化播放体验，平衡清晰度、流畅度与成本；
+2、挖掘海量线上数据，通过机器学习、因果推断等方法建立主播、视频、用户粒度的画像模型，精细化控制算法策略，推动时长/营收等核心指标提升；
+3、与内外部团队合作，制定面向不同业务（主站/电商/商业化/海外等）的优化策略，主导算法设计、验证、工程落地、AB实验全流程，推动算法上线。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、通信、统计、数学、图像处理、多媒体等相关专业；
+2、具备较强策略抽象、数据分析和设计能力，能系统性地思考，制定解决方案，快速验证和优化上线；
+3、在以下一个或多个算法领域上有深度的理解和实践经验：流媒体、图像压缩、CV/NLP、推荐/搜索/广告、机器学习、控制论；
+4、积极乐观，责任心强，工作认真细致，具备良好的团队合作精神、较强的沟通能力和学习能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11307">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star实习】增长算法工程师</span><span class="m"><span class="tag">实习</span><span class="tag off">硕士起</span>北京 · 11-03 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大规模的短视频推荐和补贴裂变等业务的模型策略优化，提升用户消费体验（如时长、点击率、互动）和用户留存率、DAU等核心指标；
+2、参与机器学习，如深度学习、因果推断领域的技术研发工作，包括但不限于DNN模型优化、因果推断模型、迁移学习、元学习、强化学习和图模型等的算法和系统研发等；
+3、参与前沿问题的探索与研究，结合实际应用场景，提供技术优化和落地建议。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机科学、数学或统计学相关专业；
+2、熟悉Linux、Python、C++/Java，具备优秀的编码能力，有扎实的数据结构和算法功底；
+3、熟悉大规模数据挖掘或分布式计算等技术；
+4、有较强的自驱力和学习能力，善于阅读文献，具备优秀的分析和解决问题的能力。
+加分项：
+1、有推荐系统、因果推断、信息检索、NLP、计算广告学等领域研究及实习经验；
+2、在SIGKDD、ICML、NIPS、WSDM、WWW、ACL、RECSYS等相关国际顶会有文献发表；
+3、有ACM / Topcoder Algorithm 或类似算法竞赛经历。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=11168">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】用户画像算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、依托快手海量内容生产、消费、流量数据，基于短视频、直播等业务生态，挖掘用户画像属性，构建公司级用户画像数据体系和平台产品，深度参与创作者、直播、运营、增长等业务策略方案制定及实施，直接为业务提效赋能并达成新的增长点；
+2、基于业务策略服务方案，面向全站用户、内容、社区沉淀数据标签资产至数据中台，为业务运营决策提供基础标签能力支撑，并不断挖掘、萃取数据价值；
+3、基于海量、异构、高维的时空大数据，建设精准的全域空间实体数据体系，搭建全方位的地理位置服务(LBS)；
+4、建设业内一流的设备指纹引擎，整合快手海量多来源数据，建设全站统一的ID-Mapping服务框架。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机科学、数据科学、统计学、金融学相关专业优先，且具备较强的数理统计基础和逻辑思维能力；
+2、熟练掌握回归、分类聚类、关联规则、时序预测、因果分析等相关数据挖掘及统计方法，善于抽象、拆解实际问题，并利用合理数据特征、算法模型实践；
+3、扎实的编程基础，精通Python、C++、Java至少一门编程语言；
+4、熟悉Hadoop生态，至少熟悉HSQL、Spark、Flink等一种数据处理技术，并对数据仓库、特征工程、特征选择有较好的理解；
+5、良好的业务驱动力、业务敏感度，对数据价值挖掘、数据驱动业务感兴趣。
+加分项：
+1、熟悉短视频及直播业务社区，短视频重度用户。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12744">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习相关领域最新进展，包括深度学习、强化学习、迁移学习、元学习等；
+2、将机器学习前沿技术在推荐、广告、游戏、风控、效率工程等业务场景进行应用落地和优化；
+3、开发通用或者定制化并行的机器学习训练/推理平台；
+4、集成和优化目前主流的机器学习框架，比如TensorFlow、PyTorch。</p><h3>任职要求</h3><p>1、硕士及以上学历；
+2、机器学习优化、深度学习背景扎实，有实际应用经验优先；
+3、熟练使用C++/Python等编程语言；
+4、熟悉Linux开发环境和常用开发工具，熟悉Tensorflow/PyTorch/MxNet/XGBoost等机器学习平台及工具。
+加分项：
+1、以一作发表过优秀期刊或学会论文；
+2、获得机器学习竞赛优异成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13065">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】机器学习算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习相关领域最新进展，包括深度学习、强化学习、迁移学习、元学习等；
+2、将机器学习前沿技术在推荐、广告、游戏、风控、效率工程等业务场景进行应用落地和优化；
+3、开发通用或者定制化并行的机器学习训练/推理平台；
+4、集成和优化目前主流的机器学习框架，比如TensorFlow、PyTorch。</p><h3>任职要求</h3><p>1、硕士及以上学历；
+2、机器学习优化、深度学习背景扎实，有实际应用经验优先；
+3、熟练使用C++/Python等编程语言；
+4、熟悉Linux开发环境和常用开发工具，熟悉Tensorflow/PyTorch/MxNet/XGBoost等机器学习平台及工具。
+   
+加分项：
+1、以一作发表过优秀期刊或学会论文；
+2、获得机器学习竞赛优异成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12714">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">【快Star】增长激励算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">学历未写</span>北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责设计和优化激励补贴场景的核心算法，驱动快手系DAU、体验的持续增长；
+2、负责亿级补贴规模的算法模型优化与落地，包括因果推断、深度学习、强化学习、生成式出价等方向的模型研发；
+3、探索和研究最前沿的技术，结合增长业务、产出业界领先的技术解决方案；
+4、探索算法在不同产品形态下的落地方案，提升产品的用户体验，驱动增长业务突破。</p><h3>任职要求</h3><p>1、对技术有热情、勇于突破，认同业务中技术驱动和算法驱动的价值；
+2、计算机、数学、统计学或人工智能等相关专业；
+3、熟悉Linux环境，熟练掌握Java/C++/Python，具备扎实的编码能力、数据结构与算法功底；
+4、熟悉机器学习、深度学习、因果推断或强化学习中的至少一个方向，有实际项目或研究经验；
+5、善于阅读文献、快速学习，具备优秀的分析解决问题能力与沟通协作能力。
+加分项：
+1、有大模型、推荐系统、计算广告、算法博弈论或激励设计相关研究与实践经验；
+2、在SIGKDD、ICML、NeurIPS、WSDM、WWW、ACL、RecSys等国际顶级会议上有论文发表；
+3、有ACM-ICPC、Topcoder Algorithm或类似算法竞赛获奖经历；
+4、有强化学习、生成式模型或因果推断方向的深入研究或开源项目贡献。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=12748">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">增长算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 10-27 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大规模的短视频推荐和补贴裂变等业务的模型策略优化，提升用户消费体验（如时长、点击率、互动）和用户留存率、DAU等核心指标；
+2、参与机器学习，如深度学习、因果推断领域的技术研发工作，包括但不限于DNN模型优化、因果推断模型、迁移学习、元学习、强化学习和图模型等的算法和系统研发等；
+3、参与前沿问题的探索与研究，结合实际应用场景，提供技术优化和落地建议。</p><h3>任职要求</h3><p>1、计算机科学、数学或统计学相关专业硕士及以上学历；
+2、熟悉Linux，Python，C++/Java，具备优秀的编码能力，有扎实的数据结构和算法功底；
+3、熟悉大规模数据挖掘或分布式计算等技术；
+4、有较强的自驱力和学习能力，善于阅读文献，具备优秀的分析和解决问题的能力。
+加分项：
+1、有推荐系统、因果推断、信息检索、NLP、计算广告学等领域研究及实习经验；
+2、在SIGKDD、ICML、NIPS、WSDM、WWW、ACL、RECSYS等相关国际顶会有文献发表；
+3、有ACM / Topcoder Algorithm或类似算法竞赛经历。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13108">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据挖掘算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 10-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责海量短视频生产链路算法优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，加强特效、美颜等视频生产业务的智能化；
+2、通过异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
+3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产；
+4、挖掘用户特征，用于提升广告与用户匹配的效率、业务反欺诈、渠道反作弊、搜索索引等业务场景。</p><h3>任职要求</h3><p>1、计算机/数学/物理/信息等专业硕士及以上学历；
+2、扎实的统计学功底，擅长数据分析和科学实验方法，对机器学习、深度学习等主流算法理解深刻，且应用熟练；
+3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
+4、熟悉基于Hive、Spark、ElasticSearch、Mongodb等大数据平台的相关开发；
+5、热爱短视频行业，较强的沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
+加分项：
+1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
+2、在Kaggle等数据挖掘/机器学习竞赛获奖；
+3、在ACM等编程竞赛获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13100">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">策略算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京 · 09-20 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责短视频生产/直播/用户增长等业务策略算法建模和优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，推进特效业务智能化；
+2、通过指标数据异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
+3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机/数学/物理/信息等专业；
+2、对机器学习、深度学习等主流算法理解深刻，有应用经验；扎实的统计学功底，擅长数据分析和科学实验方法；
+3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
+4、热爱短视频行业，较强沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
+加分项
+1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
+2、在Kaggle等数据挖掘/机器学习竞赛中获奖；
+3、在ACM等编程竞赛中获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=13090">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 09-09 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习相关领域最新进展，包括深度学习、强化学习、迁移学习、元学习等；
+2、将机器学习前沿技术在推荐、广告、游戏、风控、效率工程等业务场景进行应用落地和优化；
+3、开发通用或者定制化并行的机器学习训练/推理平台；
+4、集成和优化目前主流的机器学习框架，比如TensorFlow、PyTorch。</p><h3>任职要求</h3><p>1、硕士及以上学历；
+2、机器学习优化、深度学习背景扎实，有实际应用经验优先；
+3、熟练使用C++/Python等编程语言；
+4、熟悉Linux开发环境和常用开发工具，熟悉Tensorflow/PyTorch/MxNet/XGBoost等机器学习平台及工具。
+加分项：
+1、以一作发表过优秀期刊或学会论文；
+2、获得机器学习竞赛优异成绩。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9972">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据挖掘算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 08-25 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责海量短视频生产链路算法优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，加强特效、美颜等视频生产业务的智能化；
+2、通过异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
+3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产；
+4、挖掘用户特征，用于提升广告与用户匹配的效率、业务反欺诈、渠道反作弊、搜索索引等业务场景。</p><h3>任职要求</h3><p>1、计算机/数学/物理/信息等专业硕士及以上学历；
+2、扎实的统计学功底，擅长数据分析和科学实验方法，对机器学习、深度学习等主流算法理解深刻，且应用熟练；
+3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
+4、熟悉基于Hive、Spark、ElasticSearch、Mongodb等大数据平台的相关开发；
+5、热爱短视频行业，较强的沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
+加分项：
+1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
+2、在Kaggle等数据挖掘/机器学习竞赛获奖；
+3、在ACM等编程竞赛获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=10000">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">策略算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京 · 04-09 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责短视频生产/直播/用户增长等业务策略算法建模和优化，基于视频特效、用户画像、行为序列、消费反馈等大规模数据信号进行算法建模，推进特效业务智能化；
+2、通过指标数据异常检测、因果推断、自动归因等算法等对生产、消费数据进行挖掘，洞察业务痛点，指导业务优化方向；
+3、挖掘热点事件、预测流行趋势，帮助视频特效等业务更好运营和生产。</p><h3>任职要求</h3><p>1、本科及以上学历，计算机/数学/物理/信息等专业；
+2、对机器学习、深度学习等主流算法理解深刻，有应用经验；扎实的统计学功底，擅长数据分析和科学实验方法；
+3、熟练掌握Python、C++、JAVA、R等至少一门编程语言，优秀的编码能力和习惯，良好的数据结构和算法功底；
+4、热爱短视频行业，较强沟通能力和逻辑表达能力，善于沟通和团队协作，具有较强责任心和目标导向意识。
+加分项
+1、在KDD、NeurIPS、WWW、SIGIR、WSDM、ICML、IJCAI、AAAI、RecSys等顶会发表论文；
+2、在Kaggle等数据挖掘/机器学习竞赛中获奖；
+3、在ACM等编程竞赛中获奖。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9967">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">增长算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 04-09 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大规模的短视频推荐和补贴裂变等业务的模型策略优化，提升用户消费体验（如时长、点击率、互动）和用户留存率、DAU等核心指标；
+2、参与机器学习，如深度学习、因果推断领域的技术研发工作，包括但不限于DNN模型优化、因果推断模型、迁移学习、元学习、强化学习和图模型等的算法和系统研发等；
+3、参与前沿问题的探索与研究，结合实际应用场景，提供技术优化和落地建议。</p><h3>任职要求</h3><p>1、计算机科学、数学或统计学相关专业硕士及以上学历；
+2、熟悉Linux，Python，C++/Java，具备优秀的编码能力，有扎实的数据结构和算法功底；
+3、熟悉大规模数据挖掘或分布式计算等技术；
+4、有较强的自驱力和学习能力，善于阅读文献，具备优秀的分析和解决问题的能力。
+加分项：
+1、有推荐系统、因果推断、信息检索、NLP、计算广告学等领域研究及实习经验；
+2、在SIGKDD、ICML、NIPS、WSDM、WWW、ACL、RECSYS等相关国际顶会有文献发表；
+3、有ACM / Topcoder Algorithm或类似算法竞赛经历。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9977">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">策略算法工程师-音视频</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 03-23 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责音视频点播、直播领域核心策略算法的设计与优化，包括视频转码策略（基于内容感知的自适应视频处理和编码- CAE、档位Ladder设计等）、传输和播放策略（自适应多码率-ABR、缓存策略、后处理等），为用户提供端到端的个性化播放体验，平衡清晰度、流畅度与成本；
+2、挖掘海量线上数据，通过机器学习、因果推断等方法建立主播、视频、用户粒度的画像模型，精细化控制算法策略，推动时长/营收等核心指标提升；
+3、与内外部团队合作，制定面向不同业务（主站/电商/商业化/海外等）的优化策略，主导算法设计、验证、工程落地、AB实验全流程，推动算法上线。</p><h3>任职要求</h3><p>1、硕士及以上学历，计算机、通信、统计、数学、图像处理、多媒体等相关专业；
+2、具备较强策略抽象、数据分析和设计能力，能系统性地思考，制定解决方案，快速验证和优化上线；
+3、在以下一个或多个算法领域上有深度的理解和实践经验：流媒体、图像压缩、CV/NLP、推荐/搜索/广告、机器学习、控制论；
+4、积极乐观，责任心强，工作认真细致，具备良好的团队合作精神、较强的沟通能力和学习能力。</p><a href="https://campus.kuaishou.cn/recruit/campus/e/#/campus/jobs?id=9968">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c6"><header><h2>OPPO</h2><span><span class="f">本科可投的实习 1 个</span><span class="a">2 个岗位，其中本科可投的实习 1 个</span></span></header><div class="jobs"><details class="job fit"><summary><span class="t">机器学习研究员（健康方向）</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>深圳市 · 03-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>- 参与电生理信号（ECG、PPG等）的处理、分析与可视化；
+- 参与电生理信号的建模与实验设计，探索大规模时序数据上的的表征学习方法，方向包括但不限于自监督学习、模型可解释性、跨域泛化性等；
+- 参与论文工作的准备、撰写与修改等；
+- 参与穿戴算法的工程优化落地；
+3.参与专家决策系统建设及研发工作，涉及知识抽取、知识存储、知识建模、知识挖掘，包括但不限于实体链接、关系抽取、知识推理、知识融合等。</p><h3>任职要求</h3><p>- 机器学习、深度学习相关方向的博士或优秀的本科及硕士，掌握机器学习的基本方法，熟悉常用的深度学习模型和框架；
+- 具备较强的文献阅读、论文撰写、算法实现能力；
+- 在机器学习、数据挖掘等相关的高水平国际会议或期刊上发表论文者优先；
+- 在公开数据集或国际竞赛上取得优异成绩者优先；
+- 熟悉电生理信号、有相关项目经历者优先。
+具备以下任一方向经验均可：
+- LLM方向：具备multi-agent、LLM强化学习相关经验
+- 穿戴模型方向：时序相关前沿机器学习模型经验（Diffusion model、Masked autoencoder、Contrastive learning等） + 生理时序信号建模经验 （ECG、EEG、PPG、IMU等）+ 国际论文发表CCF B以上或国际权威竞赛取得名次</p><a href="https://careers.oppo.com/university/oppo/campus/post#1615">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习研究员（健康方向）</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>深圳市 · 07-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 参与电生理信号的建模与实验设计，探索大规模时序数据上的的表征学习方法，方向包括但不限于自监督学习、模型可解释性、跨域泛化性等；
+2. 参与论文工作的准备、撰写与修改等；
+3. 参与穿戴算法的工程优化落地。</p><h3>任职要求</h3><p>1. 机器学习、深度学习相关方向的博士或优秀的本科及硕士，掌握机器学习的基本方法，熟悉常用的深度学习模型和框架；
+2. 具备较强的文献阅读、论文撰写、算法实现能力；
+3. 在机器学习、数据挖掘等相关的高水平国际会议或期刊上发表论文者优先；
+4. 在公开数据集或国际竞赛上取得优异成绩者优先；
+5. 熟悉电生理信号、有相关项目经历者优先。
+具备以下任一方向经验均可：
+- LLM方向：具备multi-agent、LLM强化学习相关经验
+- 穿戴模型方向：时序相关前沿机器学习模型经验（Diffusion model、Masked autoencoder、Contrastive learning等） + 生理时序信号建模经验 （ECG、EEG、PPG、IMU等）+ 国际论文发表CCF B以上或国际权威竞赛取得名次</p><a href="https://careers.oppo.com/university/oppo/campus/post#1774">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c7"><header><h2>B 站</h2><span><span class="f">本科可投的实习 1 个</span><span class="a">1 个岗位，其中本科可投的实习 1 个</span></span></header><div class="jobs"><details class="job fit"><summary><span class="t">游戏AI风控算法实习生</span><span class="m"><span class="tag">实习</span><span class="tag off">学历未写</span>上海 · 09-03 更新</span></summary><div class="jd"><h3>岗位介绍</h3><p>工作职责:
+1.负责B站游戏业务安全相关数据统计、分析、挖掘工作。
+2.通过玩家画像、行为轨迹、团伙关系等方式，采用机器学习等AI技术对游戏内作弊行为进行监控和对抗。
+3.持续跟踪AI大模型领域（如openAI、Llama、Deepseek等）在安全领域的前沿进展，不断探索新的算法和模型架构，提升安全大模型的竞争力。
+4.与产品、运营、数据等团队紧密合作，帮助优化业务决策过程。
+工作要求:
+1.掌握数据分析方法，熟练使用SQL、Python等数据分析工具，有较好的数据敏感度和洞察力。具备一定的代码开发能力，至少能熟练掌握一门C++/Java等面向对象编程语言。
+2.深入理解常见机器学习算法，熟悉深度学习框架，能通过数据挖掘有效识别游戏安全领域各类作弊风险（如黑产工作室、脚本外挂、伙牌演员等）并进行打击和风险控制。
+3.熟悉Transformer模型及其变种原理与架构，熟悉预训练、微调、对齐、模型蒸馏、量化等技术，对大模型和AI技术应用落地有强烈好奇心，能通过快速学习掌握新技术。
+4.责任感强，具备较强的逻辑思维、沟通和团队协作能力。
+5.热爱游戏，有mmo、slg、棋牌类等任一类型游戏的基础。</p><a href="https://jobs.bilibili.com/campus/positions/30323">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c8"><header><h2>得物</h2><span><span class="f">本科可投的实习 1 个</span><span class="a">1 个岗位，其中本科可投的实习 1 个</span></span></header><div class="jobs"><details class="job fit"><summary><span class="t">大模型风控算法工程师</span><span class="m"><span class="tag">实习</span><span class="tag">本科可投</span>上海 · 08-25 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大模型在风险识别、策略辅助、智能运营、智能客服及决策 Agent 等风控场景中的探索与落地；
+2、协助理解和拆解实际业务问题，通过数据分析、模型实验、效果评估等方式，将业务需求转化为可验证、可迭代的算法方案；
+3、参与大模型应用相关工作，包括 Prompt 优化、RAG、Agent、模型评测、数据构造及效果分析等；
+4、跟踪大模型、机器学习等领域的前沿技术，结合实际业务场景开展技术调研和实验验证；
+5、与产品、策略、工程及业务团队协作，推进算法方案的开发、测试与落地。</p><h3>任职要求</h3><p>1、2027届毕业生，本科及以上学历，计算机、人工智能、数学、统计学、软件工程等相关专业；
+2、具备良好的编程基础，熟悉 Python，了解常用的数据处理、机器学习或深度学习工具；
+3、对大模型及 Agent 技术有浓厚兴趣，了解 Prompt、RAG、工具调用、模型评测等相关技术者优先；
+4、具有较强的逻辑思维、问题分析和快速学习能力，愿意从实际业务目标出发理解和解决问题；
+5、具备良好的沟通能力和团队协作意识，能够积极推进并完成所负责的任务；
+6、有大模型、机器学习、数据挖掘相关课程项目、科研经历、竞赛经历或实习经验者优先</p><a href="https://poizon.jobs.feishu.cn/578078/position/7677899808254626086/detail">去官网看这个岗位 →</a></div></details></div></section>
+<section id="c9" class="nofit"><header><h2>小米</h2><span><span class="f">本科可投的实习 0 个</span><span class="a">4 个岗位，其中本科可投的实习 0 个</span></span></header><div class="jobs"><details class="job"><summary><span class="t">机器学习算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>北京 · 08-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 制造要素数据算法开发与优化
 a. 负责手机制造领域制造要素数据相关算法的开发与优化，包括但不限于强化学习、机器学习、运筹优化及深度学习等技术方向，通过算法赋能生产效率提升、工艺流程优化和成本降低。
 b. 深入研究前沿算法技术，结合实际业务需求，设计并实现创新的算法解决方案，推动制造要素数据驱动的智能化技术在手机制造中的应用。
 2. 智能化场景落地
@@ -404,7 +534,7 @@ a. 具备良好的沟通技巧和能力，能够与不同背景的团队成员�
 b. 能够深入一线与生产人员交流，准确理解业务需求，并将技术方案清晰地传达给团队成员。
 6. 其他要求：
 a. 具备良好的英文读写能力，能够阅读和理解英文技术文献。
-b.熟悉Agent相关技术落地应用经验者优先</p><a href="https://xiaomi.jobs.f.mioffice.cn/campus/position/7670891914857974043/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习/深度学习算法工程师</span><span class="m">北京 · 08-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 算法开发与优化：
+b.熟悉Agent相关技术落地应用经验者优先</p><a href="https://xiaomi.jobs.f.mioffice.cn/campus/position/7670891914857974043/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习/深度学习算法工程师</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京 · 08-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 算法开发与优化：
 a. 负责小米智能制造相关算法的开发与优化，涵盖强化学习、机器学习、运筹优化算法及深度学习等领域，通过算法提升生产效率、优化工艺流程、降低成本。
 b. 深入研究前沿算法技术，结合实际业务需求，设计并实现创新的算法解决方案，推动智能化技术在小米智能工厂中的应用。
 2. 智能化场景落地：
@@ -427,14 +557,14 @@ a. 具备良好的沟通技巧和能力，能够与不同背景的团队成员�
 b. 能够深入一线与生产人员交流，准确理解业务需求，并将技术方案清晰地传达给团队成员。
 6. 其他要求：
 a. 具备良好的英文读写能力，能够阅读和理解英文技术文献。
-b.熟悉大模型技术以及有大模型相关技术落地应用经验者优先</p><a href="https://xiaomi.jobs.f.mioffice.cn/campus/position/7670891108536977710/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据科学家</span><span class="m">新加坡 · 08-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>岗位描述：
+b.熟悉大模型技术以及有大模型相关技术落地应用经验者优先</p><a href="https://xiaomi.jobs.f.mioffice.cn/campus/position/7670891108536977710/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据科学家</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>新加坡 · 08-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>岗位描述：
 1、利用统计学，机器学习，深度学习等相关算法解决复杂的业务问题；
 2、将顶尖的人工智能算法应用到各种具有挑战性的实际场景中；
 3、进行数据建模与算法相关方向的前沿研究。</p><h3>任职要求</h3><p>任职要求：
 1、硕博毕业生优先，计算机、数学相关专业；
 2、精通概率统计，具有较强的数据分析能力，能够从给定的数据中找到规律；
 3、理解机器学习，深度学习，数据挖掘相关算法优先，如拥有自然语言处理实践经验更佳；
-4、熟悉Tensorflow,Theano,Torch,Caffe,Mxnet等深度学习开发框架中的一种或多种。</p><a href="https://xiaomi.jobs.f.mioffice.cn/campus/position/7670935478141470985/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据挖掘工程师</span><span class="m">新加坡 · 08-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责相关业务的数据清洗融合流程的建设、维护、策略优化等；
+4、熟悉Tensorflow,Theano,Torch,Caffe,Mxnet等深度学习开发框架中的一种或多种。</p><a href="https://xiaomi.jobs.f.mioffice.cn/campus/position/7670935478141470985/detail">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">数据挖掘工程师</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>新加坡 · 08-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、负责相关业务的数据清洗融合流程的建设、维护、策略优化等；
 2、负责相关数据分析和预测、应用数据预估和关联挖掘、应用内使用数据统计等工作；
 3、探索和研究有效的机器学习/深度学习模型，为公司其他部门或项目提供决策支持；
 4、负责构建用户画像标签，分析用户兴趣偏好。</p><h3>任职要求</h3><p>1、数据挖掘、统计学、数学、计算机相关专业，硕士以上学历；
@@ -442,13 +572,13 @@ b.熟悉大模型技术以及有大模型相关技术落地应用经验者优先
 3、精通一种开发语言（Python、Scala、Java等），并具有快速学习其他开发语言的能力，熟悉Linux开发环境；
 4、熟悉Hadoop(HDFS/MapReduce/Hive/HBase)、Spark、Kafka的使用，熟悉Mysql等关系型数据库和NoSql技术；
 5、对数据敏感，能熟练预估数据量以及数据项之间关系，善于从数据中发现问题，熟悉大模型优先，能利用大模型做数据挖掘。</p><a href="https://xiaomi.jobs.f.mioffice.cn/campus/position/7670935464878639410/detail">去官网看这个岗位 →</a></div></details></div></section>
-<section id="c6"><header><h2>京东</h2><span>2 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">技术方向-机器学习/深度学习</span><span class="m">北京市 · 08-04 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1-集训&amp;轮岗：集训&amp;轮岗时间为半年，集训&amp;轮岗期间的工作地包含北京、宿迁等城市。集训期间会经历超100场培训，通过集训将会完成从学生向优秀职场人的转身。轮岗期间会在客服/物流一线深入实践，同时还会在总部核心技术部门进行轮岗学习，通过轮岗学习建立对业务、技术全流程的视角和理解，有利于技术在真实数据和商业环境中的落地；
+<section id="c10" class="nofit"><header><h2>京东</h2><span><span class="f">本科可投的实习 0 个</span><span class="a">2 个岗位，其中本科可投的实习 0 个</span></span></header><div class="jobs"><details class="job"><summary><span class="t">技术方向-机器学习/深度学习</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京市 · 08-04 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1-集训&amp;轮岗：集训&amp;轮岗时间为半年，集训&amp;轮岗期间的工作地包含北京、宿迁等城市。集训期间会经历超100场培训，通过集训将会完成从学生向优秀职场人的转身。轮岗期间会在客服/物流一线深入实践，同时还会在总部核心技术部门进行轮岗学习，通过轮岗学习建立对业务、技术全流程的视角和理解，有利于技术在真实数据和商业环境中的落地；
 2-定岗：公司的定岗导向是“热爱、擅长、坚定”，可自由定岗至各BGBU的算法类岗位，届时将结合个人志向和公司需求确认具体的部门、岗位和工作地。</p><h3>任职要求</h3><p>1-毕业时间：2026年10月1日至2027年9月30日期间毕业，统招本硕学历不限，本硕同级同薪；
 2-专业背景：拥有但不限于计算机、信息工程、人工智能、自动化、软件工程等相关专业学习背景；
 3-专业能力：熟练掌握深度学习基础理论和算法，熟练掌握Python/C++/Java等至少一门编程语言，有较强的编程能力，精通深度学习框架（PyTorch/TensorFlow等），熟悉主流深度学习模型架构（Transformer、CNN、RNN等）；
 4-极客精神：怀揣技术梦想，对技术狂热，在学术攻坚、工程实践或顶级赛事中有突出成果；发表相关领域顶级学术论文（NeurIPS、ICML、ICLR等）、参与贡献优秀开源项目、Kaggle等高水平竞赛获奖者优先；
 5-拥抱AI：对AI新技术保持好奇心，乐于主动学习并快速掌握新的AI知识和功能，积极跟踪机器学习领域前沿AI技术，有大模型应用或相关AI项目成果者优先，包括但不限于：时序大模型（时间序列预测、异常检测）、智能体应用（复杂任务规划、工具调用）、大模型微调与部署（LoRA、QLoRA、量化推理）等；
-6-符合京东价值观：客户为先、创新、拼搏、担当、感恩、诚信；对京东的商业模式有了解，认同京东价值观与商业价值并愿意为其长期努力。</p><a href="https://campus.jd.com/#/jobs?id=9199">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法工程师-运筹优化</span><span class="m">北京市、上海市 · 07-23 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 参与京东各业务及生态领域中运筹优化问题研究及探索应用，如使用建模工具进行运筹问题设计、开发和模型交付；应用数学编程知识，设计开发决策支持工具和软件等；
+6-符合京东价值观：客户为先、创新、拼搏、担当、感恩、诚信；对京东的商业模式有了解，认同京东价值观与商业价值并愿意为其长期努力。</p><a href="https://campus.jd.com/#/jobs?id=9199">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">算法工程师-运筹优化</span><span class="m"><span class="tag off">校招</span><span class="tag">本科可投</span>北京市、上海市 · 07-23 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 参与京东各业务及生态领域中运筹优化问题研究及探索应用，如使用建模工具进行运筹问题设计、开发和模型交付；应用数学编程知识，设计开发决策支持工具和软件等；
 2. 与京东的技术团队及科学家们一同探索和创新运筹优化/机制设计等方向算法的研究与开发，并应用在京东的电商、金融、物流等业务问题场景中，如定价、库存、物流、供应链管理、调度等方面；
 3. AI应用探索：关注AI与运筹优化结合的前沿技术（如强化学习、决策大模型等），尝试运用AI工具辅助建模、求解与结果分析，提升决策效率。</p><h3>任职要求</h3><p>1. 2026年10月1日至2027年9月30日期间毕业，统招本科及以上学历；
 2. 拥有但不限于运筹学、工业工程、计算机、应用数学、统计学或其他相关专业学习背景，熟悉机器学习、运筹学领域算法，有实践经验优先；
@@ -457,56 +587,15 @@ b.熟悉大模型技术以及有大模型相关技术落地应用经验者优先
 5. 了解并能使用AI工具（如通用对话式AI、数据分析平台等）辅助数学建模与结果分析；有AI工具结合运筹优化项目经历者优先；
 6. 对AI新技术保持好奇心，乐于主动学习并快速掌握新的AI知识和功能，积极拥抱新技术；
 7. 符合京东价值观：客户为先、创新、拼搏、担当、感恩、诚信。</p><a href="https://campus.jd.com/#/jobs?id=9097">去官网看这个岗位 →</a></div></details></div></section>
-<section id="c7"><header><h2>OPPO</h2><span>2 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">机器学习研究员（健康方向）</span><span class="m">深圳市 · 07-15 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1. 参与电生理信号的建模与实验设计，探索大规模时序数据上的的表征学习方法，方向包括但不限于自监督学习、模型可解释性、跨域泛化性等；
-2. 参与论文工作的准备、撰写与修改等；
-3. 参与穿戴算法的工程优化落地。</p><h3>任职要求</h3><p>1. 机器学习、深度学习相关方向的博士或优秀的本科及硕士，掌握机器学习的基本方法，熟悉常用的深度学习模型和框架；
-2. 具备较强的文献阅读、论文撰写、算法实现能力；
-3. 在机器学习、数据挖掘等相关的高水平国际会议或期刊上发表论文者优先；
-4. 在公开数据集或国际竞赛上取得优异成绩者优先；
-5. 熟悉电生理信号、有相关项目经历者优先。
-具备以下任一方向经验均可：
-- LLM方向：具备multi-agent、LLM强化学习相关经验
-- 穿戴模型方向：时序相关前沿机器学习模型经验（Diffusion model、Masked autoencoder、Contrastive learning等） + 生理时序信号建模经验 （ECG、EEG、PPG、IMU等）+ 国际论文发表CCF B以上或国际权威竞赛取得名次</p><a href="https://careers.oppo.com/university/oppo/campus/post#1774">去官网看这个岗位 →</a></div></details><details class="job"><summary><span class="t">机器学习研究员（健康方向）</span><span class="m">深圳市 · 03-06 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>- 参与电生理信号（ECG、PPG等）的处理、分析与可视化；
-- 参与电生理信号的建模与实验设计，探索大规模时序数据上的的表征学习方法，方向包括但不限于自监督学习、模型可解释性、跨域泛化性等；
-- 参与论文工作的准备、撰写与修改等；
-- 参与穿戴算法的工程优化落地；
-3.参与专家决策系统建设及研发工作，涉及知识抽取、知识存储、知识建模、知识挖掘，包括但不限于实体链接、关系抽取、知识推理、知识融合等。</p><h3>任职要求</h3><p>- 机器学习、深度学习相关方向的博士或优秀的本科及硕士，掌握机器学习的基本方法，熟悉常用的深度学习模型和框架；
-- 具备较强的文献阅读、论文撰写、算法实现能力；
-- 在机器学习、数据挖掘等相关的高水平国际会议或期刊上发表论文者优先；
-- 在公开数据集或国际竞赛上取得优异成绩者优先；
-- 熟悉电生理信号、有相关项目经历者优先。
-具备以下任一方向经验均可：
-- LLM方向：具备multi-agent、LLM强化学习相关经验
-- 穿戴模型方向：时序相关前沿机器学习模型经验（Diffusion model、Masked autoencoder、Contrastive learning等） + 生理时序信号建模经验 （ECG、EEG、PPG、IMU等）+ 国际论文发表CCF B以上或国际权威竞赛取得名次</p><a href="https://careers.oppo.com/university/oppo/campus/post#1615">去官网看这个岗位 →</a></div></details></div></section>
-<section id="c8"><header><h2>B 站</h2><span>1 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">游戏AI风控算法实习生</span><span class="m">上海 · 09-03 更新</span></summary><div class="jd"><h3>岗位介绍</h3><p>工作职责:
-1.负责B站游戏业务安全相关数据统计、分析、挖掘工作。
-2.通过玩家画像、行为轨迹、团伙关系等方式，采用机器学习等AI技术对游戏内作弊行为进行监控和对抗。
-3.持续跟踪AI大模型领域（如openAI、Llama、Deepseek等）在安全领域的前沿进展，不断探索新的算法和模型架构，提升安全大模型的竞争力。
-4.与产品、运营、数据等团队紧密合作，帮助优化业务决策过程。
-工作要求:
-1.掌握数据分析方法，熟练使用SQL、Python等数据分析工具，有较好的数据敏感度和洞察力。具备一定的代码开发能力，至少能熟练掌握一门C++/Java等面向对象编程语言。
-2.深入理解常见机器学习算法，熟悉深度学习框架，能通过数据挖掘有效识别游戏安全领域各类作弊风险（如黑产工作室、脚本外挂、伙牌演员等）并进行打击和风险控制。
-3.熟悉Transformer模型及其变种原理与架构，熟悉预训练、微调、对齐、模型蒸馏、量化等技术，对大模型和AI技术应用落地有强烈好奇心，能通过快速学习掌握新技术。
-4.责任感强，具备较强的逻辑思维、沟通和团队协作能力。
-5.热爱游戏，有mmo、slg、棋牌类等任一类型游戏的基础。</p><a href="https://jobs.bilibili.com/campus/positions/30323">去官网看这个岗位 →</a></div></details></div></section>
-<section id="c9"><header><h2>得物</h2><span>1 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">大模型风控算法工程师</span><span class="m">上海 · 08-25 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、参与大模型在风险识别、策略辅助、智能运营、智能客服及决策 Agent 等风控场景中的探索与落地；
-2、协助理解和拆解实际业务问题，通过数据分析、模型实验、效果评估等方式，将业务需求转化为可验证、可迭代的算法方案；
-3、参与大模型应用相关工作，包括 Prompt 优化、RAG、Agent、模型评测、数据构造及效果分析等；
-4、跟踪大模型、机器学习等领域的前沿技术，结合实际业务场景开展技术调研和实验验证；
-5、与产品、策略、工程及业务团队协作，推进算法方案的开发、测试与落地。</p><h3>任职要求</h3><p>1、2027届毕业生，本科及以上学历，计算机、人工智能、数学、统计学、软件工程等相关专业；
-2、具备良好的编程基础，熟悉 Python，了解常用的数据处理、机器学习或深度学习工具；
-3、对大模型及 Agent 技术有浓厚兴趣，了解 Prompt、RAG、工具调用、模型评测等相关技术者优先；
-4、具有较强的逻辑思维、问题分析和快速学习能力，愿意从实际业务目标出发理解和解决问题；
-5、具备良好的沟通能力和团队协作意识，能够积极推进并完成所负责的任务；
-6、有大模型、机器学习、数据挖掘相关课程项目、科研经历、竞赛经历或实习经验者优先</p><a href="https://poizon.jobs.feishu.cn/578078/position/7677899808254626086/detail">去官网看这个岗位 →</a></div></details></div></section>
-<section id="c10"><header><h2>贝壳</h2><span>1 个岗位</span></header><div class="jobs"><details class="job"><summary><span class="t">机器学习算法工程师（智能决策方向）【2027届秋招】</span><span class="m">08-24 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习算法研究，重点覆盖预测模型、匹配建模、最优化问题等技术方向，快速学习并实践 SOTA 论文，为各种大规模机器学习模型研发核心技术；
+<section id="c11" class="nofit"><header><h2>贝壳</h2><span><span class="f">本科可投的实习 0 个</span><span class="a">1 个岗位，其中本科可投的实习 0 个</span></span></header><div class="jobs"><details class="job"><summary><span class="t">机器学习算法工程师（智能决策方向）【2027届秋招】</span><span class="m"><span class="tag off">校招</span><span class="tag off">硕士起</span>08-24 更新</span></summary><div class="jd"><h3>岗位职责</h3><p>1、机器学习算法研究，重点覆盖预测模型、匹配建模、最优化问题等技术方向，快速学习并实践 SOTA 论文，为各种大规模机器学习模型研发核心技术；
 2、AI驱动的问题解决，结合 LLM/Agent 技术研究机器学习的前沿技术。利用大模型对实际业务问题进行重新定义、特有场景下模型微调，以及模型自动化演进方案设计；
 3、技术驱动产品成长，通过对数据的敏锐洞察，深入挖掘产品潜在价值。积极探索 Vibe coding等新范式，利用AI工具提升研发效能，通过技术创新推动产品迭代与升级。</p><h3>任职要求</h3><p>1、硕士及以上学历，毕业时间：2026年9月-2027年8月，机器学习、计算机、数学等相关专业优先；
 2、极客精神，对技术研究和应用抱有浓厚的兴趣，有强烈的上进心，善于学习并运用 AI 新工具、新范式解决复杂问题，对Prompt Engineering、RAG、Agentic Workflow 有实战经验或深刻见解；
 3、了解搜推广相关模型、预测和回归相关问题的建模，并具有以下一个或多个领域的理论背景和实践经验：机器学习/数据挖掘/深度学习/信息检索/博弈论；
 4、至少精通一门编程语言，对数据结构和算法有深刻理解。熟练使用 Cursor、GitHub Copilot等 AI 编程工具，具备 Vibecoding 实践经验。在 GitHub 提交过相关复现项目或参与过开源社区贡献者优先；
 5、良好的逻辑思维能力，对数据敏感，能够通过大模型辅助进行深度数据探索，发现关键数据指标，精准抓住并定义业务核心问题。</p><a href="https://campus.ke.com/campus/jobs#190286402">去官网看这个岗位 →</a></div></details></div></section>
-<footer>来自各公司校招官网的公开职位列表，每天读一次，按岗位名分板块，可能有分错或漏掉的。职责和要求超过 1200 字的只显示前面部分。</footer>
-</div>
+<footer>来自各公司校招官网的公开职位列表，每天读一次，按岗位名分板块，可能有分错或漏掉的。“本科可投的实习”= 岗位是实习，并且要求里没有写硕士起或博士；学历是从职责和要求的文字里判断的，“学历未写”的岗位也算在内，投之前以官网为准。职责和要求超过 1200 字的只显示前面部分。</footer>
+</div></div>
+<script>document.getElementById('scope')?.addEventListener('click',()=>document.getElementById('jobs').classList.toggle('only-fit'));</script>
 </body>
 </html>
